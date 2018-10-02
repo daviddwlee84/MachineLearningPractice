@@ -41,6 +41,11 @@ kNN Scikit Learn|3|0.9482
 
 ## Related Resources
 
+### Scikit Learn
+
+* [Nearest Neighbors Classification](http://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-classification)
+* [sklearn.neighbors.KNeighborsClassifier](http://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html#sklearn.neighbors.KNeighborsClassifier)
+
 ### Github
 
 * [stephanedhml/ML-letter-recognition](https://github.com/stephanedhml/ML-letter-recognition)
