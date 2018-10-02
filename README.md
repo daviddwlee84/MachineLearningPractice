@@ -17,7 +17,7 @@ Some practices using statistical machine learning technique based on some datase
 Subject|Technique|Dataset|Solution|Notes
 -------|---------|-------|--------|-----
 Letter Recognition|[kNN](kNN/kNN.md)|[Letter Recognition Datasets](https://archive.ics.uci.edu/ml/datasets/letter+recognition)|[From Scratch](kNN/kNN_Letter_Recognition/kNN_Letter_Recognition_FromScratch.py), [Scikit Learn](kNN/kNN_Letter_Recognition/kNN_Letter_Recognition_sklearn.py)|[Notes](kNN/kNN_Letter_Recognition/kNN_Letter_Recognition_Notes.md)
-Page Blocks Classification|[Decision Tree](DecisionTree/DecisionTree.md)|[Page Blocks Classification Data Set](https://archive.ics.uci.edu/ml/datasets/Page+Blocks+Classification)|[Scikit Learn](DecisionTree/DecisionTree_Page_Blocks_Classification/DecisionTree_Page_Blocks_Classification_sklearn.py)|-
+Page Blocks Classification|[Decision Tree](DecisionTree/DecisionTree.md)|[Page Blocks Classification Data Set](https://archive.ics.uci.edu/ml/datasets/Page+Blocks+Classification)|[Scikit Learn](DecisionTree/DecisionTree_Page_Blocks_Classification/DecisionTree_Page_Blocks_Classification_sklearn.py)|[Notes](DecisionTree/DecisionTree_Page_Blocks_Classification/DecisionTree_Page_Blocks_Classification_Notes.md)
 
 ## Resources
 

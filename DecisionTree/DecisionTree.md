@@ -14,4 +14,9 @@ Supervised Learning|Classification, Regression|Operations Research
 
 ## Links
 
-[Decision Tree - Wikipedia](https://en.wikipedia.org/wiki/Decision_tree)
+* [Scikit Learn User Guide - Decision Tree](http://scikit-learn.org/stable/modules/tree.html)
+
+### Wikipedia
+
+* [Decision Tree Learning](https://en.wikipedia.org/wiki/Decision_tree_learning)
+* [Decision Tree](https://en.wikipedia.org/wiki/Decision_tree)
