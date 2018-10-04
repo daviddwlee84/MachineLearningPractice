@@ -38,10 +38,13 @@ class kNNClassifier:
     
     # Predict function for more than one row vector
     def predict(self, testing_data):
-        prediction = []
-        for rowVector in testing_data:
-            prediction.append(self.__predictOne(rowVector))
-        return prediction
+        if testing_data.ndim == 1:
+            return self.__predictOne(testing_data)
+        else:
+            prediction = []
+            for rowVector in testing_data:
+                prediction.append(self.__predictOne(rowVector))
+            return prediction
     
     # Calculate the accuracy of the testing dataset
     def score(self, testing_data, testing_label):
