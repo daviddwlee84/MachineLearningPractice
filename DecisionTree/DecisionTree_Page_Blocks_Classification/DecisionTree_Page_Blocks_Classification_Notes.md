@@ -34,9 +34,10 @@ Associated Tasks         |Classification
 
 Measure the accuracy of the test subset (30% of instances)
 
-Model                     |Accuracy
---------------------------|--------
-Decision Tree Scikit Learn|0.9622
+Model                     |Accuracy|Training Time
+--------------------------|--------|-------------
+Decision Tree Scikit Learn|0.9622  |00:00.035
+Decision Tree From Scratch|0.9608  |05:58.906
 
 ## Related Resources
 
