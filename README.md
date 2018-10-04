@@ -24,6 +24,7 @@ Page Blocks Classification|[Decision Tree](DecisionTree/DecisionTree.md)|[Page B
 ### Tutorial
 
 * [Google - Machine Learning Recipes with Josh Gordon](https://www.youtube.com/playlist?list=PLOU2XLYxmsIIuiBfYad6rFYQU_jL2ryal)
+    * [Josh Gordon's Repository](https://github.com/random-forests)
 
 ### Datasets
 

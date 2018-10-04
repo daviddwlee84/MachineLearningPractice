@@ -39,6 +39,12 @@ Model                     |Accuracy|Training Time
 Decision Tree Scikit Learn|0.9622  |00:00.035
 Decision Tree From Scratch|0.9608  |05:58.906
 
+## Can be improve
+
+* Add support for missing (or unseen) attributes
+* Prune the tree to prevent overfitting
+* Add support for regression
+
 ## Related Resources
 
 ### Scikit Learn
