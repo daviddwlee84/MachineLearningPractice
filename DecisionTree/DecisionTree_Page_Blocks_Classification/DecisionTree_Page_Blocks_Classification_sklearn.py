@@ -14,10 +14,12 @@ from sklearn.tree import DecisionTreeClassifier # Decision Tree
 from sklearn.model_selection import train_test_split # Split training and testing data
 from sklearn import metrics # Evaluate model
 
+from datetime import datetime # Calculate training time
+
 def loadData(path):
-    letters = pd.read_csv(path)
-    data = np.array(letters.drop(['label'], 1))
-    label = np.array(letters['label'])
+    inputData = pd.read_csv(path)
+    data = np.array(inputData.drop(['label'], 1))
+    label = np.array(inputData['label'])
     data_train, data_test, label_train, label_test = train_test_split(data, label, test_size=0.3, random_state=87)
     return data_train, label_train, data_test, label_test
     
@@ -38,7 +40,9 @@ def main():
     data_train, label_train, data_test, label_test = loadData('DecisionTree/DecisionTree_Page_Blocks_Classification/page-blocks.csv')
 
     # Train Model
+    startTime = datetime.now()
     DecisionTreeModel = trainDecisionTree(data_train, label_train)
+    print('Training time:', str(datetime.now() - startTime))
 
     # Test Accuracy
     print('Accuracy:', float(testAccuracy(data_test, label_test, DecisionTreeModel)))
