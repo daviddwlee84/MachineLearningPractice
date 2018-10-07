@@ -133,6 +133,7 @@ Base cases:
 ### Scikit Learn
 
 * [Scikit Learn User Guide - Decision Tree](http://scikit-learn.org/stable/modules/tree.html)
+* [sklearn.tree.DecisionTreeClassifier](http://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html#sklearn.tree.DecisionTreeClassifier)
 
 ### Wikipedia
 

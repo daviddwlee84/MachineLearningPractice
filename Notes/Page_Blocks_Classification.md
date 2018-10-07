@@ -1,4 +1,4 @@
-# Letter Recognition
+# Page Blocks Classification
 
 ## Dataset
 
@@ -39,14 +39,8 @@ Model                     |Accuracy|Training Time
 Decision Tree Scikit Learn|0.9622  |00:00.035
 Decision Tree From Scratch|0.9608  |05:58.906
 
-## Can be improve
+## Can be improve (Decision Tree Algorithm)
 
 * Add support for missing (or unseen) attributes
 * Prune the tree to prevent overfitting
 * Add support for regression
-
-## Related Resources
-
-### Scikit Learn
-
-* [sklearn.tree.DecisionTreeClassifier](http://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html#sklearn.tree.DecisionTreeClassifier)

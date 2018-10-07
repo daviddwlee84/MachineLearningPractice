@@ -35,7 +35,7 @@ def evaluateModel(data_test, label_test, kNN):
 
 def main():
     # Load Data
-    data_train, label_train, data_test, label_test = loadData('kNN/kNN_Letter_Recognition/letter-recognition.csv')
+    data_train, label_train, data_test, label_test = loadData('Datasets/letter-recognition.csv')
 
     # Train Model
     kNN_model = trainKNN(data_train, label_train, 3)

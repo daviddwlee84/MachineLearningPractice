@@ -116,8 +116,6 @@ class CARTDecisionTreeClassifier:
                 gain = self.__info_gain(true_rows, false_rows, current_uncertainty)
 
                 # You actually can use '>' instead of '>=' here
-                # but I wanted the tree to look a certain way for our
-                # toy dataset.
                 if gain >= best_gain:
                     best_gain, best_question = gain, question
 
@@ -226,7 +224,7 @@ def evaluateModel(data_test, label_test, clf):
 
 def main():
     # Load Data
-    data_train, label_train, data_test, label_test = loadData('DecisionTree/DecisionTree_Page_Blocks_Classification/page-blocks.csv')
+    data_train, label_train, data_test, label_test = loadData('Datasets/page-blocks.csv')
 
     # Train Model
     startTime = datetime.now()

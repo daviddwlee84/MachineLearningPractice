@@ -37,7 +37,7 @@ def evaluateModel(data_test, label_test, clf):
 
 def main():
     # Load Data
-    data_train, label_train, data_test, label_test = loadData('DecisionTree/DecisionTree_Page_Blocks_Classification/page-blocks.csv')
+    data_train, label_train, data_test, label_test = loadData('Datasets/page-blocks.csv')
 
     # Train Model
     startTime = datetime.now()
