@@ -6,7 +6,7 @@
 
 ### Data Set Information
 
-Year:2014 and 2015 
+Year:2014 and 2015
 Source: Twitter,YouTube,IMDB
 
 ### Abstract

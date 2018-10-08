@@ -102,7 +102,7 @@ Decision-tree learners can create over-complex trees that do not generalize well
 
 ### CART
 
-Classification and regression trees (CART) are a non-parametric decision tree learning technique that produces either classification or regression trees, depending on whether the dependent variable is categorical or numeric, respectively.
+Classification and regression trees (CART) are a non-parametric decision tree learning technique that *produces either classification or regression trees*, depending on whether the dependent variable is categorical or numeric, respectively.
 
 [Wiki](https://en.wikipedia.org/wiki/Predictive_analytics#Classification_and_regression_trees_.28CART.29)
 
@@ -129,6 +129,7 @@ Base cases:
 * [Google Youtube Video - Decision Tree Classifier](https://youtu.be/LDRbO9a6XPU)
     * [Jupyter Notebook](https://github.com/random-forests/tutorials/blob/master/decision_tree.ipynb)
     * [Python File](https://github.com/random-forests/tutorials/blob/master/decision_tree.py)
+* [Youtube - Decision Tree (CART)](https://youtu.be/DCZ3tsQIoGU)
 
 ### Scikit Learn
 

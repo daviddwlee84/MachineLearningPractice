@@ -107,8 +107,7 @@ class CARTDecisionTreeClassifier:
                 # try splitting the dataset
                 true_rows, false_rows = self.__partition(rows, question)
 
-                # Skip this split if it doesn't divide the
-                # dataset.
+                # Skip this split if it doesn't divide the dataset.
                 if len(true_rows) == 0 or len(false_rows) == 0:
                     continue
 
