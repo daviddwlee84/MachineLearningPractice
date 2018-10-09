@@ -52,3 +52,10 @@ Associated Tasks         |Classification
 
     Blaz Zupan (blaz.zupan '@' ijs.si)
 
+## Result
+
+Measure the accuracy of the test subset (30% of instances)
+
+Model                            |Accuracy
+---------------------------------|--------
+Gaussian Naive Bayes Scikit Learn|0.6391
