@@ -27,3 +27,7 @@
 ## Generalization
 
 ## Regularization
+
+## Lazy Learning
+
+## Incremental Learning (Online Learning)
