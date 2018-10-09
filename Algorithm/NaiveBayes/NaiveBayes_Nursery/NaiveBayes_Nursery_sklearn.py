@@ -12,6 +12,7 @@ import pandas as pd # Read csv
 
 from sklearn.naive_bayes import GaussianNB # Gaussian Naive Bayes
 from sklearn.preprocessing import LabelEncoder # Transform 'string' into class number
+# Because the fit function of GaussianNB only accept numeric input
 from sklearn.model_selection import train_test_split # Split training and testing data
 from sklearn import metrics # Evaluate model
 

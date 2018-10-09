@@ -59,3 +59,4 @@ Measure the accuracy of the test subset (30% of instances)
 Model                            |Accuracy
 ---------------------------------|--------
 Gaussian Naive Bayes Scikit Learn|0.6391
+Gaussian Naive Bayes From Scratch|0.8819
