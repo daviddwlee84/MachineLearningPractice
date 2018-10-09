@@ -37,20 +37,16 @@ def regression(X_train, y_train):
     return regression_model
 
 def testAccuracy(X_test, y_test, regression_model):
-    print('Accuracy (Scikit Learn Score function):', float(regression_model.score(X_test, y_test)))
+    print('R2:', float(regression_model.score(X_test, y_test)))
     total_predict = len(y_test)
     y_pred = regression_model.predict(X_test)
-    accur1 = 0
     accur2 = 0
     for i in range(total_predict):
         if abs(y_pred[i] - y_test[i]) <= 1:
             accur2 += 1
-            if y_pred[i] == y_test[i]:
-                accur1 += 1
-    accur1 /= total_predict
     accur2 /= total_predict
 
-    print('Paper criteria => Accuracy1:', float(accur1), 'Accuracy2:', float(accur2))
+    print('Accuracy (Paper criteria Accuracy 2):', float(accur2))
 
 def evaluateModel(X_test, y_test, regression_model):
     # Mean Absolute Error (MAE)

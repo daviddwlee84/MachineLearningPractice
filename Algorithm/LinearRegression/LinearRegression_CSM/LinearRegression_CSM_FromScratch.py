@@ -1,4 +1,4 @@
-## Linear Regression CSM Scikit Learn Version
+## Linear Regression CSM From Scratch Version
 #
 # Author: David Lee
 # Create Date: 2018/10/9
@@ -46,6 +46,9 @@ class LinearRegression:
                 prediction[i] = self.__predictOne(rowVector)
             return prediction
     
+    ## Score method
+    # Method diff: the difference of y true and y predicted is less than diff
+    # Method R2: the coefficient of determination R^2 of the prediction (Best is 0)
     def score(self, X_test, y_test, method='diff', diff=1):
         if method == 'diff':
             yHats = self.predict(X_test)
@@ -55,6 +58,12 @@ class LinearRegression:
                 if abs(yHats[i] - y_test[i]) <= diff:
                     inRange += 1
             return float(inRange/total)
+        elif method == 'R2':
+            yHats = self.predict(X_test)
+            yBar = np.sum(y_test)/len(y_test) # Mean of y true
+            ssres = np.sum((y_test - yHats)**2) # Residual sum of squares
+            sstot = np.sum((y_test - yBar)**2) # Total sum of squares
+            return float(ssres/sstot)
 
 def loadData(path):
     inputData = pd.read_csv(path)
@@ -77,6 +86,7 @@ def regression(X_train, y_train):
     return regression_model
 
 def testAccuracy(X_test, y_test, regression_model):
+    print('R2:', float(regression_model.score(X_test, y_test, 'R2')))
     print('Accuracy (Paper criteria Accuracy 2):', float(regression_model.score(X_test, y_test, 'diff', 1)))
 
 def evaluateModel(X_test, y_test, regression_model):
