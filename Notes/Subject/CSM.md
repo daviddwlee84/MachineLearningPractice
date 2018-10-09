@@ -39,8 +39,9 @@ and Drop Gross Income as it is not available before release
 and Ratings is the one to be predicted.
 
 Accuracy criteria:
-model.score() / Paper criteria Accuracy 2
+model.score() (Measure R2) / Paper criteria Accuracy 2
 
 Model                         |Accuracy       |MAE   |MSE   |RMSE
 ------------------------------|---------------|------|------|------
 Linear Regression Scikit Learn|0.0446 ; 0.7955|0.6158|0.6334|0.7958
+Linear Regression From Scratch|------ ; 0.3182|1.8932|5.4411|2.3326
