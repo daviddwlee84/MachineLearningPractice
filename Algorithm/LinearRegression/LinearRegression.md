@@ -46,6 +46,10 @@ Squared error in matrix notation: $(y-Xw)^T(y-Xw)$
 
 Set this to 0 and solve for w to get: $\hat{w} = (X^TX)^{-1}X^Ty$
 
+## TODO
+
+* [sklearn.preprocessing.PolynomialFeatures](http://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.PolynomialFeatures.html#sklearn.preprocessing.PolynomialFeatures): Seems it can improve the accuracy.
+
 ## Links
 
 ### Tutorial

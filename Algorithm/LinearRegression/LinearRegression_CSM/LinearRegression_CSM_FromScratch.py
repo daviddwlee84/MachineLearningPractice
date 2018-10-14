@@ -17,7 +17,8 @@ class LinearRegression:
 
     # Calculate weights
     def __calcWeights(self, xArr, yArr):
-        xMat = np.mat(xArr)
+        xData = np.mat(xArr)
+        xMat = np.hstack([np.ones((len(xArr), 1)), xData]) # Append a constant 1 column in the first column
         yMat = np.mat(yArr).T
         xTx = xMat.T * xMat
         if np.linalg.det(xTx) == 0:
@@ -39,10 +40,11 @@ class LinearRegression:
     def predict(self, X_test):
         m = np.shape(X_test)[0]
         if m == 1:
-            return self.__predictOne(X_test)
+            return self.__predictOne(np.hstack([1, X_test])) # Append a constant 1 in from of the row
         else:
             prediction = np.zeros(m)
-            for i, rowVector in enumerate(X_test):
+            xMat = np.hstack([np.ones((len(X_test), 1)), X_test]) # Append a constant 1 column in the first column
+            for i, rowVector in enumerate(xMat):
                 prediction[i] = self.__predictOne(rowVector)
             return prediction
     

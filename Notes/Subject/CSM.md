@@ -43,4 +43,4 @@ Accuracy criteria: recording to Paper criteria Accuracy 2
 Model                         |Accuracy|R2    |MAE   |MSE   |RMSE
 ------------------------------|--------|------|------|------|------
 Linear Regression Scikit Learn|0.7955  |0.0446|0.6158|0.6334|0.7958
-Linear Regression From Scratch|0.3182  |8.2074|1.8932|5.4411|2.3326
+Linear Regression From Scratch|0.7955  |0.9554|0.6158|0.6334|0.7958
