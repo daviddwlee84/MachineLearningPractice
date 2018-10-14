@@ -24,17 +24,18 @@ class GaussianNaiveBayesClassifier:
     def fit(self, data_train, label_train):
         dataMat = np.mat(data_train)
 
-        numTrain = len(label_train) # Rows
-        numAttr = len(data_train[0]) # Columns
+        numTrain = len(label_train) # Total number of rows
+        numAttr = len(data_train[0]) # Total number of columns
 
         attrProb = [] # 3D Table (but not in cube shape) of "each column's" "each tags's" "correcponding label's" probability
         for _ in range(numAttr):
             attrProb.append(defaultdict(dict))
         
         for col in range(numAttr): # Go through each attribute
-            for label in self.__labels: # Collect each label
+            for label in self.__labels: # Calculate each label
                 for i, val in enumerate(np.array(dataMat[:, col])): # Calculate the line fit the label, and record it
-                    val = val[0]
+                    val = val[0] # Because val return [num] so use val[0] to get the num
+                    # +1 in the attrProb Table when match the label
                     if label_train[i] == label:
                         # If not in the dict then initialize it
                         if label in attrProb[col][val]:
@@ -46,6 +47,7 @@ class GaussianNaiveBayesClassifier:
                     if label in attrProb[col][key]:
                         attrProb[col][key][label] /= numTrain
                     else:
+                        # Happends when some attribute don't have that label, it still need to be assigned to 0
                         attrProb[col][key][label] = 0
         self.attrProb = attrProb
     
