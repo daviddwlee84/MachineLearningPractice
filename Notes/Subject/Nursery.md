@@ -56,7 +56,8 @@ Associated Tasks         |Classification
 
 Measure the accuracy of the test subset (30% of instances)
 
-Model                            |Accuracy
----------------------------------|--------
-Gaussian Naive Bayes Scikit Learn|0.6391
-Gaussian Naive Bayes From Scratch|0.8819
+Model                                     |Accuracy
+------------------------------------------|--------
+Gaussian Naive Bayes Scikit Learn         |0.6391
+Gaussian Naive Bayes From Scratch (Origin)|0.8819
+Gaussian Naive Bayes From Scratch (Log)   |0.4498

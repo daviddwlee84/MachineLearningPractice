@@ -19,6 +19,18 @@ Supervised Learning|Classification|
 * Complement Naive Bayes
 * Bernoulli Naive Bayes
 
+## Concept
+
+### Real-world conditions
+
+* We predict label by multiplying them. But if any of these probability is 0, then we will get 0 when we multiply them. To lessen the impact of this, we'll initialize all of our occurence counts to 1, and initialize the denominators to 2. (for binary classifier)
+* Another problem is **Underflow**: doing too many multiplications of small numbers. (In programming, multiply many small numbers will eventually rounds off to 0)
+    * Solution 1: Take the natural logarithm of this product
+
+## TODO
+
+* Figure out why the log mode in predictOne function has lower accuracy when using + than using * as the origin mode. ([Line 66](NaiveBayes_Nursery/NaiveBayes_Nursery_sklearn.py))
+
 ## Links
 
 ## Tutorial

@@ -17,9 +17,12 @@ from sklearn import metrics # Evaluate model
 from collections import defaultdict # Auto-initialized dict
 from operator import itemgetter # Find max in dictionary
 
+import math # log
+
 class GaussianNaiveBayesClassifier:
-    def __init__(self, labels):
+    def __init__(self, labels, mode='origin'):
         self.__labels = labels
+        self.mode = mode # 'origin' & 'log'
 
     def fit(self, data_train, label_train):
         dataMat = np.mat(data_train)
@@ -45,7 +48,10 @@ class GaussianNaiveBayesClassifier:
                 # Digits to percentage
                 for key in attrProb[col].keys():
                     if label in attrProb[col][key]:
-                        attrProb[col][key][label] /= numTrain
+                        if self.mode == 'log':
+                            attrProb[col][key][label] = -math.log(attrProb[col][key][label] / numTrain)
+                        else:
+                            attrProb[col][key][label] /= numTrain
                     else:
                         # Happends when some attribute don't have that label, it still need to be assigned to 0
                         attrProb[col][key][label] = 0
@@ -57,7 +63,12 @@ class GaussianNaiveBayesClassifier:
             probs[label] = 1
             for col, val in enumerate(data):
                 if label in self.attrProb[col][val]:
+                    ### DON'T KNOW WHY BUT IT CAN GET MORE ACCURACY IN LOG MODE
                     probs[label] *= self.attrProb[col][val][label]
+                    # if self.mode == 'log':
+                    #     probs[label] += self.attrProb[col][val][label]
+                    # else:
+                    #     probs[label] *= self.attrProb[col][val][label]
                 else:
                     probs[label] = 0
         return max(probs.items(), key=itemgetter(1))[0] # Find label with max probability
@@ -87,8 +98,8 @@ def loadData(path):
     data_train, data_test, label_train, label_test = train_test_split(data, label, test_size=0.3, random_state=87)
     return data_train, label_train, data_test, label_test
     
-def trainDecisionTree(data_train, label_train):
-    gnb = GaussianNaiveBayesClassifier(['not_recom', 'recommend', 'very_recom', 'priority', 'spec_prior'])
+def trainDecisionTree(data_train, label_train, mode):
+    gnb = GaussianNaiveBayesClassifier(['not_recom', 'recommend', 'very_recom', 'priority', 'spec_prior'], mode)
     gnb.fit(data_train, label_train)
     return gnb
 
@@ -104,13 +115,18 @@ def main():
     data_train, label_train, data_test, label_test = loadData('Datasets/nursery.csv')
 
     # Train Model
-    GoussianNaiveBayes = trainDecisionTree(data_train, label_train)
+    GoussianNaiveBayesOrigin = trainDecisionTree(data_train, label_train, 'origin')
+    GoussianNaiveBayesLog = trainDecisionTree(data_train, label_train, 'log')
 
+    ## Origin
     # Test Accuracy
-    print('Accuracy:', float(testAccuracy(data_test, label_test, GoussianNaiveBayes)))
-
+    print('Accuracy (origin):', float(testAccuracy(data_test, label_test, GoussianNaiveBayesOrigin)))
     # Evaluate Model
-    evaluateModel(data_test, label_test, GoussianNaiveBayes)
+    evaluateModel(data_test, label_test, GoussianNaiveBayesOrigin)
+
+    ## Log
+    print('Accuracy (log):', float(testAccuracy(data_test, label_test, GoussianNaiveBayesLog)))
+    evaluateModel(data_test, label_test, GoussianNaiveBayesLog)
 
 if __name__ == '__main__':
     main()
