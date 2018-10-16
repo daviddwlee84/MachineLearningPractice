@@ -14,7 +14,19 @@ Category|Usage|Application Field
 --------|-----|-----------------
 Supervised Learning|Boosting|
 
+## Terminology
+
+## Concept
+
 ## Links
+
+## MOOC
+
+* NTU Hsuan-Tien Lin - Machine Learning Technique - Adaptive Boosting
+    * [Motivation of Boosting](https://youtu.be/hL8DjIHAzZY)
+    * [Diversity by Re-weighting](https://youtu.be/pTNKUj_1Dw8)
+    * [Adaptive Boosting Algorithm](https://youtu.be/vqTXLTYqbbw)
+    * [Adaptive Boosting in Action](https://youtu.be/5wPN87bwoaE)
 
 ## Scikit Learn
 

@@ -8,7 +8,7 @@ In machine learning, support vector machines (SVMs, also support vector networks
 
 Category|Usage|Application Field
 --------|-----|-----------------
-Supervised Learning|Classification, Regression, Outliers Detection|Numerous
+Supervised Learning|Classification(Main), Regression, Outliers Detection Clustering(Unsupervised)|Numerous
 
 * Support Vector Machine is suited for extreme cases
 * SVM can be used to do *binary classification*
@@ -27,20 +27,21 @@ Supervised Learning|Classification, Regression, Outliers Detection|Numerous
     * Poor performance when features >> samples
     * SVMs do not provide probability estimates
 
-## Concepts
+## Terminology
 
-### Terminology
-
-* Hyperplane: Seperate different classes
-* Support Vector
+* Hyperplane: The Decision Boundary that seperates different classes
+* Support Vector: The vectors that helps us to find the best hyperplane
+* Margin
 
 * Linear Separable
 
 * Kernal Function
 
-### Non-linear SVM
+## Concepts
 
-* LSVM (Linear SVM) => to apply when the class are linearly separable
+### Linear Support Vector Machine (LSVM)
+
+* LSVM => to apply when the classes are linearly separable
 
 * If have a data set that is not linear separable
 
@@ -77,11 +78,40 @@ Supervised Learning|Classification, Regression, Outliers Detection|Numerous
         * K-Fold
         * Cross Validation
 
+### Maximize Margin
+
 ## Links
 
 ### Tutorial
 
 * [Youtube - Support Vector Machine](https://youtu.be/Y6RRHw9uN9o)
+* [Siraj Raval - Support Vector Machine](https://youtu.be/g8D5YL6cOSE)
+    * [Classifying Data Using a Support Vector Machine](https://github.com/llSourcell/Classifying_Data_Using_a_Support_Vector_Machine)
+
+### MOOC
+
+* NTU Hsuan-Tien Lin - [Machine Learning Technique](https://www.youtube.com/playlist?list=PLXVfgk9fNX2IQOYPmqjqWsNUFl2kpk1U2)
+    * Linear SVM
+        * Course Introduction
+        * Large-Margin Separating Hyperplane
+        * Standard Large-Margin Problem
+        * Support Vector Machine
+        * Reasons behind Large-Margin Hyperplane
+    * Dual SVM
+        * Motivation of Dual SVM
+        * Largange Dual SVM
+        * Solving Dual SVM
+        * Messages behind Dual SVM
+    * Kernel SVM
+        * Kernel Trick
+        * Polynomial Kernel
+        * Gaussian Kernel
+        * Comparison of Kernels
+    * Soft-Margin SVM
+        * Motivation and Primal
+        * Dual Problem
+        * Messages
+        * Model Selection
 
 ### Scikit Learn
 
