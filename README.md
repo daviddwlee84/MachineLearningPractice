@@ -21,7 +21,8 @@ Page Blocks Classification|[Decision Tree](Algorithm/DecisionTree/DecisionTree.m
 CSM|[Linear Regression](Algorithm/LinearRegression/LinearRegression.md)|[CSM Dataset (2014 and 2015)](https://archive.ics.uci.edu/ml/datasets/CSM+%28Conventional+and+Social+Media+Movies%29+Dataset+2014+and+2015) ([File](Datasets/2014-and-2015-CSM-dataset.csv))|[Linear Regression From Scratch](Algorithm/LinearRegression/LinearRegression_CSM/LinearRegression_CSM_FromScratch.py), [Linear Regression Scikit Learn](Algorithm/LinearRegression/LinearRegression_CSM/LinearRegression_CSM_sklearn.py)|[Notes](Notes/Subject/CSM.md)
 Nursery|[Naive Bayes](Algorithm/NaiveBayes/NaiveBayes.md)|[Nursery Data Set](https://archive.ics.uci.edu/ml/datasets/nursery) ([File](Datasets/nursery.csv))|[Gaussian Naive Bayes From Scratch](Algorithm/NaiveBayes/NaiveBayes_Nursery/NaiveBayes_Nursery_FromScratch.py), [Gaussian Naive Bayes Scikit Learn](Algorithm/NaiveBayes/NaiveBayes_Nursery/NaiveBayes_Nursery_sklearn.py)|[Notes](Notes/Subject/Nursery.md)
 Post-Operative Patient|[SVM](Algorithm/SVM/SVM.md)|[Post-Operative Patient Data Set](http://archive.ics.uci.edu/ml/datasets/post-operative+patient) ([File](Datasets/post-operative.csv))||[Notes](Notes/Subject/Postoperative_Patient.md)
-Labor Relations|[Adaboost](Algorithm/Adaboost/Adaboost.md)|[Labor Relations Data Set](https://archive.ics.uci.edu/ml/datasets/Labor+Relations)||[Notes](Notes/Subject/Labor_Relations.md)
+Student Performance|[Adaboost](Algorithm/Adaboost/Adaboost.md)|[Student Performance Data Set](https://archive.ics.uci.edu/ml/datasets/Student+Performance) ([File](Datasets/student-mat.csv)]||[Notes](Notes/Subject/Student_Performance.md)
+Labor Relations|-|[Labor Relations Data Set](https://archive.ics.uci.edu/ml/datasets/Labor+Relations)||[Notes](Notes/Subject/Labor_Relations.md)
 
 ## Machine Learning Categories
 
@@ -117,6 +118,9 @@ Labor Relations|[Adaboost](Algorithm/Adaboost/Adaboost.md)|[Labor Relations Data
 * [Google - Machine Learning Recipes with Josh Gordon](https://www.youtube.com/playlist?list=PLOU2XLYxmsIIuiBfYad6rFYQU_jL2ryal)
     * [Josh Gordon's Repository](https://github.com/random-forests)
 * [Youtube - Machine Learning Fun and Easy](https://www.youtube.com/playlist?list=PL_Nji0JOuXg2udXfS6nhK3CkIYLDtHNLp)
+
+* [Siraj Raval - The Math of Intelligence](https://www.youtube.com/playlist?list=PL2-dafEMk2A7mu0bSksCGMJEmeddU_H4D)
+    * [Siraj Raval's Repository](https://github.com/llSourcell)
 
 #### Documentations
 
