@@ -41,7 +41,5 @@ University of Ottawa,
 
 Measure the accuracy of the test subset (30% of instances)
 
-Accuracy criteria: recording to Paper criteria Accuracy 2
-
 Model                         |Accuracy
 ------------------------------|--------
