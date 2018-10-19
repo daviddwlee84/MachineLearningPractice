@@ -29,7 +29,11 @@ Paper - [Using Data Mining to Predict Secondary School Student Performance](http
 
 Use "Math Course" Dataset
 
+Use the following attribute to predict final grade in five categories (A, B, C, D, E, F)
+(traveltime, studytime, failures, schoolsup, famsup, activities, paid, internet, nursery, higher, romantic, freetime, goout, Walc, Dalc, health)
+
 Measure the accuracy of the test subset (30% of instances)
 
 Model                         |Accuracy
 ------------------------------|--------
+Adaboost Scikit Learn         |0.3277
