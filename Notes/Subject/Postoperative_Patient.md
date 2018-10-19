@@ -41,5 +41,6 @@ Paper - [Rule extraction from linear support vector machines](http://rexa.info/p
 
 Measure the accuracy of the test subset (30% of instances)
 
-Model                         |Accuracy
-------------------------------|--------
+Model           |Accuracy
+----------------|--------
+SVM Scikit Learn|0.7407
