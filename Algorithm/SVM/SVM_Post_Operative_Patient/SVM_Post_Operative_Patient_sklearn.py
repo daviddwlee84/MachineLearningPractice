@@ -6,6 +6,7 @@
 # Detail:
 #   Total Data = 90
 #   Training Data : Testing Data = 7 : 3
+#   Missing Value : Yes
 
 import numpy as np
 import pandas as pd # Read csv
@@ -18,6 +19,7 @@ from sklearn import metrics # Evaluate model
 def loadData(path):
     inputData = pd.read_csv(path)
 
+    # Deal with missing value (8th column: 'COMFORT')
     inputData = inputData.fillna(round(inputData.mean()))
     
     # Transform 'string' into class number
