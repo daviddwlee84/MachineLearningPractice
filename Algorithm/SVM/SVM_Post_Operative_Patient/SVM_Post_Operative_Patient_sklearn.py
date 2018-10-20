@@ -52,7 +52,7 @@ def loadData(path):
     return data_train, label_train, data_test, label_test
     
 def trainSVM(data_train, label_train):
-    clf = SVC(gamma='auto')
+    clf = SVC(gamma='auto', decision_function_shape='ovo')
     clf.fit(data_train, label_train)
     return clf
 

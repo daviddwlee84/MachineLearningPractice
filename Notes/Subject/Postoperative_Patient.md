@@ -41,6 +41,6 @@ Paper - [Rule extraction from linear support vector machines](http://rexa.info/p
 
 Measure the accuracy of the test subset (30% of instances)
 
-Model           |Accuracy
-----------------|--------
-SVM Scikit Learn|0.7407
+Model           |Kernel      |Decision Function|Accuracy|Remark
+----------------|------------|-----------------|--------|------
+SVM Scikit Learn|RBF(default)|OVO & OVR        |0.7407  |use OVO and OVR are the same
