@@ -22,8 +22,8 @@ CSM|[Linear Regression](Algorithm/LinearRegression/LinearRegression.md)|[CSM Dat
 Nursery|[Naive Bayes](Algorithm/NaiveBayes/NaiveBayes.md)|[Nursery Data Set](https://archive.ics.uci.edu/ml/datasets/nursery) ([File](Datasets/nursery.csv))|[Gaussian Naive Bayes From Scratch](Algorithm/NaiveBayes/NaiveBayes_Nursery/NaiveBayes_Nursery_FromScratch.py), [Gaussian Naive Bayes Scikit Learn](Algorithm/NaiveBayes/NaiveBayes_Nursery/NaiveBayes_Nursery_sklearn.py)|[Notes](Notes/Subject/Nursery.md)
 Post-Operative Patient|[SVM](Algorithm/SVM/SVM.md)|[Post-Operative Patient Data Set](http://archive.ics.uci.edu/ml/datasets/post-operative+patient) ([File](Datasets/post-operative.csv))|[SVM From Scratch](Algorithm/SVM/SVM_Post_Operative_Patient/SVM_Post_Operative_Patient_FromScratch.py), [SVM Scikit Learn](Algorithm/SVM/SVM_Post_Operative_Patient/SVM_Post_Operative_Patient_sklearn.py)|[Notes](Notes/Subject/Postoperative_Patient.md)
 Student Performance|[Adaboost](Algorithm/Adaboost/Adaboost.md)|[Student Performance Data Set](https://archive.ics.uci.edu/ml/datasets/Student+Performance) ([File](Datasets/student-mat.csv))|[Adaboost Scikit Learn](Algorithm/Adaboost/Adaboost_Student_Performance/Adaboost_Student_Performance_sklearn.py)|[Notes](Notes/Subject/Student_Performance.md)
-Sales Transactions|[k-means](Algorithm/KMeans/KMeans.md)|[Sales_Transactions_Dataset_Weekly](http://archive.ics.uci.edu/ml/datasets/sales_transactions_dataset_weekly) ([File](Datasets/Sales_Transactions_Dataset_Weekly.csv))||[Notes](Notes/Subject/Sales_Transactions.md)
-Frequent Itemset Mining|[Apriori](Algorithm/Apriori/Apriori.md)|[Frequent Itemset Mining Dataset Repository](http://fimi.ua.ac.be/data/) ([File](Datasets/retail.csv))||[Notes](Notes/Subject/Frequent_Itemset_Mining.md)
+Sales Transactions|[k-Means](Algorithm/KMeans/KMeans.md)|[Sales_Transactions_Dataset_Weekly](http://archive.ics.uci.edu/ml/datasets/sales_transactions_dataset_weekly) ([File](Datasets/Sales_Transactions_Dataset_Weekly.csv))||[Notes](Notes/Subject/Sales_Transactions.md)
+Frequent Itemset Mining|[FP-Growth](Algorithm/FP-Growth/FP-Growth.md)|[Frequent Itemset Mining Dataset Repository](http://fimi.ua.ac.be/data/) ([File](Datasets/retail.csv))||[Notes](Notes/Subject/Frequent_Itemset_Mining.md)
 Labor Relations|-|[Labor Relations Data Set](https://archive.ics.uci.edu/ml/datasets/Labor+Relations)||[Notes](Notes/Subject/Labor_Relations.md)
 
 ## Machine Learning Categories
@@ -31,10 +31,11 @@ Labor Relations|-|[Labor Relations Data Set](https://archive.ics.uci.edu/ml/data
 ### Consider the learning task
 
 * **Surpervised Learning**
-    * *Classification*
-    * *Regression*
+    * *Classification* - Discrete
+    * *Regression* - Continuous
 * **Unsupervised Learning**
-    * *Clustering*
+    * *Clustering* - Discrete
+    * *Dimensionality Reduction* - Continuous
     * *Association Rule Learning*
 
 * **Semi-supervised Learning**
@@ -58,6 +59,10 @@ Labor Relations|-|[Labor Relations Data Set](https://archive.ics.uci.edu/ml/data
     * `Apriori`
     * `Eclat`
     * `FP-growth`
+* *Dimensionality Reduction*
+    * `Principal Compnent Analysis (PCA)`
+    * `Single Value Decomposition (SVD)`
+    * `Linear Discriminant Analysis (LDA)`
 
 ### Ensemble Method (Meta-algorithm)
 
@@ -65,15 +70,6 @@ Labor Relations|-|[Labor Relations Data Set](https://archive.ics.uci.edu/ml/data
     * `Random Forests`
 * Boosting
     * `AdaBoost`
-
-### Additional Tools
-
-* Dimensionality Reduction
-    * `Principal Compnent Analysis (PCA)`
-    * `Single Value Decomposition (SVD)`
-    * `Linear Discriminant Analysis (LDA)`
-*  Big Data
-    * `MapReduce`
 
 ## [Machine Learning Concepts](Notes/MachineLearningConcepts.md)
 
