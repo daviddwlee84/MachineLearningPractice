@@ -29,19 +29,58 @@ Supervised Learning|Classification(Main), Regression, Outliers Detection Cluster
 
 ## Terminology
 
-* Hyperplane: The Decision Boundary that seperates different classes
-* Support Vector: The vectors that helps us to find the best hyperplane
-* Margin
+* **Hyperplane**: The Decision Boundary that seperates different classes
+    * 2 Dimension: line
+    * 3 Dimension: plane
+    * 4 Dimension or up: hyperplane
+* **Support Vector**: The vectors that helps us to find the best hyperplane
+* **Margin**: The space between support vectors and hyperplane
+
+> To find a **hyperplane** best splits the data,
+> because it is as far as possible from the **support vectors**
+> which is another way of saying we maximized the **margin**
+
+* Parameter
+    * **C Parameter** (penalty parameter): Allows you to decide how much you want to penalize misclassified points
+        * Low C: Prioritize simplicity (soft margin: because we allowing the miss classification)
+        * High C: Prioritize making few mistakes
+    * **Gamma Parameter** (for RBF, ploynomial, sigmoid kernel)
+        * Small Gamma: Less complexity
+        * High Gamma: More complexity
+
+
+* Multiclass SVM (Decision function shape)
+    * **OVR**: One vs. Rest
+        * Pros: Fewer classifications
+        * Cons: Classes may be imbalanced
+    * **OVO**: One vs. One
+        * Pros: Less sensitive to imbalance
+        * Cons: More classifications
+
 
 * Linear Separable
-
-* Kernal Function
+* Kernel Function
+    * Linear
+    * Radial Basis Function (RBF)
+    * Polynomial
+    * Sigmoid
 
 ## Concepts
 
-### Linear Support Vector Machine (LSVM)
+### Maximize the Margin
 
-* LSVM => to apply when the classes are linearly separable
+> It's a constrained optimization problem
+
+* To solve constrained optimization problem is to use **Lagrange Multipliers** technique
+
+> Convex quadratic programming problem ===[Lagrange Multipliers]===> Dual problem
+
+* SMO (Sequential Minimal Optimization)
+
+
+### Consider a non-linear separable problem
+
+* Linear Support Vector Machine (LSVM) => to apply when the classes are linearly separable
 
 * If have a data set that is not linear separable
 
@@ -78,6 +117,17 @@ Supervised Learning|Classification(Main), Regression, Outliers Detection Cluster
         * K-Fold
         * Cross Validation
 
+#### C Parameter
+
+### Multiple Classes
+
+* MSVM (Multiclass Support Vector Machine)
+
+#### Decision Function Shape
+
+* OVR
+* OVO
+
 ### Maximize Margin
 
 ## Links
@@ -87,6 +137,8 @@ Supervised Learning|Classification(Main), Regression, Outliers Detection Cluster
 * [Youtube - Support Vector Machine](https://youtu.be/Y6RRHw9uN9o)
 * [Siraj Raval - Support Vector Machine](https://youtu.be/g8D5YL6cOSE)
     * [Classifying Data Using a Support Vector Machine](https://github.com/llSourcell/Classifying_Data_Using_a_Support_Vector_Machine)
+* [Youtube - Support Vector Machines: A Visual Explanation with Sample Ptyhon Code](https://youtu.be/N1vOgolbjSc)
+    * [adashofdata/muffin-cupcake](https://github.com/adashofdata/muffin-cupcake)
 
 ### MOOC
 
@@ -113,6 +165,13 @@ Supervised Learning|Classification(Main), Regression, Outliers Detection Cluster
         * Messages
         * Model Selection
 
+* Stanford Andrew Ng - CS229
+    * [Optimization Object](https://youtu.be/hCOIMkcsm_g)
+    * Large Margin Intuition
+    * Mathematics Behind Large Margin Classification
+    * Kernels-I, Kernels-II
+    * Using a SVM
+
 ### Scikit Learn
 
 * [Support Vector Machine](http://scikit-learn.org/stable/modules/svm.html#svm)
@@ -120,3 +179,7 @@ Supervised Learning|Classification(Main), Regression, Outliers Detection Cluster
 ### Wikipedia
 
 * [Support Vector Machine](https://en.wikipedia.org/wiki/Support_vector_machine)
+
+### Github
+
+* [eriklindernoren/ML-From-Scratch - Support Vector Machine](https://github.com/eriklindernoren/ML-From-Scratch/blob/master/mlfromscratch/supervised_learning/support_vector_machine.py)
