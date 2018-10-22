@@ -24,7 +24,12 @@ James Tan, jamestansc '@' suss.edu.sg, Singapore University of Social Sciences
 
 ## Result
 
-Measure the accuracy of the test subset (30% of instances)
+PS. Best k identify by the maximum of Calinski and Harabaz score
 
-Model                                     |Accuracy
-------------------------------------------|--------
+Model               |Best K|Calinski and Harabaz score|Mean Silhouette Coefficient|Build in score
+--------------------|------|--------------------------|---------------------------|--------------
+K-Means Scikit Learn|3     |3191.7559                 |0.6147                     |-709316.5594
+
+### K-Means Scikit Learn
+
+![KMeans_metrics_sklearn.png](Image/KMeans_metrics_sklearn.png)
