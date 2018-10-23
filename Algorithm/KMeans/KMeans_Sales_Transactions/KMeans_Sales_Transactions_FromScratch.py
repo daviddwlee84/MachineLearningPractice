@@ -61,7 +61,16 @@ class KMeans:
             centroid = np.mean(X[cluster], axis=0)
             newCentroids[i] = centroid
         return newCentroids
-  
+        
+    # Classify samples as the index of their clusters
+    def __getClusterLabels(self, clusters, X):
+        # One prediction for each sample
+        y_pred = np.zeros(np.shape(X)[0])
+        for cluster_i, cluster in enumerate(clusters):
+            for sample_i in cluster:
+                y_pred[sample_i] = cluster_i
+        return y_pred
+
     # Calculate final clusters
     def fit(self, X):
         # Initialize centroids as k random samples from X
@@ -83,20 +92,19 @@ class KMeans:
             iteration += 1
         
         self.__clusters = clusters
-        self.labels_ = self.predict(X)
-    
-    # Classify samples as the index of their clusters
-    def __getClusterLabels(self, clusters, X):
-        # One prediction for each sample
-        y_pred = np.zeros(np.shape(X)[0])
-        for cluster_i, cluster in enumerate(clusters):
-            for sample_i in cluster:
-                y_pred[sample_i] = cluster_i
-        return y_pred
+        self.cluster_centers_ = centroids
+        self.labels_ = self.__getClusterLabels(self.__clusters, X)
 
+    # Find the cloeset centroid of unseen data
     def predict(self, X):
-        return self.__getClusterLabels(self.__clusters, X)
-        
+        # If only one row of data (i.e. Dimension = 1)
+        if X.ndim == 1:
+            return self.__closestCentroid(X, self.cluster_centers_)
+        else:
+            prediction = np.zeros(np.shape(X)[0])
+            for i, row in enumerate(X):
+                prediction[i] = self.__closestCentroid(row, self.cluster_centers_)
+            return prediction
 
 def loadData(path):
     inputData = pd.read_csv(path)
@@ -108,6 +116,18 @@ def trainKMeans(data_train, k):
     kmeans = KMeans(n_clusters=k)
     kmeans.fit(data_train)
     return kmeans
+
+def testPredict(data_train):
+    # Test a single line prediction of KMeans model with k = 3
+    testdata = [94,169,8,9,10,8,7,13,12,6,14,9,4,7,12,8,7,11,10,7,7,13,11,8,10,8,14,5,3,13,11,9,7,8,7,9,6,12,12,9,3,5,6,14,5,5,7,8,14,8,8,7,3,14,0.36,0.73,0.45,0.55,0.64,0.45,0.36,0.91,0.82,0.27,1.00,0.55,0.09,0.36,0.82,0.45,0.36,0.73,0.64,0.36,0.36,0.91,0.73,0.45,0.64,0.45,1.00,0.18,0.00,0.91,0.73,0.55,0.36,0.45,0.36,0.55,0.27,0.82,0.82,0.55,0.00,0.18,0.27,1.00,0.18,0.18,0.36,0.45,1.00,0.45,0.45,0.36]
+    testdata2 = [17,4,45,36,31,28,28,34,42,40,43,35,30,33,40,45,48,35,30,29,39,41,30,34,28,22,31,29,30,34,26,28,32,31,27,40,33,34,31,19,48,21,31,19,24,32,36,30,33,29,27,29,19,48,0.24,0.41,0.90,0.59,0.41,0.31,0.31,0.52,0.79,0.72,0.83,0.55,0.38,0.48,0.72,0.90,1.00,0.55,0.38,0.34,0.69,0.76,0.38,0.52,0.31,0.10,0.41,0.34,0.38,0.52,0.24,0.31,0.45,0.41,0.28,0.72,0.48,0.52,0.41,0.00,1.00,0.07,0.41,0.00,0.17,0.45,0.59,0.38,0.48,0.34,0.28,0.34]
+    testdatas = [testdata, testdata2]
+
+    kMeans_model = trainKMeans(data_train, 3)
+    # Test single data
+    print(kMeans_model.predict(np.array(testdata)))
+    # Test multiple data
+    print(kMeans_model.predict(np.array(testdatas)))
 
 def evaluateModel(data_train, kmeans):
     labels = kmeans.labels_
@@ -123,6 +143,8 @@ def main():
 
     # Load Data
     data_train = loadData('Datasets/Sales_Transactions_Dataset_Weekly.csv')
+
+    #testPredict(data_train)
 
     # Train Model and Evaluate Model
     # try many different k
