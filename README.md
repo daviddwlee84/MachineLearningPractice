@@ -22,7 +22,7 @@ CSM|[Linear Regression](Algorithm/LinearRegression/LinearRegression.md)|[CSM Dat
 Nursery|[Naive Bayes](Algorithm/NaiveBayes/NaiveBayes.md)|[Nursery Data Set](https://archive.ics.uci.edu/ml/datasets/nursery) ([File](Datasets/nursery.csv))|[Gaussian Naive Bayes From Scratch](Algorithm/NaiveBayes/NaiveBayes_Nursery/NaiveBayes_Nursery_FromScratch.py), [Gaussian Naive Bayes Scikit Learn](Algorithm/NaiveBayes/NaiveBayes_Nursery/NaiveBayes_Nursery_sklearn.py)|[Notes](Notes/Subject/Nursery.md)
 Post-Operative Patient|[SVM](Algorithm/SVM/SVM.md)|[Post-Operative Patient Data Set](http://archive.ics.uci.edu/ml/datasets/post-operative+patient) ([File](Datasets/post-operative.csv))|[SVM From Scratch](Algorithm/SVM/SVM_Post_Operative_Patient/SVM_Post_Operative_Patient_FromScratch.py), [SVM Scikit Learn](Algorithm/SVM/SVM_Post_Operative_Patient/SVM_Post_Operative_Patient_sklearn.py)|[Notes](Notes/Subject/Postoperative_Patient.md)
 Student Performance|[Adaboost](Algorithm/Adaboost/Adaboost.md)|[Student Performance Data Set](https://archive.ics.uci.edu/ml/datasets/Student+Performance) ([File](Datasets/student-mat.csv))|[Adaboost Scikit Learn](Algorithm/Adaboost/Adaboost_Student_Performance/Adaboost_Student_Performance_sklearn.py)|[Notes](Notes/Subject/Student_Performance.md)
-Sales Transactions|[k-Means](Algorithm/KMeans/KMeans.md)|[Sales_Transactions_Dataset_Weekly](http://archive.ics.uci.edu/ml/datasets/sales_transactions_dataset_weekly) ([File](Datasets/Sales_Transactions_Dataset_Weekly.csv))|[k-Neans Scikit Learn](Algorithm/KMeans/KMeans_Sales_Transactions/KMeans_Sales_Transactions_sklearn.py)|[Notes](Notes/Subject/Sales_Transactions.md)
+Sales Transactions|[k-Means](Algorithm/KMeans/KMeans.md)|[Sales_Transactions_Dataset_Weekly](http://archive.ics.uci.edu/ml/datasets/sales_transactions_dataset_weekly) ([File](Datasets/Sales_Transactions_Dataset_Weekly.csv))|[k-Means From Scratch](Algorithm/KMeans/KMeans_Sales_Transactions/KMeans_Sales_Transactions_FromScratch.py), [k-Means Scikit Learn](Algorithm/KMeans/KMeans_Sales_Transactions/KMeans_Sales_Transactions_sklearn.py)|[Notes](Notes/Subject/Sales_Transactions.md)
 Frequent Itemset Mining|[FP-Growth](Algorithm/FP-Growth/FP-Growth.md)|[Frequent Itemset Mining Dataset Repository](http://fimi.ua.ac.be/data/) ([File](Datasets/retail.csv))||[Notes](Notes/Subject/Frequent_Itemset_Mining.md)
 Labor Relations|-|[Labor Relations Data Set](https://archive.ics.uci.edu/ml/datasets/Labor+Relations)||[Notes](Notes/Subject/Labor_Relations.md)
 
@@ -73,19 +73,24 @@ Labor Relations|-|[Labor Relations Data Set](https://archive.ics.uci.edu/ml/data
 
 ## [Machine Learning Concepts](Notes/MachineLearningConcepts.md)
 
-* Training and Test Sets - Splitting Data
-* Overfitting
-* Underfitting
-* Generalization
-* Regularization
-* Reducing Loss
-    * Learning Rate
-    * Gradient Descent
-        * Convex Function
-        * Jesen's Inequality
-        * Maximum Likelihood Estimation
-        * Least Square Method
-* Missing Value
+* [Data Preprocessing](Notes/MachineLearningConcepts.md#Data-Preprocessing)
+    * [Training and Test Sets - Splitting Data](Notes/MachineLearningConcepts.md#Splitting-Data)
+    * [Missing Value](Notes/MachineLearningConcepts.md#Missing-Value)
+* [Model Evaluation](Notes/MachineLearningConcepts.md#Model-Evaluation)
+    * [Classification](Notes/MachineLearningConcepts.md#Classification)
+    * [Regression](Notes/MachineLearningConcepts.md#Regression)
+    * [Clustering](Notes/MachineLearningConcepts.md#Clustering)
+* [Fitting and Model Complexity](Notes/MachineLearningConcepts.md#Fitting-and-Model-Complexity)
+    * [Overfitting](Notes/MachineLearningConcepts.md#Overfitting)
+    * [Underfitting](Notes/MachineLearningConcepts.md#Underfitting)
+    * [Generalization](Notes/MachineLearningConcepts.md#Generalization)
+    * [Regularization](Notes/MachineLearningConcepts.md#Regularization)
+* [Reducing Loss](Notes/MachineLearningConcepts.md#Reducing-Loss)
+    * [Learning Rate](Notes/MachineLearningConcepts.md#Learning-Rate)
+    * [Gradient Descent](Notes/MachineLearningConcepts.md#Gradient-Descent)
+* [Other Learning Method](Notes/MachineLearningConcepts.md#Other-Learning-Method)
+    * [Lazy Learning](Notes/MachineLearningConcepts.md#Lazy-Learning)
+    * [Incremental Learning (Online Learning)](Notes/MachineLearningConcepts.md#Incremental-Learning-(Online-Learning))
 
 ## Mathematics
 
