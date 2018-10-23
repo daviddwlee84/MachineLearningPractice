@@ -77,8 +77,8 @@ class KMeans:
             # Calculate new centroids from the clusters
             centroids = self.__calculateNewCentroids(clusters, X)
             # If no centroids have changed => convergence
-            diff = centroids - prev_centroids
-            if not diff.all() < self.__tol:
+            diff = abs(centroids - prev_centroids)
+            if diff.all() < self.__tol:
                 break
             iteration += 1
         
@@ -119,7 +119,7 @@ def evaluateModel(data_train, kmeans):
 
 def main():
 
-    MAX_TRY = 10
+    MAX_TRY = 20
 
     # Load Data
     data_train = loadData('Datasets/Sales_Transactions_Dataset_Weekly.csv')

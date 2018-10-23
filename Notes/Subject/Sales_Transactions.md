@@ -29,7 +29,7 @@ PS. Best k identify by the maximum of Calinski and Harabaz score
 Model               |Best K|Calinski and Harabaz score|Mean Silhouette Coefficient|Build in score
 --------------------|------|--------------------------|---------------------------|--------------
 K-Means Scikit Learn|3     |3191.7559                 |0.6147                     |-709316.5594
-K-Means From Scratch|3     |2625.0682                 |0.5322                     |-
+K-Means From Scratch|3     |2595.1019                 |0.5667                     |-
 
 ### K-Means Scikit Learn
 
