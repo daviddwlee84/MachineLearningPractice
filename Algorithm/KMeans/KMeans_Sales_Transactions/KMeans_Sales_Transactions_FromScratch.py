@@ -76,9 +76,9 @@ class KMeans:
             prev_centroids = centroids
             # Calculate new centroids from the clusters
             centroids = self.__calculateNewCentroids(clusters, X)
-            # If no centroids have changed => convergence
-            diff = abs(centroids - prev_centroids)
-            if diff.all() < self.__tol:
+            # Check if all the value in diff (2D array) is less than tolerance => convergence
+            centroid_diff = abs(centroids - prev_centroids)
+            if all(all(single_val < self.__tol for single_val in a_centroid) for a_centroid in centroid_diff):
                 break
             iteration += 1
         
