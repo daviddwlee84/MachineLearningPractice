@@ -24,17 +24,28 @@ James Tan, jamestansc '@' suss.edu.sg, Singapore University of Social Sciences
 
 ## Result
 
+Paper - [Finding Similar Time Series in Sales Transaction Data](https://link.springer.com/chapter/10.1007/978-3-319-19066-2_62)
+
 PS. Best k identify by the maximum of Calinski and Harabaz score
 
-Model               |Best K|Calinski and Harabaz score|Mean Silhouette Coefficient|Build in score
---------------------|------|--------------------------|---------------------------|--------------
-K-Means Scikit Learn|3     |3191.7559                 |0.6147                     |-709316.5594
-K-Means From Scratch|3     |3191.7559                 |0.6147                     |-
+Model                            |Best K|Calinski and Harabaz score|Mean Silhouette Coefficient|Build in score
+---------------------------------|------|--------------------------|---------------------------|--------------
+K-Means Scikit Learn (original)  |3     |2704.5317                 |0.7503                     |-686537.2554
+K-Means Scikit Learn (normalized)|2     |295.0516                  |0.2464                     |-2402.6697
+K-Means From Scratch (all data)  |3     |3191.7559                 |0.6147                     |-
 
 ### K-Means Scikit Learn
 
-![KMeans_metrics_sklearn.png](Image/KMeans_metrics_sklearn.png)
+#### Original data
+
+![KMeans_metrics_sklearn_ori.png](Image/KMeans_metrics_sklearn_ori.png)
+
+#### Normalized data
+
+![KMeans_metrics_sklearn_norm.png](Image/KMeans_metrics_sklearn_norm.png)
 
 ### K-Means From Scratch
 
-![KMeans_metrics_FromScratch.png](Image/KMeans_metrics_FromScratch.png)
+#### All data
+
+![KMeans_metrics_FromScratch_all.png](Image/KMeans_metrics_FromScratch_all.png)

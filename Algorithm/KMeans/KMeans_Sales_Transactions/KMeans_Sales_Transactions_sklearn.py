@@ -14,9 +14,16 @@ from sklearn.cluster import KMeans
 from sklearn import metrics # Evaluate model
 
 
-def loadData(path):
+def loadData(path, data='normalized'):
     inputData = pd.read_csv(path)
-    inputData = inputData.drop(['Product_Code'], 1)
+    inputData = inputData.drop(['Product_Code'], 1) # Drop product code (ID)
+    if data == 'normalized':
+        inputData = inputData.iloc[:, -52:] # Select only normalized data (Based on paper)
+    if data == 'original':
+        inputData = inputData.iloc[:, :52] # Select non-normalized data
+    
+    # else all the data
+
     data = np.array(inputData)
     return data
 
@@ -36,12 +43,14 @@ def evaluateModel(data_train, kmeans):
     print("the Calinski and Harabaz score:", calinski_harabaz_score)
     return silhouette_score, calinski_harabaz_score
 
-def main():
+def process(dataType='normalized'):
 
     MAX_TRY = 20
 
     # Load Data
-    data_train = loadData('Datasets/Sales_Transactions_Dataset_Weekly.csv')
+    data_train = loadData('Datasets/Sales_Transactions_Dataset_Weekly.csv', data=dataType)
+
+    print("==== %s ====" % (dataType))
 
     # Train Model and Test Score and Evaluate Model
     # try many different k
@@ -61,8 +70,8 @@ def main():
         scores3.append(score3)
 
     # Plot the k - loss diagram
-    fig = plt.figure(1, figsize=(15, 5))
-    fig.suptitle('Comparison of three metrics score')
+    fig = plt.figure(figsize=(15, 5))
+    fig.suptitle('Comparison of three metrics score (%s)' % (dataType))
 
     plt.subplot(131)
     plt.ylabel("Opposite of the value of X on the K-means objective")
@@ -91,6 +100,11 @@ def main():
     
     plt.subplots_adjust(top=0.88, bottom=0.11, left=0.08, right=0.98, hspace=0.20,
                     wspace=0.20)
+
+def main():
+    process('normalized')
+    process('original')
+    #process('all data')
     plt.show()
 
 if __name__ == '__main__':
