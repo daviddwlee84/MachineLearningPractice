@@ -1,4 +1,4 @@
-## k-Means Sales Transactions Scikit Learn Version
+## k-Means Sales Transactions From Scratch Version
 #
 # Author: David Lee
 # Create Date: 2018/10/23
@@ -100,7 +100,7 @@ class KMeans:
 
 def loadData(path):
     inputData = pd.read_csv(path)
-    inputData = inputData.drop(['Product_Code'], 1)
+    inputData = inputData.drop(['Product_Code'], 1) # Drop prodoct ID column
     data = np.array(inputData)
     return data
 
@@ -137,7 +137,7 @@ def main():
         scores2.append(score2)
         scores3.append(score3)
 
-    # Plot the k - loss diagram (Elbow Method)
+    # Plot the k - loss diagram
     fig = plt.figure(1, figsize=(10, 5))
     fig.suptitle('Comparison of three metrics score')
 
