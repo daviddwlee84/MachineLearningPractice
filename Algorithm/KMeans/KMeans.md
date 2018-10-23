@@ -12,9 +12,9 @@ Unsupervised Learning|Clustering|
 
 ### Steps
 
-1. Initialize the center of the clusters
-2. Attribute the closest cluster to each data point
-3. Set the position of each cluster to the mean of all data points belonging to that cluster
+1. Initialize the center of the clusters (pick centroids)
+2. Attribute the closest cluster to each data point (calculate distance)
+3. Set the position of each cluster to the mean of all data points belonging to that cluster (move to new cluster center)
 4. Repeat STEP 2-3 until convergence
 
 ### Deciding umber of cluster
@@ -49,12 +49,16 @@ Unsupervised Learning|Clustering|
 
 ## Concepts
 
+### Centroid
+
 ### Distance
 
 #### Euclidean distance
 
+#### Distance Calculation Library
 
-
+* `numpy.linalg.norm(a-b)`
+* `scipy.spatial.distance.euclidean(a, b)`
 
 ## Links
 

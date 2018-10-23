@@ -59,12 +59,11 @@ def main():
         score2, score3 = evaluateModel(data_train, kMeans_model)
         scores2.append(score2)
         scores3.append(score3)
-        #1evaluateModel(data_test, kMeans_model)
 
-    # Plot the k - loss diagram (Elbow Method)
+    # Plot the k - loss diagram
     fig = plt.figure(1, figsize=(15, 5))
     fig.suptitle('Comparison of three metrics score')
-    #fig, ax_lst = plt.subplot(2, 1)
+
     plt.subplot(131)
     plt.ylabel("Opposite of the value of X on the K-means objective")
     plt.grid(True)
