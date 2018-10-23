@@ -23,7 +23,7 @@ Nursery|[Naive Bayes](Algorithm/NaiveBayes/NaiveBayes.md)|[Nursery Data Set](htt
 Post-Operative Patient|[SVM](Algorithm/SVM/SVM.md)|[Post-Operative Patient Data Set](http://archive.ics.uci.edu/ml/datasets/post-operative+patient) ([File](Datasets/post-operative.csv))|[SVM From Scratch](Algorithm/SVM/SVM_Post_Operative_Patient/SVM_Post_Operative_Patient_FromScratch.py), [SVM Scikit Learn](Algorithm/SVM/SVM_Post_Operative_Patient/SVM_Post_Operative_Patient_sklearn.py)|[Notes](Notes/Subject/Postoperative_Patient.md)
 Student Performance|[Adaboost](Algorithm/Adaboost/Adaboost.md)|[Student Performance Data Set](https://archive.ics.uci.edu/ml/datasets/Student+Performance) ([File](Datasets/student-mat.csv))|[Adaboost Scikit Learn](Algorithm/Adaboost/Adaboost_Student_Performance/Adaboost_Student_Performance_sklearn.py)|[Notes](Notes/Subject/Student_Performance.md)
 Sales Transactions|[k-Means](Algorithm/KMeans/KMeans.md)|[Sales_Transactions_Dataset_Weekly](http://archive.ics.uci.edu/ml/datasets/sales_transactions_dataset_weekly) ([File](Datasets/Sales_Transactions_Dataset_Weekly.csv))|[k-Means From Scratch](Algorithm/KMeans/KMeans_Sales_Transactions/KMeans_Sales_Transactions_FromScratch.py), [k-Means Scikit Learn](Algorithm/KMeans/KMeans_Sales_Transactions/KMeans_Sales_Transactions_sklearn.py)|[Notes](Notes/Subject/Sales_Transactions.md)
-Frequent Itemset Mining|[FP-Growth](Algorithm/FP-Growth/FP-Growth.md)|[Frequent Itemset Mining Dataset Repository](http://fimi.ua.ac.be/data/) ([File](Datasets/retail.csv))||[Notes](Notes/Subject/Frequent_Itemset_Mining.md)
+Frequent Itemset Mining|[FP-Growth](Algorithm/FP-Growth/FP-Growth.md)|[Retail Market Basket Data Set](http://fimi.ua.ac.be/data/) ([File](Datasets/retail.csv))|[FP-Growth From Scratch](Algorithm/FP-Growth/FP-Growth_Frequent_Itemset_Mining/FP-Growth_Frequent_Itemset_Mining_FromScratch.py)|[Notes](Notes/Subject/Frequent_Itemset_Mining.md)
 Labor Relations|-|[Labor Relations Data Set](https://archive.ics.uci.edu/ml/datasets/Labor+Relations)||[Notes](Notes/Subject/Labor_Relations.md)
 
 ## Machine Learning Categories
@@ -58,7 +58,7 @@ Labor Relations|-|[Labor Relations Data Set](https://archive.ics.uci.edu/ml/data
 * *Association Rule Learning*
     * `Apriori`
     * `Eclat`
-    * `FP-growth`
+    * `FP-growth` - Frequent itemsets mining
 * *Dimensionality Reduction*
     * `Principal Compnent Analysis (PCA)`
     * `Single Value Decomposition (SVD)`
