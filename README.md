@@ -92,7 +92,7 @@ Labor Relations|-|[Labor Relations Data Set](https://archive.ics.uci.edu/ml/data
     * [Lazy Learning](Notes/MachineLearningConcepts.md#Lazy-Learning)
     * [Incremental Learning (Online Learning)](Notes/MachineLearningConcepts.md#Incremental-Learning-(Online-Learning))
 
-## Mathematics
+## Machine Learning Mathematics
 
 ### Core
 
@@ -100,6 +100,9 @@ Labor Relations|-|[Labor Relations Data Set](https://archive.ics.uci.edu/ml/data
     * Hessian Matrix
     * Quadratic Form
 * Calculus
+    * [Multivariable Deratives](Notes/Math/Calculus/MultivariableDeratives.md)
+        * Quadratic Approximations
+        * Lagrange Multipliers and Constrained Optimization
 * Probability and Statistics
 
 ### Basics
