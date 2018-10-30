@@ -41,6 +41,12 @@ Paper - [Rule extraction from linear support vector machines](http://rexa.info/p
 
 Measure the accuracy of the test subset (30% of instances)
 
-Model           |Kernel      |Decision Function|Accuracy|Remark
-----------------|------------|-----------------|--------|------
-SVM Scikit Learn|RBF(default)|OVO & OVR        |0.7407  |use OVO and OVR are the same
+Model                          |Kernel      |Decision Function|Accuracy|Remark
+-------------------------------|------------|-----------------|--------|------
+SVM Scikit Learn               |RBF(default)|OVO & OVR        |0.7407  |use OVO and OVR are the same
+
+Using simplified binary dataset (label I -> S)
+
+Model                          |Kernel                   |Accuracy|Remark
+-------------------------------|-------------------------|--------|------
+SVM From Scratch (using cvxopt)|Linear & RBF & Polynomial|0.7407  |use Linear RBF and Polynomial kernel are the same
