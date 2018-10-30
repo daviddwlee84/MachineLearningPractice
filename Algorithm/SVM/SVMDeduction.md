@@ -21,7 +21,7 @@
 ### Big Picture
 
 1. [Original Problem](#Original-Problem) $(w, b)$ $\xRightarrow{\text{Lagrange Multiplier}}$ [Dual Problem](#Dual-Algorithm) $(w, b)$ $\xRightarrow{KKT}$ Solve alpha [Use SMO Here]
-2. Solved alpha --> Find w, b
+2. Solved alpha (you'll know which are support vectors) $\Rightarrow$ Find w, b (i.e. found separating hyperplane)
 
 ## Assume data is linear seprable
 
@@ -49,9 +49,9 @@ Distance between a vector x and the separating hyperplane:
 $$|\vec{w} \cdot \vec{x} + b|$$
 
 We can represent our correctness of classification by:
-$$y_i (\vec{w} \cdot \vec{x})$$
+$$y_i (\vec{w} \cdot \vec{x} + b)$$
 
-* If classify correctly => $y_i$ and $\vec{w} \cdot \vec{x}$ will have same sign => Positive product
+* If classify correctly => $y_i$ and $(\vec{w} \cdot \vec{x} + b)$ will have same sign => Positive product
 * Else => Negative product
 
 #### Functional Margin
@@ -133,8 +133,8 @@ $$
 
 Consider two hyperplane when $y_i = 1$ and $y_i = -1$
 $$
-H_1: \vec{w}^T\cdot\vec{x} + b = 1 \\
-H_2: \vec{w}^T\cdot\vec{x} + b = -1
+H_1: \vec{w}\cdot\vec{x} + b = 1 \\
+H_2: \vec{w}\cdot\vec{x} + b = -1
 $$
 
 Distance between two hyperplane are called **margin**. Margin depends on normal vector $w$. Equal $\displaystyle\frac{2}{||w||}$
