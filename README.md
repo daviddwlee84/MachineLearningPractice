@@ -160,3 +160,8 @@ Labor Relations|-|[Labor Relations Data Set](https://archive.ics.uci.edu/ml/data
 
 * [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/index.html)
 * [The MNIST Database of handwritten digits](http://yann.lecun.com/exdb/mnist/)
+
+### Machine Learning Platform
+
+* [Kaggle](https://www.kaggle.com/)
+* [OpenML](https://www.openml.org/)

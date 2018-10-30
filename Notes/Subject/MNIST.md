@@ -7,11 +7,16 @@
 * csv
     * [The MNIST Dataset of handwritten digits](http://makeyourownneuralnetwork.blogspot.com/2015/03/the-mnist-dataset-of-handwitten-digits.html)
     * [MNIST in CSV](https://pjreddie.com/projects/mnist-in-csv/)
-* sklearn
-    ```python
-    from sklearn.datasets import fetch_mldata
-    mnist = fetch_mldata('MNIST original')
-    ```
+* sklearn (load from OpenML - [mnist_784](https://www.openml.org/d/554))
+    * [fetch_openml](http://scikit-learn.org/stable/modules/generated/sklearn.datasets.fetch_openml.html#sklearn.datasets.fetch_openml)
+        ```python
+        X, y = fetch_openml('mnist_784', version=1, return_X_y=True)
+        ```
+    * [fetch_mldata](http://scikit-learn.org/stable/modules/generated/sklearn.datasets.fetch_mldata.html#sklearn.datasets.fetch_mldata) (Deprecated since version 0.20: Will be removed in version 0.22)
+        ```python
+        from sklearn.datasets import fetch_mldata
+        mnist = fetch_mldata('MNIST original')
+        ```
 
 ### Data Set Information
 
