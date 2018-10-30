@@ -47,7 +47,7 @@ Labor Relations|-|[Labor Relations Data Set](https://archive.ics.uci.edu/ml/data
 * *Classification*
     * `Logistic Regression`
     * `k-Nearest Neighbors (kNN)`
-    * `Support Vector Machine (SVM)`
+    * `Support Vector Machine (SVM)` - [Deduction](Algorithm/SVM/SVMDeduction.md)
     * `Naive Bayes`
     * `Decision Tree (ID3, C4.5, CART)`
 * *Regression*
@@ -95,6 +95,10 @@ Labor Relations|-|[Labor Relations Data Set](https://archive.ics.uci.edu/ml/data
 
 ## Machine Learning Mathematics
 
+### Topic
+
+* [Convex Optimization](Notes/Math/Topic/ConvexOptimization.md)
+
 ### Core
 
 * Linear Algebra
@@ -104,6 +108,7 @@ Labor Relations|-|[Labor Relations Data Set](https://archive.ics.uci.edu/ml/data
     * [Multivariable Deratives](Notes/Math/Calculus/MultivariableDeratives.md)
         * Quadratic Approximations
         * Lagrange Multipliers and Constrained Optimization
+        * Lagrange Duality
 * Probability and Statistics
 
 ### Basics

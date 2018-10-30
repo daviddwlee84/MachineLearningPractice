@@ -1,5 +1,9 @@
 # Support Vector Machine
 
+* [SVM Deduction](SVMDeduction.md)
+* [Lagrange Multipliers and Constrained Optimization](../../Notes/Math/Calculus/MultivariableDeratives.md#Lagrange-Multipliers-and-Constrained-Optimization)
+* [Lagrange Duality](../../Notes/Math/Calculus/MultivariableDeratives.md#Lagrange-Duality)
+
 ## Brief Description
 
 In machine learning, support vector machines (SVMs, also support vector networks) are supervised learning models with associated learning algorithms that analyze data used for classification and regression analysis. Given a set of training examples, each marked as belonging to one or the other of two categories, an SVM training algorithm builds a model that assigns new examples to one category or the other, making it a non-probabilistic binary linear classifier (although methods such as Platt scaling exist to use SVM in a probabilistic classification setting). An SVM model is a representation of the examples as points in space, mapped so that the examples of the separate categories are divided by a clear gap that is as wide as possible. New examples are then mapped into that same space and predicted to belong to a category based on which side of the gap they fall.
@@ -10,12 +14,13 @@ Category|Usage|Application Field
 --------|-----|-----------------
 Supervised Learning|Classification(Main), Regression, Outliers Detection Clustering(Unsupervised)|Numerous
 
-* Support Vector Machine is suited for extreme cases
+* Support Vector Machine is suited for extreme cases (little sample set)
 * SVM can be used to do *binary classification*
 * SVM find a hyper-plane that separates its training data in such a way that the distance between the hyper plane and the cloest points form each class is maximized
 * Implies that only *support vector* are important whereas other trainning examples are ignorable
 
 * SVM can only be used on data that is *linear separable* (i.e. a hyper-plane can be drawn between the two groups)
+* By using kernel trick, everything will be linear seprable in higher dimension
 
 * Advantage
     * Effective in high dimensional spaces
@@ -50,7 +55,7 @@ Supervised Learning|Classification(Main), Regression, Outliers Detection Cluster
 
 
 * Multiclass SVM (Decision function shape)
-    * **OVR**: One vs. Rest
+    * **OVR**: One vs. Rest (For each class make a binary classifier answer is or isn't the class)
         * Pros: Fewer classifications
         * Cons: Classes may be imbalanced
     * **OVO**: One vs. One
