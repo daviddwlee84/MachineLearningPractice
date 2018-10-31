@@ -16,7 +16,70 @@ Supervised Learning|Boosting|
 
 ## Terminology
 
+* Weak classifier: the classifier does a better job that randomly guessing but not by much.
+
 ## Concept
+
+### Boosting
+
+* In boosting, the different classifiers are trained sequentially.
+* Each new classifier is trained based on the performance of those already trained.
+* Boosting makes new clssifers focus on data that was previously misclassified by previous classifiers.
+
+### Weak Learner - Decision Stump
+
+A decision stump is a simple decision tree that make decision on one feature only. (a tree with only one split)
+
+Pseudo-code:
+
+```
+Set the minError to +inf
+For every feature in the dataset:
+    For every step:
+        For each inequality:
+            Build a decision stump and test it with the weighted dataset
+            If the error is less than minError: set this stump as the best stump
+Return the best stump
+```
+
+### AdaBoost Algorithm
+
+Variables:
+
+* weight vector: $D$
+    * Initially are all equal
+* error $\displaystyle\varepsilon = \frac{\textit{number of incorrectly classified examples}}{\textit{total number of examples}}$
+* $\displaystyle\alpha=\frac{1}{2}\ln(\frac{1-\varepsilon}{\varepsilon})$
+    * assign to each of the classifiers
+    * are based on the error of each weak classifier
+
+Update $D$ by calculated $\alpha$
+$$
+D_i^{(t+1)} =
+\begin{cases}
+    \frac{D_i^{(t)} e^{-\alpha}}{\mathit{Sum}(D)} \text{, if correctly predicted} \\
+    \frac{D_i^{(t)} e^{\alpha}}{\mathit{Sum}(D)} \text{, if incorrectly predicted}
+\end{cases}
+$$
+
+After $D$ is calculated, AdaBoost starts on the next iteration.
+
+AdaBoost repeats the training and weight-adjusting iterations until
+
+* the training error is 0
+* the number of weak classifier reaches a user-defined value
+
+Pseudo-code:
+
+```
+For each iteration:
+    Find the best stump using buildStump()
+    Add the best stump to the stump array
+    Calculate alpha
+    Calculate the new weight vector - D
+    Update the aggregate class estimate
+    If the error rate == 0.0: break out of the for loop
+```
 
 ## Links
 
@@ -38,3 +101,7 @@ Supervised Learning|Boosting|
 ## Wikipedia
 
 * [AdaBoost](https://en.wikipedia.org/wiki/AdaBoost)
+
+## Github
+
+* [eriklindernoren/ML-From-Scratch - AdaBoost](https://github.com/eriklindernoren/ML-From-Scratch/blob/master/mlfromscratch/supervised_learning/adaboost.py)

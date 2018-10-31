@@ -36,4 +36,13 @@ Measure the accuracy of the test subset (30% of instances)
 
 Model                         |Accuracy
 ------------------------------|--------
-Adaboost Scikit Learn         |0.3277
+AdaBoost Scikit Learn         |0.3277
+
+Use the following attribute to predict final grade in two categories (Pass(A, B, C, D), Fail(F))
+(traveltime, studytime, failures, schoolsup, famsup, activities, paid, internet, nursery, higher, romantic, freetime, goout, Walc, Dalc, health)
+
+Measure the accuracy of the test subset (30% of instances)
+
+Model                         |Decision Stump|Accuracy
+------------------------------|--------------|---------
+AdaBoost From Scratch         |16            |0.6471
