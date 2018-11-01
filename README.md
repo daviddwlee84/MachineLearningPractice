@@ -77,13 +77,11 @@ Labor Relations|-|[Labor Relations Data Set](https://archive.ics.uci.edu/ml/data
 
 ## [Machine Learning Concepts](Notes/MachineLearningConcepts.md)
 
+### General Case
+
 * [Data Preprocessing](Notes/MachineLearningConcepts.md#Data-Preprocessing)
     * [Training and Test Sets - Splitting Data](Notes/MachineLearningConcepts.md#Splitting-Data)
     * [Missing Value](Notes/MachineLearningConcepts.md#Missing-Value)
-* [Model Evaluation](Notes/MachineLearningConcepts.md#Model-Evaluation)
-    * [Classification](Notes/MachineLearningConcepts.md#Classification)
-    * [Regression](Notes/MachineLearningConcepts.md#Regression)
-    * [Clustering](Notes/MachineLearningConcepts.md#Clustering)
 * [Fitting and Model Complexity](Notes/MachineLearningConcepts.md#Fitting-and-Model-Complexity)
     * [Overfitting](Notes/MachineLearningConcepts.md#Overfitting)
     * [Underfitting](Notes/MachineLearningConcepts.md#Underfitting)
@@ -95,6 +93,23 @@ Labor Relations|-|[Labor Relations Data Set](https://archive.ics.uci.edu/ml/data
 * [Other Learning Method](Notes/MachineLearningConcepts.md#Other-Learning-Method)
     * [Lazy Learning](Notes/MachineLearningConcepts.md#Lazy-Learning)
     * [Incremental Learning (Online Learning)](Notes/MachineLearningConcepts.md#Incremental-Learning-(Online-Learning))
+
+### Categorized
+
+* Classification
+    * Data Preprocessing
+        * [Label Encoding](Notes/MachineLearningConcepts.md#Label-Encoding)
+    * Real-world Problem
+        * [Cost-sensitive Learning](Notes/MachineLearningConcepts.md#Cost-sensitive-Learning)
+        * [Classification Imbalance](Notes/MachineLearningConcepts.md#Classification-Imbalance)
+    * Evaluation Metrics
+        * [Classification Metrics](Notes/MachineLearningConcepts.md#Classification)
+* Regression
+    * Evaluation Metrics
+        * [Regression Metrics](Notes/MachineLearningConcepts.md#Regression)
+* Clustering
+    * Evaluation Metrics
+        * [Clustering Metrics](Notes/MachineLearningConcepts.md#Clustering)
 
 ## Machine Learning Mathematics
 

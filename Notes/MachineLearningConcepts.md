@@ -4,6 +4,8 @@
     * [Data Preprocessing](#Data-Preprocessing)
         * [Training and Test Sets - Splitting Data](#Splitting-Data)
         * [Missing Value](#Missing-Value)
+        * [Label Encoding](#Label-Encoding)
+        * [Classification Imbalance](#Classification-Imbalance)
     * [Model Evaluation](#Model-Evaluation)
         * [Classification](#Classification)
         * [Regression](#Regression)
@@ -17,6 +19,7 @@
         * [Learning Rate](#Learning-Rate)
         * [Gradient Descent](#Gradient-Descent)
     * [Other Learning Method](#Other-Learning-Method)
+        * [Cost-sensitive Learning](#Cost-sensitive-Learning)
         * [Lazy Learning](#Lazy-Learning)
         * [Incremental Learning (Online Learning)](#Incremental-Learning-(Online-Learning))
 
@@ -39,6 +42,34 @@
 ### Label Encoding
 
 * [Scikit Learn - 4.9 Transforming the prediction target (y)](http://scikit-learn.org/dev/modules/preprocessing_targets.html#preprocessing-targets)
+
+### Classification Imbalance
+
+To alter the data used to train the classifier to deal with imbalanced classification tasks.
+
+* Oversample: means to duplicate examples
+* Undersample: means to delete examples
+
+Scenario
+
+* You want to preserve as much information as possible about the rare case (e.g. Credit card fraud)
+    * Keep all of the examples form the positive class
+    * Undersample or discard examples form the negative class
+
+Drawback
+
+* Deciding which negaive examples to toss out. (You may throw out examples which contain valuable information)
+
+Solution
+
+1. To pick samples to discard that aren't near the decision boundary
+2. Use a hybrid approach of undersampling the negative class and oversampling the positive class
+
+(Oversample the positive class have some approaches)
+
+* Replicate the existing examples
+* Add new points similar to the existing points
+* Add a data point interpolated between existing data points (can lead to overfitting)
 
 ## Model Evaluation
 
@@ -140,6 +171,18 @@ ROC stands for Receiver Operating Characteristic
 ### Gradient Descent
 
 ## Other Learning Method
+
+### Cost-sensitive Learning
+
+* The different incorrect classification will have different costs.
+* This gives more weight to the smaller class, which when training the classifier will allow fewer errors in the smaller class
+* There are many ways to include the cost information in classification algorithms
+    * AdaBoost
+        * Adjust the error weight vector D based on the cost function
+    * Naive Bayes
+        * Predict the class with the lowest expected cost instead of the class with the highest probability
+    * SVM
+        * Use different C parameters in the cost function for the different classes
 
 ### Lazy Learning
 
