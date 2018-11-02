@@ -39,5 +39,14 @@ Sources:
 
 Paper - [A New Approach to Fitting Linear Models in High Dimensional Spaces](http://rexa.info/paper/1b37a079312a4d90da6e76dc5d18023c57d0d935)
 
-Model                         |Accuracy
-------------------------------|--------
+First 7 Principle Component
+
+Model                   |% Variance              |% Cumulative
+------------------------|------------------------|------------
+PCA Scikit Learn        |[99.54, 0.35, 0.1, 0, 0]|[99.54, 99.89, 99.99, 99.99, 99.99]
+
+### Percentage of total variance diagram
+
+#### PCA Scikit Learn
+
+![Scikit Learn](Image/PCA_Automobile_sklearn.png)
