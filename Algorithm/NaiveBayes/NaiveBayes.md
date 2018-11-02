@@ -6,9 +6,9 @@ Naive bayes are a set of supervised learning algorithms based on applying Bayesâ
 
 ### Quick View
 
-Category|Usage|Application Field
---------|-----|-----------------
-Supervised Learning|Classification|
+Category|Usage|Methematics|Application Field
+--------|-----|-----------|-----------------
+Supervised Learning|Classification|Bayes' Theorem|
 
 ### Family of Naive Bayes
 

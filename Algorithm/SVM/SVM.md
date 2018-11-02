@@ -10,9 +10,9 @@ In machine learning, support vector machines (SVMs, also support vector networks
 
 ### Quick View
 
-Category|Usage|Application Field
---------|-----|-----------------
-Supervised Learning|Classification(Main), Regression, Outliers Detection Clustering(Unsupervised)|Numerous
+Category|Usage|Methematics|Application Field
+--------|-----|-----------|-----------------
+Supervised Learning|Classification (Main), Regression, Outliers Detection Clustering (Unsupervised)|Convex Optimization, Constrained Optimization, Lagrange Multipliers|Numerous
 
 * Support Vector Machine is suited for extreme cases (little sample set)
 * SVM can be used to do *binary classification*

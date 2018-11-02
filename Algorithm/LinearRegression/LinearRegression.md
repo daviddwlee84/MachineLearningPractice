@@ -6,9 +6,9 @@ In statistics, linear regression is a linear approach to modelling the relations
 
 ### Quick View
 
-Category|Usage|Application Field
---------|-----|-----------------
-Supervised Learning|Regression|Many...
+Category|Usage|Methematics|Application Field
+--------|-----|-----------|-----------------
+Supervised Learning|Regression||Many...
 
 ### Types
 

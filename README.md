@@ -24,7 +24,7 @@ CSM|[Linear Regression](Algorithm/LinearRegression/LinearRegression.md)|[CSM Dat
 Nursery|[Naive Bayes](Algorithm/NaiveBayes/NaiveBayes.md)|[Nursery Data Set](https://archive.ics.uci.edu/ml/datasets/nursery) ([File](Datasets/nursery.csv))|[Gaussian Naive Bayes From Scratch](Algorithm/NaiveBayes/NaiveBayes_Nursery/NaiveBayes_Nursery_FromScratch.py), [Gaussian Naive Bayes Scikit Learn](Algorithm/NaiveBayes/NaiveBayes_Nursery/NaiveBayes_Nursery_sklearn.py)|[Notes](Notes/Subject/Nursery.md)
 Post-Operative Patient|[SVM](Algorithm/SVM/SVM.md)|[Post-Operative Patient Data Set](http://archive.ics.uci.edu/ml/datasets/post-operative+patient) ([File](Datasets/post-operative.csv), [Simplified](Datasets/post-operative-binary.csv))|[SVM From Scratch (using cvxopt and simplified dataset)](Algorithm/SVM/SVM_Post_Operative_Patient/SVM_Post_Operative_Patient_Simplified_FromScratch.py), [SVM Scikit Learn](Algorithm/SVM/SVM_Post_Operative_Patient/SVM_Post_Operative_Patient_sklearn.py)|[Notes](Notes/Subject/Postoperative_Patient.md)
 Student Performance|[AdaBoost](Algorithm/Adaboost/Adaboost.md)|[Student Performance Data Set](https://archive.ics.uci.edu/ml/datasets/Student+Performance) ([File](Datasets/student-mat.csv))|[AdaBoost From Scratch](Algorithm/Adaboost/Adaboost_Student_Performance/Adaboost_Student_Performance_FromScratch.py), [AdaBoost Scikit Learn](Algorithm/Adaboost/Adaboost_Student_Performance/Adaboost_Student_Performance_sklearn.py)|[Notes](Notes/Subject/Student_Performance.md)
-Sales Transactions|[k-Means](Algorithm/KMeans/KMeans.md)|[Sales_Transactions_Dataset_Weekly](http://archive.ics.uci.edu/ml/datasets/sales_transactions_dataset_weekly) ([File](Datasets/Sales_Transactions_Dataset_Weekly.csv))|[k-Means From Scratch](Algorithm/KMeans/KMeans_Sales_Transactions/KMeans_Sales_Transactions_FromScratch.py), [k-Means Scikit Learn](Algorithm/KMeans/KMeans_Sales_Transactions/KMeans_Sales_Transactions_sklearn.py)|[Notes](Notes/Subject/Sales_Transactions.md)
+Sales Transactions|[k-Means](Algorithm/KMeans/KMeans.md)|[Sales Transactions Dataset Weekly](http://archive.ics.uci.edu/ml/datasets/sales_transactions_dataset_weekly) ([File](Datasets/Sales_Transactions_Dataset_Weekly.csv))|[k-Means From Scratch](Algorithm/KMeans/KMeans_Sales_Transactions/KMeans_Sales_Transactions_FromScratch.py), [k-Means Scikit Learn](Algorithm/KMeans/KMeans_Sales_Transactions/KMeans_Sales_Transactions_sklearn.py)|[Notes](Notes/Subject/Sales_Transactions.md)
 Frequent Itemset Mining|[FP-Growth](Algorithm/FP-Growth/FP-Growth.md)|[Retail Market Basket Data Set](http://fimi.ua.ac.be/data/) ([File](Datasets/retail.csv))|[FP-Growth From Scratch](Algorithm/FP-Growth/FP-Growth_Frequent_Itemset_Mining/FP-Growth_Frequent_Itemset_Mining_FromScratch.py)|[Notes](Notes/Subject/Frequent_Itemset_Mining.md)
 Automobile|[PCA](Algorithm/PCA/PCA.md)|[Automobile Data Set](http://archive.ics.uci.edu/ml/datasets/Automobile) ([File](Datasets/imports-85.csv))||[Notes](Notes/Subject/Automobile.md)
 Handwriting Digit|[SVM](Algorithm/SVM/SVM.md)|[MNIST](http://yann.lecun.com/exdb/mnist/) ([File](Datasets/MNIST.csv))|[SVM From Scratch](Algorithm/SVM/SVM_MNIST/SVM_MNIST_FromScratch.py)|[Notes](Notes/Subject/MNIST.md)
@@ -82,6 +82,7 @@ Labor Relations|-|[Labor Relations Data Set](https://archive.ics.uci.edu/ml/data
 * [Data Preprocessing](Notes/MachineLearningConcepts.md#Data-Preprocessing)
     * [Training and Test Sets - Splitting Data](Notes/MachineLearningConcepts.md#Splitting-Data)
     * [Missing Value](Notes/MachineLearningConcepts.md#Missing-Value)
+    * [Dimensionality Reduction](Notes/MachineLearningConcepts.md#Dimensionality-Reduction)
 * [Fitting and Model Complexity](Notes/MachineLearningConcepts.md#Fitting-and-Model-Complexity)
     * [Overfitting](Notes/MachineLearningConcepts.md#Overfitting)
     * [Underfitting](Notes/MachineLearningConcepts.md#Underfitting)
@@ -117,9 +118,11 @@ Labor Relations|-|[Labor Relations Data Set](https://archive.ics.uci.edu/ml/data
 
 * [Convex Optimization](Notes/Math/Topic/ConvexOptimization.md)
 
-### Core
+### Categories
 
 * Linear Algebra
+    * Orthogonality
+    * Eigenvalues
     * Hessian Matrix
     * Quadratic Form
 * Calculus
@@ -129,15 +132,42 @@ Labor Relations|-|[Labor Relations Data Set](https://archive.ics.uci.edu/ml/data
         * Lagrange Duality
 * Probability and Statistics
 
-### Basics
+#### Basics
 
 * Algebra
 * Trigonometry
 
+### Application
+
+(from A to Z)
+
+* Decision Tree
+    * Entropy
+* Naive Bayes
+    * Bayes' Theorem
+* PCA
+    * Orthogonal Transformations
+    * Eigenvalues
+* SVD
+    * Eigenvalues
+* SVM
+    * Convex Optimization
+    * Constrained Optimization
+    * Lagrange Multipliers
+
 ## Books Recommand
+
+### Machine Learning
 
 * [**Machine Learning in Action**](https://www.manning.com/books/machine-learning-in-action)
     * [Source Code](https://manning-content.s3.amazonaws.com/download/3/29c6e49-7df6-4909-ad1d-18640b3c8aa9/MLiA_SourceCode.zip)
+* 統計學習方法 (李航)
+* 機器學習 (周志華)
+
+### Mathematics
+
+* Linear Algebra with Applications (Steven Leon)
+* Convex Optimization (Stephen Boyd & Lieven Vandenberghe)
 
 ## Resources
 

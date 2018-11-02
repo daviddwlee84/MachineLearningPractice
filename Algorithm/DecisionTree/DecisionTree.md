@@ -8,9 +8,9 @@ Decision trees are commonly used in operations research, specifically in decisio
 
 ### Quick View
 
-Category|Usage|Application Field
---------|-----|-----------------
-Supervised Learning|Classification, Regression|Operations Research, Data Mining
+Category|Usage|Methematics|Application Field
+--------|-----|-----------|-----------------
+Supervised Learning|Classification, Regression|Entropy|Operations Research, Data Mining
 
 #### Types
 

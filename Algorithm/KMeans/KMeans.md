@@ -6,9 +6,9 @@ k-means clustering is a method of vector quantization, originally from signal pr
 
 ### Quick View
 
-Category|Usage|Application Field
---------|-----|-----------------
-Unsupervised Learning|Clustering|
+Category|Usage|Methematics|Application Field
+--------|-----|-----------|-----------------
+Unsupervised Learning|Clustering||
 
 ### Steps
 

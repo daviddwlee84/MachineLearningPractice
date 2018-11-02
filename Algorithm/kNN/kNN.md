@@ -6,9 +6,9 @@ In pattern recognition, the k-nearest neighbors algorithm (k-NN) is a non-parame
 
 ### Quick View
 
-Category|Usage|Application Field
---------|-----|-----------------
-Supervised Learning|Classification, Regression|Pattern Recognition
+Category|Usage|Methematics|Application Field
+--------|-----|-----------|-----------------
+Supervised Learning|Classification, Regression||Pattern Recognition
 
 ## Links
 

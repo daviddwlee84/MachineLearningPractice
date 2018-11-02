@@ -10,9 +10,9 @@ Every learning algorithm tends to suit some problem types better than others, an
 
 ### Quick View
 
-Category|Usage|Application Field
---------|-----|-----------------
-Supervised Learning|Boosting|
+Category|Usage|Methematics|Application Field
+--------|-----|-----------|-----------------
+Supervised Learning|Boosting||
 
 ## Terminology
 

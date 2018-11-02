@@ -8,9 +8,9 @@ In the first pass, the algorithm counts occurrence of items (attribute-value pai
 
 ### Quick View
 
-Category|Usage|Application Field
---------|-----|-----------------
-Unsupervised Learning|Association Rule Learning|Frequent Itemset Mining
+Category|Usage|Methematics|Application Field
+--------|-----|-----------|-----------------
+Unsupervised Learning|Association Rule Learning||Frequent Itemset Mining
 
 ### Compare with Apriori
 
