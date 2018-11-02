@@ -1,4 +1,4 @@
-## Student Performace From Scratch Version
+## AdaBoost Student Performace From Scratch Version
 #
 # Author: David Lee
 # Create Date: 2018/10/31

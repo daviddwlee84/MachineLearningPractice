@@ -1,4 +1,4 @@
-## Student Performace Scikit Learn Version
+## AdaBoost Student Performace Scikit Learn Version
 #
 # Author: David Lee
 # Create Date: 2018/10/19
