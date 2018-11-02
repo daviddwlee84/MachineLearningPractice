@@ -4,6 +4,10 @@
 
 Principal component analysis (PCA) is a statistical procedure that uses an orthogonal transformation to convert a set of observations of possibly correlated variables (entities each of which takes on various numerical values) into a set of values of linearly uncorrelated variables called principal components.
 
+or
+
+A method for doing dimensionality reduction by transforming the feature space to a lower dimensionality, removing correlation between features and maximizing the variance along each feature axis.
+
 ### Quick View
 
 Category|Usage|Methematics|Application Field

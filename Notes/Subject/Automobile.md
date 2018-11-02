@@ -44,9 +44,14 @@ First 7 Principle Component
 Model                   |% Variance              |% Cumulative
 ------------------------|------------------------|------------
 PCA Scikit Learn        |[99.54, 0.35, 0.1, 0, 0]|[99.54, 99.89, 99.99, 99.99, 99.99]
+PCA From Scratch        |[99.54, 0.35, 0.1, 0, 0]|[99.54, 99.89, 99.99, 99.99, 99.99]
 
 ### Percentage of total variance diagram
 
 #### PCA Scikit Learn
 
 ![Scikit Learn](Image/PCA_Automobile_sklearn.png)
+
+#### PCA From Scratch
+
+![From Scratch](Image/PCA_Automobile_FromScratch.png)
