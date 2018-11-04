@@ -28,7 +28,7 @@ Sales Transactions|[k-Means](Algorithm/KMeans/KMeans.md)|[Sales Transactions Dat
 Frequent Itemset Mining|[FP-Growth](Algorithm/FP-Growth/FP-Growth.md)|[Retail Market Basket Data Set](http://fimi.ua.ac.be/data/) ([File](Datasets/retail.csv))|[FP-Growth From Scratch](Algorithm/FP-Growth/FP-Growth_Frequent_Itemset_Mining/FP-Growth_Frequent_Itemset_Mining_FromScratch.py)|[Notes](Notes/Subject/Frequent_Itemset_Mining.md)
 Automobile|[PCA](Algorithm/PCA/PCA.md)|[Automobile Data Set](http://archive.ics.uci.edu/ml/datasets/Automobile) ([File](Datasets/imports-85.csv))|[PCA From Scratch](Algorithm/PCA/PCA_Automobile/PCA_Automobile_FromScratch.py), [PCA Scikit Learn](Algorithm/PCA/PCA_Automobile/PCA_Automobile_sklearn.py)|[Notes](Notes/Subject/Automobile.md)
 Anonymous Microsoft Web Data|[SVD](Algorithm/SVD/SVD.md)|[Anonymous Microsoft Web Data Data Set](https://archive.ics.uci.edu/ml/datasets/Anonymous+Microsoft+Web+Data) ([File](Datasets/anonymous-msweb.csv))||[Notes](Notes/Subject/Anonymous_Microsoft_Web_Data.md)
-Handwriting Digit|[SVM](Algorithm/SVM/SVM.md)|[MNIST](http://yann.lecun.com/exdb/mnist/) ([File](Datasets/MNIST.csv))|[SVM From Scratch](Algorithm/SVM/SVM_MNIST/SVM_MNIST_FromScratch.py)|[Notes](Notes/Subject/MNIST.md)
+Handwriting Digit|[SVM](Algorithm/SVM/SVM.md)|[MNIST](http://yann.lecun.com/exdb/mnist/) ([File](Datasets/MNIST.csv))|[Binary SVM From Scratch](Algorithm/SVM/SVM_MNIST/SVM_MNIST_Binary_FromScratch.py)|[Notes](Notes/Subject/MNIST.md)
 Labor Relations|-|[Labor Relations Data Set](https://archive.ics.uci.edu/ml/datasets/Labor+Relations)||[Notes](Notes/Subject/Labor_Relations.md)
 
 ## Machine Learning Categories
@@ -81,9 +81,12 @@ Labor Relations|-|[Labor Relations Data Set](https://archive.ics.uci.edu/ml/data
 ### General Case
 
 * [Data Preprocessing](Notes/MachineLearningConcepts.md#Data-Preprocessing)
+    * [Normalization](Notes/MachineLearningConcepts.md#Normalization)
     * [Training and Test Sets - Splitting Data](Notes/MachineLearningConcepts.md#Splitting-Data)
     * [Missing Value](Notes/MachineLearningConcepts.md#Missing-Value)
     * [Dimensionality Reduction](Notes/MachineLearningConcepts.md#Dimensionality-Reduction)
+* [Model Expansion](Notes/MachineLearningConcepts.md#Model-Expansion)
+    * [Binary to Multi-class](Notes/MachineLearningConcepts.md#Binary-to-Multi-class)
 * [Fitting and Model Complexity](Notes/MachineLearningConcepts.md#Fitting-and-Model-Complexity)
     * [Overfitting](Notes/MachineLearningConcepts.md#Overfitting)
     * [Underfitting](Notes/MachineLearningConcepts.md#Underfitting)
@@ -106,6 +109,7 @@ Labor Relations|-|[Labor Relations Data Set](https://archive.ics.uci.edu/ml/data
         * [Classification Imbalance](Notes/MachineLearningConcepts.md#Classification-Imbalance)
     * Evaluation Metrics
         * [Classification Metrics](Notes/MachineLearningConcepts.md#Classification)
+    * [Binary to Multi-class Expension](Notes/MachineLearningConcepts.md#Binary-to-Multi-class)
 * Regression
     * Evaluation Metrics
         * [Regression Metrics](Notes/MachineLearningConcepts.md#Regression)

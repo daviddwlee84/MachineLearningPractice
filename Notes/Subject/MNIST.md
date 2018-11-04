@@ -40,9 +40,31 @@ Associated Tasks         |Classification
 
 ## Result
 
-Use the last 5000 row as training data
-
 Measure the accuracy of the test subset (30% of instances)
 
-Model                     |Accuracy|Training Time
---------------------------|--------|-------------
+I have normalized all the data to [-1, 1].
+
+* If data (pixel value) > 100 (threshold) then I'll give 1. Otherwise, -1.
+
+### Binary Classifier (is 0 or not quesiton)
+
+I also set over the label greater than 1 to be 1. And 0 to be -1. (The MUST step)
+
+Use the last 50 row as training data
+
+Model                     |Kernel|Accuracy|Parameters
+--------------------------|------|--------|----------------
+SVM From Scratch          |Linear|1.0     |C = 1, tol = 0.001
+
+Use the last 5000 row as training data
+
+Model                     |Kernel|Accuracy|Parameters
+--------------------------|------|--------|----------------
+SVM From Scratch          |Linear|0.9713  |C = 1, tol = 0.001
+SVM From Scratch          |RBF   |0.8960  |C = 5, gamma = 0.05, tol = 0.001
+
+Ps. The cost of calculating RBF kernel of all training sample is too high to take. I haven't realize why sklearn can calculate so fast.
+
+## Example
+
+* [SVM MNIST handwritten digit classification](https://plon.io/explore/svm-mnist-handwritten-digit/USpQjoNcO8QHlmG6T)

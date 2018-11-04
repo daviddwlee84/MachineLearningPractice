@@ -15,22 +15,28 @@ Category|Usage|Methematics|Application Field
 Supervised Learning|Classification (Main), Regression, Outliers Detection Clustering (Unsupervised)|Convex Optimization, Constrained Optimization, Lagrange Multipliers|Numerous
 
 * Support Vector Machine is suited for extreme cases (little sample set)
-* SVM can be used to do *binary classification*
 * SVM find a hyper-plane that separates its training data in such a way that the distance between the hyper plane and the cloest points form each class is maximized
 * Implies that only *support vector* are important whereas other trainning examples are ignorable
 
 * SVM can only be used on data that is *linear separable* (i.e. a hyper-plane can be drawn between the two groups)
 * By using kernel trick, everything will be linear seprable in higher dimension
 
-* Advantage
-    * Effective in high dimensional spaces
-    * Effective in dimensions >> samples
-    * Use a subset of training points in the decision function => Memory efficient
-    * Different kernel functions for various decision functions
-        * It's possible to add kernel functions together to achieve even more complex hyperplanes
-* Disadvantage
-    * Poor performance when features >> samples
-    * SVMs do not provide probability estimates
+* Important Notes:
+    * SVM natively only handles *binary classification*
+        * You have to make sure your data label is either -1 or 1 !! (or it can never find the alphas so as support vectors)
+        * For better [converage](#Converage-Problem) you have to [normalize](../../Notes/MachineLearningConcepts.md#Normalization) your data
+
+Advantage
+* Effective in high dimensional spaces
+* Effective in dimensions >> samples
+* Use a subset of training points in the decision function => Memory efficient
+* Different kernel functions for various decision functions
+    * It's possible to add kernel functions together to achieve even more complex hyperplanes
+
+Disadvantage
+
+* Poor performance when features >> samples
+* SVMs do not provide probability estimates
 
 ## Terminology
 
@@ -135,7 +141,37 @@ Supervised Learning|Classification (Main), Regression, Outliers Detection Cluste
 
 ### Maximize Margin
 
+## Converage Problem
+
+* The simplified implementation is not guaranteed to coverage to the global optimum for all datasets!
+
+* But it should always converge, unless there are numerical problems.
+    Make sure the data is properly scaled. It is a bad idea if different features have values in different orders of magnitude. You might want to normalize all features to the range [-1,+1], especially for problems with more than 100 features.
+
+### Libsvm FAQ about Converge
+
+**Q: The program keeps running (with output, i.e. many dots). What should I do?**
+
+In theory libsvm guarantees to converge. Therefore, this means you are handling ill-conditioned situations (e.g. too large/small parameters) so numerical difficulties occur.
+
+You may get better numerical stability by replacing
+
+typedef float Qfloat;
+in svm.cpp with
+typedef double Qfloat;
+That is, elements in the kernel cache are stored in double instead of single. However, this means fewer elements can be put in the kernel cache.
+
+**Q: The training time is too long. What should I do?**
+
+For large problems, please specify enough cache size (i.e., -m). Slow convergence may happen for some difficult cases (e.g. -c is large). You can try to use a looser stopping tolerance with -e. If that still doesn't work, you may train only a subset of the data. You can use the program subset.py in the directory "tools" to obtain a random subset.
+
+If you have extremely large data and face this difficulty, please contact us. We will be happy to discuss possible solutions.
+
+When using large -e, you may want to check if -h 0 (no shrinking) or -h 1 (shrinking) is faster. See a related question below.
+
 ## Links
+
+* [**CS229 Simplified SMO Algorithm**](http://math.unt.edu/~hsp0009/smo.pdf)
 
 ### Tutorial
 
@@ -177,9 +213,12 @@ Supervised Learning|Classification (Main), Regression, Outliers Detection Cluste
     * Kernels-I, Kernels-II
     * Using a SVM
 
-### Scikit Learn
+### Library
 
-* [Support Vector Machine](http://scikit-learn.org/stable/modules/svm.html#svm)
+* Libsvm
+    * [LIBSVM FAQ](https://www.csie.ntu.edu.tw/~cjlin/libsvm/faq.html)
+* Scikit Learn
+    * [Support Vector Machine](http://scikit-learn.org/stable/modules/svm.html#svm)
 
 ### Wikipedia
 
