@@ -2,11 +2,14 @@
 
 * Table of content
     * [Data Preprocessing](#Data-Preprocessing)
+        * [Data Normalization](#Normalization)
         * [Training and Test Sets - Splitting Data](#Splitting-Data)
         * [Missing Value](#Missing-Value)
         * [Label Encoding](#Label-Encoding)
         * [Classification Imbalance](#Classification-Imbalance)
         * [Dimensionality Reduction](#Dimensionality-Reduction)
+    * [Model Expansion](#Model-Expansion)
+        * [Binary to Multi-class](#Binary-to-Multi-class)
     * [Model Evaluation](#Model-Evaluation)
         * [Classification](#Classification)
         * [Regression](#Regression)
@@ -25,6 +28,12 @@
         * [Incremental Learning (Online Learning)](#Incremental-Learning-(Online-Learning))
 
 ## Data Preprocessing
+
+### Normalization
+
+TBD
+
+e.g. SVM is better to normalize data between -1 and 1
 
 ### Splitting Data
 
@@ -100,6 +109,22 @@ Solution
 * Replicate the existing examples
 * Add new points similar to the existing points
 * Add a data point interpolated between existing data points (can lead to overfitting)
+
+## Model Expansion
+
+### Binary to Multi-class
+
+Sometimes a classification algorithm is originally designed to be a binary classifier (e.g. Logistic Regression, SVM).
+
+If we want to use a biary classifier do multi-class classification thing. We have some trick.
+
+#### One to All (One to Rest, OVR)
+
+Tutorial:
+
+* [Lecture 6.7 — Logistic Regression | MultiClass Classification OneVsAll — [Andrew Ng]](https://www.youtube.com/watch?v=-EIfb6vFJzc)
+
+#### One to One (OVO)
 
 ## Model Evaluation
 
