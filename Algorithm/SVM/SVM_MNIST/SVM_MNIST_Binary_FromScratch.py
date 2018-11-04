@@ -14,16 +14,14 @@ import random # Random select index
 from sklearn.model_selection import train_test_split # Split training and testing data
 from sklearn import metrics # Evaluate model
 
-## Currently support
-# Kernel: Linear
-# Multiclass - Decision Function: OVR
 class SVM:
-    def __init__(self, C=1.0, gamma=0, max_iter=10000, tol=0.001, kernel='linear'):
+    def __init__(self, C=1.0, gamma=0, max_iter=10000, tol=0.001, kernel='linear', norm=True):
         self.__C = C # Penalty parameter C of the error term (slack variable)
         self.__max_iter = max_iter # Hard limit on iterations within solver
         self.__tol = tol # Tolerance for stopping criterion
         self.__kernel = kernel # Specifies the kernel type to be used in the algorithm
         self.__gamma = gamma # For rbf kernel
+        self.__norm = norm # True, if you want to normalize X
 
         # Will be initialized in fit()
         self.__X = None
@@ -33,6 +31,31 @@ class SVM:
         self.__error_cache = None # Error cache shapt(n_sample, 2): isValid, actual error
         self.__b = 0
         self.__K = None # Kernel of data
+
+        self.__labelPair = {} # {-1: label_0, 1: label_1}
+
+    def __dataNormalize(self):
+        # If y is not binary => Reject
+        label = np.unique(self.__y.A)
+        if len(label) > 2:
+            raise NameError('Too many class')
+        if len(label) < 2:
+            raise NameError('Must have two class')
+
+        # Temp labels
+        self.__labelPair[-1] = label[0]
+        self.__labelPair[1] = label[1]        
+
+        self.__y[self.__y == label[0]] = -1
+        self.__y[self.__y == label[1]] = 1
+
+        # Normalize X to -1 ~ 1
+        if(self.__norm):
+            max_x = np.max(self.__X)
+            min_x = np.min(self.__X)
+
+            self.__X -= min_x
+            self.__X = (self.__X * 2 / (max_x - min_x)) - 1
 
     # Kernel function => thansfer to higher dimension
     def __kernelTrans(self, X, Xi):
@@ -186,6 +209,8 @@ class SVM:
         self.__X = np.mat(X)
         self.__y = np.mat(y).T
 
+        self.__dataNormalize() # Normalize X to [-1, 1] and transform y to {-1, 1}
+
         n_samples = np.shape(X)[0]
         self.__n_samples = n_samples
         self.__error_cache = np.mat(np.zeros((n_samples, 2)))
@@ -212,8 +237,8 @@ class SVM:
         for i in range(m):
             kernelEval = self.__kernelTrans(self.support_vectors, X[i, :])
             predict = kernelEval.T * np.multiply(self.support_vector_labels, self.__alphas[self.__svInd]) + self.__b
-            #print(int(np.sign(predict)))
-            predictions.append(int(np.sign(predict)))
+            original_pred = self.__labelPair[int(np.sign(predict))] # Transfer back to original label (maybe not -1 and 1)
+            predictions.append(original_pred)
         return np.array(predictions)
 
     def score(self, X, y):
@@ -228,19 +253,19 @@ def loadData(path):
     label = np.array(inputData['label'])
     data = np.array(inputData.drop(['label'], 1))
 
-    # Use a threshold to binarize data => Nomalization
-    # (Improve accuracy from 0.1 to 0.9)
+    # Use a threshold to binarize data (idea: to ignore unnecessary detail (shade of pixel))
+    # (Somehow will gain more accuracy)
     data[data<=100] = -1
     data[data>100] = 1
 
-    label[label>0] = 1
-    label[label==0] = -1
+    label[label>0] = 1 # Simplify our dataset to binary
+    #label[label==0] = -1 # Now label will auto thransfer to -1 and 1
 
     data_train, data_test, label_train, label_test = train_test_split(data, label, test_size=0.3, random_state=87)
 
     # Use last 5000 data as testing set, the rest of them as training set
-    # data_train = data[:, :-5000]
-    # data_test = data[:, -5000:]
+    # data_train = data[:-5000, :]
+    # data_test = data[-5000:, :]
     # label_train = label[:-5000]
     # label_test = label[-5000:]
 
