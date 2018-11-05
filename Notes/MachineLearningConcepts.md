@@ -22,10 +22,11 @@
     * [Reducing Loss](#Reducing-Loss)
         * [Learning Rate](#Learning-Rate)
         * [Gradient Descent](#Gradient-Descent)
-    * [Other Learning Method](#Other-Learning-Method)
+    * [Other Learning Method (Task)](#Other-Learning-Method)
         * [Cost-sensitive Learning](#Cost-sensitive-Learning)
         * [Lazy Learning](#Lazy-Learning)
         * [Incremental Learning (Online Learning)](#Incremental-Learning-(Online-Learning))
+        * [Multi-label Classification](#Multi-label-Classification)
 
 ## Data Preprocessing
 
@@ -114,17 +115,23 @@ Solution
 
 ### Binary to Multi-class
 
-Sometimes a classification algorithm is originally designed to be a binary classifier (e.g. Logistic Regression, SVM).
+* [Wiki - Multiclass classification](https://en.wikipedia.org/wiki/Multiclass_classification)
+* [pdf - Lecture 18: Multiclass Support Vector Machines](http://math.arizona.edu/~hzhang/math574m/2017Lect18_msvm.pdf)
 
-If we want to use a biary classifier do multi-class classification thing. We have some trick.
+While some classification algorithms naturally permit the use of more than two classes, others are by nature binary algorithms; these can, however, be turned into multinomial classifiers by a variety of strategies.
 
-#### One to All (One to Rest, OVR)
+**Main Ideas**
+
+* Decompose the multiclass classification problem into multiple binary classification problems
+* Use the majority voting principle (a combined decision from the committee) to predict the label
+
+#### One-vs-rest (one-vs-all) Approaches
 
 Tutorial:
 
 * [Lecture 6.7 — Logistic Regression | MultiClass Classification OneVsAll — [Andrew Ng]](https://www.youtube.com/watch?v=-EIfb6vFJzc)
 
-#### One to One (OVO)
+#### Pairwise (one-vs-one, all-vs-all) Approaches
 
 ## Model Evaluation
 
@@ -242,3 +249,7 @@ ROC stands for Receiver Operating Characteristic
 ### Lazy Learning
 
 ### Incremental Learning (Online Learning)
+
+### Multi-label Classification
+
+[Wiki - Multi-label Classification](https://en.wikipedia.org/wiki/Multi-label_classification)
