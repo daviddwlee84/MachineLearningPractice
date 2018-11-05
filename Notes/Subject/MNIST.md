@@ -54,17 +54,29 @@ Use the last 50 row as training data
 
 Model                     |Kernel|Accuracy|Parameters
 --------------------------|------|--------|----------------
-SVM From Scratch          |Linear|1.0     |C = 1, tol = 0.001
+Binary SVM From Scratch   |Linear|1.0     |C = 1, tol = 0.001
 
 Use the last 5000 row as training data
 
 Model                     |Kernel|Accuracy|Parameters
 --------------------------|------|--------|----------------
-SVM From Scratch          |Linear|0.9713  |C = 1, tol = 0.001
-SVM From Scratch          |RBF   |0.8960  |C = 5, gamma = 0.05, tol = 0.001
+Binary SVM From Scratch   |Linear|0.9713  |C = 1, tol = 0.001
+Binary SVM From Scratch   |RBF   |0.8960  |C = 5, gamma = 0.05, tol = 0.001
 
 Ps. The cost of calculating RBF kernel of all training sample is too high to take. I haven't realize why sklearn can calculate so fast.
+
+### Multi-class Classifier
+
+Use the last 500 row as training data
+Use the last 5500~500 row as testing data
+
+Model                     |Kernel|Accuracy|Parameters
+--------------------------|------|--------|----------------
+OVR SVM From Scratch      |Linear|0.7886  |C = 1, tol = 0.001
+OVR SVM From Scratch      |Linear|0.7266  |C = 100, tol = 0.001
+OVR SVM From Scratch      |RBF   |0.7888  |C = 1, gamma = 1.3, tol = 0.0001
 
 ## Example
 
 * [SVM MNIST handwritten digit classification](https://plon.io/explore/svm-mnist-handwritten-digit/USpQjoNcO8QHlmG6T)
+    * [Github](https://github.com/ksopyla/svm_mnist_digit_classification)

@@ -28,7 +28,7 @@ Sales Transactions|[k-Means](Algorithm/KMeans/KMeans.md)|[Sales Transactions Dat
 Frequent Itemset Mining|[FP-Growth](Algorithm/FP-Growth/FP-Growth.md)|[Retail Market Basket Data Set](http://fimi.ua.ac.be/data/) ([File](Datasets/retail.csv))|[FP-Growth From Scratch](Algorithm/FP-Growth/FP-Growth_Frequent_Itemset_Mining/FP-Growth_Frequent_Itemset_Mining_FromScratch.py)|[Notes](Notes/Subject/Frequent_Itemset_Mining.md)
 Automobile|[PCA](Algorithm/PCA/PCA.md)|[Automobile Data Set](http://archive.ics.uci.edu/ml/datasets/Automobile) ([File](Datasets/imports-85.csv))|[PCA From Scratch](Algorithm/PCA/PCA_Automobile/PCA_Automobile_FromScratch.py), [PCA Scikit Learn](Algorithm/PCA/PCA_Automobile/PCA_Automobile_sklearn.py)|[Notes](Notes/Subject/Automobile.md)
 Anonymous Microsoft Web Data|[SVD](Algorithm/SVD/SVD.md)|[Anonymous Microsoft Web Data Data Set](https://archive.ics.uci.edu/ml/datasets/Anonymous+Microsoft+Web+Data) ([File](Datasets/anonymous-msweb.csv))||[Notes](Notes/Subject/Anonymous_Microsoft_Web_Data.md)
-Handwriting Digit|[SVM](Algorithm/SVM/SVM.md)|[MNIST](http://yann.lecun.com/exdb/mnist/) ([File](Datasets/MNIST.csv))|[Binary SVM From Scratch](Algorithm/SVM/SVM_MNIST/SVM_MNIST_Binary_FromScratch.py)|[Notes](Notes/Subject/MNIST.md)
+Handwriting Digit|Binary SVM, Multi-class SVM|[MNIST](http://yann.lecun.com/exdb/mnist/) ([File](Datasets/MNIST.csv))|[Binary SVM From Scratch](Algorithm/SVM/SVM_MNIST/SVM_MNIST_Binary_FromScratch.py), [Multi-class SVM From Scratch](Algorithm/SVM/SVM_MNIST/SVM_MNIST_Multiclass_FromScratch.py)|[Notes](Notes/Subject/MNIST.md)
 Labor Relations|-|[Labor Relations Data Set](https://archive.ics.uci.edu/ml/datasets/Labor+Relations)||[Notes](Notes/Subject/Labor_Relations.md)
 
 ## Machine Learning Categories
@@ -96,8 +96,10 @@ Labor Relations|-|[Labor Relations Data Set](https://archive.ics.uci.edu/ml/data
     * [Learning Rate](Notes/MachineLearningConcepts.md#Learning-Rate)
     * [Gradient Descent](Notes/MachineLearningConcepts.md#Gradient-Descent)
 * [Other Learning Method](Notes/MachineLearningConcepts.md#Other-Learning-Method)
+    * [Cost-sensitive Learning](Notes/MachineLearningConcepts#Cost-sensitive-Learning)
     * [Lazy Learning](Notes/MachineLearningConcepts.md#Lazy-Learning)
     * [Incremental Learning (Online Learning)](Notes/MachineLearningConcepts.md#Incremental-Learning-(Online-Learning))
+    * [Multi-label Classification](Notes/MachineLearningConcepts#Multi-label-Classification)
 
 ### Categorized
 
