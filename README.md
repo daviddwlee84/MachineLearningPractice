@@ -51,13 +51,13 @@ Labor Relations|-|[Labor Relations Data Set](https://archive.ics.uci.edu/ml/data
 ### Cosider the desired output of a ML system
 
 * *Classification*
-    * `Logistic Regression`
+    * `Logistic Regression` (optimization algo.)
     * `k-Nearest Neighbors (kNN)`
-    * `Support Vector Machine (SVM)` - [Deduction](Algorithm/SVM/SVMDeduction.md)
+    * `Support Vector Machine (SVM)` - [Deduction](Algorithm/SVM/SVMDeduction.md) (optimization algo.)
     * `Naive Bayes`
     * `Decision Tree (ID3, C4.5, CART)`
 * *Regression*
-    * `Linear Regression`
+    * `Linear Regression` (optimization algo.)
     * `Tree (CART)`
 * *Clustering*
     * `k-Means`

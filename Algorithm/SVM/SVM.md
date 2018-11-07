@@ -169,6 +169,10 @@ If you have extremely large data and face this difficulty, please contact us. We
 
 When using large -e, you may want to check if -h 0 (no shrinking) or -h 1 (shrinking) is faster. See a related question below.
 
+## Vary Large Datasets
+
+* Paper - [Core Vector Machines: Fast SVM Training on Very Large Data Sets](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.445.4342&rep=rep1&type=pdf)
+
 ## Links
 
 * [**CS229 Simplified SMO Algorithm**](http://math.unt.edu/~hsp0009/smo.pdf)
