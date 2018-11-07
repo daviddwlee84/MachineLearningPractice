@@ -2,6 +2,8 @@
 
 Some practices using statistical machine learning technique based on some dataset.
 
+To see more detail or example about deep learning, you can checkout my [Deep Learning](https://github.com/daviddwlee84/DeepLearningPractice) repository.
+
 ## Environment
 
 * Using Python 3
@@ -123,6 +125,7 @@ Labor Relations|-|[Labor Relations Data Set](https://archive.ics.uci.edu/ml/data
 
 ### Topic
 
+* Kernel Usages
 * [Convex Optimization](Notes/Math/Topic/ConvexOptimization.md)
 
 ### Categories
@@ -161,15 +164,16 @@ Labor Relations|-|[Labor Relations Data Set](https://archive.ics.uci.edu/ml/data
     * Convex Optimization
     * Constrained Optimization
     * Lagrange Multipliers
+    * Kernel
 
-## Books Recommand
+## Books Recommendation
 
 ### Machine Learning
 
 * [**Machine Learning in Action**](https://www.manning.com/books/machine-learning-in-action)
     * [Source Code](https://manning-content.s3.amazonaws.com/download/3/29c6e49-7df6-4909-ad1d-18640b3c8aa9/MLiA_SourceCode.zip)
-* 統計學習方法 (李航)
-* 機器學習 (周志華)
+* 統計學習方法 (李航)
+* 機器學習 (周志華)
 
 ### Mathematics
 
@@ -199,6 +203,7 @@ Labor Relations|-|[Labor Relations Data Set](https://archive.ics.uci.edu/ml/data
 
 * [Google Machine Learning Crash Course](https://developers.google.com/machine-learning/crash-course/)
 * [Kaggle Learn Machine Learning](https://www.kaggle.com/learn/machine-learning)
+* [Microsoft Professional Program - Artificial Intelligence track](https://academy.microsoft.com/en-us/professional-program/tracks/artificial-intelligence/)
 
 #### MOOC
 
