@@ -79,6 +79,16 @@ ICA stands for Independent Component Analysis
 * The sources are assumed to be statically independent, unlike PCA, which assumes the data is uncorrelated.
 * If there are fewer sources than the amount of our observed data, we'll get a dimensionality reduction.
 
+#### PCA vs SVD
+
+* PCA
+    * find the eigenvalues of a matrix
+        * these eigenvalues told us what features were most important in our data set
+* SVD
+    * find the singular values in $\Sigma$
+        * singular values and eigenvlues are related
+        * singular vlues are the square root of the eigenvlues of $AA^T$
+
 ### Label Encoding
 
 * [Scikit Learn - 4.9 Transforming the prediction target (y)](http://scikit-learn.org/dev/modules/preprocessing_targets.html#preprocessing-targets)

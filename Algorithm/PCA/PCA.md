@@ -98,6 +98,11 @@ it follows that $\vec{y_1}$ and $\vec{y_2}$ are orthogonal.
 
 [Principal component analysis - Wikipedia](https://en.wikipedia.org/wiki/Principal_component_analysis)
 
+### Tutorial
+
+* [**Siraj Raval - Dimensionality Reduction**](https://www.youtube.com/watch?v=jPmV3j1dAv4)
+    * [Github](https://github.com/llSourcell/Dimensionality_Reduction)
+
 ### Scikit Learn
 
 * [Decomposing signals in components (matrix factorization problems)](http://scikit-learn.org/stable/modules/decomposition.html#decompositions)

@@ -5,6 +5,8 @@
 #
 # Detail:
 #   Total Data = 205
+#
+# PS. only Dimensionality Reduction
 
 import numpy as np
 import pandas as pd # Read csv
