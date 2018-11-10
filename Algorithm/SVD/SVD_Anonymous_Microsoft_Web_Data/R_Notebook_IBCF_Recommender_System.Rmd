@@ -1,0 +1,403 @@
+---
+title: "Recommendation System based on Anonymous Micorsoft Web Data"
+output: html_notebook
+---
+
+## Importing the data
+
+### Load the packages
+
+```{r}
+library('data.table') # manipulates the data
+library('ggplot2') # builds charts
+library('recommenderlab') # recommendation engines
+library('countrycode') # contains the country code names
+```
+
+### Load the file
+
+```{r}
+file_in <- "../../../Datasets/anonymous-msweb.csv"
+
+table_in <- read.csv(file_in, header = FALSE)
+head(table_in)
+```
+
+
+```{r}
+# The first two columns contain the user IDs and their purchases.
+# Drop the other columns
+
+table_users <- table_in[, 1:2]
+
+# Convert it into a data table
+
+table_users <- data.table(table_users)
+
+# assign the column names and select the rows containing either users or items
+
+setnames(table_users, 1:2, c("category", "value"))
+table_users <- table_users[category %in% c("C", "V")]
+head(table_users)
+```
+
+## Defining a rating matrix
+
+Define a table having a row for each item and a column for each purchase.
+
+1. Label the cases
+2. Define a table in the long format
+3. Define a table in the wide format
+4. Define the rating matrix
+
+Incrementing the index of 1 whenever there is a row with a new user
+
+```{r}
+table_users[, chunk_user := cumsum(category == "C")]
+head(table_users)
+```
+
+Define a table in which rows correspond to the purchases.
+
+```{r}
+table_long <- table_users[, list(user = value[1], item = value[-1]), by = "chunk_user"]
+head(table_long)
+```
+
+Define a table having a row for each user and a column for each item.
+
+The values are equal to 1 if the item has been purchased, and 0 otherwise.
+
+```{r}
+table_long[, value := 1]
+table_wide <- reshape(data = table_long,   # This is the table in long format.
+                      direction = "wide",  # This shows whenever we are reshaping from long to wide or otherwise.
+                      idvar = "user",      # This is the variable identifying the group, which, in this case, is the user.
+                      timevar = "item",    # This is the variable identifying the record within the same group. In this case, it's the item.
+                      v.names = "value")   # This is name of the values. In this ase, it's the rating that is always equal to one. Missing user-item combinations will be NA values.
+head(table_wide[, 1:5, with = FALSE])
+```
+
+```{r}
+#  keep only the columns containing ratings. (the user name will be the matrix row names)
+vector_users <- table_wide[, user]
+table_wide[, user := NULL]
+table_wide[, chunk_user := NULL]
+
+# To have the column names equal to the item names
+setnames(x = table_wide,
+         old = names(table_wide),
+         new = substring(names(table_wide), 7))
+
+# Set the row names equal to the user names
+matrix_wide <- as.matrix(table_wide)
+rownames(matrix_wide) <- vector_users
+head(matrix_wide[, 1:6])
+```
+
+```{r}
+# coercing matrix_wide into a binary rating matrix
+
+matrix_wide[is.na(matrix_wide)] <- 0
+ratings_matrix <- as(matrix_wide, "binaryRatingMatrix")
+ratings_matrix
+```
+
+take a look at the matrix
+
+```{r}
+image(ratings_matrix[1:50, 1:50], main = "Binary rating matrix")
+```
+
+as expected, the matrix is sparse
+
+```{r}
+# Visualize the distributions of the number of users purchasing an item
+n_users <- colCounts(ratings_matrix)
+qplot(n_users) + stat_bin(binwidth = 100) + ggtitle("Distribution of the number of users")
+```
+
+exclude the outliers
+
+```{r}
+qplot(n_users[n_users < 100]) + stat_bin(binwidth = 10) + ggtitle("Distribution of the number of users")
+```
+  
+defining a minimum number of purchases
+
+```{r}
+ratings_matrix <- ratings_matrix[, colCounts(ratings_matrix) >= 5]
+ratings_matrix
+```
+
+there might be users that have purchased only items that we removed
+
+```{r}
+# The users with no purchases
+sum(rowCounts(ratings_matrix) == 0)
+```
+
+only keep users that have purchased at least five items
+
+```{r}
+ratings_matrix <- ratings_matrix[rowCounts(ratings_matrix) >= 5, ]
+ratings_matrix
+```
+
+## Extracting item attributes
+
+```{r}
+table_in <- data.table(table_in)
+table_items <- table_in[V1 == "A"]
+head(table_items)
+```
+
+* V2: Item ID
+* V4: Item description
+* V5: Web page URL
+
+extract and rename column names
+
+```{r}
+table_items <- table_items[, c(2, 4, 5), with = FALSE]
+setnames(table_items, 1:3, c("id", "description", "url"))
+table_items <- table_items[order(id)]
+head(table_items)
+```
+
+```{r}
+table_items[, category := "product"]
+
+# categorize as region all the records whose description is in name_countries
+name_countries <- c(codelist$country.name,
+                    "Taiwan", "UK", "Russia", "Venezuela",
+                    "Slovenija", "Caribbean", "Netherlands (Holland)",
+                    "Europe", "Central America", "MS North Africa")
+table_items[description %in% name_countries, category := "region"]
+```
+
+```{r}
+table_items[grepl("Region", description), category := "region"]
+head(table_items)
+```
+
+```{r}
+table_items[, list(n_items = .N), by = category]
+```
+
+## Building the model
+
+split the data into the training and the test set
+
+```{r}
+which_train <- sample(x = c(TRUE, FALSE),
+                      size = nrow(ratings_matrix),
+                      replace = TRUE,
+                      prob = c(0.8, 0.2))
+recc_data_train <- ratings_matrix[which_train, ]
+recc_data_test <- ratings_matrix[!which_train, ]
+```
+
+build IBCF model using Recommender (set the distance method to Jaccard)
+
+(Item-based Collaborative Filtering)
+
+```{r}
+recc_model <- Recommender(data = recc_data_train,
+                          method = "IBCF",
+                          parameter = list(method = "Jaccard"))
+```
+
+The engine of IBCF is based on a similarity matrix about the items
+
+extract the matrix from the sim element in the slot model
+
+```{r}
+class(recc_model@model$sim)
+dim(recc_model@model$sim)
+```
+
+the matrix belongs to the dgCMatrix class, and it is square
+
+```{r}
+image(recc_model@model$sim)
+```
+
+```{r}
+range(recc_model@model$sim)
+```
+
+To combine the distance matrix with the item descripitons:
+
+1. Define a similarity matrix based on the purchases
+2. Define a similarity matrix based on the item descriptions
+3. Combine the two matrices
+
+Define the purchases similarity matrix -> convert the dgCMatrix object into matrix
+
+```{r}
+dist_ratings <- as(recc_model@model$sim, "matrix")
+```
+
+To build the matrix based on item desciptions (dist function)
+
+* 1, if the two items belong to the same category
+* 0, if the two items belong to different categories
+
+build a similarity matrix, and we have a distance matrix
+
+```{r}
+dist_category <- table_items[, 1 - dist(category == "product")]
+class(dist_category)
+```
+
+convert dist object into a matrix
+
+```{r}
+dist_category <- as(dist_category, "matrix")
+```
+
+```{r}
+dim(dist_category)
+dim(dist_ratings)
+```
+
+In order to combine dist_category with dist_ratings, we need to have the same items. And they need to be sorted in the same way.
+
+1. Make sure that both the matrices have hte item names in their row and column names
+2. Extract the row and column names from dist_ratings
+3. Subset and order dist_category according to the names of dist_ratings
+
+```{r}
+# Add row and column names to dist_category
+rownames(dist_category) <- table_items[, id]
+colnames(dist_category) <- table_items[, id]
+```
+
+extract the names from dist_ratings and subset dist_category
+
+```{r}
+vector_items <- rownames(dist_ratings)
+dist_category <- dist_category[vector_items, vector_items]
+```
+
+check whether the tow matrices match
+
+```{r}
+identical(dim(dist_category), dim(dist_ratings))
+identical(rownames(dist_category), rownames(dist_ratings))
+identical(colnames(dist_category), colnames(dist_ratings))
+```
+
+```{r}
+image(dist_category)
+```
+
+* the matrix contains only 0s and 1s
+* it's based on two categories, so there are clear patterns
+* the matrix is symmetric
+
+Combine the two tables with a weight average
+
+```{r}
+weight_category <- 0.25 # set the weight to 25 percent
+
+dist_tot <- dist_category * weight_category + dist_ratings * (1 - weight_category)
+
+image(dist_tot)
+```
+
+White dot representing items => that are vary similar
+
+see the patterns of dist_category in the background
+
+```{r}
+recc_model@model$sim <- as(dist_tot, "dgCMatrix")
+```
+
+```{r}
+n_recommended <- 10
+recc_predicted <- predict(object = recc_model,
+                          newdata = recc_data_test,
+                          n = n_recommended)
+
+head(recc_predicted@itemLabels)
+```
+
+display the item desctipiton
+
+```{r}
+# 1. Define a data frame having a column with the ordered item labels
+table_labels <- data.frame(id = recc_predicted@itemLabels)
+
+# 2. Left-join between table_labels and table_items.
+# (Note the argument sort = FALSE that does not let us re-sort the table)
+table_labels <- merge(table_labels, table_items,
+                      by = "id", all.x = TRUE, all.y = FALSE,
+                      sort = FALSE)
+
+# 3. Convert the description from factor to character
+descriptions <- as(table_labels$description, "character")
+
+head(table_labels)
+```
+
+extract the recommendations
+
+```{r}
+# do it for the first user
+recc_user_1 <- recc_predicted@items[[1]]
+items_user_1 <- descriptions[recc_user_1]
+head(items_user_1)
+```
+
+Define a table with the recommendations to all users.
+
+* Each column corresponds to a user
+* Each row to a recommended item
+* Having set n_recommended to 10, the table should have 10 rows
+
+In order to define structured table, we need to replace the missing recommendations with empty strings.
+
+```{r}
+recc_matrix <- sapply(recc_predicted@items, function(x){
+  recommended <- descriptions[x]
+  c(recommended, rep("", n_recommended - length(recommended)))
+})
+dim(recc_matrix)
+```
+
+```{r}
+head(recc_matrix[, 1:3])
+```
+
+count how many times an item has been recommened
+
+```{r}
+table_recomm_per_item <- table(recc_matrix)
+recomm_per_item <- as(table_recomm_per_item, "numeric")
+
+bin_recomm_per_item <- cut(recomm_per_item,
+                           breaks = c(0, 10, 20, 100, max(recomm_per_item)))
+
+qplot(bin_recomm_per_item) + ggtitle("Recommendations per item")
+```
+
+identify the most popular items
+
+```{r}
+# sorting recomm_per_item
+recomm_per_item_sorted <- sort(table_recomm_per_item, decreasing = TRUE)
+recomm_per_item_top <- head(recomm_per_item_sorted, n = 4)
+
+table_top <- data.frame(
+  name = names(recomm_per_item_top),
+  n_recomm = recomm_per_item_top
+)
+
+table_top
+```
+
+## Evaluating and optimizing the model
+
+TBD
