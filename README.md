@@ -121,6 +121,13 @@ Labor Relations|-|[Labor Relations Data Set](https://archive.ics.uci.edu/ml/data
     * Evaluation Metrics
         * [Clustering Metrics](Notes/MachineLearningConcepts.md#Clustering)
 
+### Specific Field
+
+* [Recommendation System](Notes/Recommendation_System.md)
+    * Collaborative Filtering
+* [Information Retrieval](Notes/Information_Retrieval.md)
+    * Latent Semantic Analysis (LSA) aka. Latent Semantic Indexing (LSI)
+
 ## Machine Learning Mathematics
 
 ### Topic
@@ -179,6 +186,7 @@ Labor Relations|-|[Labor Relations Data Set](https://archive.ics.uci.edu/ml/data
 
 * Linear Algebra with Applications (Steven Leon)
 * Convex Optimization (Stephen Boyd & Lieven Vandenberghe)
+* Numerical Linear Algebra (L. Trefethen & D. Bau III)
 
 ## Resources
 
