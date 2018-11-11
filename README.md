@@ -8,6 +8,8 @@ To see more detail or example about deep learning, you can checkout my [Deep Lea
 
 * Using Python 3
 
+(most of the relative paths link are according to the repository root)
+
 ### Dependencies
 
 * `numpy`: For low-level math operations

@@ -37,7 +37,7 @@ def standEstimation(dataMat, user, similarityMeasurement, item):
         overLap = np.nonzero(np.logical_and(dataMat[:, item].A > 0, dataMat[:, j].A > 0))[0]
         if len(overLap) == 0: similarity = 0
         else: similarity = similarityMeasurement(dataMat[overLap, item], dataMat[overLap, j])
-        print("The %d and %d similarity is: %f" % (item, j, similarity))
+        # print("The %d and %d similarity is: %f" % (item, j, similarity))
         simTotal += similarity
         ratSimTotal += similarity * userRating
     if simTotal == 0: return 0
@@ -50,7 +50,7 @@ def svdEstimation(dataMat, user, similarityMeasurement, item, xformedItems):
         userRating = dataMat[user, j]
         if userRating == 0 or j == item: continue
         similarity = similarityMeasurement(xformedItems[item, :].T, xformedItems[j, :].T)
-        print("The %d and %d similarity is: %f" % (item, j, similarity))
+        # print("The %d and %d similarity is: %f" % (item, j, similarity))
         simTotal += similarity
         ratSimTotal += similarity * userRating
     if simTotal == 0: return 0
@@ -105,10 +105,11 @@ def loadExData1_2():
     return np.mat(matrix)
 
 def textbook_example():
+    print("\n=== Standard Estimation ===\n")
     ## Machine Learning in Action Example
     ex_data = loadExData1_1()
     U, Sigma, VT = np.linalg.svd(ex_data) # This will consume all your RAM
-    print(Sigma)
+    print('Sigma:', Sigma)
 
     # Drop the last two value since they're so small to ignore
     Sig3 = np.mat([[Sigma[0], 0, 0],
@@ -119,22 +120,22 @@ def textbook_example():
     approx_mat = U[:, :3] * Sig3 * VT[:3, :]
 
     print('Original matrix\n', ex_data)
-    print('Apprximate matrix by SVD\n', approx_mat)
+    print('Apprximate matrix by SVD\n (round to 2 decimals)', np.round(approx_mat, decimals=2))
 
-    # Euclidian Similarity
-    print(euclidianDistanceSimilarity(approx_mat[:, 0], approx_mat[:, 4]))
-    print(euclidianDistanceSimilarity(approx_mat[:, 0], approx_mat[:, 0]))
-    print(pearsonCorrelationSimilarity(approx_mat[:, 0], approx_mat[:, 4]))
-    print(pearsonCorrelationSimilarity(approx_mat[:, 0], approx_mat[:, 0]))
-    print(cosineSimilarity(approx_mat[:, 0], approx_mat[:, 4]))
-    print(cosineSimilarity(approx_mat[:, 0], approx_mat[:, 0]))
+    # Similarity test
+    # print(euclidianDistanceSimilarity(approx_mat[:, 0], approx_mat[:, 4]))
+    # print(euclidianDistanceSimilarity(approx_mat[:, 0], approx_mat[:, 0]))
+    # print(pearsonCorrelationSimilarity(approx_mat[:, 0], approx_mat[:, 4]))
+    # print(pearsonCorrelationSimilarity(approx_mat[:, 0], approx_mat[:, 0]))
+    # print(cosineSimilarity(approx_mat[:, 0], approx_mat[:, 4]))
+    # print(cosineSimilarity(approx_mat[:, 0], approx_mat[:, 0]))
 
     ex_data2 = loadExData1_2()
 
     # Recommend user 2
-    print(recommend(ex_data2, 2, N=3, simMeas=euclidianDistanceSimilarity, estMethod='standEstimation'))
-    print(recommend(ex_data2, 2, N=3, simMeas=pearsonCorrelationSimilarity, estMethod='standEstimation'))
-    print(recommend(ex_data2, 2, N=3, simMeas=cosineSimilarity, estMethod='standEstimation'))
+    print("Eucilidian similarity:", recommend(ex_data2, 2, N=3, simMeas=euclidianDistanceSimilarity, estMethod='standEstimation'))
+    print("Pearson similarity:", recommend(ex_data2, 2, N=3, simMeas=pearsonCorrelationSimilarity, estMethod='standEstimation'))
+    print("Cos similarity:", recommend(ex_data2, 2, N=3, simMeas=cosineSimilarity, estMethod='standEstimation'))
 
 def loadExData2():
     matrix = [[2, 0, 0, 4, 4, 0, 0, 0, 0, 0, 0],
@@ -151,11 +152,17 @@ def loadExData2():
     return np.mat(matrix)
 
 def textbook_example2():
+    print("\n=== SVD Estimation ===\n")
     data = loadExData2()
+
+    U, Sigma, VT = np.linalg.svd(data)
+    U_new, Sigma_new, VT_new = keepSingularValue(U, Sigma, VT, energy=0.9)
+    print('90%% of the energy expressed in the matrix is the first %d sigma' % len(Sigma_new))
+
     # Recommend user 1
-    print(recommend(data, 1, N=3, simMeas=euclidianDistanceSimilarity, estMethod='svdEstimation'))
-    print(recommend(data, 1, N=3, simMeas=pearsonCorrelationSimilarity, estMethod='svdEstimation'))
-    print(recommend(data, 1, N=3, simMeas=cosineSimilarity, estMethod='svdEstimation'))
+    print("Eucilidian similarity:", recommend(data, 1, N=3, simMeas=euclidianDistanceSimilarity, estMethod='svdEstimation'))
+    print("Pearson similarity:", recommend(data, 1, N=3, simMeas=pearsonCorrelationSimilarity, estMethod='svdEstimation'))
+    print("Cos similarity:", recommend(data, 1, N=3, simMeas=cosineSimilarity, estMethod='svdEstimation'))
 
 def loadWebData():
     pageId = []
@@ -181,19 +188,20 @@ def loadRatingsMatrix():
 
 # Keep default 90% of the energy expressed in the matrix
 def keepSingularValue(U, Sigma, VT, energy=0.9):
-    target = sum(Sigma) * energy
+    target = sum(Sigma**2) * energy
     temp_sum = 0
-    for i, sigma in enumerate(Sigma):
+    for i, sigma in enumerate(Sigma**2):
         temp_sum += sigma
         if temp_sum > target:
             break
     return U[:, :i], Sigma[:i], VT[:i, :]
     
 def main():
-    #textbook_example()
+    textbook_example()
 
-    #textbook_example2()
+    textbook_example2()
 
+    print("\n=== Anonymous Microsoft Web Data ===\n")
     ## Anonymous Microsoft Web Data
     # Load Data
     matrix = loadRatingsMatrix()
@@ -202,7 +210,7 @@ def main():
     # Truncated SVD
     U, Sigma, VT = np.linalg.svd(data, full_matrices=False) # Compute the entire matrix will consume all your RAM
     #U, Sigma, VT = svds(csc_matrix(data, dtype=float), k = 165)
-    U_new, Sigma_new, VT_new = keepSingularValue(U, Sigma, VT, energy=0.8)
+    U_new, Sigma_new, VT_new = keepSingularValue(U, Sigma, VT, energy=0.9)
     print('90%% of the energy expressed in the matrix is the first %d sigma' % len(Sigma_new))
 
     table = loadWebData()
@@ -216,10 +224,10 @@ def main():
     print('For user %s with the top %d recommendation' % (matrix.index[user], N))
 
     ids = []
-    for item, percent in result:
+    for item, score in result:
         pageId = matrix.columns[item]
         ids.append(pageId)
-        print('We recommend %s (%.1f %% recommend)' % (pageId, percent * 100))
+        print('We recommend %s (recommendation score: %s)' % (pageId, score))
         print(table.loc[pageId])
 
     print("Recommendation Table\n", table.loc[ids,])

@@ -88,7 +88,7 @@ Model           |Energy|# of sigma
 SVD From Scratch|90%   |165
 SVD From Scratch|80%   |118
 
-You can get a recommendation result as a table (and also information about how we recommend in percentage)
+You can get a recommendation result as a table and the recommendation score
 
 e.g.
 
