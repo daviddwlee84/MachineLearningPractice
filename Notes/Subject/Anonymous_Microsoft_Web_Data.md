@@ -81,10 +81,32 @@ Dataset format:
 
 ## Result
 
-Measure the accuracy of the test subset (30% of instances)
+The ratings matrix is preprocessed by independent R program
 
-Model           |Accuracy
-----------------|--------
+Model           |Energy|# of sigma
+----------------|------|----------
+SVD From Scratch|90%   |165
+SVD From Scratch|80%   |118
+
+You can get a recommendation result as a table (and also information about how we recommend in percentage)
+
+e.g.
+
+```txt
+We recommend X1005 (100.0 % recommend)
+description    "Norway"
+url            "/norge"
+```
+
+```txt
+Recommendation Table
+                    description         url
+X1001         "Support Desktop"  "/support"
+X1002  "End User Produced View"   "/athome"
+X1003          "Knowledge Base"       "/kb"
+X1004    "Microsoft.com Search"   "/search"
+X1005                  "Norway"    "/norge"
+```
 
 ## Book
 

@@ -34,6 +34,14 @@ To calculate the total energy, you add up all the squared singular values. You c
 
 When the data matrix is too large, or you know your data well enough, you can make an assumption like this
 
+### Transform to lower-dimensional space
+
+Use U matrix to transform items data into the lower-dimensional space
+
+$$
+A^\mathrm{(Transformed)}_{n\times k} = A_{n\times m}^T U_{m\times k} \Sigma_{k\times k}
+$$
+
 ## Mathematics Deduction
 
 $$

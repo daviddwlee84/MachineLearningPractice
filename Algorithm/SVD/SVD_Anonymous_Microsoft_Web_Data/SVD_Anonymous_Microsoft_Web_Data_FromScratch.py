@@ -43,13 +43,9 @@ def standEstimation(dataMat, user, similarityMeasurement, item):
     if simTotal == 0: return 0
     else: return ratSimTotal / simTotal
 
-def svdEstimation(dataMat, user, similarityMeasurement, item):
+def svdEstimation(dataMat, user, similarityMeasurement, item, xformedItems):
     n_items = np.shape(dataMat)[1]
     simTotal = 0; ratSimTotal = 0
-    U, Sigma, VT = np.linalg.svd(dataMat, full_matrices=False)
-    U_new, Sigma_new, VT_new = keepSingularValue(U, Sigma, VT)
-    diagonal_mat = np.mat(np.eye(len(Sigma_new)) * Sigma_new) # Create diagonal matrix
-    xformedItems = dataMat.T * U_new * diagonal_mat.I # Create transformed items
     for j in range(n_items):
         userRating = dataMat[user, j]
         if userRating == 0 or j == item: continue
@@ -60,14 +56,32 @@ def svdEstimation(dataMat, user, similarityMeasurement, item):
     if simTotal == 0: return 0
     else: return ratSimTotal / simTotal
 
-def recommend(dataMat, user, N=3, simMeas=cosineSimilarity, estMethod=svdEstimation):
+def recommend(dataMat, user, N=None, simMeas=cosineSimilarity, estMethod='svdEstimation'):
     unratedItems = np.nonzero(dataMat[user, :].A == 0)[1]
     if len(unratedItems) == 0: return "You rated everything"
     itemScores = []
+
+    if estMethod == 'svdEstimation':
+        # SVD Calculations
+        U, Sigma, VT = np.linalg.svd(dataMat, full_matrices=False)
+        U_new, Sigma_new, VT_new = keepSingularValue(U, Sigma, VT)
+        diagonal_mat = np.mat(np.eye(len(Sigma_new)) * Sigma_new) # Create diagonal matrix
+        xformedItems = dataMat.T * U_new * diagonal_mat.I # Create transformed items
+
     for item in unratedItems:
-        estimatedScore = estMethod(dataMat, user, simMeas, item)
+        if estMethod == 'svdEstimation':
+            estimatedScore = svdEstimation(dataMat, user, simMeas, item, xformedItems)
+        elif estMethod == 'standEstimation':
+            estimatedScore = standEstimation(dataMat, user, simMeas, item)
         itemScores.append((item, estimatedScore))
-    return sorted(itemScores, key=lambda jj: jj[1], reverse=True)[:N]
+    
+    recommendations = sorted(itemScores, key=lambda jj: jj[1], reverse=True)
+
+    if not N:
+        # Return all recommendation
+        return recommendations
+    else:
+        return recommendations[:N]
 ########
 
 def loadExData1_1():
@@ -118,9 +132,9 @@ def textbook_example():
     ex_data2 = loadExData1_2()
 
     # Recommend user 2
-    print(recommend(ex_data2, 2, simMeas=euclidianDistanceSimilarity, estMethod=standEstimation))
-    print(recommend(ex_data2, 2, simMeas=pearsonCorrelationSimilarity, estMethod=standEstimation))
-    print(recommend(ex_data2, 2, simMeas=cosineSimilarity, estMethod=standEstimation))
+    print(recommend(ex_data2, 2, N=3, simMeas=euclidianDistanceSimilarity, estMethod='standEstimation'))
+    print(recommend(ex_data2, 2, N=3, simMeas=pearsonCorrelationSimilarity, estMethod='standEstimation'))
+    print(recommend(ex_data2, 2, N=3, simMeas=cosineSimilarity, estMethod='standEstimation'))
 
 def loadExData2():
     matrix = [[2, 0, 0, 4, 4, 0, 0, 0, 0, 0, 0],
@@ -139,13 +153,31 @@ def loadExData2():
 def textbook_example2():
     data = loadExData2()
     # Recommend user 1
-    print(recommend(data, 1, simMeas=euclidianDistanceSimilarity, estMethod=svdEstimation))
-    print(recommend(data, 1, simMeas=pearsonCorrelationSimilarity, estMethod=svdEstimation))
-    print(recommend(data, 1, simMeas=cosineSimilarity, estMethod=svdEstimation))
+    print(recommend(data, 1, N=3, simMeas=euclidianDistanceSimilarity, estMethod='svdEstimation'))
+    print(recommend(data, 1, N=3, simMeas=pearsonCorrelationSimilarity, estMethod='svdEstimation'))
+    print(recommend(data, 1, N=3, simMeas=cosineSimilarity, estMethod='svdEstimation'))
 
-def loadData(path):
-    ratings_matrix = pd.read_csv(path, index_col=0) # the first column is index
-    return np.mat(ratings_matrix)
+def loadWebData():
+    pageId = []
+    description = []
+    url = []
+
+    with open('Datasets/anonymous-msweb.csv', 'r') as webdata_file:
+        lines = webdata_file.read().splitlines()
+        for line in lines:
+            items = line.split(',')
+            if items[0] == 'A':
+                pageId.append('X' + str(items[1]))
+                description.append(items[3])
+                url.append(items[4])
+    
+    webdata_table = pd.DataFrame({'description': description, 'url': url}, index=pageId)
+    return webdata_table
+
+def loadRatingsMatrix():
+    # This is preprocessed data by using R
+    ratings_matrix = pd.read_csv('Datasets/MS_ratings_matrix.csv', index_col=0) # the first column is index
+    return ratings_matrix
 
 # Keep default 90% of the energy expressed in the matrix
 def keepSingularValue(U, Sigma, VT, energy=0.9):
@@ -164,15 +196,33 @@ def main():
 
     ## Anonymous Microsoft Web Data
     # Load Data
-    data = loadData('Datasets/MS_ratings_matrix.csv')
+    matrix = loadRatingsMatrix()
+    data = np.mat(matrix)
 
     # Truncated SVD
     U, Sigma, VT = np.linalg.svd(data, full_matrices=False) # Compute the entire matrix will consume all your RAM
     #U, Sigma, VT = svds(csc_matrix(data, dtype=float), k = 165)
-    U_new, Sigma_new, VT_new = keepSingularValue(U, Sigma, VT, energy=0.9)
+    U_new, Sigma_new, VT_new = keepSingularValue(U, Sigma, VT, energy=0.8)
     print('90%% of the energy expressed in the matrix is the first %d sigma' % len(Sigma_new))
 
-    print(recommend(data, 1, estMethod=svdEstimation))
+    table = loadWebData()
+
+    user = 100
+    N = 5
+
+    result = recommend(data, user, N, simMeas=pearsonCorrelationSimilarity, estMethod='svdEstimation')
+    print(result)
+
+    print('For user %s with the top %d recommendation' % (matrix.index[user], N))
+
+    ids = []
+    for item, percent in result:
+        pageId = matrix.columns[item]
+        ids.append(pageId)
+        print('We recommend %s (%.1f %% recommend)' % (pageId, percent * 100))
+        print(table.loc[pageId])
+
+    print("Recommendation Table\n", table.loc[ids,])
 
 if __name__ == '__main__':
     main()
