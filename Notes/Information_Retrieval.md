@@ -39,18 +39,18 @@ $$
 
 Set-theoretic models represent documents as sets of words or phrases. Similarities are usually derived from set-theoretic operations on those sets.
 
-* [Boolean Model](#Boolean-Model) (布爾)
-* Extended Boolean Model (擴展布爾)
-* Fuzzy Retrieval (模糊)
+* [Boolean Model](#Boolean-Model)
+* [Fuzzy Set Model](#Fuzzy-Set-Model)
+* [Extended Boolean Model](#Extended-Boolean-Model)
 
 **Algebraic Models**:
 
 Algebraic models represent documents and queries usually as vectors, matrices, or tuples. The similarity of the query vector and document vector is represented as a scalar value.
 
-* [Vector Space Model](#Vector-Space-Model) (向量空間)
-* Generalized Vector Space Model (廣義向量)
+* [Vector Space Model](#Vector-Space-Model)
+* [Extended Boolean Model](#Extended-Boolean-Model)
+* [Generalized Vector Space Model](#Generalized-Vector-Space-Model)
 * (Enhanced) Topic-based Vector Space Model
-* Extended Boolean Model <-
 * [Latent Semantic Indexing (LSI) aka. Latent Semantic Analysis (LSA)](#Latent-Semantic-Analysis-(Latent-Semantic-Indexing)) (潛在語意分析)
 
 **Probabilistic Models**:
@@ -321,8 +321,8 @@ $$
 
 * Based on notion of sets
 * Documents are retrieved *only if* they satisfy boolean conditions specified in the query
-* *No ranking* on retrieved documents
-* *Exact match*
+* *No ranking* on retrieved documents (can't have order)
+* *Exact match* (don't support fuzzy match)
 
 **Similarity of documnet and query**:
 
@@ -419,21 +419,72 @@ $$
 \mathit{Sim}(\mathbf{doc}_i, \mathbf{query}) = \cos{\theta} = \frac{\mathbf{doc}_i \cdot \mathbf{query}}{\left\| \mathbf{doc}_i \right\| \left \| \mathbf{query} \right\|}
 $$
 
+### Fuzzy Set Model
+
+* [Wiki - Fuzzy retrieval](https://en.wikipedia.org/wiki/Fuzzy_retrieval)
+* [Wiki - Fuzzy set](https://en.wikipedia.org/wiki/Fuzzy_set)
+
+**Fuzzy Set**:
+
+Operations
+
+* NOT ${\displaystyle \forall x\in {U}:\mu _{\neg {A}}(x)=1-\mu _{A}(x)}$
+* AND ${\displaystyle \forall x\in {U}:\mu _{A\cap {B}}(x)=t(\mu _{A}(x),\mu _{B}(x))}$
+* OR ${\displaystyle \forall x\in {U}:\mu _{A\cup {B}}(x)=s(\mu _{A}(x),\mu _{B}(x))}$
+
 ### Extended Boolean Model
 
 * [Wiki - Extended Boolean model](https://en.wikipedia.org/wiki/Extended_Boolean_model)
+
+The weight of term Kx associated with document dj is measured by its normalized Term frequency
+
+${\displaystyle w_{x,j}=f_{x,j}*{\frac {Idf_{x}}{max_{i}Idf_{i}}}}$
+
+* **P-norms** ($L^\textit{p}\text{-norm}$): extends the notion of distance to include p-distances, where 1 ≤ p ≤ ∞ is a new parameter
+    * p = 1, similarity like vector space model
+    * p = ∞, similarity like fuzzy set model
+
+Euclidean distances similarity
+
+${\displaystyle q_{or}=k_{1}\lor ^{p}k_{2}\lor ^{p}....\lor ^{p}k_{t}}$
+
+$$
+{\displaystyle sim(q_{or},d_{j})={\sqrt[{p}]{\frac {w_{1}^{p}+w_{2}^{p}+....+w_{t}^{p}}{t}}}}
+$$
+
+${\displaystyle q_{and}=k_{1}\land ^{p}k_{2}\land ^{p}....\land ^{p}k_{t}}$
+
+$$
+{\displaystyle sim(q_{and},d_{j})=1-{\sqrt[{p}]{\frac {(1-w_{1})^{p}+(1-w_{2})^{p}+....+(1-w_{t})^{p}}{t}}}}
+$$
+
+Summary
+
+* Include boolean, vector space, fuzzy set in one model (framework)
+
+### Generalized Vector Space Model
+
+* [Wiki - Generalized vector space model](https://en.wikipedia.org/wiki/Generalized_vector_space_model)
+
+Similarity
+
+$$
+{\displaystyle sim(d_{k},q)={\frac {\sum _{j=1}^{n}\sum _{i=1}^{n}w_{i,k}\times wgma_{j,q}\times t_{i}\cdot t_{j}}{{\sqrt {\sum _{i=1}^{n}w_{i,k}^{2}}}\times {\sqrt {\sum _{i=1}^{n}w_{i,q}^{2}}}}}}
+$$
 
 ### Latent Semantic Analysis (Latent Semantic Indexing)
 
 * [Wiki - Latent Semantic Analysis](https://en.wikipedia.org/wiki/Latent_semantic_analysis)
 
-Dimensionality reduction using truncated SVD (aka LSA)
+Dimensionality reduction using **truncated SVD** (aka LSA)
 
-This transformer performs linear dimensionality reduction by means of truncated singular value decomposition (SVD). Contrary to PCA, this estimator does not center the data before computing the singular value decomposition. This means it can work with scipy.sparse matrices efficiently.
-
-In particular, truncated SVD works on term count/tf-idf matrices as returned by the vectorizers in sklearn.feature_extraction.text. In that context, it is known as latent semantic analysis (LSA).
+In particular, truncated SVD works on *term count/tf-idf* matrices. In that context, it is known as latent semantic analysis (LSA).
 
 This estimator supports two algorithms: a fast randomized SVD solver, and a “naive” algorithm that uses ARPACK as an eigensolver on (X * X.T) or (X.T * X), whichever is more efficient.
+
+**Doc-Term Matrix** (like User-Item Rating Matrix in Recommendation System)
+
+Ranked similarity by TF-IDF
 
 ## Evaluation Measures
 
@@ -671,6 +722,10 @@ $$
         * Ch 3.2.2 Boolean Model
         * Ch 3.2.6 Vector Space Model
             * Ch 3.2.5 Document Length Normalization
+        * Ch 3.3.2 Expended Boolean Model
+        * Ch 3.3.3 Model based on Fuzzy Set
+        * Ch 3.4.1 Generalized Vector Space Model
+        * Ch 3.4.2 LSI Model
     * Ch 3.2.3 Term weight
         * Ch 3.2.4 TF-IDF
     * Ch 4 Evaluation
