@@ -8,32 +8,35 @@ To see more detail or example about deep learning, you can checkout my [Deep Lea
 
 * Using Python 3
 
-(most of the relative paths link are according to the repository root)
+(most of the relative path links are according to the repository root)
 
 ### Dependencies
 
 * `numpy`: For low-level math operations
 * `pandas`: For data manipulation
-* `sklearn` - [Scikit Learn](http://scikit-learn.org/): For evaluation metrics
+* `sklearn` - [Scikit Learn](http://scikit-learn.org/): For evaluation metrics, some data preprocessing
 
+For comparison purpose
+
+* `sklearn`: For machine learning models
 * [`cvxopt`](http://cvxopt.org/): For convex optimization problem (for SVM)
+* [`gensim`](https://radimrehurek.com/gensim/index.html): Topic Modelling
 
 ## Projects
 
-Subject|Technique|Dataset|Solution|Notes
--------|---------|-------|--------|-----
-Letter Recognition|[kNN](Algorithm/kNN/kNN.md)|[Letter Recognition Datasets](https://archive.ics.uci.edu/ml/datasets/letter+recognition) ([File](Datasets/letter-recognition.csv))|[kNN From Scratch](Algorithm/kNN/kNN_Letter_Recognition/kNN_Letter_Recognition_FromScratch.py), [kNN Scikit Learn](Algorithm/kNN/kNN_Letter_Recognition/kNN_Letter_Recognition_sklearn.py)|[Notes](Notes/Subject/Letter_Recognition.md)
-Page Blocks Classification|[Decision Tree](Algorithm/DecisionTree/DecisionTree.md)|[Page Blocks Classification Data Set](https://archive.ics.uci.edu/ml/datasets/Page+Blocks+Classification) ([File](Datasets/page-blocks.csv))|[Decision Tree (CART) From Scratch](Algorithm/DecisionTree/DecisionTree_Page_Blocks_Classification/DecisionTree_Page_Blocks_Classification_FromScratch.py), [Decision Tree Scikit Learn](Algorithm/DecisionTree/DecisionTree_Page_Blocks_Classification/DecisionTree_Page_Blocks_Classification_sklearn.py)|[Notes](Notes/Subject/Page_Blocks_Classification.md)
-CSM|[Linear Regression](Algorithm/LinearRegression/LinearRegression.md)|[CSM Dataset (2014 and 2015)](https://archive.ics.uci.edu/ml/datasets/CSM+%28Conventional+and+Social+Media+Movies%29+Dataset+2014+and+2015) ([File](Datasets/2014-and-2015-CSM-dataset.csv))|[Linear Regression From Scratch](Algorithm/LinearRegression/LinearRegression_CSM/LinearRegression_CSM_FromScratch.py), [Linear Regression Scikit Learn](Algorithm/LinearRegression/LinearRegression_CSM/LinearRegression_CSM_sklearn.py)|[Notes](Notes/Subject/CSM.md)
-Nursery|[Naive Bayes](Algorithm/NaiveBayes/NaiveBayes.md)|[Nursery Data Set](https://archive.ics.uci.edu/ml/datasets/nursery) ([File](Datasets/nursery.csv))|[Gaussian Naive Bayes From Scratch](Algorithm/NaiveBayes/NaiveBayes_Nursery/NaiveBayes_Nursery_FromScratch.py), [Gaussian Naive Bayes Scikit Learn](Algorithm/NaiveBayes/NaiveBayes_Nursery/NaiveBayes_Nursery_sklearn.py)|[Notes](Notes/Subject/Nursery.md)
-Post-Operative Patient|[SVM](Algorithm/SVM/SVM.md)|[Post-Operative Patient Data Set](http://archive.ics.uci.edu/ml/datasets/post-operative+patient) ([File](Datasets/post-operative.csv), [Simplified](Datasets/post-operative-binary.csv))|[SVM From Scratch (using cvxopt and simplified dataset)](Algorithm/SVM/SVM_Post_Operative_Patient/SVM_Post_Operative_Patient_Simplified_FromScratch.py), [SVM Scikit Learn](Algorithm/SVM/SVM_Post_Operative_Patient/SVM_Post_Operative_Patient_sklearn.py)|[Notes](Notes/Subject/Postoperative_Patient.md)
-Student Performance|[AdaBoost](Algorithm/AdaBoost/AdaBoost.md)|[Student Performance Data Set](https://archive.ics.uci.edu/ml/datasets/Student+Performance) ([File](Datasets/student-mat.csv))|[AdaBoost From Scratch](Algorithm/AdaBoost/AdaBoost_Student_Performance/AdaBoost_Student_Performance_FromScratch.py), [AdaBoost Scikit Learn](Algorithm/AdaBoost/AdaBoost_Student_Performance/AdaBoost_Student_Performance_sklearn.py)|[Notes](Notes/Subject/Student_Performance.md)
-Sales Transactions|[k-Means](Algorithm/KMeans/KMeans.md)|[Sales Transactions Dataset Weekly](http://archive.ics.uci.edu/ml/datasets/sales_transactions_dataset_weekly) ([File](Datasets/Sales_Transactions_Dataset_Weekly.csv))|[k-Means From Scratch](Algorithm/KMeans/KMeans_Sales_Transactions/KMeans_Sales_Transactions_FromScratch.py), [k-Means Scikit Learn](Algorithm/KMeans/KMeans_Sales_Transactions/KMeans_Sales_Transactions_sklearn.py)|[Notes](Notes/Subject/Sales_Transactions.md)
-Frequent Itemset Mining|[FP-Growth](Algorithm/FP-Growth/FP-Growth.md)|[Retail Market Basket Data Set](http://fimi.ua.ac.be/data/) ([File](Datasets/retail.csv))|[FP-Growth From Scratch](Algorithm/FP-Growth/FP-Growth_Frequent_Itemset_Mining/FP-Growth_Frequent_Itemset_Mining_FromScratch.py)|[Notes](Notes/Subject/Frequent_Itemset_Mining.md)
-Automobile|[PCA](Algorithm/PCA/PCA.md)|[Automobile Data Set](http://archive.ics.uci.edu/ml/datasets/Automobile) ([File](Datasets/imports-85.csv))|[PCA From Scratch](Algorithm/PCA/PCA_Automobile/PCA_Automobile_FromScratch.py), [PCA Scikit Learn](Algorithm/PCA/PCA_Automobile/PCA_Automobile_sklearn.py)|[Notes](Notes/Subject/Automobile.md)
-Anonymous Microsoft Web Data|[SVD](Algorithm/SVD/SVD.md)|[Anonymous Microsoft Web Data Data Set](https://archive.ics.uci.edu/ml/datasets/Anonymous+Microsoft+Web+Data) ([File](Datasets/anonymous-msweb.csv), [Ratings Matrix](Datasets/MS_ratings_matrix.csv) [(by R)](Algorithm/SVD/SVD_Anonymous_Microsoft_Web_Data/Binary_Rating_Matrix.R))|[SVD From Scratch](Algorithm/SVD/SVD_Anonymous_Microsoft_Web_Data/SVD_Anonymous_Microsoft_Web_Data_FromScratch.py), [R Notebook - IBCF Recommender System](Algorithm/SVD/SVD_Anonymous_Microsoft_Web_Data/R_Notebook_IBCF_Recommender_System.Rmd)|[Notes](Notes/Subject/Anonymous_Microsoft_Web_Data.md)
-Handwriting Digit|Binary SVM, Multi-class SVM|[MNIST](http://yann.lecun.com/exdb/mnist/) ([File](Datasets/MNIST.csv))|[Binary SVM From Scratch](Algorithm/SVM/SVM_MNIST/SVM_MNIST_Binary_FromScratch.py), [Multi-class SVM From Scratch](Algorithm/SVM/SVM_MNIST/SVM_MNIST_Multiclass_FromScratch.py)|[Notes](Notes/Subject/MNIST.md)
-Labor Relations|-|[Labor Relations Data Set](https://archive.ics.uci.edu/ml/datasets/Labor+Relations)||[Notes](Notes/Subject/Labor_Relations.md)
+Subject|Technique/Task|Dataset|Solution|Notes
+-------|--------------|-------|--------|-----
+Letter Recognition|kNN / Classification|[Letter Recognition Datasets](https://archive.ics.uci.edu/ml/datasets/letter+recognition) ([File](Datasets/letter-recognition.csv))|[kNN From Scratch](Algorithm/kNN/kNN_Letter_Recognition/kNN_Letter_Recognition_FromScratch.py), [kNN Scikit Learn](Algorithm/kNN/kNN_Letter_Recognition/kNN_Letter_Recognition_sklearn.py)|[Notes](Notes/Subject/Letter_Recognition.md)
+Page Blocks Classification|Decision Tree / Classification|[Page Blocks Classification Data Set](https://archive.ics.uci.edu/ml/datasets/Page+Blocks+Classification) ([File](Datasets/page-blocks.csv))|[Decision Tree (CART) From Scratch](Algorithm/DecisionTree/DecisionTree_Page_Blocks_Classification/DecisionTree_Page_Blocks_Classification_FromScratch.py), [Decision Tree Scikit Learn](Algorithm/DecisionTree/DecisionTree_Page_Blocks_Classification/DecisionTree_Page_Blocks_Classification_sklearn.py)|[Notes](Notes/Subject/Page_Blocks_Classification.md)
+CSM|Linear Regression / Regression|[CSM Dataset (2014 and 2015)](https://archive.ics.uci.edu/ml/datasets/CSM+%28Conventional+and+Social+Media+Movies%29+Dataset+2014+and+2015) ([File](Datasets/2014-and-2015-CSM-dataset.csv))|[Linear Regression From Scratch](Algorithm/LinearRegression/LinearRegression_CSM/LinearRegression_CSM_FromScratch.py), [Linear Regression Scikit Learn](Algorithm/LinearRegression/LinearRegression_CSM/LinearRegression_CSM_sklearn.py)|[Notes](Notes/Subject/CSM.md)
+Nursery|Naive Bayes / Classification|[Nursery Data Set](https://archive.ics.uci.edu/ml/datasets/nursery) ([File](Datasets/nursery.csv))|[Gaussian Naive Bayes From Scratch](Algorithm/NaiveBayes/NaiveBayes_Nursery/NaiveBayes_Nursery_FromScratch.py), [Gaussian Naive Bayes Scikit Learn](Algorithm/NaiveBayes/NaiveBayes_Nursery/NaiveBayes_Nursery_sklearn.py)|[Notes](Notes/Subject/Nursery.md)
+Post-Operative Patient|SVM / Binary Classification|[Post-Operative Patient Data Set](http://archive.ics.uci.edu/ml/datasets/post-operative+patient) ([File](Datasets/post-operative.csv), [Simplified](Datasets/post-operative-binary.csv))|[SVM From Scratch (using cvxopt and simplified dataset)](Algorithm/SVM/SVM_Post_Operative_Patient/SVM_Post_Operative_Patient_Simplified_FromScratch.py), [SVM Scikit Learn](Algorithm/SVM/SVM_Post_Operative_Patient/SVM_Post_Operative_Patient_sklearn.py)|[Notes](Notes/Subject/Postoperative_Patient.md)
+Student Performance|AdaBoost / Classification|[Student Performance Data Set](https://archive.ics.uci.edu/ml/datasets/Student+Performance) ([File](Datasets/student-mat.csv))|[AdaBoost From Scratch](Algorithm/AdaBoost/AdaBoost_Student_Performance/AdaBoost_Student_Performance_FromScratch.py), [AdaBoost Scikit Learn](Algorithm/AdaBoost/AdaBoost_Student_Performance/AdaBoost_Student_Performance_sklearn.py)|[Notes](Notes/Subject/Student_Performance.md)
+Sales Transactions|k-Means / Clustering|[Sales Transactions Dataset Weekly](http://archive.ics.uci.edu/ml/datasets/sales_transactions_dataset_weekly) ([File](Datasets/Sales_Transactions_Dataset_Weekly.csv))|[k-Means From Scratch](Algorithm/KMeans/KMeans_Sales_Transactions/KMeans_Sales_Transactions_FromScratch.py), [k-Means Scikit Learn](Algorithm/KMeans/KMeans_Sales_Transactions/KMeans_Sales_Transactions_sklearn.py)|[Notes](Notes/Subject/Sales_Transactions.md)
+Frequent Itemset Mining|FP-Growth / Frequent Itemsets Mining|[Retail Market Basket Data Set](http://fimi.ua.ac.be/data/) ([File](Datasets/retail.csv))|[FP-Growth From Scratch](Algorithm/FP-Growth/FP-Growth_Frequent_Itemset_Mining/FP-Growth_Frequent_Itemset_Mining_FromScratch.py)|[Notes](Notes/Subject/Frequent_Itemset_Mining.md)
+Automobile|PCA / Dimensionality Reduction|[Automobile Data Set](http://archive.ics.uci.edu/ml/datasets/Automobile) ([File](Datasets/imports-85.csv))|[PCA From Scratch](Algorithm/PCA/PCA_Automobile/PCA_Automobile_FromScratch.py), [PCA Scikit Learn](Algorithm/PCA/PCA_Automobile/PCA_Automobile_sklearn.py)|[Notes](Notes/Subject/Automobile.md)
+Anonymous Microsoft Web Data|SVD / Recommendation System|[Anonymous Microsoft Web Data Data Set](https://archive.ics.uci.edu/ml/datasets/Anonymous+Microsoft+Web+Data) ([File](Datasets/anonymous-msweb.csv), [Ratings Matrix](Datasets/MS_ratings_matrix.csv) [(by R)](Algorithm/SVD/SVD_Anonymous_Microsoft_Web_Data/Binary_Rating_Matrix.R))|[SVD From Scratch](Algorithm/SVD/SVD_Anonymous_Microsoft_Web_Data/SVD_Anonymous_Microsoft_Web_Data_FromScratch.py), [R Notebook - IBCF Recommender System](Algorithm/SVD/SVD_Anonymous_Microsoft_Web_Data/R_Notebook_IBCF_Recommender_System.Rmd)|[Notes](Notes/Subject/Anonymous_Microsoft_Web_Data.md)
+Handwriting Digit|SVM / Binary & Multi-class Classification|[MNIST](http://yann.lecun.com/exdb/mnist/) ([File](Datasets/MNIST.csv))|[Binary SVM From Scratch](Algorithm/SVM/SVM_MNIST/SVM_MNIST_Binary_FromScratch.py), [Multi-class (OVR) SVM From Scratch](Algorithm/SVM/SVM_MNIST/SVM_MNIST_Multiclass_FromScratch.py)|[Notes](Notes/Subject/MNIST.md)
 
 ## Machine Learning Categories
 
@@ -46,31 +49,30 @@ Labor Relations|-|[Labor Relations Data Set](https://archive.ics.uci.edu/ml/data
     * *Clustering* - Discrete
     * *Dimensionality Reduction* - Continuous
     * *Association Rule Learning*
-
 * **Semi-supervised Learning**
 * **Reinforcement Learning**
 
 ### Cosider the desired output of a ML system
 
 * *Classification*
-    * `Logistic Regression` (optimization algo.)
-    * `k-Nearest Neighbors (kNN)`
-    * `Support Vector Machine (SVM)` - [Deduction](Algorithm/SVM/SVMDeduction.md) (optimization algo.)
-    * `Naive Bayes`
-    * `Decision Tree (ID3, C4.5, CART)`
+    * [`Logistic Regression`](Algorithm/LogisticRegression/LogisticRegression.md) (optimization algo.)
+    * [`k-Nearest Neighbors (kNN)`](Algorithm/kNN/kNN.md)
+    * [`Support Vector Machine (SVM)`](Algorithm/SVM/SVM.md) - [Deduction](Algorithm/SVM/SVMDeduction.md) (optimization algo.)
+    * [`Naive Bayes`](Algorithm/NaiveBayes/NaiveBayes.md)
+    * [`Decision Tree (ID3, C4.5, CART)`](Algorithm/DecisionTree/DecisionTree.md)
 * *Regression*
-    * `Linear Regression` (optimization algo.)
-    * `Tree (CART)`
+    * [`Linear Regression`](Algorithm/LinearRegression/LinearRegression.md) (optimization algo.)
+    * [`Tree (CART)`](Algorithm/DecisionTree/DecisionTree.md)
 * *Clustering*
-    * `k-Means`
+    * [`k-Means`](Algorithm/KMeans/KMeans.md)
     * `Hierarchical Clustering`
 * *Association Rule Learning*
-    * `Apriori`
+    * [`Apriori`](Algorithm/Apriori/Apriori.md)
     * `Eclat`
-    * `FP-growth` - Frequent itemsets mining
+    * [`FP-growth`](Algorithm/FP-Growth/FP-Growth.md) - Frequent itemsets mining
 * *Dimensionality Reduction*
-    * `Principal Compnent Analysis (PCA)`
-    * `Single Value Decomposition (SVD)`
+    * [`Principal Compnent Analysis (PCA)`](Algorithm/PCA/PCA.md)
+    * [`Single Value Decomposition (SVD)`](Algorithm/SVD/SVD.md) - LSA, LSI, Recommendation System
     * `Linear Discriminant Analysis (LDA)`
 
 ### Ensemble Method (Meta-algorithm)
@@ -78,7 +80,7 @@ Labor Relations|-|[Labor Relations Data Set](https://archive.ics.uci.edu/ml/data
 * Bagging
     * `Random Forests`
 * Boosting
-    * `AdaBoost`
+    * [`AdaBoost`](Algorithm/AdaBoost/AdaBoost.md)
 
 ## [Machine Learning Concepts](Notes/MachineLearningConcepts.md)
 
@@ -127,8 +129,12 @@ Labor Relations|-|[Labor Relations Data Set](https://archive.ics.uci.edu/ml/data
 
 * [Recommendation System](Notes/Recommendation_System.md)
     * Collaborative Filtering
-* [Information Retrieval](Notes/Information_Retrieval.md)
-    * Latent Semantic Analysis (LSA) aka. Latent Semantic Indexing (LSI)
+* [Information Retrieval - Topic Modelling](Notes/Information_Retrieval.md)
+    * Latent Semantic Analysis (LSA/LSI/SVD)
+    * Latent Dirichlet Allocation (LDA)
+    * Random Projections (RP)
+    * Hierarchical Dirichlet Process (HDP)
+    * word2vec
 
 ## Machine Learning Mathematics
 
