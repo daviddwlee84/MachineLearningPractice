@@ -154,6 +154,8 @@ Tutorial:
 
 #### Confusion Matrix
 
+[**Wiki - Confusion Matrix**](https://en.wikipedia.org/wiki/Confusion_matrix)
+
 * With a confusion matrix you get a better understanding of the classification errors.
 * If the off-diagonal elements are all zero, then you have a perfect classifier
 
@@ -177,6 +179,8 @@ Actual \ Redicted   |+1                 |-1
 * **Recall** = TP / (TP + FN)
     * Measures the fraction of positive examples the classifier got right.
     * Classifiers with a large recall dont have many positive examples classified incorectly.
+
+* **F₁ Score** = 2 × (Precision × Recall) / (Precision + Recall)
 
 Summary:
 

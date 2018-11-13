@@ -10,6 +10,27 @@
 
 ![Wiki IR Model](https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Information-Retrieval-Models.png/800px-Information-Retrieval-Models.png)
 
+![MIR IR Model Summary](Image/IR_Model_Summary.png)
+
+Four characters in Information Retrieval Model
+
+* $D$: Documents
+* $Q$: Query
+* $F$: Framework (i.e. chosen Model)
+* $R(q_i, d_j)$: Ordering (Ranking) funciton
+
+$$
+\text{Information Retreival Model} = [D, Q, F, R(q_i, d_j)]
+$$
+
+![MIR IR Model](Image/IR_Model.png)
+
+Relevant Searching
+
+$$
+\text{Relevant} = f(Q, d_j, D)
+$$
+
 #### Classical Information Retrieval Model
 
 (usually work with unstructured text document)
@@ -43,7 +64,7 @@ Probabilistic models treat the process of document retrieval as a probabilistic 
 * Divergence-from-randomness Model
 * Latent Dirichlet Allocation
 
-#### Half-structured Document Information Retrieval Model
+#### Semi-structured Document Information Retrieval Model
 
 * XML
 
@@ -63,20 +84,45 @@ Probabilistic models treat the process of document retrieval as a probabilistic 
 * [Bag-of-words approach](#Bag-of-words-Approach)
 * [Vector representation](#Vector-Representation)
 
-### [Term Weights](#Term-Weight)
+### [Term Weight](#Term-Weighting)
 
 * [TF-IDF](#TF-IDF)
 
 ### [Performance and Correctness Measures](#Evaluation-Measures)
 
-* Precision
-* Recall
-* Fall-out
-* F-score / F-measure
-* Average precision
-* R-Precision
-* Mean average precision
-* Discounted cumulative gain
+* [Set-Based Measures](#Set-Based-Measures)
+    * Precision
+    * Recall
+    * Fall-out
+    * Miss
+    * F-score / F-measure
+    * Average precision
+    * R-Precision
+    * Mean average precision
+* [User-Oriented Measures](#User-Oriented-Measures)
+    * coverage ratio
+    * novelty ratio
+    * relative recall
+    * recall effort
+* [Discounted Cumulative Gain](#Discounted-Cumulative-Gain-(DCG))
+    * nDCG
+* Others
+    * A/B testing
+
+### [The Document Collections](#Document-Collections)
+
+* Pooling Method
+
+Standard Relevance Benchmarks
+
+* The TREC Web Collections
+* INEX
+* Reuters, OHSUMED, NewsGroups
+* NTCIR
+* CLEF
+* GOV2
+
+---
 
 ## Text Representation
 
@@ -103,7 +149,7 @@ Conclusion
     * Geometric metaphor: "arrows"
 * A vector is a set of values recorded in any consistent order
 
-## Term Weight
+## Term Weighting
 
 **Term**:
 
@@ -185,6 +231,8 @@ q   |0.63|0.81|0.32
     * ...
 
 ### TF-IDF
+
+- [Wiki - TF-IDF](https://en.wikipedia.org/wiki/Tf%E2%80%93idf)
 
 * TF stands for Term Frequency
 * IDF stands for Inverse Document Frequency
@@ -388,14 +436,225 @@ This estimator supports two algorithms: a fast randomized SVD solver, and a “n
 
 ## Evaluation Measures
 
+[Wiki - Evaluation measures (information retrieval)](https://en.wikipedia.org/wiki/Evaluation_measures_(information_retrieval))
+
+What IR evaluate for?
+
+* Efficiency
+    * retrieval time
+    * indexing time
+    * index size
+* Effectiveness
+    * how "good" are the documents that are returned?
+    * system only / human + system
+* Usability
+    * learnability
+    * frustration
+    * novice vs. expert users
+* Others
+    * coverage
+    * update frequency
+    * visit rate
+    * ...
+
+**Test collection**: a laboratory environment that doesn’t
+change
+
+* determine how well IR systems perform
+* compare the performance of the IR system with that of other systems
+* compare search alghoritms and strategies with each other
+> **The Cranfield Paradigm**: provided a foundation for the
+evaluation of IR systems => Precision ration and Recall ratio
+
+### Set-Based Measures
+
+![Wiki Precision and Recall](https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Precisionrecall.svg/350px-Precisionrecall.svg.png)
+
+![R and A venn diagram](Image/R_A_set.png)
+
+Actual \ Redicted   |Relevant           |Not relevant
+:------------------:|:-----------------:|:-----------------:
+**Retrieved**       |True Positive (TP) |False Negative (FN)
+**Not Retrieved**   |False Positive (FP)|True Negative (TN)
+
+- $R$ (Relevant documents) = $TP + FP$
+- $A$ (Answer) = $TP + FN$ (documents which we thought to be the answer)
+- Collection size = $TP + FP$ + $FP$ + $TN$ = $R\cup A$
+
+#### Precision
+
+$\displaystyle\text{Precision} = \frac{TP}{(TP + FP)} = \frac{|R\cap A|}{|A|}$
+
+* the fraction of documents retrieved that are relevant
+
+#### Recall
+
+$\displaystyle\text{Recall} = \frac{TP}{(TP + FN)} = \frac{|R\cap A|}{|R|}$
+
+* the fraction of relevant documents retrieved
+* hard to compute (need to know all the relevant document) => [Pooling Method](#Pooling-Method)
+
+**Miss** = $\displaystyle\frac{FN}{(TP + FN)}$
+
+* the inverse of precision
+
+**False alarm (fallout)** = $\displaystyle\frac{FP}{(FP + TN)}$
+
+### Single Value Summaries
+
+#### P@n
+
+Precision at n
+
+* P@5, n = 5
+* P@10, n = 10
+* P@20, n = 20
+
+- Consider user usually only care the first page (or the top n) search result
+
+#### R-Precision
+
+#### MAP (Mean Average Precision)
+
+**Precision-Recall Curve**
+
+TBD
+
+**AP**
+
+* The idea here is to average the precision figures obtained after each new relevant document is observed
+    * For each query, we calculate precision for each recall
+    * Each time we found a new relevent document => get a new recall
+        * Precision = # of Relevent / Current found documents
+    * For relevant documents not retrieved, the precision is set to 0
+    * Invoke average at the end
+* Interpolation
+    * Fill the recall to 10% 20% ... 100% base
+
+**MAP**
+
+Mean of every query's AP
+
+$$
+ \operatorname{MAP} = \frac{\sum_{q=1}^Q \operatorname{AveP(q)}}{Q} \!
+$$
+
+* System comparison
+
+#### MRR (Mean Reciproach Rank)
+
+* [Wiki - Mean reciprocal rank](https://en.wikipedia.org/wiki/Mean_reciprocal_rank)
+* [Wiki - Question Answering (QA)](https://en.wikipedia.org/wiki/Question_answering)
+
+$$
+{\text{MRR}}={\frac  {1}{|Q|}}\sum _{{i=1}}^{{|Q|}}{\frac  {1}{{\text{rank}}_{i}}}
+$$
+
+#### F Measure: Harmonic means of Precision and Recall
+
+[Wiki - F1 score](https://en.wikipedia.org/wiki/F1_score)
+
+The traditional F-measure or balanced F-score (F1 score) is the [harmonic mean](https://en.wikipedia.org/wiki/Harmonic_mean#Harmonic_mean_of_two_numbers) of precision and recall
+
+$$
+{\displaystyle F_{1}=\left({\frac {\mathrm {recall} ^{-1}+\mathrm {precision} ^{-1}}{2}}\right)^{-1}=2\cdot {\frac {\mathrm {precision} \cdot \mathrm {recall} }{\mathrm {precision} +\mathrm {recall} }}}
+= \frac{2}{\frac{1}{P} + \frac{1}{R}}
+$$
+
+The general formula for positive real β
+
+$$
+F_\beta = (1 + \beta^2) \cdot \frac{\mathrm{precision} \cdot \mathrm{recall}}{(\beta^2 \cdot \mathrm{precision}) + \mathrm{recall}}
+$$
+
+#### E Measure
+
+$$
+{\displaystyle E=1-\left({\frac {\alpha }{p}}+{\frac {1-\alpha }{r}}\right)^{-1}}
+$$
+
+Their relationship is $F_{\beta }=1-E$ where ${\displaystyle \alpha ={\frac {1}{1+\beta ^{2}}}}$
+
+### User-Oriented Measures
+
+![User-Oriented Measures](Image/User-Oriented_Measures.png)
+
+#### Coverage Ratio
+
+$$
+\operatorname{coverage} = \frac{|K \cap R \cap A|}{|K \cap R|}
+$$
+
+#### Novely Ratio
+
+$$
+\operatorname{novelty} = \frac{|(R \cap A) - K|}{|K \cap R|}
+$$
+
+#### Relative Recall
+
+#### Recall Effort
+
+### Discounted Cumulative Gain (DCG)
+
+[Wiki - Discounted cumulative gain](https://en.wikipedia.org/wiki/Discounted_cumulative_gain)
+
+CG (Cumulative Gain)
+
+$$
+{\mathrm  {CG_{{p}}}}=\sum _{{i=1}}^{{p}}rel_{{i}} = rel_1 + rel_2 + \dots + rel_p
+$$
+
+DCG
+
+$$
+{\displaystyle \mathrm {DCG_{p}} =\sum _{i=1}^{p}{\frac {rel_{i}}{\log _{2}(i+1)}}=rel_{1}+\sum _{i=2}^{p}{\frac {rel_{i}}{\log _{2}(i+1)}}} = rel_1 + \frac{rel_2}{\log_2 3} + \dots + \frac{rel_p}{\log_2 p+1}
+$$
+
+NDCG (Normalized DCG)
+
+$$
+{\mathrm  {nDCG_{{p}}}}={\frac  {DCG_{{p}}}{IDCG_{{p}}}},
+$$
+
+where IDCG is ideal discounted cumulative gain, ${\displaystyle \mathrm {IDCG_{p}} =\sum _{i=1}^{|REL|}{\frac {2^{rel_{i}}-1}{\log _{2}(i+1)}}}$ and ${\displaystyle |REL|}$ represents the list of relevant documents (ordered by their relevance) in the corpus up to position p.
+
+## Document Collections
+
+### Pooling Method
+
+> The technique of assessing relevance
+
+The set of relevant documents for each topic is obtained from a pool of possible relevant documents
+
+* This pool is created by taking the top K documents (usually, K = 100) in the rankings generated by various retrieval systems
+* The documents in the pool are then shown to human assessors who ultimately decide on the relevance of each document
+
+### The TREC Web Collection
+
 ## Reference
 
 ### Book
 
 * **Modern Information Retrieval - The Concepts and Technology behind Search**
-    * Ch3 Modelling
-        * Ch3.2.2 Boolean Model
-        * Ch3.2.6 Vector Space Model
-            * Ch3.2.5 Document Length Normalization
-    * Ch3.2.3 Term weight
-        * Ch3.2.4 TF-IDF
+    * Ch 3 Modelling
+        * Ch 3.2.2 Boolean Model
+        * Ch 3.2.6 Vector Space Model
+            * Ch 3.2.5 Document Length Normalization
+    * Ch 3.2.3 Term weight
+        * Ch 3.2.4 TF-IDF
+    * Ch 4 Evaluation
+        * Ch 4.2 The Cranfield Paradigm
+        * Ch 4.3 Measures
+            * Ch 4.3.1 Precision / Recall
+            * Ch 4.3.2 Single Value Summaries
+            * Ch 4.3.3 User-Oriented Measures
+            * Ch 4.3.4 Discounted Cumulative Gain
+        * Ch 4.4 The Document Collections
+            * Ch 4.4.1 The TREC Web Collection
+
+> Download all the slides
+>
+> `curl -O http://www.just.edu.jo/\~hmeidi/Teaching/CS721/slides_chap\[01-17\].pdf`
+>
+> [PengBo's slides](http://net.pku.edu.cn/~wbia/2014Fall/ppt/)
