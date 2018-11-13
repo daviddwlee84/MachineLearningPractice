@@ -68,10 +68,11 @@ Probabilistic models treat the process of document retrieval as a probabilistic 
 
 * XML
 
-#### Link-based Information Retrieval Model
+#### [Link-based Information Retrieval Model](#Link-Analysis)
 
-* Page Rank
-* Hubs & Authorities
+* [Page Rank](#Page-Rank) - By Google
+* [HITS](#HITS-(Hypertext-Induced-Topic-Search)) - By IBM
+    * Hubs & Authorities
 
 #### Multimedia Information Retrieval Model
 
@@ -394,7 +395,7 @@ Similarity-Based Queries
 * Treat the query as if it were a document
     * Create a query bag-of-words
     * Find its similarity to each document
-    * Rank order the document by similarity
+    * Rank by sorting the document with similarity
 
 ### Vector Space Model
 
@@ -632,6 +633,35 @@ The set of relevant documents for each topic is obtained from a pool of possible
 
 ### The TREC Web Collection
 
+## Link Analysis
+
+### Page Rank
+
+[Wiki - PageRank](https://en.wikipedia.org/wiki/PageRank)
+
+### HITS (Hypertext Induced Topic Search)
+
+[Wiki - HITS algorithm](https://en.wikipedia.org/wiki/HITS_algorithm)
+
+* **Authority**
+    * Authorities stemmed from a particular insight into the creation of web pages when the Internet was originally forming
+* **Hub**
+    * A certain web pages, known as hubs, served as large directories that were not actually authoritative in the information that they held, but were used as compilations of a broad catalog of information that led users direct to other authoritative pages
+* Summary
+    * In other words, a good hub represented a page that pointed to many other pages, and a good authority represented a page that was linked by many different hubs.
+
+Authority update rule
+
+$$
+{\mathrm  {auth}}(p)=\displaystyle \sum _{{i=1}}^{n}{\mathrm  {hub}}(i)
+$$
+
+Hub update rule
+
+$$
+{\mathrm  {hub}}(p)=\displaystyle \sum _{{i=1}}^{n}{\mathrm  {auth}}(i)
+$$
+
 ## Reference
 
 ### Book
@@ -652,6 +682,7 @@ The set of relevant documents for each topic is obtained from a pool of possible
             * Ch 4.3.4 Discounted Cumulative Gain
         * Ch 4.4 The Document Collections
             * Ch 4.4.1 The TREC Web Collection
+    * Ch 11.5.2 Sorting based on link
 
 > Download all the slides
 >
