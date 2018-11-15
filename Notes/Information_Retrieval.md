@@ -40,14 +40,17 @@ $$
 Set-theoretic models represent documents as sets of words or phrases. Similarities are usually derived from set-theoretic operations on those sets.
 
 * [Boolean Model](#Boolean-Model)
+    * Boolean Retrieval (standard)
+    * Ranked Retrieval (can be called extended)
+    * Fuzzy Retrieval (can be called extended)
 * [Fuzzy Set Model](#Fuzzy-Set-Model)
-* [Extended Boolean Model](#Extended-Boolean-Model)
+* [Extended Boolean Model](#Extended-Boolean-Model) (introduce the conepts of vector space)
 
 **Algebraic Models**:
 
 Algebraic models represent documents and queries usually as vectors, matrices, or tuples. The similarity of the query vector and document vector is represented as a scalar value.
 
-* [Vector Space Model](#Vector-Space-Model)
+* [Vector Space Model](#Vector-Space-Model) - has many kinds of similarity
 * [Extended Boolean Model](#Extended-Boolean-Model)
 * [Generalized Vector Space Model](#Generalized-Vector-Space-Model)
 * (Enhanced) Topic-based Vector Space Model
@@ -88,6 +91,8 @@ Probabilistic models treat the process of document retrieval as a probabilistic 
 ### [Term Weight](#Term-Weighting)
 
 * [TF-IDF](#TF-IDF)
+
+### [Inverted Index](#Inverted-Index)
 
 ### [Performance and Correctness Measures](#Evaluation-Measures)
 
@@ -180,6 +185,8 @@ doc1| 1 | 1 |   |   |   |   |   |
 doc2| 1 | 1 |   | 1 |   |   |   | 1
 doc3|   |   | 1 | 1 | 1 | 1 | 1 |
 
+(boolean model)
+
 **Unnormalized Form of Term Frequency (TF) (weighting)**:
 
 (Weight of term td) = frequency that term j occurs in document i
@@ -192,7 +199,7 @@ doc3|   |   | 1 | 1 | 1 | 1 | 1 |   |$\sqrt{5}$
 
 Calculate Ranking:
 
-Similarity of documents
+(cosine) Similarity of documents (vector space model)
 
 -   |doc1|doc2|doc3
 ----|:--:|:--:|:--:
@@ -234,6 +241,7 @@ q   |0.63|0.81|0.32
 ### TF-IDF
 
 - [Wiki - TF-IDF](https://en.wikipedia.org/wiki/Tf%E2%80%93idf)
+- [Term frequency and weighting](https://nlp.stanford.edu/IR-book/html/htmledition/term-frequency-and-weighting-1.html)
 
 * TF stands for Term Frequency
 * IDF stands for Inverse Document Frequency
@@ -278,6 +286,8 @@ $$
 
 #### Inverse Document Frequency
 
+* [Inverse document frequency](https://nlp.stanford.edu/IR-book/html/htmledition/inverse-document-frequency-1.html)
+
 **Concept**:
 
 * A term that occurs in only a few documents is likely to be a better discriminator that a term that appears in most or all documents
@@ -298,6 +308,9 @@ $$
 
 #### Full weighting of TF-IDF
 
+* [Tf-idf weighting](https://nlp.stanford.edu/IR-book/html/htmledition/tf-idf-weighting-1.html)
+* [Variant tf-idf functions](https://nlp.stanford.edu/IR-book/html/htmledition/variant-tf-idf-functions-1.html)
+
 The weight assigned to term $t$ in document $d$:
 
 $$
@@ -309,6 +322,12 @@ Example:
 $$
 \mathit{tf.idf}(t, d, D) = \underbrace{\frac{f_{t, d}}{m_t}}_{tf(t, d)} \times \underbrace{(\log(\frac{N}{n_t}) + 1)}_{idf(t, D)}
 $$
+
+## Inverted Index
+
+* [A first take at building an inverted index](https://nlp.stanford.edu/IR-book/html/htmledition/a-first-take-at-building-an-inverted-index-1.html)
+
+TBD
 
 ## IR Models
 
@@ -378,6 +397,8 @@ Pros and Cons
     * What about partial matches? Documents that "don't quite match" the query may be useful also
 
 #### Ranked Retrieval
+
+* [The extended Boolean model versus ranked retrieval](https://nlp.stanford.edu/IR-book/html/htmledition/the-extended-boolean-model-versus-ranked-retrieval-1.html)
 
 Arranging documents by relevance
 
@@ -524,24 +545,24 @@ evaluation of IR systems => Precision ration and Recall ratio
 
 ![R and A venn diagram](Image/R_A_set.png)
 
-Actual \ Redicted   |Relevant           |Not relevant
-:------------------:|:-----------------:|:-----------------:
-**Retrieved**       |True Positive (TP) |False Negative (FN)
-**Not Retrieved**   |False Positive (FP)|True Negative (TN)
+Answer \ Relevant element  |Relevant           |Not relevant
+:-------------------------:|:-----------------:|:-----------------:
+**Retrieved**              |True Positive (TP) |False Positive (FP)
+**Not Retrieved**          |False Negative (FN)|True Negative (TN)
 
 - $R$ (Relevant documents) = $TP + FP$
-- $A$ (Answer) = $TP + FN$ (documents which we thought to be the answer)
+- $A$ (Answer, Retrieved docuemtnt) = $TP + FN$ (documents which we thought to be the answer)
 - Collection size = $TP + FP$ + $FP$ + $TN$ = $R\cup A$
 
 #### Precision
 
-$\displaystyle\text{Precision} = \frac{TP}{(TP + FP)} = \frac{|R\cap A|}{|A|}$
+$\displaystyle\text{Precision} = \frac{TP}{(TP + FP)} = \frac{|R\cap A|}{|A|} = \frac{|\{\text{relevant documents}\}\cap\{\text{retrieved documents}\}|}{|\{\text{retrieved documents}\}|}$
 
 * the fraction of documents retrieved that are relevant
 
 #### Recall
 
-$\displaystyle\text{Recall} = \frac{TP}{(TP + FN)} = \frac{|R\cap A|}{|R|}$
+$\displaystyle\text{Recall} = \frac{TP}{(TP + FN)} = \frac{|R\cap A|}{|R|} = \frac{|\{\text{relevant documents}\}\cap\{\text{retrieved documents}\}|}{|\{\text{relevant documents}\}|}$
 
 * the fraction of relevant documents retrieved
 * hard to compute (need to know all the relevant document) => [Pooling Method](#Pooling-Method)
@@ -743,4 +764,12 @@ $$
 >
 > `curl -O http://www.just.edu.jo/\~hmeidi/Teaching/CS721/slides_chap\[01-17\].pdf`
 >
-> [PengBo's slides](http://net.pku.edu.cn/~wbia/2014Fall/ppt/)
+> [PengBo's slides (Web Based Information Architecture)](http://net.pku.edu.cn/~wbia/2014Fall/ppt/)
+
+* [**Introduction to Information Retrieval**](https://nlp.stanford.edu/IR-book/)
+    * Ch 1.2 A first take at building an inverted index
+    * Ch 1.4 The extended Boolean model versus ranked retrieval
+    * Ch 6.2 Term frequency and weighting
+        * Ch 6.2.1 Inverse document frequency
+        * Ch 6.2.2 Tf-idf weighting
+        * Ch 6.4 Variant tf-idf functions
