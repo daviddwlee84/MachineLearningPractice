@@ -22,6 +22,13 @@ For comparison purpose
 * [`cvxopt`](http://cvxopt.org/): For convex optimization problem (for SVM)
 * [`gensim`](https://radimrehurek.com/gensim/index.html): Topic Modelling
 
+NLP related
+
+* `hmmlearn`: Hidden Markov Models in Python, with scikit-learn like API
+* `jieba`: Chinese text segementation library
+* `pyHanLP`: Chinese NLP library (Python API)
+* `nltk`: Natural Language Toolkit
+
 ## Projects
 
 Subject|Technique / Task|Dataset|Solution|Notes
@@ -37,6 +44,7 @@ Frequent Itemset Mining|FP-Growth / Frequent Itemsets Mining|[Retail Market Bask
 Automobile|PCA / Dimensionality Reduction|[Automobile Data Set](http://archive.ics.uci.edu/ml/datasets/Automobile) ([File](Datasets/imports-85.csv))|[PCA From Scratch](Algorithm/PCA/PCA_Automobile/PCA_Automobile_FromScratch.py), [PCA Scikit Learn](Algorithm/PCA/PCA_Automobile/PCA_Automobile_sklearn.py)|[Notes](Notes/Subject/Automobile.md)
 Anonymous Microsoft Web Data|SVD / Recommendation System|[Anonymous Microsoft Web Data Data Set](https://archive.ics.uci.edu/ml/datasets/Anonymous+Microsoft+Web+Data) ([File](Datasets/anonymous-msweb.csv), [Ratings Matrix](Datasets/MS_ratings_matrix.csv) [(by R)](Algorithm/SVD/SVD_Anonymous_Microsoft_Web_Data/Binary_Rating_Matrix.R))|[SVD From Scratch](Algorithm/SVD/SVD_Anonymous_Microsoft_Web_Data/SVD_Anonymous_Microsoft_Web_Data_FromScratch.py), [R Notebook - IBCF Recommender System](Algorithm/SVD/SVD_Anonymous_Microsoft_Web_Data/R_Notebook_IBCF_Recommender_System.Rmd)|[Notes](Notes/Subject/Anonymous_Microsoft_Web_Data.md)
 Handwriting Digit|SVM (SMO) / Binary & Multi-class Classification|[MNIST](http://yann.lecun.com/exdb/mnist/) ([File](Datasets/MNIST.csv))|[Binary SVM From Scratch](Algorithm/SVM/SVM_MNIST/SVM_MNIST_Binary_FromScratch.py), [Multi-class (OVR) SVM From Scratch](Algorithm/SVM/SVM_MNIST/SVM_MNIST_Multiclass_FromScratch.py)|[Notes](Notes/Subject/MNIST.md)
+Chinese text segmentation|HMM (EM)|-|[HMM From Scratch](Algorithm/HMM/HMM_Text_Segmentation/HMM_FromScratch.py), [HMM hmmlearn](Algorithm/HMM/HMM_Text_Segmentation/HMMLearn.py), [Compare with Jieba and HanLP](Algorithm/HMM/HMM_Text_Segmentation/CompareJiebaHanLP.py)|-
 
 ## Machine Learning Categories
 
@@ -222,6 +230,7 @@ Handwriting Digit|SVM (SMO) / Binary & Multi-class Classification|[MNIST](http:/
 * [Siraj Raval - The Math of Intelligence](https://www.youtube.com/playlist?list=PL2-dafEMk2A7mu0bSksCGMJEmeddU_H4D)
     * [Siraj Raval's Repository](https://github.com/llSourcell)
 * [bilibili - 機器學習 - 白板推導系列](https://github.com/shuhuai007/Machine-Learning-Session)
+* [bilibili - 機器學習升級版](https://www.bilibili.com/video/av22660033/)
 
 #### Documentations
 
@@ -252,6 +261,7 @@ Handwriting Digit|SVM (SMO) / Binary & Multi-class Classification|[MNIST](http:/
 ### Datasets
 
 * [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/index.html)
+* [Awesome Public Datasets](https://github.com/awesomedata/awesome-public-datasets)
 * [Kaggle Datasets](https://www.kaggle.com/datasets)
 * [The MNIST Database of handwritten digits](http://yann.lecun.com/exdb/mnist/)
 * [資料集平台 Data Market](https://scidm.nchc.org.tw/)
@@ -261,3 +271,9 @@ Handwriting Digit|SVM (SMO) / Binary & Multi-class Classification|[MNIST](http:/
 
 * [Kaggle](https://www.kaggle.com/)
 * [OpenML](https://www.openml.org/)
+
+### Machine Learning Tool
+
+* [AutoML](https://www.automl.org/)
+    * [Auto-sklearn](https://automl.github.io/auto-sklearn)
+        * [github](https://github.com/automl/auto-sklearn)
