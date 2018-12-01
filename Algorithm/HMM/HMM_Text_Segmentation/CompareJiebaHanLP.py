@@ -1,3 +1,4 @@
+#-*- coding:utf-8 -*-
 import sys
 from jieba import posseg
 from pyhanlp import HanLP
@@ -15,7 +16,7 @@ def HanLP_seg(content):
             print('{}/{}'.format(term.word, term.nature), end=' ')
 
 def main():
-    with open('article.txt', 'r') as f:
+    with open('Datasets/Article/雅量.txt', 'r') as f:
         content = f.read()
 
     print("\n\n===== Jieba =====\n")
