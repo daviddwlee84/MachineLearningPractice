@@ -44,7 +44,8 @@ Frequent Itemset Mining|FP-Growth / Frequent Itemsets Mining|[Retail Market Bask
 Automobile|PCA / Dimensionality Reduction|[Automobile Data Set](http://archive.ics.uci.edu/ml/datasets/Automobile) ([File](Datasets/imports-85.csv))|[PCA From Scratch](Algorithm/PCA/PCA_Automobile/PCA_Automobile_FromScratch.py), [PCA Scikit Learn](Algorithm/PCA/PCA_Automobile/PCA_Automobile_sklearn.py)|[Notes](Notes/Subject/Automobile.md)
 Anonymous Microsoft Web Data|SVD / Recommendation System|[Anonymous Microsoft Web Data Data Set](https://archive.ics.uci.edu/ml/datasets/Anonymous+Microsoft+Web+Data) ([File](Datasets/anonymous-msweb.csv), [Ratings Matrix](Datasets/MS_ratings_matrix.csv) [(by R)](Algorithm/SVD/SVD_Anonymous_Microsoft_Web_Data/Binary_Rating_Matrix.R))|[SVD From Scratch](Algorithm/SVD/SVD_Anonymous_Microsoft_Web_Data/SVD_Anonymous_Microsoft_Web_Data_FromScratch.py), [R Notebook - IBCF Recommender System](Algorithm/SVD/SVD_Anonymous_Microsoft_Web_Data/R_Notebook_IBCF_Recommender_System.Rmd)|[Notes](Notes/Subject/Anonymous_Microsoft_Web_Data.md)
 Handwriting Digit|SVM (SMO) / Binary & Multi-class Classification|[MNIST](http://yann.lecun.com/exdb/mnist/) ([File](Datasets/MNIST.csv))|[Binary SVM From Scratch](Algorithm/SVM/SVM_MNIST/SVM_MNIST_Binary_FromScratch.py), [Multi-class (OVR) SVM From Scratch](Algorithm/SVM/SVM_MNIST/SVM_MNIST_Multiclass_FromScratch.py)|[Notes](Notes/Subject/MNIST.md)
-Chinese text segmentation|HMM (EM)|-|[HMM From Scratch](Algorithm/HMM/HMM_Text_Segmentation/HMM_FromScratch.py), [HMM hmmlearn](Algorithm/HMM/HMM_Text_Segmentation/HMMLearn.py), [Compare with Jieba and HanLP](Algorithm/HMM/HMM_Text_Segmentation/CompareJiebaHanLP.py)|-
+Chinese text segmentation|HMM (EM)|[File](Datasets/Article/雅量.txt)|[HMM From Scratch](Algorithm/HMM/HMM_Text_Segmentation/HMM_FromScratch.py), [HMM hmmlearn](Algorithm/HMM/HMM_Text_Segmentation/HMMLearn.py), [Compare with Jieba and HanLP](Algorithm/HMM/HMM_Text_Segmentation/CompareJiebaHanLP.py)|-
+Document Similarity and LSI|VSM, SVD|[Corpus of the People's Daily](http://dx.doi.org/10.18170/DVN/SEYRX5) ([File](Datasets/Article/199801_clear_1.txt))|[VSM From Scratch](Algorithm/VSM/VSM_Document_Similarity/VSM_Document_Similarity_FromScratch.py), [VSM Gensim](Algorithm/VSM/VSM_Document_Similarity/VSM_Document_Similarity_Gensim.py), [SVD/LSI Gensim](Algorithm/SVD/SVD_LSI/SVD_LSI_Gensim.py)|[Notes](Notes/Subject/Document_Similarity_LSI.md)
 
 ## Machine Learning Categories
 
@@ -88,13 +89,17 @@ Chinese text segmentation|HMM (EM)|-|[HMM From Scratch](Algorithm/HMM/HMM_Text_S
 * Bagging
     * `Random Forests`
 * Boosting
-    * [`AdaBoost`](Algorithm/AdaBoost/AdaBoost.md)
+    * [`AdaBoost`](Algorithm/AdaBoost/AdaBoost.md) <- With some basic boosting notes
+    * [`Gradient Boosting`](Algorithm/GradientBoosting/GradientBoosting.md)
+        * `Gradient Boosting Decision Tree (GBDT)` (aka. Multiple Additive Regression Tree (MART))
+    * [`XGBoost`](Algorithm/XGBoost/XGBoost.md)
 
 ### Others
 
 * [`Hidden Markov Model (HMM)`](Algorithm/HMM/HMM.md)
 * `Probabilistic Latent Semantic Analysis (PLSA)`
 * `Latent Dirichlet Allocation (LDA)`
+* [`Vector Space Model (VSM)`](Algorithm/VSM/VSM.md)
 
 #### Heuristic Algorithm
 
@@ -266,6 +271,7 @@ Chinese text segmentation|HMM (EM)|-|[HMM From Scratch](Algorithm/HMM/HMM_Text_S
 * [The MNIST Database of handwritten digits](http://yann.lecun.com/exdb/mnist/)
 * [資料集平台 Data Market](https://scidm.nchc.org.tw/)
 * [AI Challenger Datasets](https://challenger.ai/datasets/)
+* [Peking University Open Research Data](http://opendata.pku.edu.cn/)
 
 ### Machine Learning Platform
 
