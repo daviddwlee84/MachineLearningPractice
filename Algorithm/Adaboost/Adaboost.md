@@ -40,7 +40,9 @@ For every feature in the dataset:
 Return the best stump
 ```
 
-### AdaBoost Algorithm
+### Addicitve Model
+
+## AdaBoost Algorithm
 
 Variables:
 
@@ -98,6 +100,7 @@ For each iteration:
 
 ## Wikipedia
 
+* [Boosting (machine learning)](https://en.wikipedia.org/wiki/Boosting_(machine_learning))
 * [AdaBoost](https://en.wikipedia.org/wiki/AdaBoost)
 
 ## Github
