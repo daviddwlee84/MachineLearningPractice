@@ -114,6 +114,10 @@ If True (default), u and vh have the shapes (..., M, M) and (..., N, N), respect
 
 * [sklearn.utils.extmath.randomized_svd](http://scikit-learn.org/stable/modules/generated/sklearn.utils.extmath.randomized_svd.html#sklearn.utils.extmath.randomized_svd)
 
+### Gensim
+
+* [models.lsimodel – Latent Semantic Indexing](https://radimrehurek.com/gensim/models/lsimodel.html) - Implements fast truncated SVD (Singular Value Decomposition)
+
 ### Article
 
 * [CSDN - 數據預處理系列：（十二）用截斷奇異值分解降維](https://blog.csdn.net/u013719780/article/details/51767427)
