@@ -7,7 +7,9 @@
 ### Structure
 
 1. 年月日-版號-篇章號-段號
-2. Interval of each paragraph is two empty lines
+2. Interval of each article will contain one extra empty line (i.e. 3 empty lines)
+
+> I found that the file structure isn't consist = = (rule 2)
 
 ### Tagset
 
@@ -123,7 +125,7 @@ Output diagonal element is 1. (self-similarity)
 
 ```txt
 In : df.shape
-Out: (8880, 8880)
+Out: (3443, 3443)
 
 In : df.head()
 Out:
@@ -139,7 +141,7 @@ Out:
 
 ```txt
 In : df.shape
-Out: (8880, 8880)
+Out: (3443, 3443)
 
 In : df.head()
 Out:

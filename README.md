@@ -20,10 +20,10 @@ For comparison purpose
 
 * `sklearn`: For machine learning models
 * [`cvxopt`](http://cvxopt.org/): For convex optimization problem (for SVM)
-* [`gensim`](https://radimrehurek.com/gensim/index.html): Topic Modelling
 
 NLP related
 
+* [`gensim`](https://radimrehurek.com/gensim/index.html): Topic Modelling
 * `hmmlearn`: Hidden Markov Models in Python, with scikit-learn like API
 * `jieba`: Chinese text segementation library
 * `pyHanLP`: Chinese NLP library (Python API)
@@ -274,6 +274,8 @@ Document Similarity and LSI|VSM, SVD / LSI|[Corpus of the People's Daily](http:/
 * [資料集平台 Data Market](https://scidm.nchc.org.tw/)
 * [AI Challenger Datasets](https://challenger.ai/datasets/)
 * [Peking University Open Research Data](http://opendata.pku.edu.cn/)
+* [Open Images Dataset](https://storage.googleapis.com/openimages/web/index.html)
+    * [github](https://github.com/openimages/dataset)
 
 ### Machine Learning Platform
 

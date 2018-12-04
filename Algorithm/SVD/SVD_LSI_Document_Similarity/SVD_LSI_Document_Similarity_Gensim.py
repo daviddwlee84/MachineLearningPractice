@@ -3,7 +3,7 @@
 # Author: David Lee
 # Create Date: 2018/12/2
 #
-# Article amount: 8880
+# Article amount: 3443
 
 from collections import defaultdict # Calculate word appear in article
 from gensim import corpora, models, similarities
@@ -27,9 +27,11 @@ def articlesToMatrix(document, freqOfWords):
     articleMatrix = []
     emptyline = 0 # To seperate each article
     wordsWeWant = []
+    articleCounter = 0
     for line in document:
         tokens = line.strip().split()
         if tokens:
+            emptyline = 0
             for token in tokens:
                 word = token[:token.index('/')]
                 # remove the words that only appear once in the corpus
@@ -39,9 +41,13 @@ def articlesToMatrix(document, freqOfWords):
             emptyline += 1
         # Found an article
         if emptyline == 3:
-            emptyline = 0
             articleMatrix.append(wordsWeWant)
             wordsWeWant = []
+            articleCounter += 1
+    if wordsWeWant:
+        articleMatrix.append(wordsWeWant)
+        articleCounter += 1
+    print('Total articles:', articleCounter)
     return articleMatrix
 
 def documentPreprocessing(path):
