@@ -46,6 +46,7 @@ Anonymous Microsoft Web Data|SVD / Recommendation System|[Anonymous Microsoft We
 Handwriting Digit|SVM (SMO) / Binary & Multi-class Classification|[MNIST](http://yann.lecun.com/exdb/mnist/) ([File](Datasets/MNIST.csv))|[Binary SVM From Scratch](Algorithm/SVM/SVM_MNIST/SVM_MNIST_Binary_FromScratch.py), [Multi-class (OVR) SVM From Scratch](Algorithm/SVM/SVM_MNIST/SVM_MNIST_Multiclass_FromScratch.py)|[Notes](Notes/Subject/MNIST.md)
 Chinese Text Segmentation|HMM (EM) / Text Segmentation & POS Tagging|[File](Datasets/Article/雅量.txt)|[HMM From Scratch](Algorithm/HMM/HMM_Text_Segmentation/HMM_FromScratch.py), [HMM hmmlearn](Algorithm/HMM/HMM_Text_Segmentation/HMMLearn.py), [Compare with Jieba and HanLP](Algorithm/HMM/HMM_Text_Segmentation/CompareJiebaHanLP.py)|-
 Document Similarity and LSI|VSM, SVD / LSI|[Corpus of the People's Daily](http://dx.doi.org/10.18170/DVN/SEYRX5) ([File](Datasets/Article/199801_clear_1.txt))|[VSM From Scratch](Algorithm/VSM/VSM_Document_Similarity/VSM_Document_Similarity_FromScratch.py), [VSM Gensim](Algorithm/VSM/VSM_Document_Similarity/VSM_Document_Similarity_Gensim.py), [SVD/LSI Gensim](Algorithm/SVD/SVD_LSI_Document_Similarity/SVD_LSI_Document_Similarity_Gensim.py)|[Notes](Notes/Subject/Document_Similarity_LSI.md)
+Click and Conversion Prediction|/ Recommendation System|[Ali-CCP](https://tianchi.aliyun.com/datalab/dataSet.html?spm=5176.100073.0.0.2d186fc1w0MXC3&dataId=408) (File too large about 20GB)||[Notes](Notes/Subject/Ali-CCP.md)
 
 ## Machine Learning Categories
 
@@ -82,6 +83,7 @@ Document Similarity and LSI|VSM, SVD / LSI|[Corpus of the People's Daily](http:/
 * *Dimensionality Reduction*
     * [`Principal Compnent Analysis (PCA)`](Algorithm/PCA/PCA.md)
     * [`Single Value Decomposition (SVD)`](Algorithm/SVD/SVD.md) - LSA, LSI, Recommendation System
+    * `ISOMAP`
     * `Linear Discriminant Analysis (LDA)`
 
 ### Ensemble Method (Meta-algorithm)
@@ -151,6 +153,7 @@ Document Similarity and LSI|VSM, SVD / LSI|[Corpus of the People's Daily](http:/
 
 ### Specific Field
 
+* [Data Mining](Notes/DataMining.md) - Knowledge Discovering
 * [Recommendation System](Notes/Recommendation_System.md)
     * Collaborative Filtering
 * [Information Retrieval - Topic Modelling](Notes/Information_Retrieval.md)
@@ -195,6 +198,8 @@ Document Similarity and LSI|VSM, SVD / LSI|[Corpus of the People's Daily](http:/
 
 * Decision Tree
     * Entropy
+* HMM
+    * Markov Chain
 * Naive Bayes
     * Bayes' Theorem
 * PCA
@@ -264,6 +269,7 @@ Document Similarity and LSI|VSM, SVD / LSI|[Corpus of the People's Daily](http:/
 * [Jack-Cherish/Machine-Learning](https://github.com/Jack-Cherish/Machine-Learning)
 * [Dod-o/Statistical-Learning-Method_Code](https://github.com/Dod-o/Statistical-Learning-Method_Code)
     * [blog](http://www.pkudodo.com/)
+* [Machine learning Resources](https://github.com/jindongwang/MachineLearning)
 
 ### Datasets
 
@@ -276,6 +282,7 @@ Document Similarity and LSI|VSM, SVD / LSI|[Corpus of the People's Daily](http:/
 * [Peking University Open Research Data](http://opendata.pku.edu.cn/)
 * [Open Images Dataset](https://storage.googleapis.com/openimages/web/index.html)
     * [github](https://github.com/openimages/dataset)
+* [Alibaba Cloud Tianchi Data Lab](https://tianchi.aliyun.com/datalab/index.htm)
 
 ### Machine Learning Platform
 
@@ -287,3 +294,18 @@ Document Similarity and LSI|VSM, SVD / LSI|[Corpus of the People's Daily](http:/
 * [AutoML](https://www.automl.org/)
     * [Auto-sklearn](https://automl.github.io/auto-sklearn)
         * [github](https://github.com/automl/auto-sklearn)
+
+### (Online) Development Environment
+
+* [Google Colaboratory](https://colab.research.google.com/)
+* [Kaggle Kernels](https://www.kaggle.com/kernels)
+* [Intel AI DevCloud](https://software.intel.com/en-us/ai-academy/devcloud)
+
+[jupyter notebook](https://jupyter.org/)
+
+* [Extension plugin](https://github.com/ipython-contrib/jupyter_contrib_nbextensions) - `pip install jupyter_contrib_nbextensions`
+    * VIM binding
+    * Codefolding
+    * ExecuteTime
+    * Notify
+* [Jupyter Theme](https://github.com/dunovank/jupyter-themes) - `pip install --upgrade jupyterthemes`
