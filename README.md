@@ -84,7 +84,6 @@ Click and Conversion Prediction|/ Recommendation System|[Ali-CCP](https://tianch
     * [`Principal Compnent Analysis (PCA)`](Algorithm/PCA/PCA.md)
     * [`Single Value Decomposition (SVD)`](Algorithm/SVD/SVD.md) - LSA, LSI, Recommendation System
     * `ISOMAP`
-    * `Linear Discriminant Analysis (LDA)`
 
 ### Ensemble Method (Meta-algorithm)
 
@@ -99,6 +98,8 @@ Click and Conversion Prediction|/ Recommendation System|[Ali-CCP](https://tianch
 ### Others
 
 * [`Hidden Markov Model (HMM)`](Algorithm/HMM/HMM.md)
+* `Bayesian Network` (aka. Probabilistic Directed Acyclic Graphical Model)
+* [`Conditional Random Field (CRF)`](Algorithm/CRF/CRF.md)
 * `Probabilistic Latent Semantic Analysis (PLSA)`
 * `Latent Dirichlet Allocation (LDA)`
 * [`Vector Space Model (VSM)`](Algorithm/VSM/VSM.md)
@@ -265,11 +266,25 @@ Click and Conversion Prediction|/ Recommendation System|[Ali-CCP](https://tianch
 
 ### Github
 
-* [Machine Learning from Scratch (eriklindernoren/ML-From-Scratch)](https://github.com/eriklindernoren/ML-From-Scratch)
-* [Jack-Cherish/Machine-Learning](https://github.com/Jack-Cherish/Machine-Learning)
-* [Dod-o/Statistical-Learning-Method_Code](https://github.com/Dod-o/Statistical-Learning-Method_Code)
-    * [blog](http://www.pkudodo.com/)
+* [**Machine Learning from Scratch (eriklindernoren/ML-From-Scratch)**](https://github.com/eriklindernoren/ML-From-Scratch)
 * [Machine learning Resources](https://github.com/jindongwang/MachineLearning)
+
+Textbook Implementation
+
+* Machine Learning in Action
+    * [Jack-Cherish/Machine-Learning](https://github.com/Jack-Cherish/Machine-Learning)
+* Learning From Data
+    * [Doraemonzzz/Learning-from-data](https://github.com/Doraemonzzz/Learning-from-data)
+* 統計學習方法 (李航)
+    * [WenDesi/lihang_book_algorithm](https://github.com/WenDesi/lihang_book_algorithm)
+        * [blog](https://blog.csdn.net/wds2006sdo/article/category/6314784)
+    * [fengdu78/lihang-code](https://github.com/fengdu78/lihang-code)
+    * [wzyonggege/statistical-learning-method](https://github.com/wzyonggege/statistical-learning-method)
+    * [Dod-o/Statistical-Learning-Method_Code](https://github.com/Dod-o/Statistical-Learning-Method_Code)
+        * [blog](http://www.pkudodo.com/)
+* Stanford Andrew Ng CS229
+    * [fengdu78/Coursera-ML-AndrewNg-Notes](https://github.com/fengdu78/Coursera-ML-AndrewNg-Notes)
+    * [fengdu78/deeplearning_ai_books](https://github.com/fengdu78/deeplearning_ai_books)
 
 ### Datasets
 
