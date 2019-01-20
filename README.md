@@ -20,6 +20,10 @@ For comparison purpose
 
 * `sklearn`: For machine learning models
 * [`cvxopt`](http://cvxopt.org/): For convex optimization problem (for SVM)
+* For gradient boosting
+    * [`XGBoost`](https://github.com/dmlc/xgboost)
+    * [`LightGBM`](https://github.com/Microsoft/LightGBM)
+    * [`CatBoost`](https://github.com/catboost/catboost)
 
 NLP related
 
@@ -46,7 +50,8 @@ Anonymous Microsoft Web Data|SVD / Recommendation System|[Anonymous Microsoft We
 Handwriting Digit|SVM (SMO) / Binary & Multi-class Classification|[MNIST](http://yann.lecun.com/exdb/mnist/) ([File](Datasets/MNIST.csv))|[Binary SVM From Scratch](Algorithm/SVM/SVM_MNIST/SVM_MNIST_Binary_FromScratch.py), [Multi-class (OVR) SVM From Scratch](Algorithm/SVM/SVM_MNIST/SVM_MNIST_Multiclass_FromScratch.py)|[Notes](Notes/Subject/MNIST.md)
 Chinese Text Segmentation|HMM (EM) / Text Segmentation & POS Tagging|[File](Datasets/Article/雅量.txt)|[HMM From Scratch](Algorithm/HMM/HMM_Text_Segmentation/HMM_FromScratch.py), [HMM hmmlearn](Algorithm/HMM/HMM_Text_Segmentation/HMMLearn.py), [Compare with Jieba and HanLP](Algorithm/HMM/HMM_Text_Segmentation/CompareJiebaHanLP.py)|-
 Document Similarity and LSI|VSM, SVD / LSI|[Corpus of the People's Daily](http://dx.doi.org/10.18170/DVN/SEYRX5) ([File](Datasets/Article/199801_clear_1.txt))|[VSM From Scratch](Algorithm/VSM/VSM_Document_Similarity/VSM_Document_Similarity_FromScratch.py), [VSM Gensim](Algorithm/VSM/VSM_Document_Similarity/VSM_Document_Similarity_Gensim.py), [SVD/LSI Gensim](Algorithm/SVD/SVD_LSI_Document_Similarity/SVD_LSI_Document_Similarity_Gensim.py)|[Notes](Notes/Subject/Document_Similarity_LSI.md)
-Click and Conversion Prediction|/ Recommendation System|[Ali-CCP](https://tianchi.aliyun.com/datalab/dataSet.html?spm=5176.100073.0.0.2d186fc1w0MXC3&dataId=408) (File too large about 20GB)||[Notes](Notes/Subject/Ali-CCP.md)
+Click and Conversion Prediction|Logistic Regression / Recommendation System|[Ali-CCP](https://tianchi.aliyun.com/datalab/dataSet.html?spm=5176.100073.0.0.2d186fc1w0MXC3&dataId=408) (File too large about 20GB)||[Notes](Notes/Subject/Ali-CCP.md)
+LightGBM & XGBoost & CatBoost Practice|Boosting Tree / Classification|[Social Network Ads](https://www.kaggle.com/rakeshrau/social-network-ads) ([File](Datasets/Social_Network_Ads.csv))|[LightGBM](Algorithm/Boosting/Boosting_Social_Network_Ads/Boosting_Social_Network_Ads_LightGBM.py), [XGBoost](Algorithm/Boosting/Boosting_Social_Network_Ads/Boosting_Social_Network_Ads_XGBoost.py)
 
 ## Machine Learning Categories
 
@@ -76,6 +81,7 @@ Click and Conversion Prediction|/ Recommendation System|[Ali-CCP](https://tianch
 * *Clustering*
     * [`k-Means`](Algorithm/KMeans/KMeans.md)
     * `Hierarchical Clustering`
+    * `DBSCAN`
 * *Association Rule Learning*
     * [`Apriori`](Algorithm/Apriori/Apriori.md)
     * `Eclat`
@@ -263,6 +269,12 @@ Click and Conversion Prediction|/ Recommendation System|[Ali-CCP](https://tianch
 
 * [Stanford Andrew Ng - CS229](http://cs229.stanford.edu/)
     * [Coursera](https://www.coursera.org/learn/machine-learning)
+
+#### Framework
+
+LightGBM
+
+* [What is LightGBM, How to implement it? How to fine tune the parameters?](https://medium.com/@pushkarmandot/https-medium-com-pushkarmandot-what-is-lightgbm-how-to-implement-it-how-to-fine-tune-the-parameters-60347819b7fc)
 
 ### Github
 
