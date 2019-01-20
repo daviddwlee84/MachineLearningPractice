@@ -100,6 +100,7 @@ LightGBM & XGBoost & CatBoost Practice|Boosting Tree / Classification|[Social Ne
     * [`Gradient Boosting`](Algorithm/GradientBoosting/GradientBoosting.md)
         * `Gradient Boosting Decision Tree (GBDT)` (aka. Multiple Additive Regression Tree (MART))
     * [`XGBoost`](Algorithm/XGBoost/XGBoost.md)
+    * [`LightGBM`](Algorithm/LightGBM/LightGBM.md)
 
 ### Others
 
@@ -161,6 +162,7 @@ LightGBM & XGBoost & CatBoost Practice|Boosting Tree / Classification|[Social Ne
 ### Specific Field
 
 * [Data Mining](Notes/DataMining.md) - Knowledge Discovering
+* [Feature Engineering](Notes/FeatureEngineering.md)
 * [Recommendation System](Notes/Recommendation_System.md)
     * Collaborative Filtering
 * [Information Retrieval - Topic Modelling](Notes/Information_Retrieval.md)
@@ -269,12 +271,6 @@ LightGBM & XGBoost & CatBoost Practice|Boosting Tree / Classification|[Social Ne
 
 * [Stanford Andrew Ng - CS229](http://cs229.stanford.edu/)
     * [Coursera](https://www.coursera.org/learn/machine-learning)
-
-#### Framework
-
-LightGBM
-
-* [What is LightGBM, How to implement it? How to fine tune the parameters?](https://medium.com/@pushkarmandot/https-medium-com-pushkarmandot-what-is-lightgbm-how-to-implement-it-how-to-fine-tune-the-parameters-60347819b7fc)
 
 ### Github
 
