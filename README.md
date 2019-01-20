@@ -52,6 +52,7 @@ Chinese Text Segmentation|HMM (EM) / Text Segmentation & POS Tagging|[File](Data
 Document Similarity and LSI|VSM, SVD / LSI|[Corpus of the People's Daily](http://dx.doi.org/10.18170/DVN/SEYRX5) ([File](Datasets/Article/199801_clear_1.txt))|[VSM From Scratch](Algorithm/VSM/VSM_Document_Similarity/VSM_Document_Similarity_FromScratch.py), [VSM Gensim](Algorithm/VSM/VSM_Document_Similarity/VSM_Document_Similarity_Gensim.py), [SVD/LSI Gensim](Algorithm/SVD/SVD_LSI_Document_Similarity/SVD_LSI_Document_Similarity_Gensim.py)|[Notes](Notes/Subject/Document_Similarity_LSI.md)
 Click and Conversion Prediction|Logistic Regression / Recommendation System|[Ali-CCP](https://tianchi.aliyun.com/datalab/dataSet.html?spm=5176.100073.0.0.2d186fc1w0MXC3&dataId=408) (File too large about 20GB)||[Notes](Notes/Subject/Ali-CCP.md)
 LightGBM & XGBoost & CatBoost Practice|Boosting Tree / Classification|[Social Network Ads](https://www.kaggle.com/rakeshrau/social-network-ads) ([File](Datasets/Social_Network_Ads.csv))|[LightGBM](Algorithm/Boosting/Boosting_Social_Network_Ads/Boosting_Social_Network_Ads_LightGBM.py), [XGBoost](Algorithm/Boosting/Boosting_Social_Network_Ads/Boosting_Social_Network_Ads_XGBoost.py)
+Kaggle Elo|LightGBM / Feature Engineering|[Elo Merchant Category Recommendation](https://www.kaggle.com/c/elo-merchant-category-recommendation)|[LightGBM Project](Project/KaggleElo)
 
 ## Machine Learning Categories
 
