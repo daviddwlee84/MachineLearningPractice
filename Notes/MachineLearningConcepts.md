@@ -8,6 +8,7 @@
         * [Label Encoding](#Label-Encoding)
         * [Classification Imbalance](#Classification-Imbalance)
         * [Dimensionality Reduction](#Dimensionality-Reduction)
+        * [Feature Scaling](#Feature-Scaling)
     * [Model Expansion](#Model-Expansion)
         * [Binary to Multi-class](#Binary-to-Multi-class)
     * [Model Evaluation](#Model-Evaluation)
@@ -120,6 +121,12 @@ Solution
 * Replicate the existing examples
 * Add new points similar to the existing points
 * Add a data point interpolated between existing data points (can lead to overfitting)
+
+### Feature Scaling
+
+aka. Data Normalization (generally performed during the data preprocessing step)
+
+A method used to standardize the range of independent variables or features of data
 
 ## Model Expansion
 
