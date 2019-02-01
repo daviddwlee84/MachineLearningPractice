@@ -319,6 +319,11 @@ Textbook Implementation
 * [AutoML](https://www.automl.org/)
     * [Auto-sklearn](https://automl.github.io/auto-sklearn)
         * [github](https://github.com/automl/auto-sklearn)
+* [Optuna](https://optuna.org/) - A hyperparameter optimization framework
+    * [github](https://github.com/pfnet/optuna)
+* [Hyperopt](https://hyperopt.github.io/hyperopt/) - Distributed Asynchronous Hyper-parameter Optimization
+    * [github](https://github.com/hyperopt/hyperopt)
+    * [hyperopt-sklearn](https://github.com/hyperopt/hyperopt-sklearn)
 
 ### (Online) Development Environment
 
