@@ -21,7 +21,8 @@ params = {
     'metric': 'binary_logloss',
     'num_leaves': 10,
     'min_data': 50,
-    'max_depth': 10
+    'max_depth': 10,
+    'boost_from_average': False
 }
 
 def data_preprocessing(path):
