@@ -109,22 +109,22 @@ def merge_feature():
     
     # merge features
     data_train = pd.merge(data_train, feat_authorized_mean, on='card_id', how='left')
-    data_test = pd.merge(data_train, feat_authorized_mean, on='card_id', how='left')
+    data_test = pd.merge(data_test, feat_authorized_mean, on='card_id', how='left')
 
     data_train = pd.merge(data_train, feat_historical_transactions, on='card_id', how='left')
-    data_test = pd.merge(data_train, feat_historical_transactions, on='card_id', how='left')
+    data_test = pd.merge(data_test, feat_historical_transactions, on='card_id', how='left')
 
     data_train = pd.merge(data_train, feat_authorized_transactions, on='card_id', how='left')
-    data_test = pd.merge(data_train, feat_authorized_transactions, on='card_id', how='left')
+    data_test = pd.merge(data_test, feat_authorized_transactions, on='card_id', how='left')
 
     data_train = pd.merge(data_train, feat_new_merchant_transactions, on='card_id', how='left')
-    data_test = pd.merge(data_train, feat_new_merchant_transactions, on='card_id', how='left')
+    data_test = pd.merge(data_test, feat_new_merchant_transactions, on='card_id', how='left')
 
     data_train = pd.merge(data_train, feat_final_group, on='card_id', how='left')
-    data_test = pd.merge(data_train, feat_final_group, on='card_id', how='left')
+    data_test = pd.merge(data_test, feat_final_group, on='card_id', how='left')
 
     data_train = pd.merge(data_train, feat_additional_fields, on='card_id', how='left')
-    data_test = pd.merge(data_train, feat_additional_fields, on='card_id', how='left')
+    data_test = pd.merge(data_test, feat_additional_fields, on='card_id', how='left')
 
     return data_train, data_test
 
@@ -133,7 +133,7 @@ def get_features():
     categorical = ['feature_1', 'feature_2', 'feature_3']
     return train_data, test_data, categorical
     
-def train_and_predict(online):
+def train_and_predict(loadModel = None, online = 0):
     train_data, test_data, categorical = get_features()    
     train_label = train_data['target']
     train_data = train_data.drop(['card_id', 'target'], axis=1)
@@ -142,17 +142,27 @@ def train_and_predict(online):
     test_data = test_data.drop('card_id', axis=1)
     print('features:', train_data.columns)
     
-    model = modeling(train_data, train_label, categorical, online)
-        
-    # model = lgb.Booster(model_file='model/09111902.model')
-    # It's able to load the trained model
-    # Write a document to record the status os training data
+    if not loadModel:
+        print('Training a new model (version:', version, ')')
+        model = modeling(train_data, train_label, categorical, online)
+    else:
+        print('Using trained model (version:', version, ')')
+        model = lgb.Booster(model_file=loadModel)
+        # It's able to load the trained model
+        # Write a document to record the status os training data
     
     if online == 1: # Submission
-        preds = model.predict(test_data, num_iteration=model.best_iteration)
+        preds = model.predict(test_data, num_iteration=model.best_iteration) # should be 123623 rows
         result = pd.DataFrame({'card_id': pred_id, 'target': preds}, columns=['card_id', 'target'])
         result.to_csv(prediction_path + 'submit_{}.csv'.format(version), index=False)
 
 if __name__=='__main__':
+    # Train new model
     version = datetime.now().strftime("%m%d%H%M")
-    train_and_predict(1)
+    train_and_predict(online=0) # test
+    train_and_predict(online=1) # submission
+
+    # Use trained model
+    # version = '02151647'
+    # model = model_path + version + '.model'
+    # train_and_predict(loadModel=model, online=1)
