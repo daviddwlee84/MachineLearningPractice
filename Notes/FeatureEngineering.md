@@ -1,5 +1,57 @@
 # Feature Engineering
 
+## Tips for Getting New Feature
+
+Model may not extract some message like human does. We can build new feature by combining other features to gain accuracy.
+
+* Think about business situation
+* Learn from the open source kernel and the discussion session
+
+### What to define a good feature
+
+* This feature gain a lot of improvement
+* Feature importance
+
+## Tips for Memory Usage
+
+Feature engineering will need lots of RAM (usually > 16GB).
+
+### Pandas
+
+#### astype
+
+Most of the time, you won't need very precise data. Use not-so-precise data type will save memory and time.
+
+* float: float32 (default float64)
+* string: int32
+
+#### [pandas.get_dummies](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.get_dummies.html)
+
+#### [dataframe.groupby.agg](https://pandas.pydata.org/pandas-docs/version/0.22/generated/pandas.core.groupby.DataFrameGroupBy.agg.html)
+
+* [Summarising, Aggregating, and Grouping data in Python Pandas](https://www.shanelynn.ie/summarising-aggregation-and-grouping-data-in-python-pandas/)
+
+- np.ptp (peak to peak)
+  - Range of values (maximum - minimum) along an axis.
+
+#### [pandas.Series.dt.month](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.dt.month.html)
+
+### Pickle
+
+## Tips for parameter
+
+### Gain parameter
+
+#### Bayesian Optimization
+
+#### Optuna
+
+#### Hyperopt
+
+### Test parameter
+
+#### K-Fold Cross-Validation
+
 ## Links
 
 * [Wiki - Feature engineering](https://en.wikipedia.org/wiki/Feature_engineering)
