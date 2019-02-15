@@ -39,6 +39,11 @@ def deal_data(): # reference from Elo World
         df['first_active_month'] = pd.to_datetime(df['first_active_month'])
         df['elapsed_time'] = (date(2018, 2, 1) - df['first_active_month'].dt.date).dt.days
 
+        # ValueError: DataFrame.dtypes for data must be int, float or bool.
+        # Did not expect the data types in fields first_active_month
+        # Name: first_active_month, dtype: datetime64[ns]
+        df = df.drop('first_active_month', axis=1)
+
         return df
 
     train = read_train_test_data('train.pickle')

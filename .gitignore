@@ -3,6 +3,8 @@ Project/KaggleElo/raw_data
 Project/KaggleElo/data
 Project/KaggleElo/deal
 Project/KaggleElo/feat
+Project/KaggleElo/model
+Project/KaggleElo/prediction
 
 # VScode
 .vscode
