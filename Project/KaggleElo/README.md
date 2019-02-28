@@ -83,12 +83,12 @@ Root Mean Squared Error (RMSE)
 
 ## Directory Structure
 
-* `raw_data`: data download from kaggle
-* `data`: preprocessed pickle data
-* `deal`: filter/project part of the data
-* `feat`: features we've made
-* `model`: LightGBM model
-* `prediction`: prediction result
+* `raw_data/`: data download from kaggle
+* `data/`: preprocessed pickle data
+* `deal/`: filter/project part of the data
+* `feat/`: features we've made
+* `model/`: LightGBM model
+* `prediction/`: prediction result
 
 - `feature.py`: building features
 - `train_model.py`: training model

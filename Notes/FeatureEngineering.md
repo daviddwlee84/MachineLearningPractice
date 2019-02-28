@@ -38,6 +38,35 @@ Most of the time, you won't need very precise data. Use not-so-precise data type
 
 ### Pickle
 
+#### MacOS file large than 4GB
+
+* [stackoverflow](https://stackoverflow.com/questions/31468117/python-3-can-pickle-handle-byte-objects-larger-than-4gb)
+
+```py
+def dump_bigger(data, output_file):
+    """
+    pickle.dump big file which size more than 4GB
+    """
+    max_bytes = 2**31 - 1
+    bytes_out = pickle.dumps(data, protocol=4)
+    with open(output_file, 'wb') as f_out:
+        for idx in range(0, len(bytes_out), max_bytes):
+            f_out.write(bytes_out[idx:idx + max_bytes])
+
+
+def load_bigger(input_file):
+    """
+    pickle.load big file which size more than 4GB
+    """
+    max_bytes = 2**31 - 1
+    bytes_in = bytearray(0)
+    input_size = os.path.getsize(input_file)
+    with open(input_file, 'rb') as f_in:
+        for _ in range(0, input_size, max_bytes):
+            bytes_in += f_in.read(max_bytes)
+    return pickle.loads(bytes_in)
+```
+
 ## Tips for parameter
 
 ### Gain parameter
