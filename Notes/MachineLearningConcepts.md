@@ -1,43 +1,132 @@
 # Machine Learning Concepts
 
-* Table of content
-    * [Data Preprocessing](#Data-Preprocessing)
-        * [Data Normalization](#Normalization)
-        * [Training and Test Sets - Splitting Data](#Splitting-Data)
-        * [Missing Value](#Missing-Value)
-        * [Label Encoding](#Label-Encoding)
-        * [Classification Imbalance](#Classification-Imbalance)
-        * [Dimensionality Reduction](#Dimensionality-Reduction)
-        * [Feature Scaling](#Feature-Scaling)
-    * [Model Expansion](#Model-Expansion)
-        * [Binary to Multi-class](#Binary-to-Multi-class)
-    * [Model Evaluation](#Model-Evaluation)
-        * [Classification](#Classification)
-        * [Regression](#Regression)
-        * [Clustering](#Clustering)
-    * [Fitting and Model Complexity](#Fitting-and-Model-Complexity)
-        * [Overfitting](#Overfitting)
-        * [Underfitting](#Underfitting)
-        * [Generalization](#Generalization)
-        * [Regularization](#Regularization)
-    * [Reducing Loss](#Reducing-Loss)
-        * [Learning Rate](#Learning-Rate)
-        * [Gradient Descent](#Gradient-Descent)
-    * [Other Learning Method (Task)](#Other-Learning-Method)
-        * [Cost-sensitive Learning](#Cost-sensitive-Learning)
-        * [Lazy Learning](#Lazy-Learning)
-        * [Incremental Learning (Online Learning)](#Incremental-Learning-(Online-Learning))
-        * [Multi-label Classification](#Multi-label-Classification)
+Table of content
+
+- [Machine Learning Concepts](#machine-learning-concepts)
+  - [Machine Learning Framework](#machine-learning-framework)
+  - [Data Preprocessing](#data-preprocessing)
+    - [Normalization](#normalization)
+    - [Missing Value](#missing-value)
+      - [Options](#options)
+    - [Dimensionality Reduction](#dimensionality-reduction)
+      - [Factor Analysis](#factor-analysis)
+      - [ICA](#ica)
+      - [PCA vs SVD](#pca-vs-svd)
+    - [Label Encoding](#label-encoding)
+    - [Classification Imbalance](#classification-imbalance)
+    - [Feature Scaling](#feature-scaling)
+  - [Model Expansion](#model-expansion)
+    - [Binary to Multi-class](#binary-to-multi-class)
+      - [One-vs-rest (one-vs-all) Approaches](#one-vs-rest-one-vs-all-approaches)
+      - [Pairwise (one-vs-one, all-vs-all) Approaches](#pairwise-one-vs-one-all-vs-all-approaches)
+  - [Model Validation](#model-validation)
+    - [Splitting Data](#splitting-data)
+    - [Simplest Split](#simplest-split)
+    - [Hold-out Validation](#hold-out-validation)
+    - [N-Fold Cross-Validation (Repeated Hold-out)](#n-fold-cross-validation-repeated-hold-out)
+      - [Hold-one-out Cross-Validation (LOO CV)](#hold-one-out-cross-validation-loo-cv)
+    - [Train-Validation-Test](#train-validation-test)
+      - [Nested N-Fold Cross-Validation](#nested-n-fold-cross-validation)
+    - [Bootstrapping](#bootstrapping)
+      - [0.632-bootstrap](#0632-bootstrap)
+  - [Model Evaluation](#model-evaluation)
+    - [Classification](#classification)
+      - [Methods Overview](#methods-overview)
+      - [Accuracy (Error Rate)](#accuracy-error-rate)
+      - [Confusion Matrix](#confusion-matrix)
+      - [Precision, Recall Ratio](#precision-recall-ratio)
+      - [ROC curve](#roc-curve)
+    - [Regression](#regression)
+      - [Mean Absolute Error (MAE)](#mean-absolute-error-mae)
+      - [Mean Squared Error (MSE)](#mean-squared-error-mse)
+      - [Root Mean Squared Error (RMSE)](#root-mean-squared-error-rmse)
+    - [Clustering](#clustering)
+      - [Within Groups Sum of Squares](#within-groups-sum-of-squares)
+      - [Mean Silhouette Coefficient of all samples](#mean-silhouette-coefficient-of-all-samples)
+      - [Calinski and Harabaz score](#calinski-and-harabaz-score)
+  - [Fitting and Model Complexity](#fitting-and-model-complexity)
+    - [Generalization](#generalization)
+    - [Overfitting](#overfitting)
+    - [Underfitting](#underfitting)
+    - [Occam's Razor Principle](#occams-razor-principle)
+    - [Regularization (Weight Decay)](#regularization-weight-decay)
+      - [L1 Regularization](#l1-regularization)
+      - [L2 Regularization](#l2-regularization)
+      - [L1+L2 Regularization](#l1l2-regularization)
+  - [Reducing Loss](#reducing-loss)
+    - [Common Loss Function](#common-loss-function)
+      - [Hinge Loss](#hinge-loss)
+      - [Cross Entropy Loss (Negative Log Likelihood)](#cross-entropy-loss-negative-log-likelihood)
+    - [Learning Rate](#learning-rate)
+    - [Gradient Descent](#gradient-descent)
+      - [Stochastic Gradient Descent](#stochastic-gradient-descent)
+  - [Other Learning Method](#other-learning-method)
+    - [Cost-sensitive Learning](#cost-sensitive-learning)
+    - [Lazy Learning](#lazy-learning)
+    - [Incremental Learning (Online Learning)](#incremental-learning-online-learning)
+    - [Multi-label Classification](#multi-label-classification)
+
+## Machine Learning Framework
+
+Three aspect:
+
+* What is the target?
+* The representation?
+  * Data
+  * Target function
+* Algorithms (i.e. ML Method)
+
+Three Spaces
+
+* Input Space/Feature Space: space used to describe each instance
+  * Continuous (e.g. Word embedding)
+  * Discrete (e.g. Feature engineering)
+  * Binary
+* Output Space: space of possible output values; very dependent on problem
+  * Continuous vs. Discrete
+  * Binary vs. Multivalued (in Discrete)
+* Hypothesis Space: space of functions that can be selected by the machine learning algorithm (it's the set of all functions *h* that satisfy the goal)
+
+Three Problems
+
+* Accordance Assumption: m examples chosen i.i.d. according to an unknown real world *distribution*
+* Modeling: For a *hypotheses*, estimate the parameters based on training data and minimize loss
+* Generalization: Accuracy on real data (training & test set)
+
+Goal of ML
+
+* Find a function *h* belonging to hypothesis space H, such that the expected error on new examples is minimal.
+* Find a function *h*: $Y = H(X)$, where $D = \{(X, y) | x \in X, y \in Y\}$
+
+Types of ML Problem
+
+* Y = empty set: unsupervised learning
+* Y is a set of integer: classification
+* If |Y|=2, h is called a concept: concept learning
+* Y is a set of real number: regression
+* Y are not given for some Ds: semi-supervised learning
+* Y is order set: learning for ranking
+* ...
+
+Learning Frame
+
+* Describing data with feature (Input Space): Manually designing input feature
+* Learning algorihtm (Hypothesis Space): Optimizing the weights on features
+
+Reasons of ML methods fail
+
+* Wrong Bias: best hypothesis is not in H
+* Search Failure: best model is in H but search fails to examine it
 
 ## Data Preprocessing
+
+[Feature Engineering](FeatureEngineering.md)
 
 ### Normalization
 
 TBD
 
 e.g. SVM is better to normalize data between -1 and 1
-
-### Splitting Data
 
 ### Missing Value
 
@@ -150,9 +239,80 @@ Tutorial:
 
 #### Pairwise (one-vs-one, all-vs-all) Approaches
 
+## Model Validation
+
+### Splitting Data
+
+* Training Set: to get weights (parameters) by training
+* Validation Set / Development Set: to determine superparameters and when to stop training (early stop)
+* Test Set: to evaluate performance
+
+### Simplest Split
+
+Split data into Training and Test set (usually 2:1)
+
+Problem: the sample might not be representative
+
+### Hold-out Validation
+
+Stratification: sampling for training and testing within classes (this ensures that each class is represented with approximately equal proportions in both subsets)
+
+### N-Fold Cross-Validation (Repeated Hold-out)
+
+> Repeat hold-out process with different subsamples
+
+1. Start with a dataset D of labeled sample
+2. Randomly partiiton into N groups (i.e. N-fold)
+3. Calculate average n errors
+
+#### Hold-one-out Cross-Validation (LOO CV)
+
+### Train-Validation-Test
+
+Split the Train data into Traintrain and Validation
+
+* Use the validation set to find the best parameters
+* Use the test set to estimate the true error
+
+#### Nested N-Fold Cross-Validation
+
+### Bootstrapping
+
+The bootstrap is an estimaiton method that uses sampling with replacement to form the training set
+
+Case where bootstrap does not apply
+
+* Too small datasets: the original sample is not a good approximation of the population
+* Dirty data: outliers add variability in our estimations
+* Dependence structures (e.g. time series, spatial problems): bootstrap is based on the assumption of independence
+
+#### 0.632-bootstrap
+
+$$
+\lim_{n \rightarrow \infty} (1-\frac{1}{n})^n = \frac{1}{e} = 0.368
+$$
+
+This means that the training data will contain approximately 63.2% of the examples.
+
 ## Model Evaluation
 
 ### Classification
+
+Standard classification problem assumes indifvidual cases are disconnected and independent (i.i.d: independently and identically distributed)
+
+We're going to minimize the empirical classification error
+
+#### Methods Overview
+
+* Decision Trees
+  * Function space is Boolean formula in Disjunctive Normal Form (DNF)
+* Probability Model
+  * Function space is dependent on the distribution assumptions of the model
+* Discriminant Functions
+  * Partition the D dimensional spae with a (D-1) dimensional function
+  * Function space is dependent on the function used to discriminate
+* Linear Discriminates
+  * Partition the D dimensional space with a (D-1) dimensional linear function
 
 #### Accuracy (Error Rate)
 
@@ -172,7 +332,7 @@ Tutorial:
 
 These metrics that are more useful than error rate when detection of one class is more important than another class.
 
-Consider a two-class problem.
+Consider a **two-class** problem.
 (Confusion matrix with different outcome labeled)
 
 Actual \ Redicted   |+1                 |-1
@@ -193,6 +353,11 @@ Summary:
 
 * You can easily construct a classifier that achieves a high measure of recall or precision but not both.
 * If you predicted everything to be in the positive class, you'd have perfect recall but poor precision.
+
+Now consider **multiple classes** problem.
+
+* Macro-average
+* Micro-average
 
 #### ROC curve
 
@@ -239,19 +404,122 @@ ROC stands for Receiver Operating Characteristic
 
 ## Fitting and Model Complexity
 
-### Overfitting
-
-### Underfitting
+Sample Complexity: A more complex function requires more data to generate an accurate model.
 
 ### Generalization
 
-### Regularization
+* A good learning program learns something about the data beyond the specific cases that have been presented to it
+* Classifier can minimize "i.i.d" error, that is error over future cases (not used in training). Such cases contain both previously encountered as well as new cases.
+
+Error
+
+* Training error: error *on training set*
+* Generalization error: expected value of the errors *on testing data*
+  * Capacity: ability to fit a wide variety of functions (the expressive power)
+    * too low (underfitting): struggle to fit the training set
+    * too high (overfitting): overfit by memorizing properties of the training set that do not serve them well on the test set
+
+### Overfitting
+
+In general, over-fitting a model to the data means that we learn non-representative properties of the sample data
+
+> overfitting and poor generalization are synonymous as long as we've learned the training data well.
+
+Overfitting is affected by
+
+* the "simplicity" of the classifier (e.g. straight vs. wiggly line)
+* the size of the sample
+* the complexity of the function we wish to learn from data
+* the amount of noise
+* the number of the variable (features)
+
+> Low training set error rate but high validation set error rate
+
+### Underfitting
+
+> High training set error rate
+
+### Occam's Razor Principle
+
+[Wiki - Occam's razor](https://simple.wikipedia.org/wiki/Occam%27s_razor)
+
+Law of Parsimony
+
+### Regularization (Weight Decay)
+
+Used to control the complexity of the model (in case of overfitting)
+
+> let $\theta = (w_1, w_2, \dots, w_n)$ as model parameters
+
+#### L1 Regularization
+
+$$
+R(\theta) = ||\theta ||_1 = |w_1| + |w_2| + \cdots + |w_n|
+$$
+
+#### L2 Regularization
+
+$$
+R(\theta) = ||\theta ||_2^2 = w_1^2 + w_2^2 + \cdots + w_n^2
+$$
+
+#### L1+L2 Regularization
+
+$$
+R(\theta) = \alpha ||\theta ||_1 + (1-\alpha) ||\theta ||_2^2
+$$
 
 ## Reducing Loss
+
+### Common Loss Function
+
+#### Hinge Loss
+
+Binary classification
+
+$$
+L_{\text{hinge}}(\hat{y}, y) = \max(0, 1-y \cdot \hat{y})
+$$
+
+Multi-class classification
+
+$$
+L_{\text{hinge}}(\hat{y}, y) = \max(0, 1- (\hat{y}_t - \hat{y}_k)
+$$
+
+#### Cross Entropy Loss (Negative Log Likelihood)
+
+Used to measure the similarity between two probability distribution.
+
+$$
+H(p, q) = - \sum_x p(x) log q(x)
+$$
+
+* $p(x)$ represents the real distribution.
+* $q(x)$ represents the model/estimate distribution.
+
+Binary classification
+
+$$
+L_{\text{Cross Entropy}}(\hat{y}, y) = -y \log \hat{y} - (1-y) \log (1-\hat{y})
+$$
+
+Multi-class classification
+
+$$
+L_{\text{Cross Entropy}}(\hat{y}, y) = -\log \hat{y}_t
+$$
 
 ### Learning Rate
 
 ### Gradient Descent
+
+Find the fastest way to minimize the error.
+
+#### Stochastic Gradient Descent
+
+* Random select m example as sample (minibach)
+* Use gradient average to estimate the expected gradient of the training set
 
 ## Other Learning Method
 
