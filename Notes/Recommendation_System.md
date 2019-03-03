@@ -1,10 +1,48 @@
 # Recommendation System
 
+## Brief Description
+
+Definition: A subclass of *information filtering system*
+
+To predict the *rating* or *preference* that user would give to an item (e.g. movie) or social element (e.g. people) they had not yet considered.
+
+### Formalization
+
+* Mapping Function: $f: U \times I \rightarrow R$
+* Input:
+  * User Model ($U$)
+  * Item ($I$)
+* Calculate:
+  * Relativity ($R$) - used to **sorting**
+
+### Search vs. Recommendation
+
+Search: fulfilling users' **active needs**
+
+* user know what he want
+* user know how to describe
+
+Recommend: **mining** and fulfilling users' **potential needs**
+
+* user don't know where to find
+* user don't know how to describe
+
+## Background
+
+### Informations Overload
+
+Power laws / long-tailed distribution in the statistical sense
+
+### Personas 用戶畫像
+
+> customized recommendation / personalization
+
 ## Traditional Approach
 
 * Content-based Recommendation
-    * analyzes the nature of each item
-* Collaborative Filtering
+    * analyzes the nature of each item (characteristics of items)
+* Knowledge-based Recommendation
+* Collaborative Filtering 協同過濾 - users' social environment
     * Item-based
     * User-based
 
@@ -41,6 +79,9 @@ measure the similarity between target users and other users
 ### Wikipedia
 
 * [Recommendation System](https://en.wikipedia.org/wiki/Recommender_system)
+* [Information overload](https://en.wikipedia.org/wiki/Information_overload)
+* [Long tail](https://en.wikipedia.org/wiki/Long_tail)
+* [Persona](https://en.wikipedia.org/wiki/Persona)
 * [Collaborative filtering](https://en.wikipedia.org/wiki/Collaborative_filtering)
 * [Matrix factorization (recommender systems)](https://en.wikipedia.org/wiki/Matrix_factorization_(recommender_systems))
 
