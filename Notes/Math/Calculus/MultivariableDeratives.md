@@ -6,7 +6,7 @@
 
 ### Constrained Optimization
 
-Maximize a multi-variable function with a constraint
+Maximize a multi-variable function with a constraint
 
 **Example**:
 
@@ -285,4 +285,4 @@ $\forall i = 1, 2, \dots, k, \forall j = 1, 2, \dots, k$
     * [Khan Academy - Lagrange multipliers and constrained optimization](https://www.khanacademy.org/math/multivariable-calculus/applications-of-multivariable-derivatives/lagrange-multipliers-and-constrained-optimization/v/constrained-optimization-introduction)
     * Tomas Calculus Ch 14.8 Lagrange Multipliers
 * [Lagrange Duality](#Lagrange-Duality)
-    * 李航 - 統計學習方法 Appendix C
+    * 李航 - 統計學習方法 Appendix C
