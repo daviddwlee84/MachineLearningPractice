@@ -4,6 +4,8 @@ Some practices using statistical machine learning technique based on some datase
 
 To see more detail or example about deep learning, you can checkout my [Deep Learning](https://github.com/daviddwlee84/DeepLearningPractice) repository.
 
+Because Github don't support LaTeX for now, you can use the Google Chrome extension [TeX All the Things](https://chrome.google.com/webstore/detail/tex-all-the-things/cbimabofgmfdkicghcadidpemeenbffn) ([github](https://github.com/emichael/texthings)) to read the notes.
+
 ## Environment
 
 * Using Python 3
@@ -53,6 +55,7 @@ Document Similarity and LSI|VSM, SVD / LSI|[Corpus of the People's Daily](http:/
 Click and Conversion Prediction|Logistic Regression / Recommendation System|[Ali-CCP](https://tianchi.aliyun.com/datalab/dataSet.html?spm=5176.100073.0.0.2d186fc1w0MXC3&dataId=408) (File too large about 20GB)||[Notes](Notes/Subject/Ali-CCP.md)
 LightGBM & XGBoost & CatBoost Practice|Boosting Tree / Classification|[Social Network Ads](https://www.kaggle.com/rakeshrau/social-network-ads) ([File](Datasets/Social_Network_Ads.csv))|[LightGBM](Algorithm/Boosting/Boosting_Social_Network_Ads/Boosting_Social_Network_Ads_LightGBM.py), [XGBoost](Algorithm/Boosting/Boosting_Social_Network_Ads/Boosting_Social_Network_Ads_XGBoost.py)|[Notes](Notes/Subject/SocialNetworkAds.md)
 Kaggle Elo|LightGBM / Feature Engineering|[Elo Merchant Category Recommendation](https://www.kaggle.com/c/elo-merchant-category-recommendation)|[LightGBM Project](Project/KaggleElo)
+DCIC 2019|LightGBM & XGBoost / Feature Engineering|[Failure Prediction of Concrete Piston for Concrete Pump Vehicles](https://www.datafountain.cn/competitions/336/details)|[LightGBM & XGBoost Project](Project/DCIC2019)
 
 ## Machine Learning Categories
 
@@ -292,6 +295,7 @@ Textbook Implementation
     * [wzyonggege/statistical-learning-method](https://github.com/wzyonggege/statistical-learning-method)
     * [Dod-o/Statistical-Learning-Method_Code](https://github.com/Dod-o/Statistical-Learning-Method_Code)
         * [blog](http://www.pkudodo.com/)
+    * [SmirkCao/Lihang](https://github.com/SmirkCao/Lihang)
 * Stanford Andrew Ng CS229
     * [fengdu78/Coursera-ML-AndrewNg-Notes](https://github.com/fengdu78/Coursera-ML-AndrewNg-Notes)
     * [fengdu78/deeplearning_ai_books](https://github.com/fengdu78/deeplearning_ai_books)

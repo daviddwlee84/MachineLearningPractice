@@ -6,6 +6,9 @@ Project/KaggleElo/feat
 Project/KaggleElo/model
 Project/KaggleElo/prediction
 
+# DCIC 2019
+Project/DCIC2019/raw_data
+
 # VScode
 .vscode
 
