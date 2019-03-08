@@ -58,7 +58,47 @@ Macro-F1-Score
 * [sklearn.metrics.f1_score](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html)
   * macro - Calculate metrics for each label, and find their unweighted mean. This does not take label imbalance into account.
 
+## Feature Engineering
+
+### Cumulated Turning Rounds of Engine
+
+累積工作時長 × 發動機轉速 (TODO)
+
+## XGBoost Result
+
+```sh
+python3 xgboost_Kfold_f1score.py
+```
+
+### version 1 (baseline)
+
+Basic feature engineering (for each uncategorical feature)
+
+* unique length
+* max
+* min
+* sum
+* mean
+* std
+
+Result
+
+* Local Score: 0.5991744450371395
+  * [0.5939162417315951, 0.6012755671484955, 0.6033511178275852, 0.6088843119346735, 0.588444986543348]
+* Online Score: 0.59446460000
+
+## TODO
+
+* [ ] Matplotlib Chinese font /or/ Transfer to English label
+  * [matplotlib - Configuring the font family](https://matplotlib.org/gallery/api/font_family_rc_sgskip.html)
+  * [How to Plot Unicode Characters with Matplotlib](https://jdhao.github.io/2018/04/08/matplotlib-unicode-character/)
+
 ## Links
 
-* [**周冠軍分享|2019 DCIC 《混凝土泵車砼活塞故障預警》**](https://mp.weixin.qq.com/s?__biz=MzI5ODQxMTk5MQ==&mid=2247485857&idx=2&sn=148ad7cb473f75bf6719c46f1f75dfd6&chksm=eca77b19dbd0f20fb21cb6959383b6bbe942f256f5a03e5ed870ad463beeb91e247643d7874a&mpshare=1&scene=23&srcid=#rd)
+* [**週冠軍分享|2019 DCIC 《混凝土泵車砼活塞故障預警》**](https://mp.weixin.qq.com/s?__biz=MzI5ODQxMTk5MQ==&mid=2247485857&idx=2&sn=148ad7cb473f75bf6719c46f1f75dfd6&chksm=eca77b19dbd0f20fb21cb6959383b6bbe942f256f5a03e5ed870ad463beeb91e247643d7874a&mpshare=1&scene=23&srcid=#rd)
 * [**天線寶寶's baseline - jmxhhyx/DCIC-Failure-Prediction-of-Concrete-Piston-for-Concrete-Pump-Vehicles**](https://github.com/jmxhhyx/DCIC-Failure-Prediction-of-Concrete-Piston-for-Concrete-Pump-Vehicles)
+
+### Packages
+
+* [sklearn - Model persistence (joblib)](https://scikit-learn.org/stable/modules/model_persistence.html)
+* [tqdm](https://github.com/tqdm/tqdm) - A fast, extensible progress bar for Python and CLI
