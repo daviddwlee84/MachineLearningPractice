@@ -12,7 +12,7 @@ from sklearn.externals import joblib # For model persistance
 from sklearn.metrics import f1_score
 from sklearn.model_selection import StratifiedKFold
 
-version = "v1"
+version = "v2"
 
 data_dir = "raw_data/"
 feature_dir = "feature/"
@@ -43,37 +43,62 @@ def f1_score_vail(pred, data_vail):
 ## Feature Engineering
 
 def create_feature(df):
+    """ Calculate feature for each training sample (a csv with multiple rows) """
+    # Initialization
     create_fe = list() # feature data
     col = list()       # feature name
 
+    # First derivative (version 2)
+    # d(noncategorical data)/d(活塞工作时长)
+    # (some data has only a single row of data, so no differential)
+    for i in df.columns:
+        if i not in ['活塞工作时长', '设备类型']:
+            if i not in ['低压开关', '高压开关', '搅拌超压信号', '正泵', '反泵']:
+                if len(df) > 1:
+                    first_deri = np.gradient(df[i], df['活塞工作时长'][0])
+                else:
+                    first_deri = df[i][0]/df['活塞工作时长'][0]
+                df[i+'_1st_deri'] = first_deri
+
+    # Creating feature (each one corresponding to exact one label)
     create_fe.append(len(df))
-    create_fe.append(len(df.drop_duplicates()))
     col.append('data_len')
-    col.append('data_drop_dup_len')
+
+    # create_fe.append(len(df.drop_duplicates()))
+    # col.append('data_drop_dup_len')
+
     for i in df.columns:
         if i != '设备类型': # i.e. not categorical data
-            create_fe.append(len(df[i].unique()))
-            create_fe.append(df[i].max())
-            create_fe.append(df[i].min())
-            # create_fe.append(df[i].max()-df[i].min())        
+
+            if i not in ['活塞工作时长', '高压开关', '低压开关']:
+                create_fe.append(df[i].max())
+                col.append(i+'_max')
+
+                create_fe.append(df[i].min())
+                col.append(i+'_min')
+
+                create_fe.append(df[i].std())
+                col.append(i+'_std')
+
             create_fe.append(df[i].sum())
-            create_fe.append(df[i].mean())
-            create_fe.append(df[i].std())
-            # create_fe.append(df[i].std()/df[i].mean())  
-            # create_fe.append(df[i].skew())
-            
-            col.append(i+'_unique_len')
-            col.append(i+'_max')
-            col.append(i+'_min')
-            # col.append(i+'max_min_sub')
             col.append(i+'_sum')
+
+            create_fe.append(df[i].mean())
             col.append(i+'_mean')
-            col.append(i+'_std')
+
+            # create_fe.append(len(df[i].unique()))
+            # col.append(i+'_unique_len')
+            # create_fe.append(df[i].max()-df[i].min())        
+            # col.append(i+'max_min_sub')
+            # create_fe.append(df[i].std()/df[i].mean())  
             # col.append(i+'std_mean_sub')
+            # create_fe.append(df[i].skew())
             # col.append(i+'_skew')
-        else:
-            create_fe.append(df[i].max())
-            col.append(i+'_')
+
+    total_turn = np.sum(df['活塞工作时长']*df['发动机转速'])
+    create_fe.append(total_turn)
+    col.append('total_turn')
+
     return create_fe, col
 
 def get_uid_csv():
@@ -87,9 +112,9 @@ def get_feature():
 
     train_uid, test_uid = get_uid_csv()
 
-    # Used to map the label to integer
-    equipment = {'ZV41153':0, 'ZV55eec':1, 'ZV75a42':2, 
-                 'ZV7e8e3':3, 'ZV90b78':4, 'ZVc1d93':5, 'ZVe0672':6}
+    # Used to map the label to integer (label encoding)
+    equipment = {'ZVe44':0, 'ZV573':1, 'ZV63d':2, 
+                 'ZVfd4':3, 'ZVa9c':4, 'ZVa78':5, 'ZV252':6}
 
     try:
         # If feature pickle exist, load from it
@@ -212,6 +237,7 @@ def KFold(X_train_all, y_train_all, X_test_all, K=5, plot=True):
         else:
             cross_validation_pred = np.hstack((cross_validation_pred, np.array(pred_test).reshape(-1, 1)))
 
+    print("Feature Importance: (",len(xgb_model.get_fscore()), ")\n", xgb_model.get_fscore()) # Get feature importance of each feature
     if plot:
         xgb.plot_importance(xgb_model, max_num_features=25)
         plt.show()
@@ -249,6 +275,7 @@ def main():
 
     # Create feature and Pair label to training set
     X_train_all, y_train_all, X_test_all = get_train_test()
+    print('Total features:', len(X_train_all.columns))
     # Train model and make prediction
     cross_validation_pred = KFold(X_train_all, y_train_all, X_test_all, K=5, plot=False)
     # Generate submit file
