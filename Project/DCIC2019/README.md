@@ -44,6 +44,7 @@ And,
   * Numeric feature
 * 低壓開關、高壓開關、攪拌超壓信號、正泵、反泵：
   * 開關量
+  * Binary feature
 * 設備類型：該泵車的類型
   * Categorical feature
 
@@ -63,6 +64,8 @@ Macro-F1-Score
 ### Cumulated Turning Rounds of Engine
 
 累積工作時長 × 發動機轉速 (tried in [version 2](#version-2))
+
+累積工作時長 × 油泵轉速 (tried in version 3)
 
 ## XGBoost Result
 
@@ -95,7 +98,7 @@ Feature added
   * [numpy.gradient](https://docs.scipy.org/doc/numpy/reference/generated/numpy.gradient.html)
   * [pandas.DataFrame.diff](https://pandas.pydata.org/pandas-docs/version/0.23/generated/pandas.DataFrame.diff.html)
     * [Stackoverflow - python pandas: how to calculate derivative/gradient](https://stackoverflow.com/questions/41780489/python-pandas-how-to-calculate-derivative-gradient)
-* [total turn](#Cumulated-Turning-Rounds-of-Engine)
+* [total engine turn](#Cumulated-Turning-Rounds-of-Engine)
 
 Feature removed
 
@@ -114,7 +117,7 @@ Feature Importance: ( 31 )
   * [0.5892376117944992, 0.6074827461848528, 0.6054303474690202, 0.6009050802877793, 0.5886549329401154]
 * Online Score: 0.60010433
 
-Result (with `total_turn`)
+Result (with `total_engine_turn`)
 
 ```txt
 Feature Importance: ( 32 )
@@ -124,6 +127,25 @@ Feature Importance: ( 32 )
 * Local Score: 0.6004209943823582
   * [0.5915075875237326, 0.6069075066539147, 0.6080411032386698, 0.609920879474779, 0.5857278950206952]
 * Online Score: 0.59949291000
+
+### version 3
+
+Feature added
+
+* total pump turn
+
+Feature modified
+
+* Make clear of binary feature and other numeric feature
+
+```txt
+Feature Importance: ( 34 )
+ {'活塞工作时长_mean': 1, 'data_len': 6, '活塞工作时长_sum': 5, '高压开关_sum': 3, '排量电流_sum': 2, '分配压力_mean': 2, '液压油温_max': 1, '泵送压力_mean': 1, '分配压力_sum': 1, '低压开关_sum': 2, '泵送压力_max': 3, 'pump_turn_mean': 2, '发动机转速_min': 1, '分配压力_max': 3, '排量电流_max': 1, 'pump_turn_1st_deri_min': 1, '发动机转速_max': 2, '泵送压力_min': 1, '泵送压力_std': 1, '液压油温_1st_deri_min': 1, '液压油温_min': 3, '流量档位_sum': 1, '排量电流_1st_deri_max': 1, '排量电流_1st_deri_std': 1, 'engine_turn_min': 1, '发动机转速_1st_deri_sum': 1, '泵送压力_1st_deri_max': 2, 'engine_turn_sum': 1, '流量档位_mean': 1, '泵送压力_1st_deri_min': 1, '泵送压力_1st_deri_std': 1, '流量档位_max': 2, '发动机转速_sum': 1, 'engine_turn_max': 1}
+```
+
+* Local Score: 0.6016200155116346
+  * [0.595883290960082, 0.6060052612666093, 0.6087465431550466, 0.6089840073376056, 0.5884809748388296]
+* Online Score: 0.59313458000
 
 ## TODO
 

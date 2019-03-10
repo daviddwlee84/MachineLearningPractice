@@ -12,7 +12,7 @@ from sklearn.externals import joblib # For model persistance
 from sklearn.metrics import f1_score
 from sklearn.model_selection import StratifiedKFold
 
-version = "v2"
+version = "v3"
 
 data_dir = "raw_data/"
 feature_dir = "feature/"
@@ -48,11 +48,23 @@ def create_feature(df):
     create_fe = list() # feature data
     col = list()       # feature name
 
+    # Rounds of engine and pump (version 3)
+    df['engine_turn'] = df['活塞工作时长']*df['发动机转速']
+    # total_engine_turn = np.sum(df['活塞工作时长']*df['发动机转速'])
+    # create_fe.append(total_engine_turn)
+    # col.append('total_engine_turn')
+
+    df['pump_turn'] = df['活塞工作时长']*df['油泵转速']
+    # total_pump_turn = np.sum(df['活塞工作时长']*df['油泵转速'])
+    # create_fe.append(total_pump_turn)
+    # col.append('total_pump_turn')
+
     # First derivative (version 2)
     # d(noncategorical data)/d(活塞工作时长)
     # (some data has only a single row of data, so no differential)
     for i in df.columns:
         if i not in ['活塞工作时长', '设备类型']:
+            # Skip binary feature
             if i not in ['低压开关', '高压开关', '搅拌超压信号', '正泵', '反泵']:
                 if len(df) > 1:
                     first_deri = np.gradient(df[i], df['活塞工作时长'][0])
@@ -70,7 +82,8 @@ def create_feature(df):
     for i in df.columns:
         if i != '设备类型': # i.e. not categorical data
 
-            if i not in ['活塞工作时长', '高压开关', '低压开关']:
+            # Skip constant feature and binary feature
+            if i not in ['活塞工作时长', '高压开关', '低压开关', '搅拌超压信号', '正泵', '反泵']:
                 create_fe.append(df[i].max())
                 col.append(i+'_max')
 
@@ -94,10 +107,6 @@ def create_feature(df):
             # col.append(i+'std_mean_sub')
             # create_fe.append(df[i].skew())
             # col.append(i+'_skew')
-
-    total_turn = np.sum(df['活塞工作时长']*df['发动机转速'])
-    create_fe.append(total_turn)
-    col.append('total_turn')
 
     return create_fe, col
 
