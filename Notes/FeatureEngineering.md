@@ -1,5 +1,7 @@
 # Feature Engineering
 
+[Data Preprocessing](MachineLearningConcepts.md#Data-Preprocessing)
+
 ## Tips for Getting New Feature
 
 Model may not extract some message like human does. We can build new feature by combining other features to gain accuracy.
@@ -85,3 +87,8 @@ def load_bigger(input_file):
 
 * [Wiki - Feature engineering](https://en.wikipedia.org/wiki/Feature_engineering)
 * [機器學習筆記 - 特徵工程](https://feisky.xyz/machine-learning/basic/feature-engineering.html)
+* [**Understanding Feature Engineering (Part 1) — Continuous Numeric Data**](https://towardsdatascience.com/understanding-feature-engineering-part-1-continuous-numeric-data-da4e47099a7b)
+
+### Good Example
+
+* [Data Fountain光伏發電量預測 Top1 開源分享](https://zhuanlan.zhihu.com/p/44755488?utm_source=qq&utm_medium=social&utm_oi=623925402599559168)

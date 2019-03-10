@@ -17,6 +17,13 @@ Supervised Learning|Boosting||
 * [XGBoost Github](https://github.com/dmlc/xgboost) - Distributed Gradient Boosting (GBDT, GBRT or GBM) Library
 * [Wiki - XGBoost](https://en.wikipedia.org/wiki/Xgboost)
 
+### Feature Engineering
+
+#### Feature Importance
+
+* [Feature Importance and Feature Selection With XGBoost in Python](https://machinelearningmastery.com/feature-importance-and-feature-selection-with-xgboost-in-python/)
+* [xgboost.Booster.get_fscore(), xgboost.Booster.get_score()](https://xgboost.readthedocs.io/en/latest/python/python_api.html#xgboost.Booster.get_fscore)
+
 ### Sample Baseline
 
 * [Simple XGBoost Baseline](https://www.kaggle.com/suttergustavo/simple-xgboost-baseline)

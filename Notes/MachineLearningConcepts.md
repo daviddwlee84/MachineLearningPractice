@@ -4,6 +4,7 @@ Table of content
 
 - [Machine Learning Concepts](#machine-learning-concepts)
   - [Machine Learning Framework](#machine-learning-framework)
+    - [Unsupervised Learning](#unsupervised-learning)
   - [Data Preprocessing](#data-preprocessing)
     - [Normalization](#normalization)
     - [Missing Value](#missing-value)
@@ -118,6 +119,15 @@ Reasons of ML methods fail
 * Wrong Bias: best hypothesis is not in H
 * Search Failure: best model is in H but search fails to examine it
 
+### Unsupervised Learning
+
+* [Is the test set required for the unsupervised learning?](https://www.quora.com/Is-the-test-set-required-for-the-unsupervised-learning)
+  * In a way, no - as there is no ground truth. But often, unsupervised learning is followed by or associated with supervised learning.
+    * Word2Vec followed by classification/regression - Text Prediction
+    * PCA on TFIDF vectors followed by classification/regression -Text Prediction
+    * Clustering on labeled data - if you want to tune the clustering to get the least error
+    * Topic Modeling - you use LDA or LSA to get topic models and use the “elbow” to find the optimum number of topics - but now you would like to see if this would generalize well - and then you need a test set.
+
 ## Data Preprocessing
 
 [Feature Engineering](FeatureEngineering.md)
@@ -131,6 +141,7 @@ e.g. SVM is better to normalize data between -1 and 1
 ### Missing Value
 
 * [Scikit Learn - 4.4 Imputation of missing values](http://scikit-learn.org/stable/modules/impute.html#impute)
+* [How to Handle Missing Data](https://towardsdatascience.com/how-to-handle-missing-data-8646b18db0d4)
 
 #### Options
 
