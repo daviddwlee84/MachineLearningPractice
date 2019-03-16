@@ -73,6 +73,9 @@ Macro-F1-Score
 python3 xgboost_Kfold_f1score.py
 ```
 
+> Each version means more significant change.
+> Each version may have multiple test assignment with a little difference.
+
 ### version 1 (baseline)
 
 Basic feature engineering (for each uncategorical feature)
@@ -128,7 +131,7 @@ Feature Importance: ( 32 )
   * [0.5915075875237326, 0.6069075066539147, 0.6080411032386698, 0.609920879474779, 0.5857278950206952]
 * Online Score: 0.59949291000
 
-### version 3
+### version 3 (no improvement)
 
 Feature added
 
@@ -146,6 +149,35 @@ Feature Importance: ( 34 )
 * Local Score: 0.6016200155116346
   * [0.595883290960082, 0.6060052612666093, 0.6087465431550466, 0.6089840073376056, 0.5884809748388296]
 * Online Score: 0.59313458000
+
+### version 4 (no improvement)
+
+Feature added
+
+* oil temperature abnormal
+* engine too fast
+
+Result:
+
+```txt
+Feature Importance: ( 38 )
+ {'engine_turn_mean': 2, 'data_len': 5, '活塞工作时长_sum': 3, '高压开关_sum': 5, '排量电流_sum': 3, 'engine_turn_max': 1, '液压油温_max': 1, '泵送压力_mean': 2, '分配压力_sum': 2, 'engine_turn_min': 1, 'pump_turn_mean': 1, '发动机转速_min': 1, '分配压力_max': 2, 'pump_turn_1st_deri_min': 2, '分配压力_std': 1, '低压开关_sum': 2, '油泵转速_sum': 1, '液压油温_min': 2, 'pump_turn_1st_deri_max': 1, '发动机转速_sum': 2, 'pump_turn_sum': 1, '泵送压力_max': 1, 'pump_turn_1st_deri_std': 1, '排量电流_std': 1, '发动机转速_max': 1, '泵送压力_1st_deri_max': 1, '分配压力_mean': 1, 'engine_turn_1st_deri_max': 1, '流量档位_mean': 1, '流量档位_sum': 1, '流量档位_max': 1, '油泵转速_1st_deri_sum': 1, '排量电流_1st_deri_mean': 1, '油泵转速_mean': 1, 'pump_turn_1st_deri_sum': 1, '油泵转速_min': 1, '排量电流_min': 1, '泵送压力_min': 1}
+```
+
+* Local Score: 0.5986287502997885
+  * [0.5947046535002127, 0.6027999523632018, 0.6096115150976127, 0.5936959028100426, 0.5923317277278726]
+* Online Score: 0.58178872000
+
+Some change but doesn't improve (see commit history for detail)
+
+```txt
+Feature Importance: ( 39 )
+ {'发动机转速_1st_deri_fft_sum': 1, '泵送压力_sum': 2, '分配压力_fft_std': 1, '活塞工作时长_sum': 4, '分配压力_mean': 1, '分配压力_fftmax_min_sub': 1, '泵送压力_1st_deri_sum': 1, '油泵转速_fft_sum': 1, '液压油温_max': 1, '排量电流_1st_deri_sum': 1, '分配压力_1st_deri_fft_sum': 1, '泵送压力_fft_sum': 1, '泵送压力_max': 1, '液压油温_mean': 2, '高压开关_sum': 3, 'engine_turn_min': 2, 'pump_turn_1st_derimax_min_sub': 1, 'engine_turnmax_min_sub': 1, 'pump_turnstd_mean_sub': 1, 'data_len': 4, '分配压力_max': 3, '油泵转速_1st_deri_fftstd_mean_sub': 1, '液压油温_fft_mean': 1, '流量档位_1st_deri_unique_len': 1, '排量电流_fft_max': 2, '液压油温_sum': 3, '发动机转速_sum': 1, '泵送压力_1st_derimax_min_sub': 1, '排量电流_max': 1, '油泵转速_mean': 1, '液压油温_1st_deri_fft_mean': 1, '排量电流_min': 1, 'pump_turn_sum': 1, 'pump_turn_1st_deri_max': 1, '泵送压力_1st_deri_max': 1, '液压油温_std': 1, '发动机转速_min': 1, '液压油温_min': 1, '分配压力_sum': 1}
+```
+
+* Local Score: 0.6021311711089291
+  * [0.6040740114932209, 0.5983233874000753, 0.6058586415449023, 0.6103212835080378, 0.5920785315984092]
+* Online Score: 0.59898978000
 
 ## TODO
 

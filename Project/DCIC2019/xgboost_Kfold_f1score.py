@@ -12,7 +12,7 @@ from sklearn.externals import joblib # For model persistance
 from sklearn.metrics import f1_score
 from sklearn.model_selection import StratifiedKFold
 
-version = "v3"
+version = "v4"
 
 data_dir = "raw_data/"
 feature_dir = "feature/"
@@ -72,12 +72,20 @@ def create_feature(df):
                     first_deri = df[i][0]/df['活塞工作时长'][0]
                 df[i+'_1st_deri'] = first_deri
 
+    # Discrete Fourier Transform (version 4)
+    for i in df.columns:
+        if i not in ['活塞工作时长', '设备类型']:
+            # Skip binary feature
+            if i not in ['低压开关', '高压开关', '搅拌超压信号', '正泵', '反泵']:
+                fft = np.abs(np.fft.fft(df[i]))
+                df[i+'_fft'] = fft
+
     # Creating feature (each one corresponding to exact one label)
     create_fe.append(len(df))
     col.append('data_len')
 
-    # create_fe.append(len(df.drop_duplicates()))
-    # col.append('data_drop_dup_len')
+    create_fe.append(len(df.drop_duplicates()))
+    col.append('data_drop_dup_len')
 
     for i in df.columns:
         if i != '设备类型': # i.e. not categorical data
@@ -99,14 +107,28 @@ def create_feature(df):
             create_fe.append(df[i].mean())
             col.append(i+'_mean')
 
-            # create_fe.append(len(df[i].unique()))
-            # col.append(i+'_unique_len')
-            # create_fe.append(df[i].max()-df[i].min())        
-            # col.append(i+'max_min_sub')
-            # create_fe.append(df[i].std()/df[i].mean())  
-            # col.append(i+'std_mean_sub')
+            create_fe.append(len(df[i].unique()))
+            col.append(i+'_unique_len')
+            create_fe.append(df[i].max()-df[i].min())        
+            col.append(i+'max_min_sub')
+            create_fe.append(df[i].std()/df[i].mean())  
+            col.append(i+'std_mean_sub')
             # create_fe.append(df[i].skew())
             # col.append(i+'_skew')
+
+    if df['液压油温'].max() > 70 or df['液压油温'].min() < 30:
+        oil_temp_abnormal = 1
+    else:
+        oil_temp_abnormal = 0
+    create_fe.append(oil_temp_abnormal)
+    col.append('oil_temp_abnormal')
+
+    if df['发动机转速'].max() > 3500:
+        engine_toofast = 1
+    else:
+        engine_toofast = 0
+    create_fe.append(engine_toofast)
+    col.append('engine_toofast')
 
     return create_fe, col
 
