@@ -46,11 +46,17 @@ Power laws / long-tailed distribution in the statistical sense
     * Item-based
     * User-based
 
-### Collaborative filtering
+## Collaborative Filtering
+
+> The process of filtering for information using techniques involving collaboration among multiple agents, viewpoints, etc.
 
 works by taking a data set of user's data and comparing it to the data of other users
 
 The key idea behind CF is that similar users share the same interest and that similar items are liked by a user.
+
+> Basic assumption: Shared common interests in the past would still prefer similar products/items in the future (Those who agreed in the past tend to agree again in the future.)
+
+### Approach
 
 **Item-based or user-based similarity?**
 
@@ -70,7 +76,64 @@ measure the similarity between the items that target users rates/ interacts with
 
 measure the similarity between target users and other users
 
-### Singular Value Decomposition
+### Method
+
+#### Association Rule Learning
+
+Evaluation
+
+* Confidence of A to B
+    $$
+    \operatorname{confidence}(A\Rightarrow B) = P(B|A)
+    $$
+* Support of A to B
+    $$
+    \operatorname{support}(A\Rightarrow B) = P(A \cup B)
+    $$
+
+Example:
+
+1. bread, milk
+2. bread, diaper, beer, eggs
+3. milk, diaper, beer, coke
+4. bread, milk, diaper, beer
+5. bread, milk, diaper, coke
+
+e.g. {Milk, Diaper} => Beer
+
+$$
+\operatorname{support} = \frac{\sigma(\text{milk}, \text{diaper}, \text{beer})}{|D|} = \frac{2}{5}
+$$
+
+$$
+\operatorname{confidence} = \frac{\sigma(\text{milk}, \text{diaper}, \text{beer})}{\sigma(\text{milk}, \text{diaper})} = \frac{2}{3}
+$$
+
+* [Apriori](../Algorithm/Apriori/Apriori.md)
+
+#### Naive Bayes Based Collaborative Filtering
+
+* [Naive Bayes](../Algorithm/NaiveBayes/NaiveBayes.md)
+
+#### Matrix Factorization (Singular Value Decomposition)
+
+*Approximate the full matrix* by observing only *the most important feature* those with **
+
+* [Singular Value Decomposition](../Algorithm/SVD/SVD.md)
+
+Latent Factor Model
+
+Objective Funciton: minimize squared error
+
+Probability Matrix Factorization (PMF)
+
+* [Wiki - Matrix factorization (recommender systems)](https://en.wikipedia.org/wiki/Matrix_factorization_(recommender_systems))
+
+#### Factorization Machine (FM)
+
+* [Paper - Factorization Machines](https://www.csie.ntu.edu.tw/~b97053/paper/Rendle2010FM.pdf)
+* [libFM: Factorization Machine Library](http://www.libfm.org/)
+  * [github](https://github.com/srendle/libfm)
 
 ## Evaluation
 
@@ -83,7 +146,6 @@ measure the similarity between target users and other users
 * [Long tail](https://en.wikipedia.org/wiki/Long_tail)
 * [Persona](https://en.wikipedia.org/wiki/Persona)
 * [Collaborative filtering](https://en.wikipedia.org/wiki/Collaborative_filtering)
-* [Matrix factorization (recommender systems)](https://en.wikipedia.org/wiki/Matrix_factorization_(recommender_systems))
 
 ### Article
 

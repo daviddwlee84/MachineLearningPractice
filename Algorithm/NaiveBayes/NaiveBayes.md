@@ -21,6 +21,18 @@ Supervised Learning|Classification|Bayes' Theorem|
 
 ## Concept
 
+### Bayes' Theorem
+
+$$
+P(Y|X) = \frac{P(X|Y)\times P(Y)}{P(X)}
+$$
+
+$$
+P(Y|X) = \frac{\prod_{i=1}^d P(X_i|Y)\times P(Y)}{P(X)}
+$$
+
+* [Wiki - Bayes' theorem](https://en.wikipedia.org/wiki/Bayes%27_theorem)
+
 ### Real-world conditions
 
 * We predict label by multiplying them. But if any of these probability is 0, then we will get 0 when we multiply them. To lessen the impact of this, we'll initialize all of our occurence counts to 1, and initialize the denominators to 2. (for binary classifier)

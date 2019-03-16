@@ -10,6 +10,20 @@ Category|Usage|Application Field
 --------|-----|-----------------
 Unsupervised Learning|Association Rule Learning|Frequent Itemset Mining
 
+## Terminology
+
+### Support
+
+### Confidence
+
+### Prior Probability
+
+## Concept
+
+Use *apriori principle* to reduse the size of *candidate set*
+
+### Pruning Using Support Threshold
+
 ## Links
 
 ### Tutorial
