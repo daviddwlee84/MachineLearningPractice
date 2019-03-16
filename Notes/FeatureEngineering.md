@@ -12,7 +12,59 @@ Model may not extract some message like human does. We can build new feature by 
 ### What to define a good feature
 
 * This feature gain a lot of improvement
-* Feature importance
+* **Feature importance**
+  * LightGBM
+    * lgb.plot_importance(lgb_model, max_num_features=10)
+    * feature_name = lgb_model.feature_name()
+    * importance = lgb_model.feature_importance(importance_type='split')
+  * XGBoost
+    * xgb.plot_importance(xgb_model, max_num_features=25)
+    * xgb_model.get_fscore()
+
+## Tips for Count Feature
+
+* Unique length
+* Data length
+* ...
+
+## Tips for Categorical Feature
+
+* [Sample categorical feature encoding methods](https://www.kaggle.com/c/avito-demand-prediction/discussion/55521)
+  * one-hot (benefit for linear models or NN)
+    * [pandas.get_dummies](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.get_dummies.html)
+  * label-encode
+  * mean-encoding (be careful, easy over fitting if you have not a right validation strategy)
+  * factorize-encoding
+  * frequency-encoding
+
+* [Cat2Vec (paper pdf)](https://openreview.net/pdf?id=HyNxRZ9xg) - LEARNING DISTRIBUTED REPRESENTATION OF MULTI-FIELD CATEGORICAL DATA
+
+### For Binary Feature
+
+## Tips for Continuous Feature
+
+* mean
+* sum
+* max
+* min
+* std
+* var
+* np.ptp
+* ... TBD
+
+## Tips for Time Series Feature
+
+### First Derivative
+
+### Descrete Fourier Transform
+
+* [What FFT descriptors should be used as feature to implement classification or clustering algorithm?](https://stackoverflow.com/questions/27546476/what-fft-descriptors-should-be-used-as-feature-to-implement-classification-or-cl)
+* [numpy.fft](https://docs.scipy.org/doc/numpy/reference/generated/numpy.fft.fft.html)
+
+### tsfresh
+
+* [tsfresh document](https://tsfresh.readthedocs.io/en/latest/index.html)
+* [tsfresh github](https://github.com/blue-yonder/tsfresh)
 
 ## Tips for Memory Usage
 

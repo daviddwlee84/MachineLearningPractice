@@ -190,6 +190,13 @@ accuracy = accuracy_score(y_pred, y_test)
 
 * [What is LightGBM, How to implement it? How to fine tune the parameters?](https://medium.com/@pushkarmandot/https-medium-com-pushkarmandot-what-is-lightgbm-how-to-implement-it-how-to-fine-tune-the-parameters-60347819b7fc)
 
+Feature Engineering
+
+* Categorical features
+  * [How LightGBM deals with categorical features](https://www.kaggle.com/c/home-credit-default-risk/discussion/58950)
+  * [LightGBM - Advanced Topics - Categorical Feature Support](https://lightgbm.readthedocs.io/en/latest/Advanced-Topics.html#categorical-feature-support)
+  * [LightGBM - Optimal Split for Categorical Features](https://github.com/Microsoft/LightGBM/blob/master/docs/Features.rst#optimal-split-for-categorical-features)
+
 ### Github
 
 * [Microsoft/LightGBM](https://github.com/Microsoft/LightGBM)
