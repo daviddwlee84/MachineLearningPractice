@@ -8,6 +8,7 @@ Project/KaggleElo/prediction
 
 # DCIC 2019
 Project/DCIC2019/raw_data
+Project/DCIC2019/combined_data
 Project/DCIC2019/feature
 Project/DCIC2019/model
 Project/DCIC2019/submit
