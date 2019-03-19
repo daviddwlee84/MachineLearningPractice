@@ -27,6 +27,12 @@ Recommend: **mining** and fulfilling users' **potential needs**
 * user don't know where to find
 * user don't know how to describe
 
+### Purpose and Success Criteria
+
+* **Prediction** perspective
+* **Interaction** perspective
+* **Conversion** perspective
+
 ## Background
 
 ### Informations Overload
@@ -39,12 +45,12 @@ Power laws / long-tailed distribution in the statistical sense
 
 ## Traditional Approach
 
-* Content-based Recommendation
-    * analyzes the nature of each item (characteristics of items)
-* Knowledge-based Recommendation
 * Collaborative Filtering 協同過濾 - users' social environment
-    * Item-based
-    * User-based
+  * Item-based
+  * User-based
+* Content-based Recommendation
+  * analyzes the nature of each item (characteristics of items)
+* Knowledge-based Recommendation
 
 ## Collaborative Filtering
 
@@ -135,9 +141,85 @@ Probability Matrix Factorization (PMF)
 * [libFM: Factorization Machine Library](http://www.libfm.org/)
   * [github](https://github.com/srendle/libfm)
 
+### Defect of CF
+
+* cold start
+* data sparsity
+* popularity bias
+
+Solution => Content-based Recommendation
+
+## Content-based Recommendation
+
 ## Evaluation
 
-## Links
+Evaluation Experiment
+
+1. *Offline* experiments - based on *historical data*
+   * prediction accuracy, coverage
+2. *Laboratory* studies - Controlled experiments
+   * e.g. questionaries (survey)
+3. Test with *real users* - **A/B tests**
+   * e.g. sales increase, click through rates
+
+### Rating Prediction ([Regression Evaluation](MachineLearningConcepts.md#Regression))
+
+* Mean Absolute Error (MAE)
+* Mean Squared Error (MSE)
+* Root Mean Squared Error (RMSE)
+* Normalized Mean Absolute Error (NMAE)
+
+### Top-N Prediction ([Classification Evaluation](MachineLearningConcepts.md#Classification))
+
+* Precision
+* Recall
+* Accuracy
+* F1-score
+* AUC (Area Under Curve)
+  * ROC Curve (Receiver Operating Characteristic Curve) (Sensitive Curve)
+
+### Others
+
+* Average Precision (AP)
+* Mean Average Precision (MAP)
+* Precision@N
+  * e.g. P@5, P@10, P@20
+* HR@H (Hit Rate)
+  * e.g. HR@1, HR@5, HR@10
+* Cumulative Gain (CG)
+* Discounted Cumulative Gain (DCG)
+* normalized Discounted Cumulative Gain (nDCG)
+  * Ideal DCG (IDCG)
+
+#### Diversity
+
+* Intra-List Similarity (ILS)
+
+#### Novelty
+
+#### Coverage
+
+## Popular Dataset
+
+* MovieLens
+* Netflix
+* Book-Crossing
+* Jester Joke
+* Epinions
+* Yelp
+* BibSonomy
+* Foursquare
+* Flixster
+
+## Resources
+
+### Book
+
+Recommender Systems - The Textbook
+
+* Ch3 Model-Based Collaborative Filtering
+* Ch4 Content-Based Recommender System
+* Ch5 Knowledge-Based Recommender System
 
 ### Wikipedia
 
@@ -151,8 +233,12 @@ Probability Matrix Factorization (PMF)
 
 * [A Glimpse into Deep Learning for Recommender Systems](https://medium.com/@libreai/a-glimpse-into-deep-learning-for-recommender-systems-d66ae0681775)
 * Machine Learning for Recommender systems
-    * [art 1 (algorithms, evaluation and cold start)](https://medium.com/recombee-blog/machine-learning-for-recommender-systems-part-1-algorithms-evaluation-and-cold-start-6f696683d0ed)
-    * [Part 2 (Deep Recommendation, Sequence Prediction, AutoML and Reinforcement Learning in Recommendation)](https://medium.com/recombee-blog/machine-learning-for-recommender-systems-part-2-deep-recommendation-sequence-prediction-automl-f134bc79d66b)
+  * [art 1 (algorithms, evaluation and cold start)](https://medium.com/recombee-blog/machine-learning-for-recommender-systems-part-1-algorithms-evaluation-and-cold-start-6f696683d0ed)
+  * [Part 2 (Deep Recommendation, Sequence Prediction, AutoML and Reinforcement Learning in Recommendation)](https://medium.com/recombee-blog/machine-learning-for-recommender-systems-part-2-deep-recommendation-sequence-prediction-automl-f134bc79d66b)
 * Introduction to Recommender System.
-    * [Part 1 (Collaborative Filtering, Singular Value Decomposition)](https://hackernoon.com/introduction-to-recommender-system-part-1-collaborative-filtering-singular-value-decomposition-44c9659c5e75)
-    * [Part 2 (Neural Network Approach)](https://towardsdatascience.com/introduction-to-recommender-system-part-2-adoption-of-neural-network-831972c4cbf7?gi=a21e975a20d3)
+  * [Part 1 (Collaborative Filtering, Singular Value Decomposition)](https://hackernoon.com/introduction-to-recommender-system-part-1-collaborative-filtering-singular-value-decomposition-44c9659c5e75)
+  * [Part 2 (Neural Network Approach)](https://towardsdatascience.com/introduction-to-recommender-system-part-2-adoption-of-neural-network-831972c4cbf7?gi=a21e975a20d3)
+
+Evaluation Metrics
+
+* [Recommender Systems — It’s Not All About the Accuracy](https://gab41.lab41.org/recommender-systems-its-not-all-about-the-accuracy-562c7dceeaff)
