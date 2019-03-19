@@ -11,20 +11,18 @@ There are three fundamental problems for HMMs:
 * Given just the observed data, estimate the model parameters.
 
 The first and the second problem can be solved by the dynamic programming algorithms known as the Viterbi algorithm and the Forward-Backward algorithm, respectively.
-The last one can be solved by an iterative [Expectation-Maximization (EM) algorithm](#EM-Algorithm), known as the Baum-Welch algorithm.
+The last one can be solved by an iterative *Expectation-Maximization (EM) algorithm*, known as the Baum-Welch algorithm.
 
-## EM Algorithm
+## [EM Algorithm](../EM/EM.md)
 
-[Wiki - Expectation–maximization algorithm](https://en.wikipedia.org/wiki/Expectation%E2%80%93maximization_algorithm)
+### Package
 
-## Links
-
-### HMMLearn
+#### HMMLearn
 
 * [Github hmmlearn/hmmlearn](https://github.com/hmmlearn/hmmlearn)
 * [Document](https://hmmlearn.readthedocs.io/en/stable/)
 
-### HanLP
+#### HanLP
 
 * [Python API Github](https://github.com/hankcs/pyhanlp)
 * [Official Main Page](http://hanlp.com/)

@@ -56,6 +56,8 @@ Click and Conversion Prediction|Logistic Regression / Recommendation System|[Ali
 LightGBM & XGBoost & CatBoost Practice|Boosting Tree / Classification|[Social Network Ads](https://www.kaggle.com/rakeshrau/social-network-ads) ([File](Datasets/Social_Network_Ads.csv))|[LightGBM](Algorithm/Boosting/Boosting_Social_Network_Ads/Boosting_Social_Network_Ads_LightGBM.py), [XGBoost](Algorithm/Boosting/Boosting_Social_Network_Ads/Boosting_Social_Network_Ads_XGBoost.py)|[Notes](Notes/Subject/SocialNetworkAds.md)
 Kaggle Elo|LightGBM / Feature Engineering|[Elo Merchant Category Recommendation](https://www.kaggle.com/c/elo-merchant-category-recommendation)|[LightGBM Project](Project/KaggleElo)
 DCIC 2019|LightGBM & XGBoost / Feature Engineering|[Failure Prediction of Concrete Piston for Concrete Pump Vehicles](https://www.datafountain.cn/competitions/336/details)|[LightGBM & XGBoost Project](Project/DCIC2019)
+Epinions CLiMF|Collaborative Filtering / Recommendation System|[Epinions](http://www.trustlet.org/epinions.html)|[CLiMF From Scratch](Algorithm/CLiMF/CLiMF_Epinions/CLiMF_Epinions_FromScratch.py), [CLiMF TensorFlow](Algorithm/CLiMF/CLiMF_Epinions/CLiMF_Epinions_TensorFlow.py)|[Notes](Notes/Subject/Epinions.md), [PaperResearch](Notes/PaperResearch/CLiMF.md)
+Iris EM|EM Algorithm / Clustering|[Iris Data Set](https://archive.ics.uci.edu/ml/datasets/iris)|[EM From Scratch]()|[Notes](Notes/Subject/Iris.md)
 
 ## Machine Learning Categories
 
@@ -93,7 +95,10 @@ DCIC 2019|LightGBM & XGBoost / Feature Engineering|[Failure Prediction of Concre
 * *Dimensionality Reduction*
     * [`Principal Compnent Analysis (PCA)`](Algorithm/PCA/PCA.md)
     * [`Single Value Decomposition (SVD)`](Algorithm/SVD/SVD.md) - LSA, LSI, Recommendation System
-    * `ISOMAP`
+    * `Canonical Correlation Analysis (CCA)`
+    * [`Isomap`](Algorithm/Isomap/Isomap.md) (nonlinear)
+    * `Locally Linear Embedding (LLE)` (nonlinear)
+    * `Laplancian Eigenmaps` (nonlinear)
 
 ### Ensemble Method (Meta-algorithm)
 
@@ -118,7 +123,7 @@ DCIC 2019|LightGBM & XGBoost / Feature Engineering|[Failure Prediction of Concre
 #### Heuristic Algorithm
 
 * [SMO](Algorithm/SVM/SVMDeduction.md#Platt's-SMO-Algorithm) --> SVM
-* [EM](Algorithm/HMM/HMM.md#EM-Algorithm) --> HMM
+* [EM](Algorithm/EM/EM.md) --> HMM, etc.
 
 ## [Machine Learning Concepts](Notes/MachineLearningConcepts.md)
 
@@ -169,7 +174,7 @@ DCIC 2019|LightGBM & XGBoost / Feature Engineering|[Failure Prediction of Concre
 * [Data Mining](Notes/DataMining.md) - Knowledge Discovering
 * [Feature Engineering](Notes/FeatureEngineering.md)
 * [Recommendation System](Notes/Recommendation_System.md)
-    * Collaborative Filtering
+    * Collaborative Filtering (CF)
 * [Information Retrieval - Topic Modelling](Notes/Information_Retrieval.md)
     * Latent Semantic Analysis (LSA/LSI/SVD)
     * Latent Dirichlet Allocation (LDA)
@@ -265,6 +270,7 @@ DCIC 2019|LightGBM & XGBoost / Feature Engineering|[Failure Prediction of Concre
     * [Machine learning overview (infographic)](http://usblogs.pwc.com/emerging-technology/a-look-at-machine-learning-infographic/)
     * [Machine learning methods (infographic)](http://usblogs.pwc.com/emerging-technology/machine-learning-methods-infographic/)
     * [Machine learning evolution (infographic)](http://usblogs.pwc.com/emerging-technology/machine-learning-evolution-infographic/)
+* [Machine Learning Cheatsheet](https://ml-cheatsheet.readthedocs.io/en/latest/index.html)
 
 #### Interactive Learning
 
@@ -312,6 +318,26 @@ Textbook Implementation
 * [Open Images Dataset](https://storage.googleapis.com/openimages/web/index.html)
     * [github](https://github.com/openimages/dataset)
 * [Alibaba Cloud Tianchi Data Lab](https://tianchi.aliyun.com/datalab/index.htm)
+
+### Competition
+
+Global
+
+* [Kaggle Competition](https://www.kaggle.com/competitions)
+* [KDDCup](https://www.kdd.org/kdd-cup)
+* [CodaLab](https://competitions.codalab.org/)
+
+Taiwan
+
+* [Open Data](https://opendata-contest.tca.org.tw/)
+
+China
+
+* [Tianchi Competition](https://tianchi.aliyun.com/competition/)
+* [biendata](https://www.biendata.com/)
+* [SODA](http://soda.shdataic.org.cn/)
+* [Data Fountain](https://www.datafountain.cn/)
+* [Data Castle](http://www.dcjingsai.com/common/cmptIndex.html)
 
 ### Machine Learning Platform
 
