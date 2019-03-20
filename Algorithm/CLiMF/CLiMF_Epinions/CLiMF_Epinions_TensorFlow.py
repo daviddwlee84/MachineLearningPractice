@@ -1,3 +1,7 @@
+import tensorflow as tf
+tf.enable_eager_execution() # Eager Execution
+import tensorflow.contrib.eager as tfe
+
 import numpy as np
 import pickle # for model preservation
 from Epinions_Preprocessing import load_epinions, get_sample_users
@@ -20,21 +24,24 @@ class CLiMF:
         self.__lambda = lamb # Regularization constant lambda
         self.__gamma = gamma # Learning rate
         self.__max_iters = max_iters
-        self.U = 0.01 * np.random.random_sample((data.shape[0], dimension))
-        self.V = 0.01 * np.random.random_sample((data.shape[1], dimension))
+        self.__dim = dimension
+        # EagerTensor does not support item assignment, thus transform it into tf.Variable
+        self.U = tfe.Variable(tf.convert_to_tensor(0.01 * np.random.random_sample((data.shape[0], dimension))))
+        self.V = tfe.Variable(tf.convert_to_tensor(0.01 * np.random.random_sample((data.shape[1], dimension))))
     
-    def load(self, filename="CLiMF_model.pickle"):
+    def load(self, filename="CLiMF_TF_model.pickle"):
         with open(filename, 'rb') as model_file:
             model_dict = pickle.load(model_file)
         self.__dict__.update(model_dict)
     
-    def save(self, filename="CLiMF_model.pickle"):
+    def save(self, filename="CLiMF_TF_model.pickle"):
         with open(filename, 'wb') as model_file:
             pickle.dump(self.__dict__, model_file)
     
     def __f(self, i):
         items = self.__data[i].indices
-        fi = dict((j, np.dot(self.U[i], self.V[j])) for j in items)
+        # take notice to axes
+        fi = dict((j, tf.tensordot(self.U[i], self.V[j], axes=1)) for j in items)
         return fi # Get <U[i], V[j]> for all j in data[i]
 
     # Objective function (predict)
@@ -42,37 +49,51 @@ class CLiMF:
     # V: item latent factor
     def F(self):
         F = 0
-        for i in range(len(self.U)):
+        num_of_rows = self.U.get_shape()[0]
+        for i in range(num_of_rows):
             fi = self.__f(i)
             for j in fi:
                 F += np.log(sigmoid(fi[j])())
                 for k in fi:
                     F += np.log(1 - sigmoid(fi[k]-fi[j])())
-        F -= 0.5 * self.__lambda * (np.sum(self.U * self.U) + np.sum(self.V * self.V)) # Forbenius norm
+        F -= 0.5 * self.__lambda * (np.sum(tf.multiply(self.U, self.U)) + np.sum(tf.multiply(self.V, self.V))) # Forbenius norm
         return F
     
     # Stochastic gradient ascent (maximize the objective function)
     def __train_one_round(self):
-        for i in range(len(self.U)):
+        num_of_rows = self.U.get_shape()[0]
+        for i in range(num_of_rows):
             dU = -self.__lambda * self.U[i]
             fi = self.__f(i)
             for j in fi:
                 # Calculate dV
                 dV = sigmoid(-fi[j])() - self.__lambda * self.V[j]
                 for k in fi:
-                    dV += sigmoid(fi[j]-fi[k]).derivative() * (1/(1-sigmoid(fi[k] - fi[j])())) - (1/(1-sigmoid(fi[j] - fi[k])())) * self.U[i]
-                self.V[j] += self.__gamma * dV
+                    dV += sigmoid(fi[j]-fi[k]).derivative() * (1/(1-sigmoid(fi[k] - fi[j])())) - (1/(1-sigmoid(fi[j] - fi[k])())) * self.U.numpy()[i]
+                # original: self.V[j] += self.__gamma * dV
+                # Method 1
+                self.V[j].assign(self.V[j] + self.__gamma * dV)
+                # Method 2
+                # V_indices = tf.constant([[j, z] for z in range(self.__dim)], dtype=tf.int32)
+                # self.V = tf.scatter_nd_update(self.V, V_indices, self.V[j] + self.__gamma * dV)
+                # (Both methods will work)
 
                 # Calculate dU
                 dU += sigmoid(-fi[j])() * self.V[j]
                 for k in fi:
                     dU += (self.V[j] - self.V[k]) * sigmoid(fi[k] - fi[j])() / (1-sigmoid(fi[k] - fi[j])())
-            self.U[i] += self.__gamma * dU
+            # original: self.U[i] += self.__gamma * dU
+            # Method 1
+            self.U[i].assign(self.U[i] + self.__gamma * dU)
+            # Method 2
+            # U_indices = tf.constant([[i, z] for z in range(self.__dim)], dtype=tf.int32)
+            # self.U = tf.scatter_nd_update(self.U, U_indices, self.U[i] + self.__gamma * dV)
+            # (Both methods will work)
 
     def train(self, verbose=False, sample_users=None, max_iters=-1):
         if max_iters <= 0:
             max_iters = self.__max_iters
-            
+
         for time in range(max_iters):
             self.__train_one_round()
             if verbose:
@@ -84,10 +105,11 @@ class CLiMF:
 def aMRRevaluate(data, climf_model, sample_users=None):
     MRR = []
     if not sample_users:
-        sample_users = range(len(climf_model.U))
+        sample_users = range(climf_model.U.get_shape()[0])
+        
     for i in sample_users:
         items = set(data[i].indices)
-        predict = np.sum(np.tile(climf_model.U[i], (len(climf_model.V), 1)) * climf_model.V, axis=1) 
+        predict = np.sum(np.tile(climf_model.U[i], (climf_model.V.get_shape()[0], 1)) * climf_model.V, axis=1) 
         for rank, item in enumerate(np.argsort(predict)[::-1]):
             if item in items:
                 MRR.append(1.0/(rank+1))
@@ -124,7 +146,4 @@ def main():
     CF_model.save() # save model
 
 if __name__ == "__main__":
-    # Test sigmoid callable class
-    # print(sigmoid(-87)())
-    # print(sigmoid(87).derivative())
     main()
