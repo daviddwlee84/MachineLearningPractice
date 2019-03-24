@@ -55,7 +55,7 @@ Document Similarity and LSI|VSM, SVD / LSI|[Corpus of the People's Daily](http:/
 Click and Conversion Prediction|Logistic Regression / Recommendation System|[Ali-CCP](https://tianchi.aliyun.com/datalab/dataSet.html?spm=5176.100073.0.0.2d186fc1w0MXC3&dataId=408) (File too large about 20GB)||[Notes](Notes/Subject/Ali-CCP.md)
 LightGBM & XGBoost & CatBoost Practice|Boosting Tree / Classification|[Social Network Ads](https://www.kaggle.com/rakeshrau/social-network-ads) ([File](Datasets/Social_Network_Ads.csv))|[LightGBM](Algorithm/Boosting/Boosting_Social_Network_Ads/Boosting_Social_Network_Ads_LightGBM.py), [XGBoost](Algorithm/Boosting/Boosting_Social_Network_Ads/Boosting_Social_Network_Ads_XGBoost.py)|[Notes](Notes/Subject/SocialNetworkAds.md)
 Kaggle Elo|LightGBM / Feature Engineering|[Elo Merchant Category Recommendation](https://www.kaggle.com/c/elo-merchant-category-recommendation)|[LightGBM Project](Project/KaggleElo)
-DCIC 2019|LightGBM & XGBoost / Feature Engineering|[Failure Prediction of Concrete Piston for Concrete Pump Vehicles](https://www.datafountain.cn/competitions/336/details)|[LightGBM & XGBoost Project](Project/DCIC2019)
+DCIC 2019|LXGBoost / Feature Engineering|[Failure Prediction of Concrete Piston for Concrete Pump Vehicles](https://www.datafountain.cn/competitions/336/details)|[XGBoost Project](Project/DCIC2019)
 Epinions CLiMF|Collaborative Filtering / Recommendation System|[Epinions](http://www.trustlet.org/epinions.html)|[CLiMF From Scratch](Algorithm/CLiMF/CLiMF_Epinions/CLiMF_Epinions_FromScratch.py), [CLiMF TensorFlow](Algorithm/CLiMF/CLiMF_Epinions/CLiMF_Epinions_TensorFlow.py)|[Notes](Notes/Subject/Epinions.md), [PaperResearch](Notes/PaperResearch/CLiMF.md)
 Iris EM|EM Algorithm / Clustering|[Iris Data Set](https://archive.ics.uci.edu/ml/datasets/iris)|[EM From Scratch]()|[Notes](Notes/Subject/Iris.md)
 
@@ -173,6 +173,9 @@ Iris EM|EM Algorithm / Clustering|[Iris Data Set](https://archive.ics.uci.edu/ml
 
 * [Data Mining](Notes/DataMining.md) - Knowledge Discovering
 * [Feature Engineering](Notes/FeatureEngineering.md)
+  * Training optimization
+    * Memory usage
+    * Evaluation time complexity
 * [Recommendation System](Notes/Recommendation_System.md)
     * Collaborative Filtering (CF)
 * [Information Retrieval - Topic Modelling](Notes/Information_Retrieval.md)

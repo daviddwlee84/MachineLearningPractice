@@ -12,12 +12,14 @@ from sklearn.externals import joblib # For model persistance
 from sklearn.metrics import f1_score
 from sklearn.model_selection import StratifiedKFold
 
-version = "v4"
+version = "v5"
 
 data_dir = "raw_data/"
 feature_dir = "feature/"
 model_dir = "model/model_{}/".format(version)
 submit_dir = "submit/"
+
+TREE_DEPTH = 10
 
 ## Utility Function
 
@@ -116,6 +118,10 @@ def create_feature(df):
             # create_fe.append(df[i].skew())
             # col.append(i+'_skew')
 
+            # version 5
+            create_fe.append(df[i].median())
+            col.append(i+'_median')
+
     if df['液压油温'].max() > 70 or df['液压油温'].min() < 30:
         oil_temp_abnormal = 1
     else:
@@ -129,6 +135,8 @@ def create_feature(df):
         engine_toofast = 0
     create_fe.append(engine_toofast)
     col.append('engine_toofast')
+
+    # tsfresh (version 6 TODO)
 
     return create_fe, col
 
@@ -202,7 +210,7 @@ def get_train_test():
 
 def KFold(X_train_all, y_train_all, X_test_all, K=5, plot=True):
 
-    skf = StratifiedKFold(n_splits = K, shuffle = True ,random_state=267)
+    skf = StratifiedKFold(n_splits=K, shuffle=True, random_state=267)
 
     f1_scores = []
     xgb_test_data = xgb.DMatrix(X_test_all)
@@ -220,17 +228,18 @@ def KFold(X_train_all, y_train_all, X_test_all, K=5, plot=True):
         xgb_train_data = xgb.DMatrix(X_train, y_train)
         xgb_validation_data = xgb.DMatrix(X_validation, y_validation)
 
-        xgb_params = {"objective": 'binary:logistic',
-                    "booster" : "gbtree",
-                    "eta": 0.05,
-                    # "max_depth": 7,
-                    # "learning_rate": 0.05,
-                    "subsample": 0.85,
-                    'eval_metric': 'auc',
-                    "colsample_bytree": 0.86,
-                    'gpu_id': 0, 
-                    "thread": -1,
-                    "seed": 666
+        xgb_params = {"objective": "binary:logistic",
+                      "booster": "gbtree",
+                      "eta": 0.05,
+                      "max_depth": TREE_DEPTH,
+                      # "max_bin": 2**(TREE_DEPTH-1),
+                      # "learning_rate": 0.05,
+                      "subsample": 0.85,
+                      "eval_metric": "auc",
+                      "colsample_bytree": 0.86,
+                      "gpu_id": 0, 
+                      "thread": -1,
+                      "seed": 666
                     }
 
         print('Training label ratio (negative/positive) =', np.sum(y_train==0)/np.sum(y_train==1))

@@ -179,6 +179,64 @@ Feature Importance: ( 39 )
   * [0.6040740114932209, 0.5983233874000753, 0.6058586415449023, 0.6103212835080378, 0.5920785315984092]
 * Online Score: 0.59898978000
 
+### version 5 (no improvement)
+
+Feature added
+
+* median
+
+Result:
+
+```txt
+Feature Importance: ( 39 )
+ {'发动机转速_1st_deri_fft_sum': 1, '泵送压力_fft_std': 4, '液压油温_fft_median': 1, '油泵转速_min': 1, 'engine_turn_min': 1, '分配压力std_mean_sub': 1, '液压油温_1st_deri_fft_sum': 4, '分配压力_median': 3, '排量电流_std': 1, '分配压力_min': 2, '分配压力_fft_mean': 3, '排量电流_1st_deri_sum': 1, '活塞工作时长_sum': 2, '油泵转速_fftmax_min_sub': 1, '分配压力_fft_sum': 1, '流量档位_fft_sum': 1, '泵送压力_1st_deri_fft_sum': 1, '液压油温_min': 1, '泵送压力std_mean_sub': 1, '高压开关_sum': 3, '发动机转速_1st_deri_fft_std': 1, '流量档位_unique_len': 1, '油泵转速_1st_deri_sum': 2, '排量电流_1st_deri_min': 1, 'data_drop_dup_len': 2, '低压开关_sum': 1, '排量电流_max': 1, '泵送压力_1st_deri_fft_min': 1, '分配压力_mean': 1, '发动机转速_max': 1, '分配压力_unique_len': 1, '泵送压力_median': 1, 'engine_turn_fftmax_min_sub': 1, '流量档位_median': 1, '发动机转速_1st_derimax_min_sub': 1, '排量电流_median': 1, '排量电流_sum': 1, '流量档位_1st_derimax_min_sub': 1, 'pump_turn_sum': 1}
+```
+
+* Local Score: 0.6035370675673373
+  * [0.6034908706127333, 0.5964194713163171, 0.6076629016272395, 0.6100767627423971, 0.6000353315379994]
+* Online Score: 0.59560806000
+
+Change XGBoost parameter
+
+* max_depth=8 (default=6)
+
+```txt
+Feature Importance: ( 98 )
+ {'发动机转速_1st_deri_fft_sum': 1, '泵送压力_fft_std': 5, '液压油温_fft_median': 3, '油泵转速_min': 3, 'engine_turn_min': 1, '分配压力std_mean_sub': 1, 'pump_turn_1st_deri_median': 1, '油泵转速_std': 1, '液压油温_1st_deri_fft_sum': 5, '流量档位_mean': 2, 'pump_turn_1st_deri_fft_min': 1, '油泵转速std_mean_sub': 2, '分配压力_mean': 2, '分配压力_median': 8, '排量电流_std': 1, '分配压力_min': 2, '流量档位_min': 1, '发动机转速_min': 3, '分配压力_fft_mean': 4, '排量电流_1st_deri_sum': 1, '活塞工作时长_sum': 5, '油泵转速_fftmax_min_sub': 2, '分配压力_fft_sum': 1, '分配压力max_min_sub': 1, '分配压力_1st_deristd_mean_sub': 1, '油泵转速_1st_deri_fftmax_min_sub': 1, '泵送压力_fft_sum': 1, '油泵转速_1st_deri_std': 1, '流量档位_fft_sum': 2, 'data_drop_dup_len': 5, '发动机转速_std': 1, '泵送压力_1st_deri_fft_sum': 1, '液压油温_min': 2, 'engine_turn_fft_mean': 2, '油泵转速_fft_mean': 1, '高压开关_sum': 4, '油泵转速max_min_sub': 1, '泵送压力std_mean_sub': 1, 'pump_turn_fft_sum': 1, '分配压力_sum': 2, '发动机转速_median': 1, '液压油温_1st_deri_sum': 1, '泵送压力_1st_deristd_mean_sub': 2, '发动机转速_1st_deri_fft_std': 1, '泵送压力_mean': 1, '泵送压力_min': 1, '泵送压力_1st_deri_fftstd_mean_sub': 1, '液压油温_fft_max': 2, '发动机转速_1st_deri_sum': 2, '流量档位_unique_len': 1, '排量电流_median': 2, '分配压力_max': 7, '油泵转速_1st_deri_sum': 3, '排量电流_1st_deri_min': 1, 'pump_turn_1st_deri_fftstd_mean_sub': 1, '低压开关_sum': 1, '排量电流_max': 3, '泵送压力_1st_deri_fft_min': 2, '泵送压力_1st_derimax_min_sub': 1, '油泵转速_fft_std': 1, '液压油温_mean': 1, '分配压力_1st_deri_sum': 1, '发动机转速_max': 1, '分配压力_unique_len': 1, '液压油温_max': 1, '油泵转速_fftstd_mean_sub': 1, '分配压力_fftmax_min_sub': 1, '泵送压力_1st_deri_std': 1, '泵送压力_median': 1, 'pump_turn_1st_deri_fft_sum': 2, '发动机转速_fft_mean': 1, '流量档位_std': 1, '油泵转速_mean': 1, '油泵转速_1st_deri_mean': 1, 'engine_turnmax_min_sub': 1, 'engine_turn_fftmax_min_sub': 1, '流量档位_median': 1, '发动机转速_1st_deri_fftstd_mean_sub': 1, '排量电流_1st_deristd_mean_sub': 1, '排量电流_1st_deri_median': 1, '发动机转速_1st_derimax_min_sub': 2, '排量电流_1st_deri_unique_len': 1, '发动机转速_1st_deri_fftmax_min_sub': 1, '流量档位_max': 1, '油泵转速_1st_deri_fft_min': 1, '泵送压力_fftstd_mean_sub': 1, '泵送压力_fft_mean': 1, '排量电流_sum': 1, '流量档位_1st_derimax_min_sub': 1, '液压油温_1st_deri_fft_max': 1, '流量档位_1st_deri_sum': 1, '分配压力_std': 1, 'pump_turn_sum': 1, '分配压力_fft_median': 1, '发动机转速_1st_deri_std': 1, 'pump_turn_mean': 1, '流量档位_fft_min': 1, '液压油温std_mean_sub': 1}
+```
+
+* Local Score: 0.6072784415366662
+  * [0.6070735360682296, 0.5997637232730834, 0.6125269064640029, 0.6099455986020119, 0.6070824432760031]
+* Online Score: 0.59962279000
+
+---
+
+* max_depth=10 (default=6)
+
+```txt
+Feature Importance: ( 173 )
+ {'发动机转速_1st_deri_fft_sum': 1, '泵送压力_fft_std': 6, '液压油温_fft_median': 6, '油泵转速_min': 4, 'engine_turn_min': 2, '分配压力std_mean_sub': 3, 'pump_turn_1st_deri_median': 2, '油泵转速_std': 2, '液压油温_1st_deri_fft_sum': 7, '流量档位_mean': 5, 'pump_turn_1st_deri_fft_min': 1, '油泵转速std_mean_sub': 4, '分配压力_mean': 6, '油泵转速_1st_derimax_min_sub': 2, '发动机转速_max': 8, '分配压力_min': 3, '分配压力_median': 14, '排量电流_std': 3, '流量档位_min': 1, '泵送压力_1st_deri_min': 2, '发动机转速_min': 7, '分配压力_fft_mean': 7, '排量电流_1st_deri_sum': 1, '活塞工作时长_sum': 8, '油泵转速_fftmax_min_sub': 2, '分配压力_fft_sum': 1, '分配压力max_min_sub': 1, '分配压力_1st_deristd_mean_sub': 3, '油泵转速_1st_deri_fftmax_min_sub': 1, '排量电流_1st_deristd_mean_sub': 3, '泵送压力_fft_sum': 1, '油泵转速_1st_deri_std': 1, '流量档位_fft_sum': 3, 'data_drop_dup_len': 9, '发动机转速_std': 2, '泵送压力_1st_deri_fft_sum': 1, '液压油温_min': 3, 'engine_turn_fft_mean': 2, '油泵转速_1st_deri_fft_min': 4, '发动机转速max_min_sub': 2, '油泵转速_fft_mean': 1, '泵送压力_1st_deristd_mean_sub': 5, '排量电流std_mean_sub': 5, '分配压力_1st_deri_fft_median': 1, '液压油温_std': 2, '高压开关_sum': 5, '排量电流_1st_deri_fftstd_mean_sub': 2, '分配压力_max': 13, '油泵转速max_min_sub': 3, '分配压力_fftstd_mean_sub': 1, '流量档位_fft_std': 2, '油泵转速_fftstd_mean_sub': 2, '流量档位_1st_deri_median': 1, '发动机转速_1st_deri_min': 1, '泵送压力std_mean_sub': 2, 'pump_turn_fft_sum': 1, 'engine_turn_std': 1, '泵送压力_min': 4, '流量档位_1st_deri_fftstd_mean_sub': 2, '分配压力_sum': 2, '流量档位_median': 4, '排量电流_1st_deri_min': 3, '流量档位_1st_deri_fft_min': 1, '发动机转速_median': 1, '液压油温_1st_deri_sum': 1, '排量电流_fft_sum': 1, '发动机转速_mean': 3, '发动机转速_1st_deri_fft_mean': 1, 'pump_turn_max': 1, '泵送压力_1st_deri_median': 3, '流量档位_fftstd_mean_sub': 2, '液压油温_1st_deri_fft_std': 2, '泵送压力max_min_sub': 1, 'pump_turn_std': 1, '发动机转速_1st_deri_fft_std': 2, '泵送压力_mean': 1, 'engine_turn_max': 1, '发动机转速_1st_deri_std': 2, '排量电流_max': 6, '流量档位_max': 3, '泵送压力_1st_deri_fftstd_mean_sub': 2, '流量档位_1st_deri_sum': 3, '排量电流_mean': 1, '液压油温_fft_max': 2, '发动机转速_1st_deri_sum': 2, '排量电流_fft_std': 3, 'engine_turn_fft_std': 1, '液压油温_1st_deri_fft_max': 2, '流量档位_unique_len': 1, '排量电流_median': 2, '液压油温_median': 1, '油泵转速_1st_deri_sum': 3, 'pump_turn_1st_deri_fftstd_mean_sub': 1, '发动机转速_1st_deri_median': 1, '流量档位_sum': 3, '低压开关_sum': 1, '泵送压力_1st_deri_fft_min': 2, '泵送压力_1st_derimax_min_sub': 1, '分配压力_1st_deri_unique_len': 1, '液压油温_max': 4, '油泵转速_fft_std': 1, '排量电流_1st_deri_unique_len': 2, '油泵转速_1st_deri_fft_max': 2, '发动机转速_1st_deristd_mean_sub': 1, '液压油温_mean': 2, '分配压力_1st_deri_sum': 2, '分配压力_unique_len': 1, '流量档位_1st_derimax_min_sub': 3, '发动机转速_sum': 3, '泵送压力_unique_len': 2, '液压油温_fft_sum': 2, '油泵转速_1st_deri_min': 2, '液压油温_fft_std': 2, '分配压力_fftmax_min_sub': 1, 'pump_turn_min': 2, 'pump_turn_mean': 2, '油泵转速_median': 2, '油泵转速_fft_min': 1, 'engine_turn_1st_deri_median': 1, '液压油温std_mean_sub': 2, '排量电流_sum': 2, 'engine_turn_1st_deri_fft_median': 1, '油泵转速_sum': 1, '排量电流_1st_deri_fft_sum': 1, '泵送压力_1st_deri_std': 1, '流量档位_1st_deri_mean': 1, '泵送压力_max': 2, '泵送压力_median': 3, 'pump_turn_1st_deri_fft_sum': 2, '发动机转速_fft_mean': 1, '发动机转速_1st_deri_fftstd_mean_sub': 2, '流量档位_std': 2, '分配压力_1st_deri_min': 1, '油泵转速_mean': 1, '油泵转速_1st_deri_mean': 2, '液压油温_1st_deri_median': 2, '液压油温_1st_deri_mean': 1, 'engine_turn_1st_deristd_mean_sub': 1, 'engine_turnmax_min_sub': 1, 'engine_turn_1st_deri_fftmax_min_sub': 1, '液压油温_1st_deri_fft_min': 3, '排量电流_1st_deri_median': 2, 'engine_turn_fftmax_min_sub': 1, '反泵_sum': 1, '流量档位_1st_deristd_mean_sub': 1, 'pump_turn_1st_deristd_mean_sub': 1, '排量电流_1st_deri_fft_min': 2, '发动机转速_fft_min': 1, '分配压力_1st_deri_fftmax_min_sub': 1, '油泵转速_fft_sum': 2, '发动机转速_1st_derimax_min_sub': 2, '液压油温_1st_deri_fftstd_mean_sub': 1, 'engine_turn_1st_deri_max': 1, '发动机转速_1st_deri_fftmax_min_sub': 1, '发动机转速_unique_len': 3, '排量电流_min': 3, 'pump_turn_1st_deri_fft_median': 1, 'pump_turn_median': 1, '泵送压力_1st_deri_sum': 2, '泵送压力_fftstd_mean_sub': 1, '液压油温_1st_deri_max': 2, '发动机转速_1st_deri_fft_max': 2, '泵送压力_fft_mean': 1, '泵送压力_1st_deri_fft_std': 1, '油泵转速_unique_len': 1, '泵送压力_std': 1, 'pump_turn_sum': 2, '分配压力_1st_deri_fft_sum': 1, '分配压力_std': 1, '分配压力_fft_median': 1, '分配压力_1st_deri_fft_min': 1, '泵送压力_1st_deri_fft_max': 1, '流量档位_fft_min': 1}
+```
+
+* Local Score: 0.6054278544166276
+  * [0.6052623916625964, 0.6049232168131269, 0.6105130573312874, 0.6006873440859036, 0.6057532621902235]
+* Online Score: 0.59613919000
+
+---
+
+Change XGBoost parameter
+
+* max_bin=2^(10-1) (default=256)
+
+> not sure why it isn't `max_leaves`...
+
+No more improvement...
+
+### version 6 (TODO)
+
+* [tsfresh](https://tsfresh.readthedocs.io/en/v0.1.2/index.html)
+  * [blue-yonder/tsfresh](https://github.com/blue-yonder/tsfresh)
+
 ## TODO
 
 * [ ] Matplotlib Chinese font /or/ Transfer to English label
@@ -186,9 +244,9 @@ Feature Importance: ( 39 )
   * [How to Plot Unicode Characters with Matplotlib](https://jdhao.github.io/2018/04/08/matplotlib-unicode-character/)
   * [CSDN - Python Matplot中文顯示完美解決方案](https://blog.csdn.net/kesalin/article/details/71214038)
     * matplotlib/font_manager.py
-
         > Matplotlib is building the font cache using fc-list
 * [ ] Add new feature based on previous created feature pickle. (skip the feature with same name)
+* [ ] Replace the scikit learn f1_score with customized @jit f1 score function
 
 ## Links
 

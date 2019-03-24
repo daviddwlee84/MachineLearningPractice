@@ -121,6 +121,10 @@ def load_bigger(input_file):
     return pickle.loads(bytes_in)
 ```
 
+## Tips for Fast Evaluation
+
+### [Compiling Python code with @jit](http://numba.pydata.org/numba-doc/0.17.0/user/jit.html)
+
 ## Tips for parameter
 
 ### Gain parameter

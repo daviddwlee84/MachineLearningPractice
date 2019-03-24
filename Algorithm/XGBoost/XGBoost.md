@@ -16,6 +16,7 @@ Supervised Learning|Boosting||
   * [Plotting API](https://xgboost.readthedocs.io/en/latest/python/python_api.html#module-xgboost.plotting)
 * [XGBoost Github](https://github.com/dmlc/xgboost) - Distributed Gradient Boosting (GBDT, GBRT or GBM) Library
 * [Wiki - XGBoost](https://en.wikipedia.org/wiki/Xgboost)
+* [Complete Guide to Parameter Tuning in XGBoost (with codes in Python)](https://www.analyticsvidhya.com/blog/2016/03/complete-guide-parameter-tuning-xgboost-with-codes-python/)
 
 ### Feature Engineering
 
