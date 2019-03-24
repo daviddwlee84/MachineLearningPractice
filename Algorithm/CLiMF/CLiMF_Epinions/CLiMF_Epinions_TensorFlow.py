@@ -81,7 +81,7 @@ class CLiMF:
                 # Calculate dU
                 dU += sigmoid(-fi[j])() * self.V[j]
                 for k in fi:
-                    dU += (self.V[j] - self.V[k]) * sigmoid(fi[k] - fi[j])() / (1-sigmoid(fi[k] - fi[j])())
+                    dU += (self.V[j] - self.V[k]) * sigmoid(fi[k] - fi[j]).derivative() / (1-sigmoid(fi[k] - fi[j])())
             # original: self.U[i] += self.__gamma * dU
             # Method 1
             self.U[i].assign(self.U[i] + self.__gamma * dU)
