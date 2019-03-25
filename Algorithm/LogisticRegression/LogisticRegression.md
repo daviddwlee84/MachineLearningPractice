@@ -6,11 +6,56 @@ In statistics, the logistic model (or logit model) is a widely used statistical 
 
 ### Quick View
 
-Category|Usage|Application Field
---------|-----|-----------------
-Supervised Learning|Classification|Many...
+Category|Usage|Methematics|Application Field
+--------|-----|-----------|-----------------
+Supervised Learning|Classification|Gradient Descent, Sigmoid|Many...
 
-## Links
+## The Sigmoid function: a tractable step function
+
+> (Heaviside) step function => can't be differential
+>
+> Sigmoid => differentiable
+
+$$
+\operatorname{sigmoid}(z) = \sigma(z) = \frac{1}{1+e^{-z}}
+$$
+
+### Training with Stochastic Gradient Ascent
+
+Pseudocode
+
+```txt
+Start with the weights all set to 1
+For each piece of data in the dataset:
+    Calculate the gradient of one piece of data
+    Update the weights vector by alpha*gradient
+    Return the weights vector
+```
+
+## Logistic Discrimination
+
+> In *logistic discrimination*, we don't model the class-conditional densities, but rather their ratio. (Assume that the log likelihood ratio is linear)
+
+## Multiple Classes - Softmax
+
+## Resources
+
+### Book
+
+Machine Learning in Action
+
+* Ch5 Logistic Regression
+  * Ch5.2.1 Gradient Ascent
+  * Ch5.2.4 Stochastic Gradient Ascent
+
+Introduction to Machine Learning
+
+* Ch10.7 Logistic Discrimination
+  * Ch10.7.2 Multiple Classes
+
+### Scikit Learn
+
+* [sklearn.linear_model.LogisticRegression](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html)
 
 ### Tutorial
 

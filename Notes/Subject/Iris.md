@@ -25,7 +25,7 @@ Data Set Characteristics |Multivariate
 Attribute Characteristics|Real
 Number of Attributes     |4
 Number of Instances      |150
-Associated Tasks         |Classification (but we do Clustering here)
+Associated Tasks         |Classification (but we will also do Clustering here)
 
 ### Attribute Information
 
@@ -38,8 +38,16 @@ Associated Tasks         |Classification (but we do Clustering here)
     * Iris Versicolour
     * Iris Virginica
 
-## Result
+## Clustering with EM Algorithm
 
-## Example
+## Multi-class Classification with Logistic Regression
+
+Model                           |Accuracy
+--------------------------------|---------
+Logistic Regression Scikit Learn|0.9777
+
+## Links
+
+### EM Example
 
 [EM Clustering of the Iris Dataset](https://swish.swi-prolog.org/example/iris.swinb)

@@ -57,7 +57,8 @@ LightGBM & XGBoost & CatBoost Practice|Boosting Tree / Classification|[Social Ne
 Kaggle Elo|LightGBM / Feature Engineering|[Elo Merchant Category Recommendation](https://www.kaggle.com/c/elo-merchant-category-recommendation)|[LightGBM Project](Project/KaggleElo)
 DCIC 2019|LXGBoost / Feature Engineering|[Failure Prediction of Concrete Piston for Concrete Pump Vehicles](https://www.datafountain.cn/competitions/336/details)|[XGBoost Project](Project/DCIC2019)
 Epinions CLiMF|Collaborative Filtering / Recommendation System|[Epinions](http://www.trustlet.org/epinions.html)|[CLiMF From Scratch](Algorithm/CLiMF/CLiMF_Epinions/CLiMF_Epinions_FromScratch.py), [CLiMF TensorFlow](Algorithm/CLiMF/CLiMF_Epinions/CLiMF_Epinions_TensorFlow.py)|[Notes](Notes/Subject/Epinions.md), [PaperResearch](Notes/PaperResearch/CLiMF.md)
-Iris EM|EM Algorithm / Clustering|[Iris Data Set](https://archive.ics.uci.edu/ml/datasets/iris)|[EM From Scratch]()|[Notes](Notes/Subject/Iris.md)
+Iris EM|EM Algorithm / Clustering|[Iris Data Set](https://archive.ics.uci.edu/ml/datasets/iris)|[EM From Scratch](Algorithm/EM/EM_Iris/EM_Iris_FromScratch.py)|[Notes](Notes/Subject/Iris.md)
+Iris Logistic|Logistic Regression / Classification|[Iris Data Set](https://archive.ics.uci.edu/ml/datasets/iris)|[Logistic Regression From Scratch](Algorithm/LogisticRegression/LogisticRegression_Iris/LogisticRegression_Iris_FromScratch.py), [Logistic Regression Scikit Learn](Algorithm/LogisticRegression/LogisticRegression_Iris/LogisticRegression_Iris_sklearn.py)|[Notes](Notes/Subject/Iris.md)
 
 ## Machine Learning Categories
 
