@@ -49,7 +49,7 @@ class LogisticRegression:
             return True
         else:
             return False
- 
+
     def __stochasticGradientAscent(self, weight, X, y, times):
         """ Stochastic Gradient Ascent
 
@@ -67,8 +67,21 @@ class LogisticRegression:
 
         return weight
 
+    def __getInitWeight(self, method='uniform'):
+
+        assert method in ('uniform', 'balanced')
+
+        if method == 'uniform':
+            # Initialize weights with all one
+            return np.ones(self.__num_feature)
+
+        if method == 'balanced':
+            # Initialize weights between [-1/sqrt(N), 1/sqrt(N)]
+            limit = 1 / np.sqrt(self.__num_feature)
+            return np.random.uniform(-limit, limit, (self.__num_feature,)) 
+
     def __twoClassClassifier(self, X, y):
-        weight = np.ones(self.__num_feature) # initial weight
+        weight = self.__getInitWeight(method='balanced') # initial weight
 
         for i in range(self.__max_iter):
             weight = self.__stochasticGradientAscent(weight, X, y, i)
