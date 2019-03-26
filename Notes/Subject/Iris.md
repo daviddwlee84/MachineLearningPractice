@@ -42,9 +42,13 @@ Associated Tasks         |Classification (but we will also do Clustering here)
 
 ## Multi-class Classification with Logistic Regression
 
-Model                           |Accuracy
---------------------------------|---------
-Logistic Regression Scikit Learn|0.9777
+Model                                    |Accuracy (avg. of 5)|Multi-class mode
+-----------------------------------------|--------------------|----------------
+Logistic Regression Scikit Learn         |0.9777              |ovr (default)
+Logistic Regression From Scratch (Binary)|1.0                 |-
+Logistic Regression From Scratch         |0.8222 (0.7244)     |ovr
+
+TODO: Multinomial (softmax)
 
 ## Links
 

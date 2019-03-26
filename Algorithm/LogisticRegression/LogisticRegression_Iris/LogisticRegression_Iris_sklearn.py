@@ -21,8 +21,8 @@ def loadData():
     train_X, test_X, train_y, test_y = train_test_split(X, y, test_size=0.3, random_state=87)
     return train_X, test_X, train_y, test_y
 
-def trainLogistic(train_X, train_y):
-    clf = LogisticRegression()
+def trainLogistic(train_X, train_y, multi_class_method='ovr'):
+    clf = LogisticRegression(multi_class=multi_class_method)
     clf.fit(train_X, train_y)
     return clf
     
@@ -31,8 +31,13 @@ def testAccuracy(model, test_X, test_y):
 
 def main():
     train_X, test_X, train_y, test_y = loadData()
-    LogisticModel = trainLogistic(train_X, train_y)
-    print("Accuracy of Logistic Regression is:", testAccuracy(LogisticModel, test_X, test_y))
+    LogisticModel = trainLogistic(train_X, train_y, multi_class_method='ovr')
+    print("Accuracy of Logistic Regression (OVR) is:", testAccuracy(LogisticModel, test_X, test_y))
+
+    # For multiclass problems, only ‘newton-cg’, ‘sag’, ‘saga’ and ‘lbfgs’ handle multinomial loss;
+    # ‘liblinear’ is limited to one-versus-rest schemes.
+    # LogisticModel = trainLogistic(train_X, train_y, multi_class_method='multinomial')
+    # print("Accuracy of Logistic Regression (Multinomial) is:", testAccuracy(LogisticModel, test_X, test_y))
 
 if __name__ == "__main__":
     main()
