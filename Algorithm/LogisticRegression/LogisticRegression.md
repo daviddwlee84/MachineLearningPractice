@@ -17,7 +17,7 @@ Supervised Learning|Classification|Gradient Descent, Sigmoid|Many...
 > Sigmoid => differentiable
 
 $$
-\operatorname{sigmoid}(z) = \sigma(z) = \frac{1}{1+e^{-z}}
+\operatorname{sigmoid}(z) = \sigma(z) = \frac{1}{1+e^{-z}} = P(y=1)
 $$
 
 ### Training with Stochastic Gradient Ascent
@@ -36,9 +36,21 @@ For each piece of data in the dataset:
 
 > In *logistic discrimination*, we don't model the class-conditional densities, but rather their ratio. (Assume that the log likelihood ratio is linear)
 
-## Multiple Classes - Softmax
+## Multiple Classes
+
+### Multinomial - Softmax
+
+Softmax
+
+$$
+\operatorname{softmax}(x)_i = \frac{ e^{x_i} }{ \sum_{j=1}^n e^{x_j} }
+$$
+
+### one-vs-all and one-vs-rest
 
 ## Resources
+
+* [Binary vs. Multi-Class Logistic Regression](https://chrisyeh96.github.io/2018/06/11/logistic-regression.html)
 
 ### Book
 
@@ -60,7 +72,9 @@ Introduction to Machine Learning
 ### Tutorial
 
 * [Youtube - Logistic Regression](https://youtu.be/7qJ7GksOXoA)
+* [Lecture 6.7 — Logistic Regression | MultiClass Classification OneVsAll — [Andrew Ng]](https://youtu.be/-EIfb6vFJzc)
 
 ### Wikipedia
 
 * [Logistic Regression](https://en.wikipedia.org/wiki/Logistic_regression)
+* [Multinomial logistic regression](https://en.wikipedia.org/wiki/Multinomial_logistic_regression) - softmax regression

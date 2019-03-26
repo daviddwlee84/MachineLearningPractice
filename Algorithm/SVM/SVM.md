@@ -6,7 +6,7 @@
 
 ## Brief Description
 
-In machine learning, support vector machines (SVMs, also support vector networks) are supervised learning models with associated learning algorithms that analyze data used for classification and regression analysis. Given a set of training examples, each marked as belonging to one or the other of two categories, an SVM training algorithm builds a model that assigns new examples to one category or the other, making it a non-probabilistic binary linear classifier (although methods such as Platt scaling exist to use SVM in a probabilistic classification setting). An SVM model is a representation of the examples as points in space, mapped so that the examples of the separate categories are divided by a clear gap that is as wide as possible. New examples are then mapped into that same space and predicted to belong to a category based on which side of the gap they fall.
+Support Vector Machines (SVM) are learning systems that use a hypothesis space of *linear functions* in a *high dimensional* feature space, trained with a learning algorithm from *optimisation theory* that implements a *learning bias* derived from statistical learning theory.
 
 ### Quick View
 
@@ -27,6 +27,7 @@ Supervised Learning|Classification (Main), Regression, Outliers Detection Cluste
         * For better [converage](#Converage-Problem) you have to [normalize](../../Notes/MachineLearningConcepts.md#Normalization) your data
 
 Advantage
+
 * Effective in high dimensional spaces
 * Effective in dimensions >> samples
 * Use a subset of training points in the decision function => Memory efficient
@@ -37,6 +38,13 @@ Disadvantage
 
 * Poor performance when features >> samples
 * SVMs do not provide probability estimates
+
+SVM vs. Perceptron|SVM|Perceptron / NN
+------------------|---|----------
+**Solving Problem**|Optimization|Iteration
+**Optimal**|Global (∵ convex)|Local
+**Non-linear Seprable**|Higher dimension|Stack multi-layer model
+**Performance**|Better with prior knowledge|Skip feature engineering step
 
 ## Terminology
 
@@ -172,6 +180,27 @@ When using large -e, you may want to check if -h 0 (no shrinking) or -h 1 (shrin
 ## Vary Large Datasets
 
 * Paper - [Core Vector Machines: Fast SVM Training on Very Large Data Sets](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.445.4342&rep=rep1&type=pdf)
+
+## SVMs in NLP
+
+### Word Sense Disambiguation
+
+### Text Categorization (TC)
+
+#### Document Representation
+
+> Document => Represent as a set of features
+
+Features:
+
+* Bag of words (BOW): "each word occurring in a document" remove "stop words"
+
+Feature value:
+
+* Binary: appear or not
+* Integer: # of occurrences
+* TF-IDF value
+* ...
 
 ## Links
 

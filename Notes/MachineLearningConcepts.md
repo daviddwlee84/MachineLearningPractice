@@ -527,10 +527,20 @@ $$
 
 Find the fastest way to minimize the error.
 
+> All-at-once method => Batch Processing
+
+* Machine Learning in Action Ch5.2.1 Gradient Ascent
+
 #### Stochastic Gradient Descent
 
 * Random select m example as sample (minibach)
 * Use gradient average to estimate the expected gradient of the training set
+
+> *Online* learning algorithm.
+>
+> (online means we can incrementally update the classifier as new data comes in rather than all at once)
+
+* Machine Learning in Action Ch5.2.4 Stochastic Gradient Ascent
 
 ## Other Learning Method
 
