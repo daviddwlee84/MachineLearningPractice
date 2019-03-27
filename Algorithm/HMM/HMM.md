@@ -6,14 +6,410 @@ The HMM is a generative probabilistic model, in which a sequence of observable X
 
 There are three fundamental problems for HMMs:
 
-* Given the model parameters and observed data, estimate the optimal sequence of hidden states.
-* Given the model parameters and observed data, calculate the likelihood of the data.
-* Given just the observed data, estimate the model parameters.
+1. [Given the model parameters and observed data, estimate the optimal sequence of hidden states.](#problem-two-find-the-optimized-state-transition-sequence)
+2. [Given the model parameters and observed data, calculate the likelihood of the data.](#problem-one-estimate-observation-sequence-probability)
+3. [Given just the observed data, estimate the model parameters.](##problem-three-learning-parameters)
 
-The first and the second problem can be solved by the dynamic programming algorithms known as the Viterbi algorithm and the Forward-Backward algorithm, respectively.
-The last one can be solved by an iterative *Expectation-Maximization (EM) algorithm*, known as the Baum-Welch algorithm.
+The first and the second problem can be solved by the *dynamic programming* algorithms known as the [**Viterbi algorithm**](#viterbi-algorithm) and the **Forward-Backward algorithm**, respectively.
+The last one can be solved by an iterative [**Expectation-Maximization (EM) algorithm**](../EM/EM.md), known as the [**Baum-Welch algorithm**](#baum-welch-algorithm).
 
-## [EM Algorithm](../EM/EM.md)
+> A hidden Markov model is a Markov chain for which the state is only partially observable.
+
+### Quick View
+
+Category|Usage|Methematics|Application Field
+--------|-----|-----------|-----------------
+Supervised Learning, Unsupervised Learning|Sequential Labeling|Markov Chain|NLP
+
+## Markov Model
+
+*Markov models*|System state is fully observable|System state is partially observable
+---------------|--------------------------------|-------------------------------------
+**System is autonomous**|Markov chain|Hidden Markov model
+**System is controlled**|Markov decision process|Partially observable Markov decision process
+
+### Markov Chain
+
+A Markov chain is a stochastic model describing a sequence of possible events in which the probability of each event depends only on the state attained in the previous event.
+
+> A Markov chain is a *stochastic process* with the *Markov property*.
+
+The term "Markov chain" refers to the sequence of random variables such a process moves through, with the Markov property defining serial dependence only between adjacent periods (as in a "chain").
+
+#### First-order Markov Chain
+
+#### Time-homogeneous Markov Chain (stationary Markov chain)
+
+#### Example of Markov chain
+
+$P={\begin{bmatrix}0.9&0.075&0.025\\0.15&0.8&0.05\\0.25&0.25&0.5\end{bmatrix}}.$
+
+![wiki example](https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Finance_Markov_chain_example_state_space.svg/400px-Finance_Markov_chain_example_state_space.svg.png)
+
+## The Hidden Markov Model
+
+### Example of Urn and ball
+
+> 壇子與小球
+
+![wiki urn](https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/HiddenMarkovModel.svg/300px-HiddenMarkovModel.svg.png)
+
+Probabilistic parameters of a hidden Markov model (example)
+
+* X — states
+* y — possible observations => only visible thing in HMM!
+* a — state transition probabilities
+* b — output probabilities
+
+### Formula
+
+HMM (𝝺) can be defined as (S, V, A, B, 𝞹)
+
+* S: status set
+  * $S = \{ 1, 2, 3, \dots, N \}$
+* V: output sign set
+  * $V = \{v_1, v_2, \dots, v_M \}$
+* A: (state) transition matrix (狀態)轉移矩陣
+  * $A_{N\times N} = [a_{ij}]$
+  * $a_{ij} = P(q_t=j|q_{t-1}=i)$
+* B: output sign probability distribution
+  * $B = \{b_j(k)\}$
+  * $b_j(k) = P(v_k|j)$
+* 𝞹: initial state probability distribution
+  * $\pi = \{\pi_i\}$
+  * $\pi_i = P(q_1 = i)$
+
+The hidden markov process can be considered as a double stochastic process:
+
+1. the first stochastic process: described with the *state transition matrix* (can't be observed directly)
+2. the second stochastic process: defined by the *output probability matrix* => output the observable signs.
+
+### Generate observation sequence
+
+## Problems of HMM
+
+1. For a given HMM 𝝺 = (A, B, 𝞹) and an observation sequence O => Calculate observation probability P(O|𝝺)? (i.e. the Probability calculation problem)
+2. For a given HMM 𝝺 = (A, B, 𝞹) and an observation sequence O => Find the most possible transition sequence q? (i.e. the Prediction problem)
+3. How to get or update the model's parameter by an observation sequence O? (i.e. the Learning problem)
+   * based on Maximum Likelihood priniple, how to confirm a set of model parameters that maximize P(O|𝝺)
+
+Example of flipping coin: (this will be used to demonstrate the following problems)
+
+𝝺 = (S, V, A, B, 𝞹)
+
+* S = {1, 2, 3}
+* V = {H, T}
+* A
+    *A*| 1  | 2  | 3
+    ---|----|----|----
+    1 |0.90|0.05|0.05
+    2 |0.45|0.10|0.45
+    3 |0.45|0.45|0.1
+* B
+    *B*| 1  | 2  | 3
+    ---|----|----|----
+    H |0.50|0.75|0.25
+    T |0.50|0.25|0.75
+* 𝞹 = {1/3, 1/3, 1/3}
+
+### Problem one: Estimate observation sequence probability
+
+#### Naive (Brute-force) Algorithm
+
+List all the posibility of the state transition sequence then claculate.
+
+1. For the given 𝝺, calculate P(O)
+2. Calculate P(O, q) (joint probability (聯合機率) of O and q)
+3. Caculate observation sequence probability P(O)
+
+Time complexity:
+
+* multiply: (2T-1)N^T times
+* addition: N^T - 1 times
+
+> By the concept of dynamic programming, maybe we can seperate the problem into sub-problem and simplify the problem.
+> => Forward Algorithm, Backward Algorithm
+
+#### Forward Algorithm
+
+The forward variable $\alpha_{t}(i)$
+
+$$
+\alpha_{t+1}(j) = [\sum_{i=1}^N \alpha_t(i) \alpha_{ij}]b_j(o_{t+1})
+$$
+
+1. Initialization (i from 1 to N)
+    $$
+    \alpha_1(i) = \pi_ib_i(o_1)
+    $$
+2. Iteration (t from 1 to T-1, j from 1 to N)
+    $$
+    \alpha_{t+1}(j) = [\sum_{i=1}^N \alpha_t(i) \alpha_{ij}]b_j(o_{t+1})
+    $$
+3. Termination
+    $$
+    P(O|\lambda) = \sum_{i=1}^N \alpha_T(i)
+    $$
+
+Time complexity:
+
+* multiply: N(N+1)(T-1)+N times
+* addition: N(N-1)(T-1) times
+
+Calculate the P(HHT|𝝺) of the example:
+
+$a_t(i)$|   H   |   H   |   T
+--------|-------|-------|-------
+1       |0.16667|0.15000|0.08672
+2       |0.25000|0.05312|0.00684
+3       |0.08333|0.03229|0.02597
+
+P(HHT|𝝺) = 0.11953
+
+#### Backward Algorithm
+
+The backward variable $\beta_{t}(i)$
+
+$$
+\beta_t(i) = \sum_{j=1}^N \alpha_{ij}b_j(o_{j+1}\beta_{t+1}(j))
+$$
+
+1. Initialization (i from 1 to N)
+    $$
+    \beta_1(i) = 1
+    $$
+2. Iteration (t from 1 to T-1, j from 1 to N)
+    $$
+    \beta_{t}(i) = \sum_{i=1}^N \alpha_{ij}b_j(o_{t+1})\beta_{t+1}(j)
+    $$
+3. Termination
+    $$
+    P(O|\lambda) = \sum_{i=1}^N \pi_ib_i(o_1)\beta_1(i)
+    $$
+
+> The definition of the backward algorithm is not exact symmetric of the forward algorithm.
+> You can define it as a symmetric solution of forward algorithm, but we'll use this algorithm in other problem (the third one)
+
+Calculate the P(HHT|𝝺) of the example:
+
+-       |   H   |   H   |   T   | (initial)
+--------|-------|-------|-------|-----------
+$\beta_t(i)$|$\pi_ib_i(H)\beta_1(i)$|$\beta_1(i)$|$\beta_2(i)$|$\beta_3(i)$
+1       |0.04203|0.25219|0.50000|1.00000
+2       |0.05074|0.20297|0.58750|1.00000
+3       |0.02676|0.32109|0.41250|1.00000
+
+P(HHT|𝝺) = 0.11953
+
+### Problem two: Find the optimized state transition sequence
+
+$$
+q^* = \arg\max_q P(O, q|\lambda)
+$$
+
+> We can also brute-force to solve this problem. Thus we'll use the DP algorithm again.
+
+#### Viterbi Algorithm
+
+> It's a variation of forward algorithm
+
+The Viterbi variable $\delta_t(i)$: At time t and state i. The probability of (observed: $q_1q_2\dots q_{t-1}q_t$ => best state transition sequence: $o_1o_2\dots o_t$)
+
+$$
+\delta_t(i) = \max_{q1\dots q_{t-1}} P(q_1q_2\dots q_{t-1}q_t = i, o_1o_2\dots o_t|\lambda)
+$$
+
+* base case:
+    $$
+    \delta_1(i) = \pi_ib_i(o_1)
+    $$
+* recursive case:
+    $$
+    \delta_{t+1}(j) = [\max_i\delta_t(i)a_{ij}]b_j(o_{t+1})
+    $$
+* record the path: $\psi_t(i)$ record the best path from the lastest time (i.e. t-1)
+
+1. Initialization (i from 1 to N)
+    $$
+    \delta_1(i) = \pi_ib_i(o_1) \\
+    \psi_1(i) = 0
+    $$
+2. Iteration (t from 1 to T-1, j from 1 to N)
+    $$
+    \delta_t(j) = \max_i[\delta_{t-1}a_{ij}]b_j(o_t) \\
+    \psi_t(j) = \arg\max_i \delta_{t-1}(i)a_{ij}
+    $$
+3. Termination
+    $$
+    P^* = \max{i}\delta_T(i)
+    $$
+4. Solve the best path
+    $$
+    q^*_T = \arg\max_i\delta_T(i)
+    $$
+
+Calculate the best state transition sequence of the example:
+
+$\delta_t(i)$|   H   |   H   |   T
+-------------|-------|-------|-------
+1            |0.16667|0.07500|0.03375
+2            |0.25000|0.02812|0.00316
+3            |0.08333|0.02812|0.00949
+
+$P^* = 0.03375$
+
+$\psi_t(i)$|$\psi_1(i)$|$\psi_2(i)$|$\psi_3(i)$
+-----------|-----------|-----------|-----------
+1          |     0     |     1     |     1
+2          |     0     |     3     |     3
+3          |     0     |     2     |     2
+
+$q^* = 1$
+
+so the best state transition sequence is `(1, 1, 1)`
+
+### Problem three: Learning Parameters
+
+Principle: Maximum Likelihood Estimation - finds the parameter which maximize P(O|𝝺)
+
+#### Learning Method
+
+Unknown HMM model 𝝺, given a observation sequence O
+
+* Supervised Learning:
+  * also give State transition sequence (i.e. the answer)
+  * pros: easy and good effect
+  * cons: need the transition sequence, most of the time need manual tagging => high cost
+* Unsupervised Learning
+  * no [analytic expression](https://en.wikipedia.org/wiki/Closed-form_expression#Analytic_expression) (解析解)
+  * can only reach local optimal model
+
+#### Naive thought of unsupervised learning
+
+Given initial parameters (A, B, 𝞹)
+
+Because we don't have transition sequence. We're not able to calculate state transition frequency, state output frequency and initial state frequency. => Assume all the state transition sequence are possible!
+
+Then calculate the expectation values of them. And update (A, B, 𝞹) with them.
+
+How to pick weight?
+
+For a state transition sequence q, select P(q|O, 𝝺)
+
+$$
+P(q|O, \lambda) = \frac{P(q, O|\lambda)}{P(O|\lambda)} = \frac{P(q, O|\lambda)}{\sum_qP(q, O|\lambda)}
+$$
+
+> But it will only work in theory. We need more efficient algorithm.
+
+In all the possible path, pick $q_t=i$ and $q_{t+1} = j$. The path set:
+
+$$
+Q = \{q|q_t=i, q_{t+1} = j\}
+$$
+
+The expectation of the transaction (i,j) occur while time t to t+1
+
+$$
+\frac{\sum_{q\in Q} P(q, O|\lambda)}{P(O|\lambda)}
+$$
+
+#### Baum-Welch Algorithm
+
+> Find the unknown parameters of a hidden Markov model (HMM). It makes use of a forward-backward algorithm.
+
+The variable $\xi_t(i, j)$: For the given model 𝝺 and the observation sequence O. Expetation probability of `time t at state i` => `time t+1 at state j`
+
+$$
+\xi_t(i, j) = P(q_t=i, q_{t+1}=j|O, \lambda)
+$$
+
+$$
+\xi_t(i, j) = \frac{P(q_t=i, q_{t+1}=j|O, \lambda)}{P(O|\lambda)} \\
+= \frac{a_t(i)a_{ij}b_j(o_{t+1})\beta_{t+1}(j)}{P(O|\lambda)} \\
+= \frac{a_t(i)a_{ij}b_j(o_{t+1})\beta_{t+1}(j)}{\sum_{i=1}^N\sum_{j=1}^N \alpha_t(i)a_{ij}b_j(o_{t+1})\beta_{t+1}(j)}
+$$
+
+The variable $\gamma_t(i)$ For the given model 𝝺 and the observation sequence O. Expetation probability of `start from i at time t`
+
+$$
+\gamma_t(i) = \sum_{j=1}^N \xi_t(i, j)
+$$
+
+Consider all the time
+
+* probability start from state i
+    $$
+    \sum_{t=1}^{T-1}\gamma_t(i)
+    $$
+* probability transit from state i to state j
+    $$
+    \sum_{t=1}^{T-1}\xi_t(i, j)
+    $$
+
+Then we can estimate (𝞹, A, B)
+
+$$
+\bar{\pi}_i = \gamma_1(i)
+$$
+
+$$
+\bar{a}_{ij} = \frac{\sum_{t=1}^{T-1}\xi_t(i, j)}{\sum_{t=1}^{T-1}\gamma_t(i)} = \sum_{t=1}^{T-1}\frac{\xi_t(i, j)}{\gamma_t(i)}
+$$
+
+$$
+\bar{b}_j(k) = \frac{\sum_{t=1}^{T}\gamma_t(j) \times \delta(o_t, v_k)}{\sum_{t=1}^{T}\gamma_t(j)}
+$$
+
+($\delta(o_t, v_k)$ = 1 when $o_t = v_k$, otherwise = 0)
+
+1. Initialize (𝞹, A, B) to all 1.
+2. Iterative calculate new parameter ($\bar{\pi}, \bar{A}, \bar{B}$)
+3. Update them and calculate again...
+4. Until converge
+
+> Baum-Welch Algorithm is a kind of EM algorithm
+>
+> * E-step:
+>   * Calculate $\xi_t(i, j)$ and $\gamma_t(i)$
+> * M-step:
+>   * Estimate model $\bar{\lambda}$
+> * Termination condition
+>   $$
+>   |\log P(O|\bar{\lambda}) - \log P(O|\lambda)| < \epsilon
+>   $$
+
+### Implementation of HMM
+
+Floating point overflow problem
+
+* for Forward algorithm
+  * scaling factors (放大因子) & log
+* for Viterbi algorithm
+  * log
+* for Baum–Welch algorithm
+  * scaling factors
+
+## Resources
+
+### Wikipedia
+
+* [Stochastic process](https://en.wikipedia.org/wiki/Stochastic_process)
+* [Markov chain](https://en.wikipedia.org/wiki/Markov_chain)
+  * [Examples of Markov chains](https://en.wikipedia.org/wiki/Examples_of_Markov_chains)
+* [Markov model](https://en.wikipedia.org/wiki/Markov_model)
+  * [Hidden Markov model](https://en.wikipedia.org/wiki/Hidden_Markov_model)
+    * [Forward algorithm](https://en.wikipedia.org/wiki/Forward_algorithm)
+    * [Viterbi algorithm](https://en.wikipedia.org/wiki/Viterbi_algorithm)
+    * [Baum–Welch algorithm](https://en.wikipedia.org/wiki/Baum%E2%80%93Welch_algorithm) ([Forward–backward algorithm](https://en.wikipedia.org/wiki/Forward%E2%80%93backward_algorithm), [Expectation–maximization algorithm](https://en.wikipedia.org/wiki/Expectation%E2%80%93maximization_algorithm))
+
+### Article
+
+* [隱馬爾科夫模型 (HMM) 簡介——自然語言處理詞性標注](https://nlpcs.com/article/hmm)
+
+### Paper
+
+* [Numerically Stable Hidden Markov Model Implementation](http://bozeman.genome.washington.edu/compbio/mbt599_2006/hmm_scaling_revised.pdf)
 
 ### Package
 
@@ -26,3 +422,7 @@ The last one can be solved by an iterative *Expectation-Maximization (EM) algori
 
 * [Python API Github](https://github.com/hankcs/pyhanlp)
 * [Official Main Page](http://hanlp.com/)
+
+#### GHMM
+
+* [GHMM Library](http://www.ghmm.org/)
