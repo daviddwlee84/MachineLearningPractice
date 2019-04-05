@@ -6,9 +6,9 @@ In statistics, the logistic model (or logit model) is a widely used statistical 
 
 ### Quick View
 
-Category|Usage|Methematics|Application Field
---------|-----|-----------|-----------------
-Supervised Learning|Classification|Gradient Descent, Sigmoid|Many...
+| Category            | Usage          | Methematics               | Application Field |
+| ------------------- | -------------- | ------------------------- | ----------------- |
+| Supervised Learning | Classification | Gradient Descent, Sigmoid | Many...           |
 
 ## The Sigmoid function: a tractable step function
 
@@ -38,7 +38,9 @@ For each piece of data in the dataset:
 
 ## Multiple Classes
 
-### Multinomial - Softmax
+### [Multinomial](../MEM/MEM.md) - Softmax Regression (SMR)
+
+> Softmax Regression (synonyms: Multinomial Logistic, Maximum Entropy Classifier, or just Multi-class Logistic Regression) is a generalization of logistic regression that we can use for multi-class classification (under the assumption that the classes are mutually exclusive)
 
 Softmax
 
@@ -46,11 +48,12 @@ $$
 \operatorname{softmax}(x)_i = \frac{ e^{x_i} }{ \sum_{j=1}^n e^{x_j} }
 $$
 
-### one-vs-all and one-vs-rest
+### One-vs-All and One-vs-Rest
 
 ## Resources
 
 * [Binary vs. Multi-Class Logistic Regression](https://chrisyeh96.github.io/2018/06/11/logistic-regression.html)
+* [Google ML Crash Course - Multi-Class Neural Networks: Softmax](https://developers.google.com/machine-learning/crash-course/multi-class-neural-networks/softmax)
 
 ### Book
 
@@ -73,8 +76,20 @@ Introduction to Machine Learning
 
 * [Youtube - Logistic Regression](https://youtu.be/7qJ7GksOXoA)
 * [Lecture 6.7 — Logistic Regression | MultiClass Classification OneVsAll — [Andrew Ng]](https://youtu.be/-EIfb6vFJzc)
+* [Youtube - Softmax Regression (C2W3L08) — [Andrew Ng]](https://youtu.be/LLux1SW--oM)
 
 ### Wikipedia
 
 * [Logistic Regression](https://en.wikipedia.org/wiki/Logistic_regression)
 * [Multinomial logistic regression](https://en.wikipedia.org/wiki/Multinomial_logistic_regression) - softmax regression
+
+### Article
+
+Binomial (sigmoid)
+
+* [Logistic Regression from scratch in Python](https://medium.com/@martinpella/logistic-regression-from-scratch-in-python-124c5636b8ac)
+
+Multinomial (softmax)
+
+* [2 Ways to Implement Multinomial Logistic Regression in Python](http://dataaspirant.com/2017/05/15/implement-multinomial-logistic-regression-python/) - use scikit learn
+* [Machine Learning and Data Science: Multinomial (Multiclass) Logistic Regression](https://www.pugetsystems.com/labs/hpc/Machine-Learning-and-Data-Science-Multinomial-Multiclass-Logistic-Regression-1007/)
