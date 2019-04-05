@@ -12,8 +12,7 @@ import numpy as np
 from sklearn import datasets
 from sklearn.model_selection import train_test_split
 
-# Reminder
-# TODO: Multinomial needs new loss function
+import matplotlib.pyplot as plt
 
 class sigmoid: # callable sigmoid function class
     def __init__(self, x):
@@ -212,7 +211,6 @@ class LogisticRegression:
         self.__num_data, self.__num_feature = np.shape(X)
 
         if self.__standardlize:
-            # use this will lower the performance
             for i in range(self.__num_feature):
                 X[:, i] = (X[:, i] - X[:, i].mean()) / X[:, i].std()
 
@@ -242,7 +240,6 @@ class LogisticRegression:
         """ Probability estimates """
 
         if self.__standardlize:
-            # use this will lower the performance
             for i in range(self.__num_feature):
                 X[:, i] = (X[:, i] - X[:, i].mean()) / X[:, i].std()
 
@@ -270,7 +267,6 @@ class LogisticRegression:
         """ Predict class labels for samples in X """
 
         if self.__standardlize:
-            # use this will lower the performance
             for i in range(self.__num_feature):
                 X[:, i] = (X[:, i] - X[:, i].mean()) / X[:, i].std()
 
@@ -345,11 +341,19 @@ def main():
     train_X, test_X, train_y, test_y = loadData() # standardlize data will change the original data
     SoftmaxLR = trainLogistic(train_X, train_y, multi_class_method='multinomial', standardlize=False)
     print("Accuracy of Multi-class Logistic Regression with Multinomial is:", testAccuracy(SoftmaxLR, test_X, test_y))
+
+    plt.plot(range(len(SoftmaxLR.cost_history)), SoftmaxLR.cost_history)
+    plt.title('Cost of Multinomial (Softmax) Logistic Regression')
+    plt.xlabel('Iterations')
+    plt.ylabel('Cost')
+
     score = []
     for _ in range(5):
         SoftmaxLR = trainLogistic(train_X, train_y, multi_class_method='multinomial', standardlize=False)
         score.append(SoftmaxLR.score(test_X, test_y))
     print("average of 5:", np.mean(score))
+
+    plt.show()
 
 if __name__ == "__main__":
     main()

@@ -122,3 +122,4 @@ Conclusion
   * [exercise](http://ufldl.stanford.edu/wiki/index.php/Exercise:Softmax_Regression)
     * [solution (siddharth-agrawal/Softmax-Regression)](https://github.com/siddharth-agrawal/Softmax-Regression)
 * [**rasbt/python-machine-learning-book - softmax-regression.ipynb**](https://github.com/rasbt/python-machine-learning-book/blob/master/code/bonus/softmax-regression.ipynb)
+* [karan6181/Softmax-Classifier](https://github.com/karan6181/Softmax-Classifier)
