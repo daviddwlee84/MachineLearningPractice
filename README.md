@@ -23,9 +23,16 @@ For comparison purpose
 * `sklearn`: For machine learning models
 * [`cvxopt`](http://cvxopt.org/): For convex optimization problem (for SVM)
 * For gradient boosting
-    * [`XGBoost`](https://github.com/dmlc/xgboost)
-    * [`LightGBM`](https://github.com/Microsoft/LightGBM)
-    * [`CatBoost`](https://github.com/catboost/catboost)
+  * [`XGBoost`](https://github.com/dmlc/xgboost)
+  * [`LightGBM`](https://github.com/Microsoft/LightGBM)
+  * [`CatBoost`](https://github.com/catboost/catboost)
+
+For visualization
+
+* [`Mlxtend`](https://github.com/rasbt/mlxtend)
+* `matplotlib`
+  * `matplotlib.pyplot`
+  * `mpl_toolkits.mplot3d`
 
 NLP related
 
@@ -58,7 +65,7 @@ Kaggle Elo|LightGBM / Feature Engineering|[Elo Merchant Category Recommendation]
 DCIC 2019|LXGBoost / Feature Engineering|[Failure Prediction of Concrete Piston for Concrete Pump Vehicles](https://www.datafountain.cn/competitions/336/details)|[XGBoost Project](Project/DCIC2019)
 Epinions CLiMF|Collaborative Filtering / Recommendation System|[Epinions](http://www.trustlet.org/epinions.html)|[CLiMF From Scratch](Algorithm/CLiMF/CLiMF_Epinions/CLiMF_Epinions_FromScratch.py), [CLiMF TensorFlow](Algorithm/CLiMF/CLiMF_Epinions/CLiMF_Epinions_TensorFlow.py)|[Notes](Notes/Subject/Epinions.md), [PaperResearch](Notes/PaperResearch/CLiMF.md)
 Iris EM|EM Algorithm / Clustering|[Iris Data Set](https://archive.ics.uci.edu/ml/datasets/iris)|[EM From Scratch](Algorithm/EM/EM_Iris/EM_Iris_FromScratch.py)|[Notes](Notes/Subject/Iris.md)
-Iris Logistic|Logistic Regression / Classification|[Iris Data Set](https://archive.ics.uci.edu/ml/datasets/iris)|[Logistic Regression From Scratch](Algorithm/LogisticRegression/LogisticRegression_Iris/LogisticRegression_Iris_FromScratch.py), [Logistic Regression Scikit Learn](Algorithm/LogisticRegression/LogisticRegression_Iris/LogisticRegression_Iris_sklearn.py)|[Notes](Notes/Subject/Iris.md)
+Iris Logistic|Logistic Regression / Classification|[Iris Data Set](https://archive.ics.uci.edu/ml/datasets/iris)|[Logistic Regression From Scratch](Algorithm/LogisticRegression/LogisticRegression_Iris/LogisticRegression_Iris_FromScratch.py), [Logistic Regression Scikit Learn](Algorithm/LogisticRegression/LogisticRegression_Iris/LogisticRegression_Iris_sklearn.py), [SVM (used for compare)](Algorithm/SVM/SVM_Iris/SVM_Iris_Multiclass.py)|[Notes](Notes/Subject/Iris.md)
 
 ## Machine Learning Categories
 
@@ -120,11 +127,13 @@ Iris Logistic|Logistic Regression / Classification|[Iris Data Set](https://archi
 * `Probabilistic Latent Semantic Analysis (PLSA)`
 * `Latent Dirichlet Allocation (LDA)`
 * [`Vector Space Model (VSM)`](Algorithm/VSM/VSM.md)
+* [`Maximum Entropy Model (MEM)`](Algorithm/MEM/MEM.md)
 
-#### Heuristic Algorithm
+#### Heuristic Algorithm (Optimization Method)
 
-* [SMO](Algorithm/SVM/SVMDeduction.md#Platt's-SMO-Algorithm) --> SVM
-* [EM](Algorithm/EM/EM.md) --> HMM, etc.
+* [`SMO`](Algorithm/SVM/SVMDeduction.md#Platt's-SMO-Algorithm) --> SVM
+* [`EM`](Algorithm/EM/EM.md) --> HMM, etc.
+* [`GIS`](Algorithm/MEM/MEM.md#GIS-Algorithm) --> MEM
 
 ## [Machine Learning Concepts](Notes/MachineLearningConcepts.md)
 
@@ -241,9 +250,11 @@ Iris Logistic|Logistic Regression / Classification|[Iris Data Set](https://archi
 ### Machine Learning
 
 * [**Machine Learning in Action**](https://www.manning.com/books/machine-learning-in-action)
-    * [Source Code](https://manning-content.s3.amazonaws.com/download/3/29c6e49-7df6-4909-ad1d-18640b3c8aa9/MLiA_SourceCode.zip)
+  * [Source Code](https://manning-content.s3.amazonaws.com/download/3/29c6e49-7df6-4909-ad1d-18640b3c8aa9/MLiA_SourceCode.zip)
 * 統計學習方法 (李航)
 * 機器學習 (周志華)
+* Python Machine Learning
+  * [Source Code](https://github.com/rasbt/python-machine-learning-book)
 
 ### Mathematics
 

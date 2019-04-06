@@ -43,9 +43,16 @@ Associated Tasks         |Classification (but we will also do Clustering here)
 ## Multi-class Classification with Logistic Regression
 
 ```sh
+# Logistic Regression
 cd Algorithm/LogisticRegression/LogisticRegression_Iris
+# comparison
 python3 LogisticRegression_Iris_sklearn.py
+# From Scratch
 python3 LogisticRegression_Iris_FromScratch.py
+
+# SVM (comparison)
+cd Algorithm/SVM/SVM_Iris
+python3 SVM_Iris_Multiclass.py
 ```
 
 Measure the accuracy of the test subset (30% of instances)
@@ -53,7 +60,10 @@ Measure the accuracy of the test subset (30% of instances)
 Model                                    |Accuracy (avg. of 5)|Multi-class mode|Parameter
 -----------------------------------------|--------------------|----------------|---------
 Logistic Regression Scikit Learn         |0.9777              |ovr (default)   |-
+LinearSVC Scikit Learn                   |0.9777              |ovr (default)   |-
+SVM From Scratch (Binary)                |1.0                 |-               |(with standardlized data)
 Logistic Regression From Scratch (Binary)|1.0                 |-               |(no influence)
+SVM From Scratch                         |0.9111 (0.8133)     |ovr             |(with standardlized data)
 Logistic Regression From Scratch         |0.7111 (0.6311)     |ovr             |max_iter=100, eta=0.01, standardlize=False
 Logistic Regression From Scratch         |0.8444 (0.6311)     |multinomial     |max_iter=100, eta=0.01, standardlize=False
 Logistic Regression From Scratch         |0.6222 (0.7733)     |ovr             |max_iter=1000, eta=0.0001, standardlize=False
@@ -103,7 +113,16 @@ Accuracy of Multi-class Logistic Regression with Multinomial is: 0.8444444444444
 average of 5: 0.8444444444444444
 ```
 
-Conclusion
+> SVM
+>
+> ```txt
+> Accuracy of Binary (only y==0 (as -1) & y==1) SVM is: 1.0
+> Accuracy of Scikit Learn Multi-class SVM is: 0.9777777777777777
+> Accuracy of Multi-class SVM with OVR is: 0.9111111111111111
+> average of 5: 0.8133333333333332
+> ```
+
+### Conclusion
 
 1. Using smaller learning rate (eta) will get much slower (0.01 vs. 0.0001)
 2. The performance of Multinomial LR became very stable when the learning rate is small enough
