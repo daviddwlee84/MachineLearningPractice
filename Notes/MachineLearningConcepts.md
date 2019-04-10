@@ -3,8 +3,6 @@
 Table of content
 
 - [Machine Learning Concepts](#machine-learning-concepts)
-  - [Machine Learning Framework](#machine-learning-framework)
-    - [Unsupervised Learning](#unsupervised-learning)
   - [Data Preprocessing](#data-preprocessing)
     - [Normalization](#normalization)
     - [Missing Value](#missing-value)
@@ -32,7 +30,6 @@ Table of content
       - [0.632-bootstrap](#0632-bootstrap)
   - [Model Evaluation](#model-evaluation)
     - [Classification](#classification)
-      - [Methods Overview](#methods-overview)
       - [Accuracy (Error Rate)](#accuracy-error-rate)
       - [Confusion Matrix](#confusion-matrix)
       - [Precision, Recall Ratio](#precision-recall-ratio)
@@ -66,67 +63,6 @@ Table of content
     - [Lazy Learning](#lazy-learning)
     - [Incremental Learning (Online Learning)](#incremental-learning-online-learning)
     - [Multi-label Classification](#multi-label-classification)
-
-## Machine Learning Framework
-
-Three aspect:
-
-* What is the target?
-* The representation?
-  * Data
-  * Target function
-* Algorithms (i.e. ML Method)
-
-Three Spaces
-
-* Input Space/Feature Space: space used to describe each instance
-  * Continuous (e.g. Word embedding)
-  * Discrete (e.g. Feature engineering)
-  * Binary
-* Output Space: space of possible output values; very dependent on problem
-  * Continuous vs. Discrete
-  * Binary vs. Multivalued (in Discrete)
-* Hypothesis Space: space of functions that can be selected by the machine learning algorithm (it's the set of all functions *h* that satisfy the goal)
-
-Three Problems
-
-* Accordance Assumption: m examples chosen i.i.d. according to an unknown real world *distribution*
-* Modeling: For a *hypotheses*, estimate the parameters based on training data and minimize loss
-* Generalization: Accuracy on real data (training & test set)
-
-Goal of ML
-
-* Find a function *h* belonging to hypothesis space H, such that the expected error on new examples is minimal.
-* Find a function *h*: $Y = H(X)$, where $D = \{(X, y) | x \in X, y \in Y\}$
-
-Types of ML Problem
-
-* Y = empty set: unsupervised learning
-* Y is a set of integer: classification
-* If |Y|=2, h is called a concept: concept learning
-* Y is a set of real number: regression
-* Y are not given for some Ds: semi-supervised learning
-* Y is order set: learning for ranking
-* ...
-
-Learning Frame
-
-* Describing data with feature (Input Space): Manually designing input feature
-* Learning algorihtm (Hypothesis Space): Optimizing the weights on features
-
-Reasons of ML methods fail
-
-* Wrong Bias: best hypothesis is not in H
-* Search Failure: best model is in H but search fails to examine it
-
-### Unsupervised Learning
-
-* [Is the test set required for the unsupervised learning?](https://www.quora.com/Is-the-test-set-required-for-the-unsupervised-learning)
-  * In a way, no - as there is no ground truth. But often, unsupervised learning is followed by or associated with supervised learning.
-    * Word2Vec followed by classification/regression - Text Prediction
-    * PCA on TFIDF vectors followed by classification/regression -Text Prediction
-    * Clustering on labeled data - if you want to tune the clustering to get the least error
-    * Topic Modeling - you use LDA or LSA to get topic models and use the “elbow” to find the optimum number of topics - but now you would like to see if this would generalize well - and then you need a test set.
 
 ## Data Preprocessing
 
@@ -307,23 +243,9 @@ This means that the training data will contain approximately 63.2% of the exampl
 
 ## Model Evaluation
 
+* [CSDN - 深度學習多種模型評估指標介紹 - 附sklearn實現](https://blog.csdn.net/feilong_csdn/article/details/88829845)
+
 ### Classification
-
-Standard classification problem assumes indifvidual cases are disconnected and independent (i.i.d: independently and identically distributed)
-
-We're going to minimize the empirical classification error
-
-#### Methods Overview
-
-* Decision Trees
-  * Function space is Boolean formula in Disjunctive Normal Form (DNF)
-* Probability Model
-  * Function space is dependent on the distribution assumptions of the model
-* Discriminant Functions
-  * Partition the D dimensional spae with a (D-1) dimensional function
-  * Function space is dependent on the function used to discriminate
-* Linear Discriminates
-  * Partition the D dimensional space with a (D-1) dimensional linear function
 
 #### Accuracy (Error Rate)
 

@@ -71,15 +71,22 @@ Iris Logistic|Logistic Regression / Classification|[Iris Data Set](https://archi
 
 ### Consider the learning task
 
-* **Surpervised Learning**
-    * *Classification* - Discrete
+* [**Surpervised Learning**](Notes/MachineLearningBigPicture.md#Supervised-Learning)
+    * [*Classification*](Notes/MachineLearningBigPicture.md#Classification) - Discrete
     * *Regression* - Continuous
-* **Unsupervised Learning**
-    * *Clustering* - Discrete
+* [**Unsupervised Learning**](Notes/MachineLearningBigPicture.md#Unsupervised-Learning)
+    * [*Clustering*](Notes/MachineLearningBigPicture.md#Clustering) - Discrete
     * *Dimensionality Reduction* - Continuous
     * *Association Rule Learning*
 * **Semi-supervised Learning**
 * **Reinforcement Learning**
+
+### Consider the [learning model](Notes/MachineLearningBigPicture.md#Machine-Learning-Model)
+
+* **Discriminative Model**
+  * Discriminative Function
+  * Probabilistic Discriminative Model
+* **Generative Model**
 
 ### Cosider the desired output of a ML system
 
@@ -119,21 +126,27 @@ Iris Logistic|Logistic Regression / Classification|[Iris Data Set](https://archi
     * [`XGBoost`](Algorithm/XGBoost/XGBoost.md)
     * [`LightGBM`](Algorithm/LightGBM/LightGBM.md)
 
+### NLP Related
+
+* [`Hidden Markov Model (HMM)`](Algorithm/HMM/HMM.md) - Sequencial Labeling Problem
+* [`Conditional Random Field (CRF)`](Algorithm/CRF/CRF.md) - Classification Problem (e.g. Sentiment Analysis)
+
+#### Backbone
+
+* [`Maximum Entropy Model (MEM)`](Algorithm/MEM/MEM.md)
+* [`Bayesian Network`](Algorithm/CRF/CRF.md#Probabilistic-Undirected-Graph-Model-(aka.-Markov-Random-Field)) (aka. Probabilistic Directed Acyclic Graphical Model)
+
 ### Others
 
-* [`Hidden Markov Model (HMM)`](Algorithm/HMM/HMM.md)
-* `Bayesian Network` (aka. Probabilistic Directed Acyclic Graphical Model)
-* [`Conditional Random Field (CRF)`](Algorithm/CRF/CRF.md)
 * `Probabilistic Latent Semantic Analysis (PLSA)`
 * `Latent Dirichlet Allocation (LDA)`
 * [`Vector Space Model (VSM)`](Algorithm/VSM/VSM.md)
-* [`Maximum Entropy Model (MEM)`](Algorithm/MEM/MEM.md)
 
 #### Heuristic Algorithm (Optimization Method)
 
 * [`SMO`](Algorithm/SVM/SVMDeduction.md#Platt's-SMO-Algorithm) --> SVM
 * [`EM`](Algorithm/EM/EM.md) --> HMM, etc.
-* [`GIS`](Algorithm/MEM/MEM.md#GIS-Algorithm) --> MEM
+* [`GIS`](Algorithm/MEM/MEM.md#GIS-Algorithm) == improved ==> [`IIS`](Algorithm/MEM/MEM.md#IIS-Algorithm) --> MEM
 
 ## [Machine Learning Concepts](Notes/MachineLearningConcepts.md)
 
@@ -201,6 +214,7 @@ Iris Logistic|Logistic Regression / Classification|[Iris Data Set](https://archi
 
 * Kernel Usages
 * [Convex Optimization](Notes/Math/Topic/ConvexOptimization.md)
+* [Distance/Similarity Measurement](Notes/Math/Topic/DistanceSimilarityMeasurement.md) - basis of clustering and recommendation system
 
 ### Categories
 
@@ -252,7 +266,9 @@ Iris Logistic|Logistic Regression / Classification|[Iris Data Set](https://archi
 * [**Machine Learning in Action**](https://www.manning.com/books/machine-learning-in-action)
   * [Source Code](https://manning-content.s3.amazonaws.com/download/3/29c6e49-7df6-4909-ad1d-18640b3c8aa9/MLiA_SourceCode.zip)
 * 統計學習方法 (李航)
-* 機器學習 (周志華)
+* 機器學習 (周志華) (alias 西瓜書)
+  * [datawhalechina/pumpkin-book](https://datawhalechina.github.io/pumpkin-book) - 南瓜書
+    * [github](https://github.com/datawhalechina/pumpkin-book)
 * Python Machine Learning
   * [Source Code](https://github.com/rasbt/python-machine-learning-book)
 
@@ -340,6 +356,9 @@ Global
 
 * [Kaggle Competition](https://www.kaggle.com/competitions)
 * [KDDCup](https://www.kdd.org/kdd-cup)
+  * KDD Cup 2019: AutoML for Temporal Relational Data
+    * [4Paradigm](http://www.4paradigm.com/competition/kddcup2019)
+    * [CodaLab](https://competitions.codalab.org/competitions/21948)
 * [CodaLab](https://competitions.codalab.org/)
 
 Taiwan
