@@ -62,6 +62,7 @@ Table of content
     - [Cost-sensitive Learning](#cost-sensitive-learning)
     - [Lazy Learning](#lazy-learning)
     - [Incremental Learning (Online Learning)](#incremental-learning-online-learning)
+    - [Competitive Learning](#competitive-learning)
     - [Multi-label Classification](#multi-label-classification)
 
 ## Data Preprocessing
@@ -481,6 +482,12 @@ Find the fastest way to minimize the error.
 ### Lazy Learning
 
 ### Incremental Learning (Online Learning)
+
+### Competitive Learning
+
+* Online k-means
+* Adaptive Resonance Theory
+* Self-Organizing Maps
 
 ### Multi-label Classification
 

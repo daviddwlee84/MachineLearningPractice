@@ -1,8 +1,10 @@
-# k-means
+# k-Means
+
+> the most popular clustering algorithm through *algernating minimization*
 
 ## Brief Description
 
-k-means clustering is a method of vector quantization, originally from signal processing, that is popular for cluster analysis in data mining. k-means clustering aims to partition n observations into k clusters in which each observation belongs to the cluster with the nearest mean, serving as a prototype of the cluster. This results in a partitioning of the data space into Voronoi cells.
+k-Means clustering is a method of vector quantization, originally from signal processing, that is popular for cluster analysis in data mining. k-means clustering aims to partition n observations into k clusters in which each observation belongs to the cluster with the nearest mean, serving as a prototype of the cluster. This results in a partitioning of the data space into Voronoi cells.
 
 ### Quick View
 
@@ -12,10 +14,13 @@ Unsupervised Learning|Clustering||
 
 ### Steps
 
-1. Initialize the center of the clusters (pick centroids)
-2. Attribute the closest cluster to each data point (calculate distance)
-3. Set the position of each cluster to the mean of all data points belonging to that cluster (move to new cluster center)
-4. Repeat STEP 2-3 until convergence
+1. Initialize the center of the clusters (pick centroids $\mathbf{\mu}$) => k randmly chosen in input data
+2. Alternating Optimization
+   1. Attribute the closest cluster to each data point (calculate distance)
+      * Optimize $S_i$. Each $\mathbf{x}_n$ "optimally partitioned" using its cloeset $\mu_i$
+   2. Set the position of each cluster to the mean of all data points belonging to that cluster (move to new cluster center)
+      * Optimize $\mu_i$. Each $\mu_n$ "optimally computed as the consensus within $S_m$
+3. Repeat STEP 2 until convergence
 
 ### Deciding umber of cluster
 
@@ -49,11 +54,9 @@ Unsupervised Learning|Clustering||
 
 ## Concepts
 
-### Centroid
-
 ### Distance
 
-#### Euclidean distance
+* [Distance/Similarity Measurement](../../Notes/Math/Topic/DistanceSimilarityMeasurement.md)
 
 #### Distance Calculation Library
 

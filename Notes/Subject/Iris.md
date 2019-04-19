@@ -1,5 +1,7 @@
 # Iris
 
+> [Deep Learning Approach (Multi-layer Perceptron)](https://github.com/daviddwlee84/DeepLearningPractice/blob/master/Project/PerceptronPractice/README.md#Iris) From Scratch: [Multi-Layer Perceptron](https://github.com/daviddwlee84/DeepLearningPractice/blob/master/Project/PerceptronPractice/Iris_MLP.py)
+
 ## Dataset
 
 [Iris Data Set](https://archive.ics.uci.edu/ml/datasets/iris)
@@ -138,7 +140,7 @@ average of 5: 0.8444444444444444
 ### Softmax Example
 
 * [UFLDL Tutorial - Softmax Regression](http://deeplearning.stanford.edu/tutorial/supervised/SoftmaxRegression/)
-  * [exercise](http://ufldl.stanford.edu/wiki/index.php/Exercise:Softmax_Regression)
-    * [solution (siddharth-agrawal/Softmax-Regression)](https://github.com/siddharth-agrawal/Softmax-Regression)
+  * [UFLDL wiki - Softmax Regression](http://ufldl.stanford.edu/wiki/index.php/Softmax_Regression)
+    * [exercise](http://ufldl.stanford.edu/wiki/index.php/Exercise:Softmax_Regression) - [solution (siddharth-agrawal/Softmax-Regression)](https://github.com/siddharth-agrawal/Softmax-Regression)
 * [**rasbt/python-machine-learning-book - softmax-regression.ipynb**](https://github.com/rasbt/python-machine-learning-book/blob/master/code/bonus/softmax-regression.ipynb)
 * [karan6181/Softmax-Classifier](https://github.com/karan6181/Softmax-Classifier)

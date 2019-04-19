@@ -1,5 +1,7 @@
 # k Nearest Neighbor
 
+> uniformaly aggregate k neighbors' opinion
+
 ## Brief Description
 
 In pattern recognition, the k-nearest neighbors algorithm (k-NN) is a non-parametric method used for classification and regression.
@@ -8,7 +10,7 @@ In pattern recognition, the k-nearest neighbors algorithm (k-NN) is a non-parame
 
 Category|Usage|Methematics|Application Field
 --------|-----|-----------|-----------------
-Supervised Learning|Classification, Regression||Pattern Recognition
+Supervised Learning|Classification, Regression|Similarity/Distance|Pattern Recognition
 
 ## Links
 
