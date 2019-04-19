@@ -96,6 +96,7 @@ Iris Logistic|Logistic Regression / Classification|[Iris Data Set](https://archi
 
 * *Classification*
     * [`Logistic Regression`](Algorithm/LogisticRegression/LogisticRegression.md) (optimization algo.)
+      * [`Multinomial/Softmax Regression (SMR)`](Algorithm/LogisticRegression/LogisticRegression.md#Multinomial---Softmax-Regression-(SMR))
     * [`k-Nearest Neighbors (kNN)`](Algorithm/kNN/kNN.md)
     * [`Support Vector Machine (SVM)`](Algorithm/SVM/SVM.md) - [Derivation](Algorithm/SVM/SVMDerivation.md) (optimization algo.)
     * [`Naive Bayes`](Algorithm/NaiveBayes/NaiveBayes.md)
@@ -145,6 +146,7 @@ Iris Logistic|Logistic Regression / Classification|[Iris Data Set](https://archi
 * `Probabilistic Latent Semantic Analysis (PLSA)`
 * `Latent Dirichlet Allocation (LDA)`
 * [`Vector Space Model (VSM)`](Algorithm/VSM/VSM.md)
+* [`Radial Basic Function (RBF) Network`](Algorithm/RBF/RBF.md)
 
 #### Heuristic Algorithm (Optimization Method)
 
