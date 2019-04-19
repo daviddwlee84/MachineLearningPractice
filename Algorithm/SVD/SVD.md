@@ -42,7 +42,7 @@ $$
 A^\mathrm{(Transformed)}_{n\times k} = A_{n\times m}^T U_{m\times k} \Sigma_{k\times k}
 $$
 
-## Mathematics Deduction
+## Mathematics Derivation
 
 $$
 A_{m\times n} = U_{m\times m} \Sigma_{m\times n} V^T_{n\times n}

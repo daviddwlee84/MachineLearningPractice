@@ -37,7 +37,7 @@ Take the top N eigenvectors
 Transform the data into the new space created by the top N eigenvectors
 ```
 
-## Deduction
+## Derivation
 
 Variables
 

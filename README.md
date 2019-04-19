@@ -34,6 +34,10 @@ For visualization
   * `matplotlib.pyplot`
   * `mpl_toolkits.mplot3d`
 
+For evaluation
+
+* [`surprise`](https://github.com/NicolasHug/Surprise): A Python scikit building and analyzing recommender systems
+
 NLP related
 
 * [`gensim`](https://radimrehurek.com/gensim/index.html): Topic Modelling
@@ -93,7 +97,7 @@ Iris Logistic|Logistic Regression / Classification|[Iris Data Set](https://archi
 * *Classification*
     * [`Logistic Regression`](Algorithm/LogisticRegression/LogisticRegression.md) (optimization algo.)
     * [`k-Nearest Neighbors (kNN)`](Algorithm/kNN/kNN.md)
-    * [`Support Vector Machine (SVM)`](Algorithm/SVM/SVM.md) - [Deduction](Algorithm/SVM/SVMDeduction.md) (optimization algo.)
+    * [`Support Vector Machine (SVM)`](Algorithm/SVM/SVM.md) - [Derivation](Algorithm/SVM/SVMDerivation.md) (optimization algo.)
     * [`Naive Bayes`](Algorithm/NaiveBayes/NaiveBayes.md)
     * [`Decision Tree (ID3, C4.5, CART)`](Algorithm/DecisionTree/DecisionTree.md)
 * *Regression*
@@ -144,7 +148,7 @@ Iris Logistic|Logistic Regression / Classification|[Iris Data Set](https://archi
 
 #### Heuristic Algorithm (Optimization Method)
 
-* [`SMO`](Algorithm/SVM/SVMDeduction.md#Platt's-SMO-Algorithm) --> SVM
+* [`SMO`](Algorithm/SVM/SVMDerivation.md#Platt's-SMO-Algorithm) --> SVM
 * [`EM`](Algorithm/EM/EM.md) --> HMM, etc.
 * [`GIS`](Algorithm/MEM/MEM.md#GIS-Algorithm) == improved ==> [`IIS`](Algorithm/MEM/MEM.md#IIS-Algorithm) --> MEM
 
@@ -271,6 +275,9 @@ Iris Logistic|Logistic Regression / Classification|[Iris Data Set](https://archi
     * [github](https://github.com/datawhalechina/pumpkin-book)
 * Python Machine Learning
   * [Source Code](https://github.com/rasbt/python-machine-learning-book)
+* [Introduction to Machine Learning 3rd](https://www.cmpe.boun.edu.tr/~ethem/i2ml3e/index.html)
+  * [Solution Manual](http://dl.matlabyar.com/siavash/ML/Book/Solutions%20to%20Exercises-Alpaydin.pdf)
+  * Previous version: [1st](https://www.cmpe.boun.edu.tr/~ethem/i2ml/), [2nd](https://www.cmpe.boun.edu.tr/~ethem/i2ml2e/index.html)
 
 ### Mathematics
 

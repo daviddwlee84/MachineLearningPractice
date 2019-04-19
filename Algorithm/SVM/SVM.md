@@ -1,6 +1,6 @@
 # Support Vector Machine
 
-* [SVM Deduction](SVMDeduction.md)
+* [SVM Derivation](SVMDerivation.md)
 * [Lagrange Multipliers and Constrained Optimization](../../Notes/Math/Calculus/MultivariableDeratives.md#Lagrange-Multipliers-and-Constrained-Optimization)
 * [Lagrange Duality](../../Notes/Math/Calculus/MultivariableDeratives.md#Lagrange-Duality)
 

@@ -1,4 +1,4 @@
-# SVM Mathematics Deduction
+# SVM Derivation
 
 ## Overview
 
@@ -20,7 +20,7 @@
 
 ### Big Picture
 
-1. [Original Problem](#Original-Problem) $(w, b)$ $\xRightarrow{\text{Lagrange Multiplier}}$ [Dual Problem](#Dual-Algorithm) $(w, b)$ $\xRightarrow{KKT}$ Solve alpha [Use SMO Here]
+1. [Original Problem](#Original-Problem) $(w, b)$ $\xRightarrow{\text{Lagrange Multiplier}}$ [Dual Problem](#Dual-Algorithm) $(w, b)$ $\xRightarrow{KKT}$ Solve alpha [Use SMO Here](#Solving-alphas-by-SMO-(Sequential-Minimal-Optimization))
 2. Solved alpha (you'll know which are support vectors) $\Rightarrow$ Find w, b (i.e. found separating hyperplane)
 
 ## Assume data is linear seprable
@@ -206,7 +206,7 @@ Then we can substitute back our primal problem and get the separating hyperplane
 
 ### Solving alphas by SMO (Sequential Minimal Optimization)
 
-The deduction above said that we definitely can get alphas and use it to get w and b. But didn't mention how.
+The derivation above said that we definitely can get alphas and use it to get w and b. But didn't mention how.
 
 It isn't possible to use the traditional way (i.e. Gradient Descent) since the dimension is too high (the same as input numbers).
 
@@ -232,4 +232,4 @@ It takes the large optimization problem and breaks it into many small problem.
 ## Reference
 
 * 李航 - 統計機器學習
-* Machine Learning in Action
+* Machine Learning in Action
