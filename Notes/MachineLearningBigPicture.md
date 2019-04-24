@@ -110,6 +110,8 @@ Reasons of ML methods fail
 
 * Describe *Joint Distribution*
 
+---
+
 ## Supervised Learning
 
 ### Classification
@@ -143,6 +145,8 @@ We're going to minimize the empirical classification error
 >     * Topic Modeling - you use LDA or LSA to get topic models and use the “elbow” to find the optimum number of topics - but now you would like to see if this would generalize well - and then you need a test set.
 
 ### Clustering
+
+> Intra-cluster distances are minimized; Iner-cluster distances are maximized.
 
 #### Hard/Soft clustering
 
@@ -213,3 +217,99 @@ Cutting Method
 > Adjacency Matrix: similarity between notes
 
 TBD (important)
+
+## Semi-supervised Learning
+
+Combines labeled and unlabeled data during training to improve performance.
+
+* Semi-supervised classification: Training on labeled data exploits additional unlabeled data, frequently resulting in a more accurate **classifier**
+  * => In order to get a classifier
+* Semi-supervised clustering: Uses small amount of labeled data to aid and bias the clustering of unbalanced data
+  * => Guide the clustering process using some labeled data to get better clustering result
+
+Why using unlabeled data:
+
+* Labeling is expensive!
+* Unlabeled data are usually plentiful
+* Domain adaptation: want a model for different domain (e.g. Knowledge Graph)
+
+### Semi-Clustering - More unsupervised
+
+#### Semi-Supervised K-Means for partially labeled data
+
+> The initial points of original K-Means are random chosen
+
+**Seeded K-Means**:
+
+Seed points are *only used for initialization*
+
+**Constrained K-Means**:
+
+Cluster *labels of seed data are kept unchanged*
+
+#### COP K-Means
+
+> The constrain is not about the labeled data. But some pairwise relationships.
+
+**Pairwise Constrain**: *must-link* (must be in same cluster) and *cannot-link* constraints on data points
+
+* [Behrouz-Babaki/COP-Kmeans](https://github.com/Behrouz-Babaki/COP-Kmeans)
+
+#### LP: Label Propagation
+
+Create a graph where the nodes (vertices) are all the data points, labeled or unlabeled.
+
+Propagate the labels through the edges. The *weight of edge* can be considered either *similarity* or *distance*.
+
+### Semi-Classification - More supervised
+
+> Typical Example:
+>
+> * Web page classification
+> * Document classification
+> * Protein classification
+
+* Self-training vs. Co-training
+  * Data split into labeled set and unlabeled set.
+  * Predict unlabeled set and join some of them to labeled set. Labeled set ↑ ; Unlabeled set ↓
+  * Self-training use only one classifier; Co-trianing use two (or more) classifiers.
+
+#### Self-training
+
+TBD
+
+#### Co-training
+
+We can *train multiple classifiers* based on *disjoint (redundant)* features.
+
+> The clssifiers should agree on the classification for each unlabeled example
+
+#### Semi-supervised EM
+
+TBD
+
+Incorporating unlabeled Data with EM
+
+1. Train a classifier *with only the labeled documents*.
+2. Use it to *probailistically classify* the unlabeled documents.
+3. Use ALL the documents to train a new classifier.
+4. Iterate steps 2 and 3 to convergence.
+
+#### Transductive SVM
+
+### Transductive Learning
+
+> 直推式學習 vs. Inductive Learning
+>
+> * [What is the difference between inductive and transductive learning?](https://www.quora.com/What-is-the-difference-between-inductive-and-transductive-learning)
+> * [如何理解 inductive learning 與 transductive learning?](https://www.zhihu.com/question/68275921)
+
+Learning from labeled data and test data (boostrapping) and cannot handle unseen data.
+
+(The test data is unlabeled data, but we use it as a part of training data.)
+
+* [Transduction (machine learning)](https://en.wikipedia.org/wiki/Transduction_(machine_learning))
+
+### Distant Supervision and Relation Extraction
+
+> 遠程監督

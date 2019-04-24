@@ -76,14 +76,16 @@ Iris Logistic|Logistic Regression / Classification|[Iris Data Set](https://archi
 ### Consider the learning task
 
 * [**Surpervised Learning**](Notes/MachineLearningBigPicture.md#Supervised-Learning)
-    * [*Classification*](Notes/MachineLearningBigPicture.md#Classification) - Discrete
-    * *Regression* - Continuous
+  * [*Classification*](Notes/MachineLearningBigPicture.md#Classification) - Discrete
+  * *Regression* - Continuous
 * [**Unsupervised Learning**](Notes/MachineLearningBigPicture.md#Unsupervised-Learning)
-    * [*Clustering*](Notes/MachineLearningBigPicture.md#Clustering) - Discrete
-    * *Dimensionality Reduction* - Continuous
-    * *Association Rule Learning*
-* **Semi-supervised Learning**
-* **Reinforcement Learning**
+  * [*Clustering*](Notes/MachineLearningBigPicture.md#Clustering) - Discrete
+  * *Dimensionality Reduction* - Continuous
+  * *Association Rule Learning*
+* [**Semi-supervised Learning**](Notes/MachineLearningBigPicture.md#Semi-supervised-Learning)
+  * Semi-Clustering
+  * Semi-Classification
+* [**Reinforcement Learning**](https://github.com/daviddwlee84/DeepLearningPractice/blob/master/Notes/Technique/Reinforcement_Learning.md)
 
 ### Consider the [learning model](Notes/MachineLearningBigPicture.md#Machine-Learning-Model)
 
@@ -95,41 +97,41 @@ Iris Logistic|Logistic Regression / Classification|[Iris Data Set](https://archi
 ### Cosider the desired output of a ML system
 
 * *Classification*
-    * [`Logistic Regression`](Algorithm/LogisticRegression/LogisticRegression.md) (optimization algo.)
-      * [`Multinomial/Softmax Regression (SMR)`](Algorithm/LogisticRegression/LogisticRegression.md#Multinomial---Softmax-Regression-(SMR))
-    * [`k-Nearest Neighbors (kNN)`](Algorithm/kNN/kNN.md)
-    * [`Support Vector Machine (SVM)`](Algorithm/SVM/SVM.md) - [Derivation](Algorithm/SVM/SVMDerivation.md) (optimization algo.)
-    * [`Naive Bayes`](Algorithm/NaiveBayes/NaiveBayes.md)
-    * [`Decision Tree (ID3, C4.5, CART)`](Algorithm/DecisionTree/DecisionTree.md)
+  * [`Logistic Regression`](Algorithm/LogisticRegression/LogisticRegression.md) (optimization algo.)
+    * [`Multinomial/Softmax Regression (SMR)`](Algorithm/LogisticRegression/LogisticRegression.md#Multinomial---Softmax-Regression-(SMR))
+  * [`k-Nearest Neighbors (kNN)`](Algorithm/kNN/kNN.md)
+  * [`Support Vector Machine (SVM)`](Algorithm/SVM/SVM.md) - [Derivation](Algorithm/SVM/SVMDerivation.md) (optimization algo.)
+  * [`Naive Bayes`](Algorithm/NaiveBayes/NaiveBayes.md)
+  * [`Decision Tree (ID3, C4.5, CART)`](Algorithm/DecisionTree/DecisionTree.md)
 * *Regression*
-    * [`Linear Regression`](Algorithm/LinearRegression/LinearRegression.md) (optimization algo.)
-    * [`Tree (CART)`](Algorithm/DecisionTree/DecisionTree.md)
+  * [`Linear Regression`](Algorithm/LinearRegression/LinearRegression.md) (optimization algo.)
+  * [`Tree (CART)`](Algorithm/DecisionTree/DecisionTree.md)
 * *Clustering*
-    * [`k-Means`](Algorithm/KMeans/KMeans.md)
-    * `Hierarchical Clustering`
-    * `DBSCAN`
+  * [`k-Means`](Algorithm/KMeans/KMeans.md)
+  * `Hierarchical Clustering`
+  * `DBSCAN`
 * *Association Rule Learning*
-    * [`Apriori`](Algorithm/Apriori/Apriori.md)
-    * `Eclat`
-    * [`FP-growth`](Algorithm/FP-Growth/FP-Growth.md) - Frequent itemsets mining
+  * [`Apriori`](Algorithm/Apriori/Apriori.md)
+  * `Eclat`
+  * [`FP-growth`](Algorithm/FP-Growth/FP-Growth.md) - Frequent itemsets mining
 * *Dimensionality Reduction*
-    * [`Principal Compnent Analysis (PCA)`](Algorithm/PCA/PCA.md)
-    * [`Single Value Decomposition (SVD)`](Algorithm/SVD/SVD.md) - LSA, LSI, Recommendation System
-    * `Canonical Correlation Analysis (CCA)`
-    * [`Isomap`](Algorithm/Isomap/Isomap.md) (nonlinear)
-    * `Locally Linear Embedding (LLE)` (nonlinear)
-    * `Laplancian Eigenmaps` (nonlinear)
+  * [`Principal Compnent Analysis (PCA)`](Algorithm/PCA/PCA.md)
+  * [`Single Value Decomposition (SVD)`](Algorithm/SVD/SVD.md) - LSA, LSI, Recommendation System
+  * `Canonical Correlation Analysis (CCA)`
+  * [`Isomap`](Algorithm/Isomap/Isomap.md) (nonlinear)
+  * `Locally Linear Embedding (LLE)` (nonlinear)
+  * `Laplancian Eigenmaps` (nonlinear)
 
 ### Ensemble Method (Meta-algorithm)
 
 * Bagging
-    * `Random Forests`
+  * `Random Forests`
 * Boosting
-    * [`AdaBoost`](Algorithm/AdaBoost/AdaBoost.md) <- With some basic boosting notes
-    * [`Gradient Boosting`](Algorithm/GradientBoosting/GradientBoosting.md)
-        * `Gradient Boosting Decision Tree (GBDT)` (aka. Multiple Additive Regression Tree (MART))
-    * [`XGBoost`](Algorithm/XGBoost/XGBoost.md)
-    * [`LightGBM`](Algorithm/LightGBM/LightGBM.md)
+  * [`AdaBoost`](Algorithm/AdaBoost/AdaBoost.md) <- With some basic boosting notes
+  * [`Gradient Boosting`](Algorithm/GradientBoosting/GradientBoosting.md)
+    * `Gradient Boosting Decision Tree (GBDT)` (aka. Multiple Additive Regression Tree (MART))
+  * [`XGBoost`](Algorithm/XGBoost/XGBoost.md)
+  * [`LightGBM`](Algorithm/LightGBM/LightGBM.md)
 
 ### NLP Related
 
