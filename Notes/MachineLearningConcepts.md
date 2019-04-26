@@ -4,7 +4,11 @@ Table of content
 
 - [Machine Learning Concepts](#machine-learning-concepts)
   - [Data Preprocessing](#data-preprocessing)
-    - [Normalization](#normalization)
+    - [Normalization and Standardization](#normalization-and-standardization)
+      - [Feature Scaling](#feature-scaling)
+      - [Normalization](#normalization)
+      - [Standardization](#standardization)
+      - [Example of SVM](#example-of-svm)
     - [Missing Value](#missing-value)
       - [Options](#options)
     - [Dimensionality Reduction](#dimensionality-reduction)
@@ -13,7 +17,6 @@ Table of content
       - [PCA vs SVD](#pca-vs-svd)
     - [Label Encoding](#label-encoding)
     - [Classification Imbalance](#classification-imbalance)
-    - [Feature Scaling](#feature-scaling)
   - [Model Expansion](#model-expansion)
     - [Binary to Multi-class](#binary-to-multi-class)
       - [One-vs-rest (one-vs-all) Approaches](#one-vs-rest-one-vs-all-approaches)
@@ -48,8 +51,8 @@ Table of content
     - [Underfitting](#underfitting)
     - [Occam's Razor Principle](#occams-razor-principle)
     - [Regularization (Weight Decay)](#regularization-weight-decay)
-      - [L1 Regularization](#l1-regularization)
-      - [L2 Regularization](#l2-regularization)
+      - [L1 Regularization (lasso)](#l1-regularization-lasso)
+      - [L2 Regularization (ridge regression)](#l2-regularization-ridge-regression)
       - [L1+L2 Regularization](#l1l2-regularization)
   - [Reducing Loss](#reducing-loss)
     - [Common Loss Function](#common-loss-function)
@@ -69,11 +72,55 @@ Table of content
 
 [Feature Engineering](FeatureEngineering.md)
 
-### Normalization
+### Normalization and Standardization
 
-TBD
+(歸一化)
 
-e.g. SVM is better to normalize data between -1 and 1
+> Normalization/standardization are designed to achieve a similar goal, which is to create features that have similar ranges to each other and widely used in data analysis to help the programmer to get some clue out of the raw data.
+
+* [What is the difference between normalization, standardization, and regularization for data?](https://www.quora.com/What-is-the-difference-between-normalization-standardization-and-regularization-for-data)
+* [Differences between normalization, standardization and regularization](https://maristie.com/blog/differences-between-normalization-standardization-and-regularization/)
+* [如何理解Normalization，Regularization 和 standardization？](https://www.zhihu.com/question/59939602)
+
+![normalizing vs. standardization](https://qph.fs.quoracdn.net/main-qimg-08e4231c9506c617e9fb5e60c8f296d3)
+
+#### Feature Scaling
+
+> aka. Data Normalization (generally performed during the data preprocessing step)
+
+A method used to standardize the range of independent variables or features of data
+
+#### Normalization
+
+In Algebra, Normalization seems to refer to the dividing of a vector by its length and it transforms your data into a range between 0 and 1
+
+e.g. Rescalse feature to [0, 1]
+
+$$
+x^{\prime}=\frac{x-\min (x)}{\max (x)-\min (x)}
+$$
+
+e.g. Rescale feature to [−1, 1]
+
+$$
+x^{\prime}=\frac{x-m e a n(x)}{\max (x)-\min (x)}
+$$
+
+#### Standardization
+
+> rescale the features to zero-mean and unit-variance
+
+And in statistics, Standardization seems to refer to the subtraction of the mean and then dividing by its SD (standard deviation). Standardization transforms your data such that the resulting distribution has a mean of 0 and a standard deviation of 1.
+
+$$
+x^{\prime}=\frac{x-\mu}{\sigma}
+$$
+
+#### Example of SVM
+
+> SVM is better to normalize data between -1 and 1
+
+This is a common problem in SVM, for example. I tend to use "normalization" when I map the features into [-1,1] by dividing (i.e. "normalizing") by the largest values in the sample and "standarization" when I convert to z-score (i.e. standard deviations from the mean value of the sample).
 
 ### Missing Value
 
@@ -158,12 +205,6 @@ Solution
 * Replicate the existing examples
 * Add new points similar to the existing points
 * Add a data point interpolated between existing data points (can lead to overfitting)
-
-### Feature Scaling
-
-aka. Data Normalization (generally performed during the data preprocessing step)
-
-A method used to standardize the range of independent variables or features of data
 
 ## Model Expansion
 
@@ -269,10 +310,10 @@ These metrics that are more useful than error rate when detection of one class i
 Consider a **two-class** problem.
 (Confusion matrix with different outcome labeled)
 
-Actual \ Redicted   |+1                 |-1
-:------------------:|:-----------------:|:-----------------:
-**+1**              |True Positive (TP) |False Negative (FN)
-**-1**              |False Positive (FP)|True Negative (TN)
+| Actual \ Redicted |         +1          |         -1          |
+| :---------------: | :-----------------: | :-----------------: |
+|      **+1**       | True Positive (TP)  | False Negative (FN) |
+|      **-1**       | False Positive (FP) | True Negative (TN)  |
 
 * **Precision** = TP / (TP + FP)
     * Tells us the fraction of records that were positive from the group that the classifier predicted to be positive
@@ -383,25 +424,33 @@ Law of Parsimony
 
 Used to control the complexity of the model (in case of overfitting)
 
-> let $\theta = (w_1, w_2, \dots, w_n)$ as model parameters
+* [Regularization (mathematics)](https://en.wikipedia.org/wiki/Regularization_(mathematics))
 
-#### L1 Regularization
+> Regularization is a technique to avoid overfitting when training machine learning algorithms. If you have an algorithm with enough free parameters you can interpolate with great detail your sample, but examples coming outside the sample might not follow this detail interpolation as it just captured noise or random irregularities in the sample instead of the true trend.
+> Overfitting is avoided by limiting the absolute value of the parameters in the model. This can be done by adding a term to the cost function that imposes a penalty based on the magnitude of the model parameters.
+> If the magnitude is measured in L1 norm this is called "L1 regularization" (and usually results in sparse models), if it is measured in L2 norm this is called "L2 regularization", and so on.
 
-$$
-R(\theta) = ||\theta ||_1 = |w_1| + |w_2| + \cdots + |w_n|
-$$
+![Wiki - comparison between L1 and L2 regularizations](https://upload.wikimedia.org/wikipedia/commons/b/b8/Sparsityl1.png)
 
-#### L2 Regularization
+* Example 1: let $\theta = (w_1, w_2, \dots, w_n)$ as model parameters
+* Example 2: The original loss function is denoted by $f(x)$, and the new one is $F(x)$.
+  * Where ${\lVert x \rVert}_p = \sqrt[p]{\sum_{i = 1}^{n} {\lvert x_i \rvert}^p}$
 
-$$
-R(\theta) = ||\theta ||_2^2 = w_1^2 + w_2^2 + \cdots + w_n^2
-$$
+#### L1 Regularization (lasso)
+
+* $R(\theta) = ||\theta ||_1 = |w_1| + |w_2| + \cdots + |w_n|$
+* $F(x)=f(x)+\lambda\|x\|_{1}$
+
+#### L2 Regularization (ridge regression)
+
+* $R(\theta) = ||\theta ||_2^2 = w_1^2 + w_2^2 + \cdots + w_n^2$
+* $F(x) = f(x) + \lambda {\lVert x \rVert}_2^2$
+
+* [Understanding the scaling of L² regularization in the context of neural networks](https://towardsdatascience.com/understanding-the-scaling-of-l%C2%B2-regularization-in-the-context-of-neural-networks-e3d25f8b50db)
 
 #### L1+L2 Regularization
 
-$$
-R(\theta) = \alpha ||\theta ||_1 + (1-\alpha) ||\theta ||_2^2
-$$
+* $R(\theta) = \alpha ||\theta ||_1 + (1-\alpha) ||\theta ||_2^2$
 
 ## Reducing Loss
 
