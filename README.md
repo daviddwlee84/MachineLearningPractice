@@ -149,6 +149,9 @@ Iris Logistic|Logistic Regression / Classification|[Iris Data Set](https://archi
 * `Latent Dirichlet Allocation (LDA)`
 * [`Vector Space Model (VSM)`](Algorithm/VSM/VSM.md)
 * [`Radial Basic Function (RBF) Network`](Algorithm/RBF/RBF.md)
+* `Isolation Forest`
+  * [paper](https://cs.nju.edu.cn/zhouzh/zhouzh.files/publication/icdm08b.pdf?q=isolation-forest)
+* `One-Class SVM`
 
 #### Heuristic Algorithm (Optimization Method)
 
@@ -282,6 +285,8 @@ Iris Logistic|Logistic Regression / Classification|[Iris Data Set](https://archi
 * [Introduction to Machine Learning 3rd](https://www.cmpe.boun.edu.tr/~ethem/i2ml3e/index.html)
   * [Solution Manual](http://dl.matlabyar.com/siavash/ML/Book/Solutions%20to%20Exercises-Alpaydin.pdf)
   * Previous version: [1st](https://www.cmpe.boun.edu.tr/~ethem/i2ml/), [2nd](https://www.cmpe.boun.edu.tr/~ethem/i2ml2e/index.html)
+* Automated Machine Learning: Methods, Systems, Challenges (AutoML)
+  * [pdf](https://www.automl.org/wp-content/uploads/2018/12/automl_book.pdf)
 
 ### Mathematics
 
@@ -317,8 +322,13 @@ Iris Logistic|Logistic Regression / Classification|[Iris Data Set](https://archi
 #### Interactive Learning
 
 * [Google Machine Learning Crash Course](https://developers.google.com/machine-learning/crash-course/)
+* [Learn with Google AI](https://ai.google/education/)
 * [Kaggle Learn Machine Learning](https://www.kaggle.com/learn/machine-learning)
 * [Microsoft Professional Program - Artificial Intelligence track](https://academy.microsoft.com/en-us/professional-program/tracks/artificial-intelligence/)
+* [Intel AI Developer Program - AI Courses](https://software.intel.com/en-us/ai/courses)
+  * [Introduction to AI](https://software.intel.com/en-us/ai/courses/artificial-intelligence)
+  * [Machine Learning](https://software.intel.com/en-us/ai/courses/machine-learning)
+  * [Time Series Analysis](https://software.intel.com/en-us/ai/courses/time-series-analysis)
 
 #### MOOC
 
@@ -328,13 +338,19 @@ Iris Logistic|Logistic Regression / Classification|[Iris Data Set](https://archi
 ### Github
 
 * [**Machine Learning from Scratch (eriklindernoren/ML-From-Scratch)**](https://github.com/eriklindernoren/ML-From-Scratch)
+* [**Avik-Jain/100-Days-Of-ML-Code**](https://github.com/Avik-Jain/100-Days-Of-ML-Code) - 100 Days of ML Coding
+  * [Chinese version](https://github.com/MLEveryday/100-Days-Of-ML-Code)
+* [ddbourgin/numpy-ml](https://github.com/ddbourgin/numpy-ml) - Machine learning, in numpy
 * [Machine learning Resources](https://github.com/jindongwang/MachineLearning)
+* [microsoft/recommenders](https://github.com/microsoft/recommenders) - Best Practices on Recommendation Systems
+* [dformoso/machine-learning-mindmap](https://github.com/dformoso/machine-learning-mindmap)
+  * [pdf](https://github.com/dformoso/machine-learning-mindmap/blob/master/Machine%20Learning.pdf)
 
 Textbook Implementation
 
 * Machine Learning in Action
     * [Jack-Cherish/Machine-Learning](https://github.com/Jack-Cherish/Machine-Learning)
-* Learning From Data
+* Learning From Data (林軒田)
     * [Doraemonzzz/Learning-from-data](https://github.com/Doraemonzzz/Learning-from-data)
 * 統計學習方法 (李航)
     * [WenDesi/lihang_book_algorithm](https://github.com/WenDesi/lihang_book_algorithm)
@@ -347,6 +363,8 @@ Textbook Implementation
 * Stanford Andrew Ng CS229
     * [fengdu78/Coursera-ML-AndrewNg-Notes](https://github.com/fengdu78/Coursera-ML-AndrewNg-Notes)
     * [fengdu78/deeplearning_ai_books](https://github.com/fengdu78/deeplearning_ai_books)
+* NTU Hung-Yi Lee
+  * [LeeML-Notes](https://github.com/datawhalechina/leeml-notes)
 
 ### Datasets
 
