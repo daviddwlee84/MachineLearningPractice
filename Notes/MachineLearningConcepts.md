@@ -9,6 +9,9 @@ Table of content
       - [Normalization](#normalization)
       - [Standardization](#standardization)
       - [Example of SVM](#example-of-svm)
+    - [Sampling for Unbalanced Data](#sampling-for-unbalanced-data)
+      - [Under-sampling](#under-sampling)
+      - [Over-sampling](#over-sampling)
     - [Missing Value](#missing-value)
       - [Options](#options)
     - [Dimensionality Reduction](#dimensionality-reduction)
@@ -121,6 +124,22 @@ $$
 > SVM is better to normalize data between -1 and 1
 
 This is a common problem in SVM, for example. I tend to use "normalization" when I map the features into [-1,1] by dividing (i.e. "normalizing") by the largest values in the sample and "standarization" when I convert to z-score (i.e. standard deviations from the mean value of the sample).
+
+### Sampling for Unbalanced Data
+
+To deal with unbalanced/skewed data, we need some sampling techanique to balance this problem.
+
+* [Wiki - Oversampling and undersampling in data analysis](https://en.wikipedia.org/wiki/Oversampling_and_undersampling_in_data_analysis)
+
+#### Under-sampling
+
+* Use the less amount label data as the maximum sampling number for other class
+
+#### Over-sampling
+
+* Reuse the same data of the less amount label data
+
+[**SMOTE**](https://arxiv.org/pdf/1106.1813): Synthetic Minority Over-sampling Technique
 
 ### Missing Value
 
