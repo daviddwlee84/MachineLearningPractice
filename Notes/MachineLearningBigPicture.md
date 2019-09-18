@@ -97,6 +97,7 @@ Reasons of ML methods fail
 ### Discriminative Model
 
 * Discribe *Conditional Distribution*
+* From Data to Category
 
 #### Discriminative Function Model - Non-Probabilistic Model
 
@@ -109,6 +110,7 @@ Reasons of ML methods fail
 ### Generative Model
 
 * Describe *Joint Distribution*
+* From Category to Data
 
 ---
 

@@ -213,6 +213,10 @@ Evaluation Experiment
 
 ## Resources
 
+### Project
+
+* [facebookresearch/dlrm](https://github.com/facebookresearch/dlrm) - Deep Learning Recommendation Model for Personalization and Recommendation Systems
+
 ### Book
 
 Recommender Systems - The Textbook

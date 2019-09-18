@@ -8,9 +8,9 @@ Decision trees are commonly used in operations research, specifically in decisio
 
 ### Quick View
 
-Category|Usage|Methematics|Application Field
---------|-----|-----------|-----------------
-Supervised Learning|Classification, Regression|Entropy|Operations Research, Data Mining
+| Category            | Usage                      | Methematics | Application Field                |
+| ------------------- | -------------------------- | ----------- | -------------------------------- |
+| Supervised Learning | Classification, Regression | Entropy     | Operations Research, Data Mining |
 
 #### Types
 
@@ -35,21 +35,20 @@ Supervised Learning|Classification, Regression|Entropy|Operations Research, Data
 ### Decision Tree Learning
 
 * Node
-    * Receive a list of rows as input.
-        * Root node: Receive the entire training set.
-        * Leaf node: No further question to ask
-    * Ask a true false question about one of the features.
-        * Response to question => Split (partition) the data into two subsets
+  * Receive a list of rows as input.
+    * Root node: Receive the entire training set.
+    * Leaf node: No further question to ask
+  * Ask a true false question about one of the features.
+    * Response to question => Split (partition) the data into two subsets
 * Goal: Unmix the labels as we proceed down.
-    * Produce the purest possible distribution of the labels at each node.
-    * Perfectly unmixed: The input to a node contains only a single type of label.
-        => No uncertainty on the type of label.
+  * Produce the purest possible distribution of the labels at each node.
+  * Perfectly unmixed: The input to a node contains only a single type of label. => No uncertainty on the type of label.
 * Trick to building an effective tree: To understand which question to ask and when.
-    * What type of questions can we ask about the data?
-    * How to decide which question to ask when?
+  * What type of questions can we ask about the data?
+  * How to decide which question to ask when?
 * Quantify how much a question helps to unmix the labels.
-    * Quantify the amount of uncertainty at a single node using a metric - Gini Impurity
-    * Quantify how much a question reduces that uncertainty using a concept - Information Gain
+  * Quantify the amount of uncertainty at a single node using a metric - Gini Impurity
+  * Quantify how much a question reduces that uncertainty using a concept - Information Gain
 * Select the best question to ask at each point. And given that question, we'll recursively build the tree on each of the new nodes. We'll continue dividing the data until there are no further questions to ask, at which point we'll add a leaf.
 
 ### Splitting Criterion (Metrics)
@@ -71,8 +70,8 @@ Algorithms for constructing decision trees usually work top-down, by choosing a 
 * Goal: Find the best question to ask (i.e. reduces our uncertainty the most).
     => A number to describe how much a question helps to unmix the labels at a node.
 * Information Gain = Starting Impurity - Average Impurity of Child Nodes
-    * Average Impurity (Weighted average of child nodes' uncertainty)
-        * Weighted Average: We care more about a large set with lower uncertainty than a small set with high.
+  * Average Impurity (Weighted average of child nodes' uncertainty)
+    * Weighted Average: We care more about a large set with lower uncertainty than a small set with high.
 * Procedure: Keep tracking the question that produces the most gain. => the best one to ask at this node.
 
 **Gain Ratio**: The normalized information gain.
@@ -127,8 +126,8 @@ Base cases:
 ### Tutorial
 
 * [Google Youtube Video - Decision Tree Classifier](https://youtu.be/LDRbO9a6XPU)
-    * [Jupyter Notebook](https://github.com/random-forests/tutorials/blob/master/decision_tree.ipynb)
-    * [Python File](https://github.com/random-forests/tutorials/blob/master/decision_tree.py)
+  * [Jupyter Notebook](https://github.com/random-forests/tutorials/blob/master/decision_tree.ipynb)
+  * [Python File](https://github.com/random-forests/tutorials/blob/master/decision_tree.py)
 * [Youtube - Decision Tree (CART)](https://youtu.be/DCZ3tsQIoGU)
 
 ### Scikit Learn

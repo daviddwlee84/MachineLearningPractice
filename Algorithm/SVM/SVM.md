@@ -96,7 +96,6 @@ SVM vs. Perceptron|SVM|Perceptron / NN
 
 * SMO (Sequential Minimal Optimization)
 
-
 ### Consider a non-linear separable problem
 
 * Linear Support Vector Machine (LSVM) => to apply when the classes are linearly separable
@@ -149,6 +148,8 @@ SVM vs. Perceptron|SVM|Perceptron / NN
 
 ### Maximize Margin
 
+## nu-SVM ($\nu$-SVM)
+
 ## Converage Problem
 
 * The simplified implementation is not guaranteed to coverage to the global optimum for all datasets!
@@ -180,6 +181,8 @@ When using large -e, you may want to check if -h 0 (no shrinking) or -h 1 (shrin
 ## Vary Large Datasets
 
 * Paper - [Core Vector Machines: Fast SVM Training on Very Large Data Sets](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.445.4342&rep=rep1&type=pdf)
+
+## SVM for Regression
 
 ## SVMs in NLP
 
