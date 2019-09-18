@@ -6,8 +6,8 @@ Table of content
   - [Data Preprocessing](#data-preprocessing)
     - [Normalization and Standardization](#normalization-and-standardization)
       - [Feature Scaling](#feature-scaling)
-      - [Normalization](#normalization)
-      - [Standardization](#standardization)
+      - [Normalization (Min-Max Scaling)](#normalization-min-max-scaling)
+      - [Standardization (Z-Score Normalization)](#standardization-z-score-normalization)
       - [Example of SVM](#example-of-svm)
     - [Sampling for Unbalanced Data](#sampling-for-unbalanced-data)
       - [Under-sampling](#under-sampling)
@@ -87,13 +87,18 @@ Table of content
 
 ![normalizing vs. standardization](https://qph.fs.quoracdn.net/main-qimg-08e4231c9506c617e9fb5e60c8f296d3)
 
+When do we need normalization?
+
+In practice, when a model is solved by gradient descent, then its input data basically needs to be normalized.
+(but this is not necessary for a decision tree model, because the information gain doesn't affect by normalization)
+
 #### Feature Scaling
 
 > aka. Data Normalization (generally performed during the data preprocessing step)
 
 A method used to standardize the range of independent variables or features of data
 
-#### Normalization
+#### Normalization (Min-Max Scaling)
 
 In Algebra, Normalization seems to refer to the dividing of a vector by its length and it transforms your data into a range between 0 and 1
 
@@ -109,7 +114,7 @@ $$
 x^{\prime}=\frac{x-m e a n(x)}{\max (x)-\min (x)}
 $$
 
-#### Standardization
+#### Standardization (Z-Score Normalization)
 
 > rescale the features to zero-mean and unit-variance
 
