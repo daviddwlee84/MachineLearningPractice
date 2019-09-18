@@ -427,12 +427,21 @@ In general, over-fitting a model to the data means that we learn non-representat
 Overfitting is affected by
 
 * the "simplicity" of the classifier (e.g. straight vs. wiggly line)
-* the size of the sample
+* the size of the dataset => too small
 * the complexity of the function we wish to learn from data
 * the amount of noise
 * the number of the variable (features)
 
 > Low training set error rate but high validation set error rate
+
+To reduce the chance of overfitting
+
+* Simplify the model
+  * e.g. non-linear model => linear model
+* Add constraint element to reduce hypothesis space
+  * e.g. L1/L2 norm
+* Boosting method
+* Dropout hyperparameter
 
 ### Underfitting
 

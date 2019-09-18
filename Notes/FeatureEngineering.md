@@ -2,6 +2,130 @@
 
 [Data Preprocessing](MachineLearningConcepts.md#Data-Preprocessing)
 
+## Concept of Data
+
+* **Structured data**
+  * numeric data
+  * catagorical data
+* **Non-structured data**
+  * text
+  * image
+  * sound
+  * video
+
+## Tips for Structured Data
+
+### Tips for Categorical Feature
+
+* [Sample categorical feature encoding methods](https://www.kaggle.com/c/avito-demand-prediction/discussion/55521)
+  * label-encode
+  * mean-encoding (be careful, easy over fitting if you have not a right validation strategy)
+  * factorize-encoding
+  * frequency-encoding
+
+* [Cat2Vec (paper pdf)](https://openreview.net/pdf?id=HyNxRZ9xg) - LEARNING DISTRIBUTED REPRESENTATION OF MULTI-FIELD CATEGORICAL DATA
+
+### Encoding
+
+* Ordinal Encoding (序號編碼)
+* One-Hot (benefit for linear models or NN)
+  * use sparse vector to reduce space
+  * co-operate with feature selection to reduce dimension
+    * if dimension is too high => hard to calculate distance, and easy to overfit due to too many parameters
+  * Python
+    * [pandas.get_dummies](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.get_dummies.html)
+* Binary Encoding
+
+### Tips for Continuous Feature
+
+* mean
+* sum
+* max
+* min
+* std
+* var
+* np.ptp
+* ... TBD
+
+## Tips for Non-structured Data
+
+### Tips for Text Data
+
+[Information Retrieval - Text Representation](Information_Retrieval.md#Text-Representation)
+
+* Bag-of-Words + TF-IDF & N-gram
+
+* Topic Model
+  * A model based on probability graph => generative model
+  * Infer the latent variable (i.e. the topic)
+  * Example
+    * LDA
+* Word Embedding
+  * Using neural network model
+  * Example
+    * Word2Vec
+
+#### Word Stemming
+
+Changing a different type words into same word
+
+e.g. speek, spoke, spoken => speek
+
+#### Word2Vec vs. LDA
+
+* Word2Vec: Use neural network to generate a dense representation of a word
+  * can be considered as learning the "context-word" matrix
+  * model
+    * CBOW (Continues Bag of Words)
+    * Skip-gram
+* LDA: Use the "showing-at-the-same-time" relationship to cluster word with "topic"
+  * can be considered as factorize the "document-word" matrix
+
+### Tips for Image Data
+
+Prior hypothesis/information
+
+* on model
+  * Transfer Learning
+* on condition
+* on constrain
+* on dataset
+  * Data Augmentation
+
+Model
+
+* Transfer Learning + Fine-tune
+* GAN
+
+#### Data Augmentation
+
+1. rotate, shift, scale, cut, fill, flip, ...
+2. add noise
+3. change color
+4. change brightness, clarity, contrast, sharpness
+
+## Tips for Special Types of Data
+
+### Tips for Count Feature
+
+* Unique length
+* Data length
+* ...
+
+### Tips for Time Series Feature
+
+#### First Derivative
+
+#### Descrete Fourier Transform
+
+* [What FFT descriptors should be used as feature to implement classification or clustering algorithm?](https://stackoverflow.com/questions/27546476/what-fft-descriptors-should-be-used-as-feature-to-implement-classification-or-cl)
+* [numpy.fft](https://docs.scipy.org/doc/numpy/reference/generated/numpy.fft.fft.html)
+
+tsfresh
+
+* [tsfresh document](https://tsfresh.readthedocs.io/en/latest/index.html)
+* [tsfresh github](https://github.com/blue-yonder/tsfresh)
+
 ## Tips for Getting New Feature
 
 Model may not extract some message like human does. We can build new feature by combining other features to gain accuracy.
@@ -21,50 +145,10 @@ Model may not extract some message like human does. We can build new feature by 
     * xgb.plot_importance(xgb_model, max_num_features=25)
     * xgb_model.get_fscore()
 
-## Tips for Count Feature
+### Feature Combination
 
-* Unique length
-* Data length
-* ...
-
-## Tips for Categorical Feature
-
-* [Sample categorical feature encoding methods](https://www.kaggle.com/c/avito-demand-prediction/discussion/55521)
-  * one-hot (benefit for linear models or NN)
-    * [pandas.get_dummies](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.get_dummies.html)
-  * label-encode
-  * mean-encoding (be careful, easy over fitting if you have not a right validation strategy)
-  * factorize-encoding
-  * frequency-encoding
-
-* [Cat2Vec (paper pdf)](https://openreview.net/pdf?id=HyNxRZ9xg) - LEARNING DISTRIBUTED REPRESENTATION OF MULTI-FIELD CATEGORICAL DATA
-
-### For Binary Feature
-
-## Tips for Continuous Feature
-
-* mean
-* sum
-* max
-* min
-* std
-* var
-* np.ptp
-* ... TBD
-
-## Tips for Time Series Feature
-
-### First Derivative
-
-### Descrete Fourier Transform
-
-* [What FFT descriptors should be used as feature to implement classification or clustering algorithm?](https://stackoverflow.com/questions/27546476/what-fft-descriptors-should-be-used-as-feature-to-implement-classification-or-cl)
-* [numpy.fft](https://docs.scipy.org/doc/numpy/reference/generated/numpy.fft.fft.html)
-
-### tsfresh
-
-* [tsfresh document](https://tsfresh.readthedocs.io/en/latest/index.html)
-* [tsfresh github](https://github.com/blue-yonder/tsfresh)
+* Naive combine
+* Combine and represent with lower dimension
 
 ## Tips for Memory Usage
 
