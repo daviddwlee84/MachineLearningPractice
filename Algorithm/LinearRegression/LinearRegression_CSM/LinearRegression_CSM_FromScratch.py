@@ -22,6 +22,8 @@ class LinearRegression:
         yMat = np.mat(yArr).T
         xTx = xMat.T * xMat
         if np.linalg.det(xTx) == 0:
+            # TODO: Should use gradient descent!
+            # can refer to https://github.com/mlelarge/dataflowr/blob/master/Notebooks/02_basics_pytorch.ipynb
             print("This matrix is singular, cannot do inverse")
             return
         ws = xTx.I * (xMat.T * yMat)

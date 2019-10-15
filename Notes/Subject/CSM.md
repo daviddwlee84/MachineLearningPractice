@@ -11,14 +11,14 @@ Source: Twitter,YouTube,IMDB
 
 ### Abstract
 
--|-
--|-
-Data Set Characteristics |Multivariate
-Attribute Characteristics|Integer
-Number of Attributes     |12
-Number of Instances      |217
-Associated Tasks         |Classification, Regression
-Missing Values?          |Yes
+| -                         | -                          |
+| ------------------------- | -------------------------- |
+| Data Set Characteristics  | Multivariate               |
+| Attribute Characteristics | Integer                    |
+| Number of Attributes      | 12                         |
+| Number of Instances       | 217                        |
+| Associated Tasks          | Classification, Regression |
+| Missing Values?           | Yes                        |
 
 ### Source
 
@@ -40,7 +40,8 @@ and Ratings is the one to be predicted.
 
 Accuracy criteria: recording to Paper criteria Accuracy 2
 
-Model                         |Accuracy|R2    |MAE   |MSE   |RMSE
-------------------------------|--------|------|------|------|------
-Linear Regression Scikit Learn|0.7955  |0.0446|0.6158|0.6334|0.7958
-Linear Regression From Scratch|0.7955  |0.9554|0.6158|0.6334|0.7958
+| Model                          | Accuracy | R2     | MAE    | MSE    | RMSE   | Remark                             |
+| ------------------------------ | -------- | ------ | ------ | ------ | ------ | ---------------------------------- |
+| Linear Regression Scikit Learn | 0.7955   | 0.0446 | 0.6158 | 0.6334 | 0.7958 | -                                  |
+| Linear Regression From Scratch | 0.7955   | 0.9554 | 0.6158 | 0.6334 | 0.7958 | Calculate weight only by "inverse" |
+| Linear Regression PyTorch NN   | 0.7727   | -      | 0.6299 | 0.6738 | 0.8208 | Calculate weight by SGD            |
