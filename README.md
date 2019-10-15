@@ -52,7 +52,7 @@ Subject|Technique / Task|Dataset|Solution|Notes
 -------|--------------|-------|--------|-----
 Letter Recognition|kNN / Classification|[Letter Recognition Datasets](https://archive.ics.uci.edu/ml/datasets/letter+recognition) ([File](Datasets/letter-recognition.csv))|[kNN From Scratch](Algorithm/kNN/kNN_Letter_Recognition/kNN_Letter_Recognition_FromScratch.py), [kNN Scikit Learn](Algorithm/kNN/kNN_Letter_Recognition/kNN_Letter_Recognition_sklearn.py)|[Notes](Notes/Subject/Letter_Recognition.md)
 Page Blocks Classification|Decision Tree / Classification|[Page Blocks Classification Data Set](https://archive.ics.uci.edu/ml/datasets/Page+Blocks+Classification) ([File](Datasets/page-blocks.csv))|[Decision Tree (CART) From Scratch](Algorithm/DecisionTree/DecisionTree_Page_Blocks_Classification/DecisionTree_Page_Blocks_Classification_FromScratch.py), [Decision Tree Scikit Learn](Algorithm/DecisionTree/DecisionTree_Page_Blocks_Classification/DecisionTree_Page_Blocks_Classification_sklearn.py)|[Notes](Notes/Subject/Page_Blocks_Classification.md)
-CSM|Linear Regression / Regression|[CSM Dataset (2014 and 2015)](https://archive.ics.uci.edu/ml/datasets/CSM+%28Conventional+and+Social+Media+Movies%29+Dataset+2014+and+2015) ([File](Datasets/2014-and-2015-CSM-dataset.csv))|[Linear Regression From Scratch](Algorithm/LinearRegression/LinearRegression_CSM/LinearRegression_CSM_FromScratch.py), [Linear Regression Scikit Learn](Algorithm/LinearRegression/LinearRegression_CSM/LinearRegression_CSM_sklearn.py)|[Notes](Notes/Subject/CSM.md)
+CSM|Linear Regression / Regression|[CSM Dataset (2014 and 2015)](https://archive.ics.uci.edu/ml/datasets/CSM+%28Conventional+and+Social+Media+Movies%29+Dataset+2014+and+2015) ([File](Datasets/2014-and-2015-CSM-dataset.csv))|[Linear Regression From Scratch](Algorithm/LinearRegression/LinearRegression_CSM/LinearRegression_CSM_FromScratch.py), [Linear Regression Scikit Learn](Algorithm/LinearRegression/LinearRegression_CSM/LinearRegression_CSM_sklearn.py), [Linear Regression PyTorch NN](Algorithm/LinearRegression/LinearRegression_CSM/LinearRegression_CSM_pytorch.py)|[Notes](Notes/Subject/CSM.md)
 Nursery|Naive Bayes / Classification|[Nursery Data Set](https://archive.ics.uci.edu/ml/datasets/nursery) ([File](Datasets/nursery.csv))|[Gaussian Naive Bayes From Scratch](Algorithm/NaiveBayes/NaiveBayes_Nursery/NaiveBayes_Nursery_FromScratch.py), [Gaussian Naive Bayes Scikit Learn](Algorithm/NaiveBayes/NaiveBayes_Nursery/NaiveBayes_Nursery_sklearn.py)|[Notes](Notes/Subject/Nursery.md)
 Post-Operative Patient|SVM (cvxopt) / Binary Classification|[Post-Operative Patient Data Set](http://archive.ics.uci.edu/ml/datasets/post-operative+patient) ([File](Datasets/post-operative.csv), [Simplified](Datasets/post-operative-binary.csv))|[SVM From Scratch (using cvxopt and simplified dataset)](Algorithm/SVM/SVM_Post_Operative_Patient/SVM_Post_Operative_Patient_Simplified_FromScratch.py), [SVM Scikit Learn](Algorithm/SVM/SVM_Post_Operative_Patient/SVM_Post_Operative_Patient_sklearn.py)|[Notes](Notes/Subject/Postoperative_Patient.md)
 Student Performance|AdaBoost / Classification|[Student Performance Data Set](https://archive.ics.uci.edu/ml/datasets/Student+Performance) ([File](Datasets/student-mat.csv))|[AdaBoost From Scratch](Algorithm/AdaBoost/AdaBoost_Student_Performance/AdaBoost_Student_Performance_FromScratch.py), [AdaBoost Scikit Learn](Algorithm/AdaBoost/AdaBoost_Student_Performance/AdaBoost_Student_Performance_sklearn.py)|[Notes](Notes/Subject/Student_Performance.md)
@@ -104,7 +104,7 @@ Iris Logistic|Logistic Regression / Classification|[Iris Data Set](https://archi
   * [`Naive Bayes`](Algorithm/NaiveBayes/NaiveBayes.md)
   * [`Decision Tree (ID3, C4.5, CART)`](Algorithm/DecisionTree/DecisionTree.md)
 * *Regression*
-  * [`Linear Regression`](Algorithm/LinearRegression/LinearRegression.md) (optimization algo.)
+  * [`Linear Regression`](Algorithm/LinearRegression/LinearRegression.md) - [Derivation](Algorithm/LinearRegression/LinearRegressionDerivation.md) (optimization algo.)
   * [`Tree (CART)`](Algorithm/DecisionTree/DecisionTree.md)
 * *Clustering*
   * [`k-Means`](Algorithm/KMeans/KMeans.md)
@@ -355,7 +355,7 @@ Textbook Implementation
 * 統計學習方法 (李航)
     * [WenDesi/lihang_book_algorithm](https://github.com/WenDesi/lihang_book_algorithm)
         * [blog](https://blog.csdn.net/wds2006sdo/article/category/6314784)
-    * [fengdu78/lihang-code](https://github.com/fengdu78/lihang-code)
+    * [**fengdu78/lihang-code**](https://github.com/fengdu78/lihang-code)
     * [wzyonggege/statistical-learning-method](https://github.com/wzyonggege/statistical-learning-method)
     * [Dod-o/Statistical-Learning-Method_Code](https://github.com/Dod-o/Statistical-Learning-Method_Code)
         * [blog](http://www.pkudodo.com/)
@@ -378,6 +378,7 @@ Textbook Implementation
 * [Open Images Dataset](https://storage.googleapis.com/openimages/web/index.html)
     * [github](https://github.com/openimages/dataset)
 * [Alibaba Cloud Tianchi Data Lab](https://tianchi.aliyun.com/datalab/index.htm)
+* [biendata](https://biendata.com)
 
 ### Competition
 
