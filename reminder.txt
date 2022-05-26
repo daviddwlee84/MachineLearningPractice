@@ -1,0 +1,16 @@
+collecting the common concept over different algorithm to a single file with reference
+
+CRF + MEM + HMM together (and LR) maybe with some probability notes (Grpah Model summation***) Viterbi
+
+Similarity Measurement + KMeans + ML Big Picture clustering
+
+CRF + GraphicalModel + MLBigPicture
+
+Maybe partial derivative derivation on some Jacobians (which are mentioned in CS224n Lecture 3)
+
+
+
+
+
+1. Bayesian Network
+2. Github Issue about CMiFM bug, check that out
