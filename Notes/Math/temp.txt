@@ -1,0 +1,38 @@
+机器学习中的基本数学知识
+https://www.cnblogs.com/steven-yang/p/6348112.html
+
+element-wise product/point-wise product/Hadamard product
+
+
+
+distance
+norm
+
+Distance
+
+Manhattan Distance (L1 Norm)
+https://github.com/likejazz/Siamese-LSTM/blob/master/util.py#L133
+https://medium.com/@montjoile/l0-norm-l1-norm-l2-norm-l-infinity-norm-7a7d18a4f40c
+
+Python Packages
+
+numpy
+scipy
+pandas
+matplotlib
+seaborn [seaborn: statistical data visualization — seaborn 0.9.0 documentation](https://seaborn.pydata.org/)
+sympy
+cvxpy
+cvxopt
+networkx
+[NetworkX documentation — NetworkX 1.10 documentation](https://networkx.github.io/documentation/networkx-1.10/index.html)
+
+
+https://www.cis.upenn.edu/~jean/math-deep.pdf
+
+
+[[數學分析] 什麼是若且唯若 "if and only if"](https://ch-hsieh.blogspot.com/2013/07/if-and-only-if.html)
+[[數學分析] 淺談各種基本範數 (Norm)](https://ch-hsieh.blogspot.com/2010/04/norm.html)
+
+
+p norm infinity norm

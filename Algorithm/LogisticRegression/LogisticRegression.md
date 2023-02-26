@@ -38,7 +38,7 @@ For each piece of data in the dataset:
 
 ## Multiple Classes
 
-### [Multinomial](../MEM/MEM.md) - Softmax Regression (SMR)
+### Multinomial - Softmax Regression (SMR)
 
 > Softmax Regression (synonyms: Multinomial Logistic, Maximum Entropy Classifier, or just Multi-class Logistic Regression) is a generalization of logistic regression that we can use for multi-class classification (under the assumption that the classes are mutually exclusive)
 
@@ -56,6 +56,10 @@ $$
 * [Google ML Crash Course - Multi-Class Neural Networks: Softmax](https://developers.google.com/machine-learning/crash-course/multi-class-neural-networks/softmax)
 
 ### Book
+
+Dive into Deep Learning
+
+* [Ch3.4. Softmax Regression](http://d2l.ai/chapter_linear-networks/softmax-regression.html)
 
 Machine Learning in Action
 
@@ -93,3 +97,5 @@ Multinomial (softmax)
 
 * [2 Ways to Implement Multinomial Logistic Regression in Python](http://dataaspirant.com/2017/05/15/implement-multinomial-logistic-regression-python/) - use scikit learn
 * [Machine Learning and Data Science: Multinomial (Multiclass) Logistic Regression](https://www.pugetsystems.com/labs/hpc/Machine-Learning-and-Data-Science-Multinomial-Multiclass-Logistic-Regression-1007/)
+* [mlxtend - Softmax Regression](https://rasbt.github.io/mlxtend/user_guide/classifier/SoftmaxRegression/)
+  * [jupyter notebook](https://github.com/rasbt/python-machine-learning-book/blob/master/code/bonus/softmax-regression.ipynb)

@@ -16,7 +16,7 @@
 ### Theorem
 
 * Lagrange Duality
-    * Karush-Kuhn-Tucker (KKT)
+  * Karush-Kuhn-Tucker (KKT)
 
 ### Big Picture
 
@@ -51,6 +51,8 @@ $$|\vec{w} \cdot \vec{x} + b|$$
 We can represent our correctness of classification by:
 $$y_i (\vec{w} \cdot \vec{x} + b)$$
 
+> $$\begin{cases} \vec{w}^T\vec{x} + b \geq +1, & y_i = +1 \\ \vec{w}^T\vec{x} + b \leq -1, & y_i = -1\end{cases}$$
+
 * If classify correctly => $y_i$ and $(\vec{w} \cdot \vec{x} + b)$ will have same sign => Positive product
 * Else => Negative product
 
@@ -72,7 +74,7 @@ $$ \gamma_i = y_i \bigg(\frac{\vec{w}}{||\vec{w}||} \cdot \vec{x_i} + \frac{b}{|
 
 $$ r = \frac{\hat{r}}{||\vec{w}||} $$
 
-when ||w|| = 1 <=> functional margin = geometric margin
+when $||\vec{w}||$ = 1 <=> functional margin = geometric margin
 
 ### Maximize Margin
 
@@ -146,10 +148,12 @@ Distance between two hyperplane are called **margin**. Margin depends on normal
 Apply *Lagrange Duality*, get the optimal solution of primal problem by solving dual problem
 
 Advantage
+
 1. Dual problem is easier to solve
+   * remove the constrain
 2. Introduce kernel function, expend to non-linear classification problem
 
-For each constraint introduce a **Lagrange multiplier** $\alpha_i \geq 0$
+For each constraint introduce a [**Lagrange multiplier**](https://en.wikipedia.org/wiki/Lagrange_multiplier) $\alpha_i \geq 0$
 
 Lagrange function
 $$
@@ -220,9 +224,9 @@ It takes the large optimization problem and breaks it into many small problem.
     1. Once we have a set of alphas we can easily compute our weights w
     2. And get the separating hyperplane
 * SMO algorithm choose two alphas to optimize on each cycle. Once a sutiable pair of alphas is found, one is increased and one is decreased.
-    * Suitable criteria
-        * A pair mus meet is that both of the alphas have to be outside their margin boundary
-        * The alphas aren't already clamped or bounded
+  * Suitable criteria
+    * A pair mus meet is that both of the alphas have to be outside their margin boundary
+    * The alphas aren't already clamped or bounded
 * The reason that we have to change two alphas at the same time is because we need have a constraint $\displaystyle \sum \alpha_i * y^{(i)} = 0$
 
 ## Introduce slack variable (C parameter)
@@ -233,3 +237,4 @@ It takes the large optimization problem and breaks it into many small problem.
 
 * 李航 - 統計機器學習
 * Machine Learning in Action
+* 機器學習
