@@ -1,0 +1,33 @@
+[project]
+name = "machine-learning-practice"
+version = "0.1.0"
+description = "From-scratch and library implementations of classic ML algorithms, with notes."
+readme = "README.md"
+requires-python = ">=3.11"
+# Core stack used by the scripts under Algorithm/ (verified on Python 3.13,
+# numpy 2.5, pandas 3.1, scikit-learn 1.9; see tools/colab/README.md).
+dependencies = [
+    "numpy>=2.0",
+    "pandas>=2.2",
+    "scipy>=1.13",
+    "scikit-learn>=1.5",
+    "matplotlib>=3.8",
+    "tqdm>=4.66",
+    "lightgbm>=4.0",   # Algorithm/Boosting
+    "cvxopt>=1.3",     # Algorithm/SVM/SVM_Post_Operative_Patient
+    "mlxtend>=0.23",   # Algorithm/SVM/SVM_Iris
+    "gensim>=4.3",     # Algorithm/SVD, Algorithm/VSM
+]
+
+[project.optional-dependencies]
+# Algorithm/LinearRegression/LinearRegression_CSM/LinearRegression_CSM_pytorch.py
+torch = ["torch>=2.2"]
+# Algorithm/HMM/HMM_Text_Segmentation/CompareJiebaHanLP.py (pyhanlp also needs a JDK)
+nlp = ["jieba>=0.42", "pyhanlp>=0.1.84"]
+# Project/DCIC2019, Project/KaggleElo (data not in the repo)
+projects = ["xgboost>=2.0", "tsfresh>=0.20"]
+
+[tool.uv]
+# A collection of scripts, not an installable package: `uv sync` only
+# creates the environment; run scripts from the repo root with `uv run`.
+package = false

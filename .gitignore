@@ -124,3 +124,7 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+
+# uv / Colab runs
+.venv/
+runs/

@@ -8,7 +8,14 @@ Because Github don't support LaTeX for now, you can use the Google Chrome extens
 
 ## Environment
 
-* Using Python 3
+* Using Python 3 (3.11+; dependencies in `pyproject.toml`, managed with [uv](https://docs.astral.sh/uv/))
+
+```bash
+uv sync                    # core stack; add `--extra torch`, `--extra nlp`, `--extra projects` as needed
+uv run python Algorithm/kNN/kNN_Letter_Recognition/kNN_Letter_Recognition_sklearn.py   # run from the repo root
+```
+
+To run the experiments on a Google Colab VM (and estimate the compute units), see [`tools/colab/README.md`](tools/colab/README.md).
 
 (most of the relative path links are according to the repository root)
 

@@ -1,0 +1,275 @@
+# Experiment manifest for running Algorithm/ scripts on a Colab VM.
+#
+# Fields
+#   script       path from the repo root (scripts read `Datasets/...` relative to the root)
+#   data         files under the repo root this script reads (shipped in the upload tarball)
+#   pip          extra requirements on top of Colab's preinstalled stack
+#   tier         A: seconds, B: minutes, C: long-running (only follow-ups today), D: optional / fragile deps
+#   runtime      recommended Colab shape: cpu | cpu-highmem | T4 | L4 | A100
+#   timeout_min  hard limit on the VM (the runner kills the script after this)
+#   est_min      wall minutes measured on a standard Colab CPU VM (2 vCPU, 12.7 GB), 2026-11
+#   status       ready | optional | followup  (followup = not runnable yet, see `note`)
+#
+# `tools/colab/run_experiments.py --estimate` turns this into a time / compute-unit table.
+
+[defaults]
+runtime = "cpu"
+timeout_min = 10
+status = "ready"
+
+# --- Tier A: seconds -------------------------------------------------------
+
+[[experiment]]
+name = "adaboost-student-scratch"
+script = "Algorithm/AdaBoost/AdaBoost_Student_Performance/AdaBoost_Student_Performance_FromScratch.py"
+data = ["Datasets/student-mat.csv"]
+tier = "A"
+est_min = 0.1
+
+[[experiment]]
+name = "adaboost-student-sklearn"
+script = "Algorithm/AdaBoost/AdaBoost_Student_Performance/AdaBoost_Student_Performance_sklearn.py"
+data = ["Datasets/student-mat.csv"]
+tier = "A"
+est_min = 0.1
+
+[[experiment]]
+name = "lightgbm-social-ads"
+script = "Algorithm/Boosting/Boosting_Social_Network_Ads/Boosting_Social_Network_Ads_LightGBM.py"
+data = ["Datasets/Social_Network_Ads.csv"]
+tier = "A"
+est_min = 0.1
+
+[[experiment]]
+name = "decisiontree-pageblocks-sklearn"
+script = "Algorithm/DecisionTree/DecisionTree_Page_Blocks_Classification/DecisionTree_Page_Blocks_Classification_sklearn.py"
+data = ["Datasets/page-blocks.csv"]
+tier = "A"
+est_min = 0.1
+
+[[experiment]]
+name = "kmeans-sales-scratch"
+script = "Algorithm/KMeans/KMeans_Sales_Transactions/KMeans_Sales_Transactions_FromScratch.py"
+data = ["Datasets/Sales_Transactions_Dataset_Weekly.csv"]
+tier = "A"
+est_min = 0.7
+
+[[experiment]]
+name = "kmeans-sales-sklearn"
+script = "Algorithm/KMeans/KMeans_Sales_Transactions/KMeans_Sales_Transactions_sklearn.py"
+data = ["Datasets/Sales_Transactions_Dataset_Weekly.csv"]
+tier = "A"
+est_min = 0.1
+
+[[experiment]]
+name = "linreg-csm-scratch"
+script = "Algorithm/LinearRegression/LinearRegression_CSM/LinearRegression_CSM_FromScratch.py"
+data = ["Datasets/2014-and-2015-CSM-dataset.csv"]
+tier = "A"
+est_min = 0.1
+
+[[experiment]]
+name = "linreg-csm-sklearn"
+script = "Algorithm/LinearRegression/LinearRegression_CSM/LinearRegression_CSM_sklearn.py"
+data = ["Datasets/2014-and-2015-CSM-dataset.csv"]
+tier = "A"
+est_min = 0.1
+
+[[experiment]]
+name = "linreg-csm-pytorch"
+script = "Algorithm/LinearRegression/LinearRegression_CSM/LinearRegression_CSM_pytorch.py"
+data = ["Datasets/2014-and-2015-CSM-dataset.csv"]
+tier = "A"
+est_min = 0.2
+note = "Tiny CPU model; a GPU runtime would not speed it up."
+
+[[experiment]]
+name = "logreg-iris-scratch"
+script = "Algorithm/LogisticRegression/LogisticRegression_Iris/LogisticRegression_Iris_FromScratch.py"
+data = []
+tier = "A"
+est_min = 0.3
+
+[[experiment]]
+name = "logreg-iris-sklearn"
+script = "Algorithm/LogisticRegression/LogisticRegression_Iris/LogisticRegression_Iris_sklearn.py"
+data = []
+tier = "A"
+est_min = 0.1
+
+[[experiment]]
+name = "naivebayes-nursery-scratch"
+script = "Algorithm/NaiveBayes/NaiveBayes_Nursery/NaiveBayes_Nursery_FromScratch.py"
+data = ["Datasets/nursery.csv"]
+tier = "A"
+est_min = 0.1
+
+[[experiment]]
+name = "naivebayes-nursery-sklearn"
+script = "Algorithm/NaiveBayes/NaiveBayes_Nursery/NaiveBayes_Nursery_sklearn.py"
+data = ["Datasets/nursery.csv"]
+tier = "A"
+est_min = 0.1
+
+[[experiment]]
+name = "pca-automobile-scratch"
+script = "Algorithm/PCA/PCA_Automobile/PCA_Automobile_FromScratch.py"
+data = ["Datasets/imports-85.csv"]
+tier = "A"
+est_min = 0.1
+
+[[experiment]]
+name = "pca-automobile-sklearn"
+script = "Algorithm/PCA/PCA_Automobile/PCA_Automobile_sklearn.py"
+data = ["Datasets/imports-85.csv"]
+tier = "A"
+est_min = 0.1
+
+[[experiment]]
+name = "svd-msweb-scratch"
+script = "Algorithm/SVD/SVD_Anonymous_Microsoft_Web_Data/SVD_Anonymous_Microsoft_Web_Data_FromScratch.py"
+data = ["Datasets/anonymous-msweb.csv", "Datasets/MS_ratings_matrix.csv"]
+tier = "A"
+est_min = 0.1
+
+[[experiment]]
+name = "svd-lsi-gensim"
+script = "Algorithm/SVD/SVD_LSI_Document_Similarity/SVD_LSI_Document_Similarity_Gensim.py"
+data = ["Datasets/Article/199801_clear_1.txt"]
+pip = ["gensim"]
+tier = "A"
+est_min = 0.2
+
+[[experiment]]
+name = "vsm-gensim"
+script = "Algorithm/VSM/VSM_Document_Similarity/VSM_Document_Similarity_Gensim.py"
+data = ["Datasets/Article/199801_clear_1.txt"]
+pip = ["gensim"]
+tier = "A"
+est_min = 0.1
+
+[[experiment]]
+name = "svm-iris-multiclass"
+script = "Algorithm/SVM/SVM_Iris/SVM_Iris_Multiclass.py"
+data = []
+pip = ["mlxtend"]
+tier = "A"
+est_min = 0.1
+
+[[experiment]]
+name = "svm-postop-scratch"
+script = "Algorithm/SVM/SVM_Post_Operative_Patient/SVM_Post_Operative_Patient_Simplified_FromScratch.py"
+data = ["Datasets/post-operative-binary.csv"]
+pip = ["cvxopt"]
+tier = "A"
+est_min = 0.1
+
+[[experiment]]
+name = "svm-postop-sklearn"
+script = "Algorithm/SVM/SVM_Post_Operative_Patient/SVM_Post_Operative_Patient_sklearn.py"
+data = ["Datasets/post-operative.csv"]
+tier = "A"
+est_min = 0.1
+
+[[experiment]]
+name = "knn-letter-scratch"
+script = "Algorithm/kNN/kNN_Letter_Recognition/kNN_Letter_Recognition_FromScratch.py"
+data = ["Datasets/letter-recognition.csv"]
+tier = "A"
+est_min = 0.3
+
+[[experiment]]
+name = "knn-letter-sklearn"
+script = "Algorithm/kNN/kNN_Letter_Recognition/kNN_Letter_Recognition_sklearn.py"
+data = ["Datasets/letter-recognition.csv"]
+tier = "A"
+est_min = 0.1
+
+# --- Tier B: minutes ---------------------------------------------------------
+
+[[experiment]]
+name = "decisiontree-pageblocks-scratch"
+script = "Algorithm/DecisionTree/DecisionTree_Page_Blocks_Classification/DecisionTree_Page_Blocks_Classification_FromScratch.py"
+data = ["Datasets/page-blocks.csv"]
+tier = "B"
+est_min = 5
+
+# Colab CPU is 4-6x slower than a desktop for these pure-Python loops
+# (local: FP-Growth 163 s, CLiMF 66 s, DecisionTree 45 s, SVM MNIST 18-22 s).
+
+[[experiment]]
+name = "fpgrowth-retail-scratch"
+script = "Algorithm/FP-Growth/FP-Growth_Frequent_Itemset_Mining/FP-Growth_Frequent_Itemset_Mining_FromScratch.py"
+data = ["Datasets/retail.csv"]
+tier = "B"
+est_min = 12
+timeout_min = 30
+
+[[experiment]]
+name = "svm-mnist-binary-scratch"
+script = "Algorithm/SVM/SVM_MNIST/SVM_MNIST_Binary_FromScratch.py"
+data = ["Datasets/MNIST.csv"]
+tier = "B"
+est_min = 2
+timeout_min = 15
+
+[[experiment]]
+name = "svm-mnist-multiclass-scratch"
+script = "Algorithm/SVM/SVM_MNIST/SVM_MNIST_Multiclass_FromScratch.py"
+data = ["Datasets/MNIST.csv"]
+tier = "B"
+est_min = 2
+timeout_min = 15
+
+[[experiment]]
+name = "climf-epinions-scratch"
+script = "Algorithm/CLiMF/CLiMF_Epinions/CLiMF_Epinions_FromScratch.py"
+data = ["Datasets/Epinions/EP25_UPL5_train.mtx", "Datasets/Epinions/EP25_UPL5_test.mtx"]
+tier = "B"
+est_min = 6
+timeout_min = 20
+
+# --- Tier D: optional ------------------------------------------------------
+
+[[experiment]]
+name = "hmm-jieba-hanlp"
+script = "Algorithm/HMM/HMM_Text_Segmentation/CompareJiebaHanLP.py"
+data = ["Datasets/Article/雅量.txt"]
+pip = ["jieba", "pyhanlp"]
+tier = "D"
+est_min = 5
+status = "optional"
+note = "pyhanlp needs a JDK and downloads its model data (~600 MB) on first import."
+
+# --- Follow-up: not runnable as-is ---------------------------------------------
+
+[[experiment]]
+name = "climf-epinions-tensorflow"
+script = "Algorithm/CLiMF/CLiMF_Epinions/CLiMF_Epinions_TensorFlow.py"
+data = ["Datasets/Epinions/EP25_UPL5_train.mtx", "Datasets/Epinions/EP25_UPL5_test.mtx"]
+tier = "C"
+runtime = "T4"
+est_min = 30
+status = "followup"
+note = "Uses tensorflow.contrib.eager (TF1); needs a TF2 rewrite before it can run anywhere current."
+
+[[experiment]]
+name = "kaggle-elo-lightgbm"
+script = "Project/KaggleElo/train_model.py"
+data = []
+tier = "C"
+runtime = "cpu-highmem"
+est_min = 90
+status = "followup"
+note = "Needs the Kaggle Elo data (~3 GB CSV, historical_transactions alone ~2.8 GB) on Drive or via a Kaggle token; pandas peak RAM exceeds the standard ~12.7 GB VM."
+
+[[experiment]]
+name = "dcic2019-xgboost"
+script = "Project/DCIC2019/xgboost_Kfold_f1score.py"
+data = []
+pip = ["xgboost", "tsfresh"]
+tier = "C"
+runtime = "cpu"
+est_min = 45
+status = "followup"
+note = "Competition data is not in the repo; also uses sklearn.externals.joblib (removed) and expects precomputed feature pickles."
