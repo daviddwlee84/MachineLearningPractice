@@ -45,6 +45,11 @@ For evaluation
 
 * [`surprise`](https://github.com/NicolasHug/Surprise): A Python scikit building and analyzing recommender systems
 
+For competition
+
+* [StackNet](https://github.com/kaz-Anova/StackNet): computational, scalable and analytical Meta modelling framework
+* [hyperopt](https://github.com/hyperopt/hyperopt): Distributed Asynchronous Hyperparameter Optimization in Python
+
 NLP related
 
 * [`gensim`](https://radimrehurek.com/gensim/index.html): Topic Modelling
@@ -139,6 +144,8 @@ Iris Logistic|Logistic Regression / Classification|[Iris Data Set](https://archi
     * `Gradient Boosting Decision Tree (GBDT)` (aka. Multiple Additive Regression Tree (MART))
   * [`XGBoost`](Algorithm/XGBoost/XGBoost.md)
   * [`LightGBM`](Algorithm/LightGBM/LightGBM.md)
+* Stacking
+* Blending
 
 ### NLP Related
 
@@ -340,7 +347,9 @@ Iris Logistic|Logistic Regression / Classification|[Iris Data Set](https://archi
 #### MOOC
 
 * [Stanford Andrew Ng - CS229](http://cs229.stanford.edu/)
-    * [Coursera](https://www.coursera.org/learn/machine-learning)
+  * [Coursera](https://www.coursera.org/learn/machine-learning)
+* [ML Course - Predrag Radivojac and Martha White](https://marthawhite.github.io/mlcourse/schedule.html)
+  * [Machine Learning Handbook](https://marthawhite.github.io/mlcourse/notes.pdf)
 
 ### Github
 
@@ -383,7 +392,7 @@ Textbook Implementation
 * [AI Challenger Datasets](https://challenger.ai/datasets/)
 * [Peking University Open Research Data](http://opendata.pku.edu.cn/)
 * [Open Images Dataset](https://storage.googleapis.com/openimages/web/index.html)
-    * [github](https://github.com/openimages/dataset)
+  * [github](https://github.com/openimages/dataset)
 * [Alibaba Cloud Tianchi Data Lab](https://tianchi.aliyun.com/datalab/index.htm)
 * [biendata](https://biendata.com)
 
@@ -398,6 +407,8 @@ Global
     * [CodaLab](https://competitions.codalab.org/competitions/21948)
 * [CodaLab](https://competitions.codalab.org/)
 
+> * [DataSciCamp](https://www.datascicamp.com/)
+
 Taiwan
 
 * [Open Data](https://opendata-contest.tca.org.tw/)
@@ -405,6 +416,7 @@ Taiwan
 China
 
 * [Tianchi Competition](https://tianchi.aliyun.com/competition/)
+* [FlyAI](https://www.flyai.com/)
 * [biendata](https://www.biendata.com/)
 * [SODA](http://soda.shdataic.org.cn/)
 * [Data Fountain](https://www.datafountain.cn/)

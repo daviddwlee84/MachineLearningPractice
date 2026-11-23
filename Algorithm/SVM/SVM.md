@@ -10,9 +10,9 @@ Support Vector Machines (SVM) are learning systems that use a hypothesis space o
 
 ### Quick View
 
-Category|Usage|Methematics|Application Field
---------|-----|-----------|-----------------
-Supervised Learning|Classification (Main), Regression, Outliers Detection Clustering (Unsupervised)|Convex Optimization, Constrained Optimization, Lagrange Multipliers|Numerous
+| Category            | Usage                                                                           | Methematics                                                         | Application Field |
+| ------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------- | ----------------- |
+| Supervised Learning | Classification (Main), Regression, Outliers Detection Clustering (Unsupervised) | Convex Optimization, Constrained Optimization, Lagrange Multipliers | Numerous          |
 
 * Support Vector Machine is suited for extreme cases (little sample set)
 * SVM find a hyper-plane that separates its training data in such a way that the distance between the hyper plane and the cloest points form each class is maximized
@@ -39,12 +39,12 @@ Disadvantage
 * Poor performance when features >> samples
 * SVMs do not provide probability estimates
 
-SVM vs. Perceptron|SVM|Perceptron / NN
-------------------|---|----------
-**Solving Problem**|Optimization|Iteration
-**Optimal**|Global (∵ convex)|Local
-**Non-linear Seprable**|Higher dimension|Stack multi-layer model
-**Performance**|Better with prior knowledge|Skip feature engineering step
+| SVM vs. Perceptron      | SVM                         | Perceptron / NN               |
+| ----------------------- | --------------------------- | ----------------------------- |
+| **Solving Problem**     | Optimization                | Iteration                     |
+| **Optimal**             | Global (∵ convex)           | Local                         |
+| **Non-linear Seprable** | Higher dimension            | Stack multi-layer model       |
+| **Performance**         | Better with prior knowledge | Skip feature engineering step |
 
 ## Terminology
 
@@ -110,22 +110,30 @@ SVM vs. Perceptron|SVM|Perceptron / NN
 ### Kernal Function
 
 * Use a kernal trick to reduce the computational cost
-    * Kernel Function: Transform a non-linear space into a linear space
-    * Popular kernel types
-        * Linear Kernel
+  * Kernel Function: Transform a non-linear space into a linear space
+  * Popular kernel types
+    * Linear Kernel
 
-            $K(x, y) = x \times y$
+        $\kappa(x_i, x_j) = x_i^Ty_j$
 
-        * Polynomial Kernel
+        > $K(x, y) = x \times y$
 
-            $K(x, y) = (x \times y + 1)^d$
+    * Polynomial Kernel
 
-        * Radial Basis Function (RBF) Kernel
+        $\kappa(x_i, x_j) = (x_i^Ty_j)^d$
 
-            $K(x, y) = e^{-\gamma ||x-y||^2}$
+        When $d = 0$ then it is linear kernel
 
-        * Sigmoid Kernel
-        * ...
+        > $K(x, y) = (x \times y + 1)^d$, $d \geq 0$
+
+    * Radial Basis Function (RBF) Kernel
+
+        $\kappa(x_i, x_j) = \exp(-\frac{||x_i - x_j||^2}{2\sigma^2})$, $\sigma > 0$ and is width of RBF kernel
+
+        > $K(x, y) = e^{-\gamma ||x-y||^2}$
+
+    * Sigmoid Kernel
+    * ...
 
 ### Tune Parameter
 

@@ -10,9 +10,9 @@ A method for doing dimensionality reduction by transforming the feature space to
 
 ### Quick View
 
-Category|Usage|Methematics|Application Field
---------|-----|-----------|-----------------
-Unsupervised Learning|Dimensionality Reduction|Orthogonal, Covariance Matrix, Eigenvalue Analysis|
+| Category              | Usage                    | Methematics                                                              | Application Field |
+| --------------------- | ------------------------ | ------------------------------------------------------------------------ | ----------------- |
+| Unsupervised Learning | Dimensionality Reduction | Orthogonal, Covariance Matrix, Eigenvalue Analysis, Lagrange Multipliers |
 
 ## Concepts
 
@@ -22,13 +22,13 @@ Steps
 
 * Take the first principal component to be in the direction of the largest variability of the data
 * The second preincipal component will be in the direction orthogonal to the first principal component
-> (We can get these values by taking the covariance matrix of the dataset and doing eigenvalue analysis on the covariance matrix)
+    > (We can get these values by taking the covariance matrix of the dataset and doing eigenvalue analysis on the covariance matrix)
 * Once we have the eigenvectors of the covariance matrix, we can take the top N eigenvectors => N most important feature
 * Multiply the data by the top N eigenvectors to transform our data into the new space
 
 Pseudocode
 
-```
+```txt
 Remove the mean
 Compute the covariance matrix
 Find the eigenvalues and eigenvectors of the covariance matrix
@@ -42,11 +42,11 @@ Transform the data into the new space created by the top N eigenvectors
 Variables
 
 * m x n matrix: $X$
-    * In practice, column vectors of $X$ are positively correlated
-    * the hypothetical factors that account for the score should be uncorrelated
+  * In practice, column vectors of $X$ are positively correlated
+  * the hypothetical factors that account for the score should be uncorrelated
 * orthogonal vectors: $\vec{y}_1, \vec{y}_2, \dots, \vec{y}_r$
-    * We require that the vectors span $R(X)$
-    * and hence the number of vectors, $r$, should be euqal to the rank of $X$
+  * We require that the vectors span $R(X)$
+  * and hence the number of vectors, $r$, should be euqal to the rank of $X$
 
 The covariance matrix is
 $$
@@ -88,11 +88,11 @@ it follows that $\vec{y_1}$ and $\vec{y_2}$ are orthogonal.
 ## Reference
 
 * Linear Algebra with Applications
-    * Ch 5 Orthogonality
-    * Ch 6 Eigenvalues
-    * Ch 6.5 Application 4 - PCA
-    * Ch 7.5 Orthogonal Transformations
-    * Ch 7.6 The Eigenvalue Problem
+  * Ch 5 Orthogonality
+  * Ch 6 Eigenvalues
+  * Ch 6.5 Application 4 - PCA
+  * Ch 7.5 Orthogonal Transformations
+  * Ch 7.6 The Eigenvalue Problem
 
 ## Links
 
@@ -101,7 +101,7 @@ it follows that $\vec{y_1}$ and $\vec{y_2}$ are orthogonal.
 ### Tutorial
 
 * [**Siraj Raval - Dimensionality Reduction**](https://www.youtube.com/watch?v=jPmV3j1dAv4)
-    * [Github](https://github.com/llSourcell/Dimensionality_Reduction)
+  * [Github](https://github.com/llSourcell/Dimensionality_Reduction)
 
 ### Scikit Learn
 

@@ -380,6 +380,9 @@ The features themselves will work for either model. However, numerical inputs to
 
 ## Resources
 
+* [**分分鐘帶你殺入Kaggle Top 1% - 知乎**](https://zhuanlan.zhihu.com/p/27424282)
+* [如何ensemble多個神經網路？ - 知乎](https://www.zhihu.com/question/60753512/answer/184409655)
+* [**Kaggle Ensembling Guide | MLWave**](https://mlwave.com/kaggle-ensembling-guide/)
 * [Wiki - Feature engineering](https://en.wikipedia.org/wiki/Feature_engineering)
 * [機器學習筆記 - 特徵工程](https://feisky.xyz/machine-learning/basic/feature-engineering.html)
 * [**Understanding Feature Engineering (Part 1) — Continuous Numeric Data**](https://towardsdatascience.com/understanding-feature-engineering-part-1-continuous-numeric-data-da4e47099a7b)

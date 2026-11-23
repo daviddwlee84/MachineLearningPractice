@@ -24,6 +24,7 @@ Table of content
     - [Binary to Multi-class](#binary-to-multi-class)
       - [One-vs-rest (one-vs-all) Approaches](#one-vs-rest-one-vs-all-approaches)
       - [Pairwise (one-vs-one, all-vs-all) Approaches](#pairwise-one-vs-one-all-vs-all-approaches)
+    - [Multi-Labeled Classification](#multi-labeled-classification)
   - [Model Validation](#model-validation)
     - [Splitting Data](#splitting-data)
     - [Simplest Split](#simplest-split)
@@ -38,12 +39,14 @@ Table of content
     - [Classification](#classification)
       - [Accuracy (Error Rate)](#accuracy-error-rate)
       - [Confusion Matrix](#confusion-matrix)
-      - [Precision, Recall Ratio](#precision-recall-ratio)
+      - [Precision, Recall Rate](#precision-recall-rate)
+      - [Precision-Recall Curve (P-R Curve)](#precision-recall-curve-p-r-curve)
       - [ROC curve](#roc-curve)
     - [Regression](#regression)
       - [Mean Absolute Error (MAE)](#mean-absolute-error-mae)
       - [Mean Squared Error (MSE)](#mean-squared-error-mse)
       - [Root Mean Squared Error (RMSE)](#root-mean-squared-error-rmse)
+      - [Mean Absolute Percent Error (MAPE)](#mean-absolute-percent-error-mape)
     - [Clustering](#clustering)
       - [Within Groups Sum of Squares](#within-groups-sum-of-squares)
       - [Mean Silhouette Coefficient of all samples](#mean-silhouette-coefficient-of-all-samples)
@@ -70,6 +73,8 @@ Table of content
     - [Incremental Learning (Online Learning)](#incremental-learning-online-learning)
     - [Competitive Learning](#competitive-learning)
     - [Multi-label Classification](#multi-label-classification)
+  - [Other](#other)
+    - [Interpretability](#interpretability)
 
 ## Data Preprocessing
 
@@ -252,6 +257,14 @@ Tutorial:
 
 #### Pairwise (one-vs-one, all-vs-all) Approaches
 
+### Multi-Labeled Classification
+
+> Difference between multi-class classification & multi-label classification is that in multi-class problems the classes are mutually exclusive, whereas for multi-label problems each label represents a different classification task, but the tasks are somehow related..
+
+* [Multi-label classification - Wikipedia](https://en.wikipedia.org/wiki/Multi-label_classification)
+* [Deep dive into multi-label classification..! (With detailed Case Study)](https://towardsdatascience.com/journey-to-the-center-of-multi-label-classification-384c40229bff)
+* [1.12. Multiclass and multilabel algorithms — scikit-learn 0.21.3 documentation](https://scikit-learn.org/stable/modules/multiclass.html)
+
 ## Model Validation
 
 ### Splitting Data
@@ -313,24 +326,6 @@ This means that the training data will contain approximately 63.2% of the exampl
 
 ### Classification
 
-#### Accuracy (Error Rate)
-
-* The error rate = the number of misclassified instances / the total number of instances tested.
-* Measuring errors this way hides how instances were misclssified.
-
-#### Confusion Matrix
-
-[**Wiki - Confusion Matrix**](https://en.wikipedia.org/wiki/Confusion_matrix)
-
-* With a confusion matrix you get a better understanding of the classification errors.
-* If the off-diagonal elements are all zero, then you have a perfect classifier
-
-* Construct a confusion matrix: a table about Actual labels vs. Predicted label
-
-#### Precision, Recall Ratio
-
-These metrics that are more useful than error rate when detection of one class is more important than another class.
-
 Consider a **two-class** problem.
 (Confusion matrix with different outcome labeled)
 
@@ -339,42 +334,81 @@ Consider a **two-class** problem.
 |      **+1**       | True Positive (TP)  | False Negative (FN) |
 |      **-1**       | False Positive (FP) | True Negative (TN)  |
 
+#### Accuracy (Error Rate)
+
+* The error rate = the number of misclassified instances / the total number of instances tested.
+  * = (TP + TN) / (TP + FP + TN + FN)
+* Measuring errors this way hides how instances were misclssified.
+
+Defect:
+
+* When the data is unbalnaced/skewed the accuracy may become invalid
+  * extreme case: when there are 99% of negative samples => predect all negative will get 99% accuracy
+
+#### Confusion Matrix
+
+[**Wiki - Confusion Matrix**](https://en.wikipedia.org/wiki/Confusion_matrix)
+
+[如何辨別機器學習模型的好壞？秒懂Confusion Matrix - YC Note](https://www.ycc.idv.tw/confusion-matrix.html)
+* With a confusion matrix you get a better understanding of the classification errors.
+* If the off-diagonal elements are all zero, then you have a perfect classifier
+
+* Construct a confusion matrix: a table about Actual labels vs. Predicted label
+
+#### Precision, Recall Rate
+
+These metrics that are more useful than error rate when detection of one class is more important than another class.
+
 * **Precision** = TP / (TP + FP)
-    * Tells us the fraction of records that were positive from the group that the classifier predicted to be positive
-
+  * Tells us the fraction of records that were positive from the group that the classifier predicted to be positive
 * **Recall** = TP / (TP + FN)
-    * Measures the fraction of positive examples the classifier got right.
-    * Classifiers with a large recall dont have many positive examples classified incorectly.
+  * Measures the fraction of positive examples the classifier got right.
+  * Classifiers with a large recall dont have many positive examples classified incorectly.
 
-* **F₁ Score** = 2 × (Precision × Recall) / (Precision + Recall)
+To improve precision, the classifier will predict a sample to be positive when "it has high confident", but this may miss many "not enough confident" positive sample, end up cause low recall rate.
 
-Summary:
+To improve recall, the classifier will tend to look for the result which is not so popular, ...
 
-* You can easily construct a classifier that achieves a high measure of recall or precision but not both.
-* If you predicted everything to be in the positive class, you'd have perfect recall but poor precision.
+> Summary:
+>
+> * You can easily construct a classifier that achieves a high measure of recall or precision but not both.
+> * If you predicted everything to be in the positive class, you'd have perfect recall but poor precision.
+
+* **F1 Score** = 2 × (Precision × Recall) / (Precision + Recall)
+  * [harmonic mean](https://en.wikipedia.org/wiki/Harmonic_mean) of precision and recall
 
 Now consider **multiple classes** problem.
 
 * Macro-average
 * Micro-average
 
+In **sorting problem**: Usually use *Top N* return result to calculate precision and recall rate to measure performance
+
+* Precision@N
+* Recall@N
+
+#### Precision-Recall Curve (P-R Curve)
+
 #### ROC curve
 
 [Wiki - Receiver operating characteristic](https://en.wikipedia.org/wiki/Receiver_operating_characteristic)
 
-ROC stands for Receiver Operating Characteristic
+* x axis: False Positive Rate (FPR) = FP / (TN + FN)
+* y axis: True Positive Rate (TPR) = TP / (TP + FP)
 
-* The ROC curve shows how the two rates chnge as the threshold changes
+> ROC stands for Receiver Operating Characteristic
+
+* The ROC curve shows how the two rates (FPR & TPR) changes as the threshold changes
 * The ROC curve has two lines, a solid one and a dashed one.
-    * The solid line:
-        * the leftmost point corresponds to classifying everything as the negative class.
-        * the rightmost point corresponds to classifying everything in the positive class.
-    * The dashed line:
-        * the curve you'd get by randomly guessing.
+  * The solid line:
+    * the leftmost point corresponds to classifying everything as the negative class.
+    * the rightmost point corresponds to classifying everything in the positive class.
+  * The dashed line:
+    * the curve you'd get by randomly guessing.
 * The ROC curve can be used to compare classifiers and make cost-versus-benefit decisions.
-    * Different classifiers may perform better for different threshold values
+  * Different classifiers may perform better for *different threshold values*
 * The best classifier would be in upper left as much as possible.
-    * This would mean that you had a high true positive rate for a low false positive rate.
+  * This would mean that you had a high true positive rate for a low false positive rate.
 
 **AUC** (Area Under the Curve): A metric to compare different ROC
 
@@ -388,6 +422,20 @@ ROC stands for Receiver Operating Characteristic
 #### Mean Squared Error (MSE)
 
 #### Root Mean Squared Error (RMSE)
+
+$$
+\operatorname{RMSE} = \sqrt{\frac{\sum_{i=1}^n (y_i - \hat{y}_i)^2}{n}}
+$$
+
+* If outliers (e.g. some noise points) exist, will affect the result of RMSE and make it worse
+
+#### Mean Absolute Percent Error (MAPE)
+
+$$
+\operatorname{MAPE} = \sum_{i=1}^n |\frac{y_i - \hat{y}_i}{y_i}| \times \frac{100}{n}
+$$
+
+* equivalent to normalized the error of each data point => reduce the effect caused by the outliers
 
 ### Clustering
 
@@ -574,3 +622,12 @@ Find the fastest way to minimize the error.
 ### Multi-label Classification
 
 [Wiki - Multi-label Classification](https://en.wikipedia.org/wiki/Multi-label_classification)
+
+## Other
+
+### Interpretability
+
+> 可解釋性
+
+* [要研究深度學習的可解釋性（Interpretability），應從哪幾個方面著手？](https://www.zhihu.com/question/320688440/answer/659692388)
+* [可解釋性與deep learning的發展](https://zhuanlan.zhihu.com/p/30074544)
