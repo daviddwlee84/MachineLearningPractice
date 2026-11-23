@@ -16,7 +16,7 @@ from sklearn import metrics # Evaluate model
 
 def loadData(path, data='normalized'):
     inputData = pd.read_csv(path)
-    inputData = inputData.drop(['Product_Code'], 1) # Drop product code (ID)
+    inputData = inputData.drop(columns=['Product_Code']) # Drop product code (ID)
     if data == 'normalized':
         inputData = inputData.iloc[:, -52:] # Select only normalized data (Based on paper)
     if data == 'original':
@@ -38,7 +38,7 @@ def testScore(data_train, kmeans):
 def evaluateModel(data_train, kmeans):
     labels = kmeans.labels_
     silhouette_score = metrics.silhouette_score(data_train, labels, metric="euclidean")
-    calinski_harabaz_score =  metrics.calinski_harabaz_score(data_train, labels)
+    calinski_harabaz_score =  metrics.calinski_harabasz_score(data_train, labels)
     print("the mean Silhouette Coefficient of all samples:", silhouette_score)
     print("the Calinski and Harabaz score:", calinski_harabaz_score)
     return silhouette_score, calinski_harabaz_score

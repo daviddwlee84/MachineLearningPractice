@@ -18,7 +18,7 @@ from datetime import datetime # Calculate training time
 
 def loadData(path):
     inputData = pd.read_csv(path)
-    data = np.array(inputData.drop(['label'], 1))
+    data = np.array(inputData.drop(columns=['label']))
     label = np.array(inputData['label'])
     data_train, data_test, label_train, label_test = train_test_split(data, label, test_size=0.3, random_state=87)
     return data_train, label_train, data_test, label_test

@@ -19,13 +19,18 @@ from operator import itemgetter # Find max in dictionary
 
 import math # log
 
+def as_float(x):
+    # NumPy >= 2.5 no longer allows float() on a 1x1 matrix / size-1 array
+    return float(np.asarray(x).item())
+
+
 class GaussianNaiveBayesClassifier:
     def __init__(self, labels, mode='origin'):
         self.__labels = labels
         self.mode = mode # 'origin' & 'log'
 
     def fit(self, data_train, label_train):
-        dataMat = np.mat(data_train)
+        dataMat = np.asmatrix(data_train)
 
         numTrain = len(label_train) # Total number of rows
         numAttr = len(data_train[0]) # Total number of columns
@@ -89,11 +94,11 @@ class GaussianNaiveBayesClassifier:
         for i in range(total):
             if label_predict[i] == lable_test[i]:
                 correct += 1
-        return float(correct/total)
+        return as_float(correct/total)
 
 def loadData(path):
     inputData = pd.read_csv(path)
-    data = np.array(inputData.drop(['label'], 1))
+    data = np.array(inputData.drop(columns=['label']))
     label = np.array(inputData['label'])
     data_train, data_test, label_train, label_test = train_test_split(data, label, test_size=0.3, random_state=87)
     return data_train, label_train, data_test, label_test
@@ -120,12 +125,12 @@ def main():
 
     ## Origin
     # Test Accuracy
-    print('Accuracy (origin):', float(testAccuracy(data_test, label_test, GoussianNaiveBayesOrigin)))
+    print('Accuracy (origin):', as_float(testAccuracy(data_test, label_test, GoussianNaiveBayesOrigin)))
     # Evaluate Model
     evaluateModel(data_test, label_test, GoussianNaiveBayesOrigin)
 
     ## Log
-    print('Accuracy (log):', float(testAccuracy(data_test, label_test, GoussianNaiveBayesLog)))
+    print('Accuracy (log):', as_float(testAccuracy(data_test, label_test, GoussianNaiveBayesLog)))
     evaluateModel(data_test, label_test, GoussianNaiveBayesLog)
 
 if __name__ == '__main__':

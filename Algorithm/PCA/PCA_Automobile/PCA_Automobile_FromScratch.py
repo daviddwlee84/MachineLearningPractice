@@ -25,7 +25,7 @@ class PCA:
         n_samples = np.shape(X)[0]
         covariance_matrix = (1 / (n_samples-1)) * (X - X.mean(axis=0)).T.dot(Y - Y.mean(axis=0))
 
-        return np.mat(covariance_matrix, dtype=float)
+        return np.asmatrix(covariance_matrix, dtype=float)
     
     def __pca(self, dataMat):
         meanVals = np.mean(dataMat, axis=0)
@@ -50,7 +50,7 @@ class PCA:
         return eigVals, lowDDataMat, reconMat
 
     def fit(self, data):
-        data = np.mat(data)
+        data = np.asmatrix(data)
 
         if not self.__topNfeat:
             n_samples, n_features = np.shape(data)
@@ -117,14 +117,14 @@ def loadData(path):
 
     le = LabelEncoder()
 
-    dataTemp = np.mat(np.zeros((len(inputData), len(inputData.columns))))
+    dataTemp = np.asmatrix(np.zeros((len(inputData), len(inputData.columns))))
     for colIdx in range(len(inputData.columns)):
         # Transform each 'string' label into number
         if Labels[colIdx]:
             le.fit(Labels[colIdx])
-            dataTemp[:, colIdx] = np.mat(le.transform(inputData.iloc[:, colIdx])).T
+            dataTemp[:, colIdx] = np.asmatrix(le.transform(inputData.iloc[:, colIdx])).T
         else:
-            dataTemp[:, colIdx] = np.mat(inputData.iloc[:, colIdx]).T
+            dataTemp[:, colIdx] = np.asmatrix(inputData.iloc[:, colIdx]).T
 
     return dataTemp
     

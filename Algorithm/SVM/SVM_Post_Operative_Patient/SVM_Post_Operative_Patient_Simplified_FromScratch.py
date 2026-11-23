@@ -16,6 +16,11 @@ from sklearn.preprocessing import LabelEncoder # Transform 'string' into class n
 from sklearn.model_selection import train_test_split # Split training and testing data
 from sklearn import metrics # Evaluate model
 
+def as_float(x):
+    # NumPy >= 2.5 no longer allows float() on a 1x1 matrix / size-1 array
+    return float(np.asarray(x).item())
+
+
 # Hide cvxopt output
 #cvxopt.solvers.options['show_progress'] = False
 
@@ -138,7 +143,7 @@ def loadData(path):
     inputData = pd.read_csv(path)
 
     # Deal with missing value (8th column: 'COMFORT')
-    inputData = inputData.fillna(round(inputData.mean()))
+    inputData = inputData.fillna(round(inputData.mean(numeric_only=True)))
     
     # Transform 'string' into class number
     Labels = [
@@ -155,14 +160,14 @@ def loadData(path):
 
     le = LabelEncoder()
 
-    dataTemp = np.mat(np.zeros((len(inputData), len(inputData.columns))))
+    dataTemp = np.asmatrix(np.zeros((len(inputData), len(inputData.columns))))
     for colIdx in range(len(inputData.columns)):
         if colIdx != 7:
             le.fit(Labels[colIdx])
-            dataTemp[:, colIdx] = np.mat(le.transform(inputData.iloc[:, colIdx])).T
+            dataTemp[:, colIdx] = np.asmatrix(le.transform(inputData.iloc[:, colIdx])).T
         else:
             # Skip number attribute
-            dataTemp[:, colIdx] = np.mat(inputData.iloc[:, colIdx]).T
+            dataTemp[:, colIdx] = np.asmatrix(inputData.iloc[:, colIdx]).T
 
     num_data = np.array(dataTemp[:, :-1])
     num_label = np.array(dataTemp[:, -1])
@@ -189,7 +194,7 @@ def main():
     SVM_model = trainSVM(data_train, label_train)
 
     # Test Accuracy
-    print('Accuracy:', float(testAccuracy(data_test, label_test, SVM_model)))
+    print('Accuracy:', as_float(testAccuracy(data_test, label_test, SVM_model)))
 
     # Evaluate Model
     evaluateModel(data_test, label_test, SVM_model)

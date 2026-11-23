@@ -41,10 +41,10 @@ def loadData(path):
 
     le = LabelEncoder()
 
-    dataTemp = np.mat(np.zeros((len(possibleFeature), len(possibleFeature.columns))))
+    dataTemp = np.asmatrix(np.zeros((len(possibleFeature), len(possibleFeature.columns))))
     for colIdx in range(4, 11):
         le.fit(Labels[colIdx-4])
-        dataTemp[:, colIdx] = np.mat(le.transform(possibleFeature.iloc[:, colIdx])).T
+        dataTemp[:, colIdx] = np.asmatrix(le.transform(possibleFeature.iloc[:, colIdx])).T
         
 
     # Label
@@ -61,7 +61,7 @@ def loadData(path):
         else:
             label[i] = 5
 
-    data_train, data_test, label_train, label_test = train_test_split(dataTemp, label, test_size=0.3, random_state=87)
+    data_train, data_test, label_train, label_test = train_test_split(np.asarray(dataTemp), label, test_size=0.3, random_state=87) # sklearn >= 1.8 rejects np.matrix
     return data_train, label_train, data_test, label_test
     
 def trainAdaboost(data_train, label_train):

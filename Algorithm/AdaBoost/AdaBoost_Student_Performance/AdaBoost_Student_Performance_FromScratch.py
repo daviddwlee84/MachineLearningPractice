@@ -14,6 +14,11 @@ from sklearn.preprocessing import LabelEncoder # Transform 'string' into class n
 from sklearn.model_selection import train_test_split # Split training and testing data
 from sklearn import metrics # Evaluate model
 
+def as_float(x):
+    # NumPy >= 2.5 no longer allows float() on a 1x1 matrix / size-1 array
+    return float(np.asarray(x).item())
+
+
 # A simple decision tree as a weak learner
 class DecisionStump:
     def __init__(self):
@@ -102,7 +107,7 @@ class AdaBoostClassifier:
             y_pred += clf.alpha * predictions
         
         y_pred = np.sign(y_pred).flatten() # Return sign of prediction sum
-        y_pred = np.mat(y_pred).T
+        y_pred = np.asmatrix(y_pred).T
         return y_pred
     
     def score(self, X_test, y_test):
@@ -135,10 +140,10 @@ def loadData(path):
 
     le = LabelEncoder()
 
-    dataTemp = np.mat(np.zeros((len(possibleFeature), len(possibleFeature.columns))))
+    dataTemp = np.asmatrix(np.zeros((len(possibleFeature), len(possibleFeature.columns))))
     for colIdx in range(4, 11):
         le.fit(Labels[colIdx-4])
-        dataTemp[:, colIdx] = np.mat(le.transform(possibleFeature.iloc[:, colIdx])).T
+        dataTemp[:, colIdx] = np.asmatrix(le.transform(possibleFeature.iloc[:, colIdx])).T
         
     # Label
     label = np.zeros((len(inputData), 1))
@@ -160,8 +165,9 @@ def testAccuracy(data_test, label_test, clf):
     return clf.score(data_test, label_test)
 
 def evaluateModel(data_test, label_test, clf):
-    print(metrics.classification_report(label_test, clf.predict(data_test)))
-    print(metrics.confusion_matrix(label_test, clf.predict(data_test)))
+    y_pred = np.asarray(clf.predict(data_test)).ravel() # sklearn >= 1.8 rejects np.matrix
+    print(metrics.classification_report(label_test, y_pred))
+    print(metrics.confusion_matrix(label_test, y_pred))
 
 def main():
     # Load Data
@@ -171,7 +177,7 @@ def main():
     Adaboost = trainAdaboost(data_train, label_train)
 
     # Test Accuracy
-    print('Accuracy:', float(testAccuracy(data_test, label_test, Adaboost)))
+    print('Accuracy:', as_float(testAccuracy(data_test, label_test, Adaboost)))
 
     # Evaluate Model
     evaluateModel(data_test, label_test, Adaboost)

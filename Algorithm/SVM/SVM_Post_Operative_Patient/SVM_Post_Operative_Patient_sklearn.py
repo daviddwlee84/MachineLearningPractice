@@ -20,7 +20,7 @@ def loadData(path):
     inputData = pd.read_csv(path)
 
     # Deal with missing value (8th column: 'COMFORT')
-    inputData = inputData.fillna(round(inputData.mean()))
+    inputData = inputData.fillna(round(inputData.mean(numeric_only=True)))
     
     # Transform 'string' into class number
     Labels = [
@@ -37,14 +37,14 @@ def loadData(path):
 
     le = LabelEncoder()
 
-    dataTemp = np.mat(np.zeros((len(inputData), len(inputData.columns))))
+    dataTemp = np.asmatrix(np.zeros((len(inputData), len(inputData.columns))))
     for colIdx in range(len(inputData.columns)):
         if colIdx != 7:
             le.fit(Labels[colIdx])
-            dataTemp[:, colIdx] = np.mat(le.transform(inputData.iloc[:, colIdx])).T
+            dataTemp[:, colIdx] = np.asmatrix(le.transform(inputData.iloc[:, colIdx])).T
         else:
             # Skip number attribute
-            dataTemp[:, colIdx] = np.mat(inputData.iloc[:, colIdx]).T
+            dataTemp[:, colIdx] = np.asmatrix(inputData.iloc[:, colIdx]).T
 
     num_data = np.array(dataTemp[:, :-1])
     num_label = np.array(dataTemp[:, -1])

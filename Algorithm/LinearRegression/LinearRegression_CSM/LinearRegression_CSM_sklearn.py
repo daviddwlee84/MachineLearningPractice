@@ -21,12 +21,12 @@ def loadData(path):
     # Conventional features
     conventionalFeatures = inputData[['Genre', 'Gross', 'Budget', 'Screens', 'Sequel', 'Ratings']]
     # Gross income is not available before release
-    newFeatures = conventionalFeatures.drop(['Gross'], 1)
+    newFeatures = conventionalFeatures.drop(columns=['Gross'])
     # Deal with missing value
     newFeatures = newFeatures.dropna()
 
     y = np.array(newFeatures['Ratings']) # y
-    X = np.array(newFeatures.drop(['Ratings'], 1)) # X
+    X = np.array(newFeatures.drop(columns=['Ratings'])) # X
 
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=87)
     return X_train, y_train, X_test, y_test

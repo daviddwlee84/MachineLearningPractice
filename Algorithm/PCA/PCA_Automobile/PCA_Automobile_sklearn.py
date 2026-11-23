@@ -63,15 +63,15 @@ def loadData(path):
 
     le = LabelEncoder()
 
-    dataTemp = np.mat(np.zeros((len(inputData), len(inputData.columns))))
+    dataTemp = np.asmatrix(np.zeros((len(inputData), len(inputData.columns))))
     for colIdx in range(len(inputData.columns)):
         if Labels[colIdx]:
             le.fit(Labels[colIdx])
-            dataTemp[:, colIdx] = np.mat(le.transform(inputData.iloc[:, colIdx])).T
+            dataTemp[:, colIdx] = np.asmatrix(le.transform(inputData.iloc[:, colIdx])).T
         else:
-            dataTemp[:, colIdx] = np.mat(inputData.iloc[:, colIdx]).T
+            dataTemp[:, colIdx] = np.asmatrix(inputData.iloc[:, colIdx]).T
 
-    return dataTemp
+    return np.asarray(dataTemp) # sklearn >= 1.8 rejects np.matrix
     
 def tryComponentNumber(data, max_principlal_component):
     pca = PCA(n_components=max_principlal_component)

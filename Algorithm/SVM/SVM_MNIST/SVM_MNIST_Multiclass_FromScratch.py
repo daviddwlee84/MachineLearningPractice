@@ -14,6 +14,11 @@ import random # Random select index
 #from sklearn.model_selection import train_test_split # Split training and testing data
 from sklearn import metrics # Evaluate model
 
+def as_float(x):
+    # NumPy >= 2.5 no longer allows float() on a 1x1 matrix / size-1 array
+    return float(np.asarray(x).item())
+
+
 class BinarySVM:
     def __init__(self, C=1.0, gamma=0, max_iter=10000, tol=0.001, kernel='linear'):
         self.__C = C
@@ -32,7 +37,7 @@ class BinarySVM:
 
     def __kernelTrans(self, X, Xi):
         m = np.shape(X)[0]
-        K = np.mat(np.zeros((m, 1)))
+        K = np.asmatrix(np.zeros((m, 1)))
         if self.__kernel == 'linear':
             K = X * Xi.T
         elif self.__kernel == 'rbf':
@@ -45,8 +50,8 @@ class BinarySVM:
 
     ##### Sequential Minimal Optimization #####
     def __calcEk(self, k):
-        fX_k = float(np.multiply(self.__alphas, self.__y).T * self.__K[:, k] + self.__b)
-        E_k = fX_k - float(self.__y[k])
+        fX_k = as_float(np.multiply(self.__alphas, self.__y).T * self.__K[:, k] + self.__b)
+        E_k = fX_k - as_float(self.__y[k])
         return E_k
 
     def __selectJrand(self, i):
@@ -117,9 +122,9 @@ class BinarySVM:
             b2 = self.__b - Ej - self.__y[i] * (self.__alphas[i] - alphaIold) * self.__K[i, j] - \
                  self.__y[j] * (self.__alphas[j] - alphaJold) * self.__K[j, j]
             
-            if 0 < self.__alphas[i] and self.__C > self.__alphas[i]: self.__b = float(b1)
-            elif 0 < self.__alphas[j] and self.__C > self.__alphas[j]: self.__b = float(b2)
-            else: self.__b = float((b1 + b2) / 2.0)
+            if 0 < self.__alphas[i] and self.__C > self.__alphas[i]: self.__b = as_float(b1)
+            elif 0 < self.__alphas[j] and self.__C > self.__alphas[j]: self.__b = as_float(b2)
+            else: self.__b = as_float((b1 + b2) / 2.0)
             return 1
         else:
             return 0
@@ -151,14 +156,14 @@ class BinarySVM:
         return w
 
     def fit(self, X, y):
-        self.__X = np.mat(X)
-        self.__y = np.mat(y).T
+        self.__X = np.asmatrix(X)
+        self.__y = np.asmatrix(y).T
 
         n_samples = np.shape(X)[0]
         self.__n_samples = n_samples
-        self.__error_cache = np.mat(np.zeros((n_samples, 2)))
-        self.__alphas = np.mat(np.zeros((n_samples, 1)))
-        self.__K = np.mat(np.zeros((n_samples, n_samples))) # Kernal
+        self.__error_cache = np.asmatrix(np.zeros((n_samples, 2)))
+        self.__alphas = np.asmatrix(np.zeros((n_samples, 1)))
+        self.__K = np.asmatrix(np.zeros((n_samples, n_samples))) # Kernal
         for i in range(n_samples):
             self.__K[:, i] = self.__kernelTrans(self.__X, self.__X[i, :])
 
@@ -171,14 +176,14 @@ class BinarySVM:
         self.support_vector_labels = self.__y[self.__svInd]
 
     def predict(self, X):
-        X = np.mat(X)
+        X = np.asmatrix(X)
         m = np.shape(X)[0]
         predictions = []
         for i in range(m):
             kernelEval = self.__kernelTrans(self.support_vectors, X[i, :])
             predict = kernelEval.T * np.multiply(self.support_vector_labels, self.__alphas[self.__svInd]) + self.__b
             ### Return original prediction without np.sign()
-            predictions.append(float(predict))
+            predictions.append(as_float(predict))
         return np.array(predictions)
 
 class OneVsRestSVM:
@@ -251,7 +256,7 @@ def loadData(path):
     inputData = inputData.iloc[-5500:, :]
 
     label = np.array(inputData['label'])
-    data = np.array(inputData.drop(['label'], 1))
+    data = np.array(inputData.drop(columns=['label']))
 
     # Use a threshold to binarize data
     data[data<=100] = -1
@@ -287,7 +292,7 @@ def main():
     SVM_model = trainSVM(data_train, label_train)
 
     # Test Accuracy
-    print('Accuracy:', float(testAccuracy(data_test, label_test, SVM_model)))
+    print('Accuracy:', as_float(testAccuracy(data_test, label_test, SVM_model)))
 
     # Evaluate Model
     evaluateModel(data_test, label_test, SVM_model)

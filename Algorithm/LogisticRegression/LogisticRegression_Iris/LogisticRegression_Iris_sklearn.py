@@ -10,6 +10,7 @@
 from sklearn import datasets
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
+from sklearn.multiclass import OneVsRestClassifier
 
 def loadData():
     # These two method are the same
@@ -22,7 +23,12 @@ def loadData():
     return train_X, test_X, train_y, test_y
 
 def trainLogistic(train_X, train_y, multi_class_method='ovr'):
-    clf = LogisticRegression(multi_class=multi_class_method)
+    # `multi_class` was removed from LogisticRegression in scikit-learn 1.8:
+    # OvR is now an explicit wrapper, multinomial is the default behaviour.
+    if multi_class_method == 'ovr':
+        clf = OneVsRestClassifier(LogisticRegression())
+    else:
+        clf = LogisticRegression()
     clf.fit(train_X, train_y)
     return clf
     

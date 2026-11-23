@@ -10,6 +10,11 @@ import pandas as pd # Read csv
 from scipy.sparse.linalg import svds # using ARPACK as an eigensolver
 from scipy.sparse import csc_matrix
 
+def as_float(x):
+    # NumPy >= 2.5 no longer allows float() on a 1x1 matrix / size-1 array
+    return float(np.asarray(x).item())
+
+
 ### Recommendation System
 # Item-based recommendation engine
 
@@ -23,7 +28,7 @@ def pearsonCorrelationSimilarity(A, B):
     else: return 0.5 + 0.5 * np.corrcoef(A, B, rowvar=0)[0][1]
 
 def cosineSimilarity(A, B):
-    num = float(A.T*B)
+    num = as_float(A.T*B)
     denom = np.linalg.norm(A) * np.linalg.norm(B)
     return 0.5 + 0.5 * (num/denom)
 ######
@@ -65,7 +70,7 @@ def recommend(dataMat, user, N=None, simMeas=cosineSimilarity, estMethod='svdEst
         # SVD Calculations
         U, Sigma, VT = np.linalg.svd(dataMat, full_matrices=False)
         U_new, Sigma_new, VT_new = keepSingularValue(U, Sigma, VT)
-        diagonal_mat = np.mat(np.eye(len(Sigma_new)) * Sigma_new) # Create diagonal matrix
+        diagonal_mat = np.asmatrix(np.eye(len(Sigma_new)) * Sigma_new) # Create diagonal matrix
         xformedItems = dataMat.T * U_new * diagonal_mat.I # Create transformed items
 
     for item in unratedItems:
@@ -92,7 +97,7 @@ def loadExData1_1():
               [1, 1, 0, 2, 2],
               [0, 0, 0, 3, 3],
               [0, 0, 0, 1, 1]]
-    return np.mat(matrix)
+    return np.asmatrix(matrix)
 
 def loadExData1_2():
     matrix = [[4, 4, 0, 2, 2],
@@ -102,7 +107,7 @@ def loadExData1_2():
               [2, 2, 2, 0, 0],
               [1, 1, 1, 0, 0],
               [5, 5, 5, 0, 0]]
-    return np.mat(matrix)
+    return np.asmatrix(matrix)
 
 def textbook_example():
     print("\n=== Standard Estimation ===\n")
@@ -112,7 +117,7 @@ def textbook_example():
     print('Sigma:', Sigma)
 
     # Drop the last two value since they're so small to ignore
-    Sig3 = np.mat([[Sigma[0], 0, 0],
+    Sig3 = np.asmatrix([[Sigma[0], 0, 0],
                    [0, Sigma[1], 0],
                    [0, 0, Sigma[2]]])
 
@@ -149,7 +154,7 @@ def loadExData2():
               [0, 0, 0, 0, 0, 0, 5, 0, 0, 5, 0],
               [0, 0, 0, 3, 0, 0, 0, 0, 4, 5, 0],
               [1, 1, 2, 1, 1, 2, 1, 0, 4, 5, 0]]
-    return np.mat(matrix)
+    return np.asmatrix(matrix)
 
 def textbook_example2():
     print("\n=== SVD Estimation ===\n")
@@ -205,7 +210,7 @@ def main():
     ## Anonymous Microsoft Web Data
     # Load Data
     matrix = loadRatingsMatrix()
-    data = np.mat(matrix)
+    data = np.asmatrix(matrix)
 
     # Truncated SVD
     U, Sigma, VT = np.linalg.svd(data, full_matrices=False) # Compute the entire matrix will consume all your RAM

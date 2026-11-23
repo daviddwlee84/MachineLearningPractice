@@ -33,12 +33,12 @@ def loadData(path):
     conventionalFeatures = inputData[[
         'Genre', 'Gross', 'Budget', 'Screens', 'Sequel', 'Ratings']]
     # Gross income is not available before release
-    newFeatures = conventionalFeatures.drop(['Gross'], 1)
+    newFeatures = conventionalFeatures.drop(columns=['Gross'])
     # Deal with missing value
     newFeatures = newFeatures.dropna()
 
     y = np.array(newFeatures['Ratings'])  # y
-    X = np.array(newFeatures.drop(['Ratings'], 1))  # X
+    X = np.array(newFeatures.drop(columns=['Ratings']))  # X
 
     # Normalize or the loss/gradient will become nan/inf!!
     X = normalize(X)

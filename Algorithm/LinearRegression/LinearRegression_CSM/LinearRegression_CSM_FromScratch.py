@@ -13,13 +13,18 @@ import pandas as pd # Read csv
 from sklearn.model_selection import train_test_split # Split training and testing data
 from sklearn import metrics # Evaluate model
 
+def as_float(x):
+    # NumPy >= 2.5 no longer allows float() on a 1x1 matrix / size-1 array
+    return float(np.asarray(x).item())
+
+
 class LinearRegression:
 
     # Calculate weights
     def __calcWeights(self, xArr, yArr):
-        xData = np.mat(xArr)
+        xData = np.asmatrix(xArr)
         xMat = np.hstack([np.ones((len(xArr), 1)), xData]) # Append a constant 1 column in the first column
-        yMat = np.mat(yArr).T
+        yMat = np.asmatrix(yArr).T
         xTx = xMat.T * xMat
         if np.linalg.det(xTx) == 0:
             # TODO: Should use gradient descent!
@@ -36,7 +41,7 @@ class LinearRegression:
         self.weights = self.__calcWeights(X, y)
 
     def __predictOne(self, x):
-        yHat = np.mat(x) * self.weights
+        yHat = np.asmatrix(x) * self.weights
         return yHat
 
     def predict(self, X_test):
@@ -47,7 +52,7 @@ class LinearRegression:
             prediction = np.zeros(m)
             xMat = np.hstack([np.ones((len(X_test), 1)), X_test]) # Append a constant 1 column in the first column
             for i, rowVector in enumerate(xMat):
-                prediction[i] = self.__predictOne(rowVector)
+                prediction[i] = as_float(self.__predictOne(rowVector))
             return prediction
     
     ## Score method
@@ -61,25 +66,25 @@ class LinearRegression:
             for i in range(total):
                 if abs(yHats[i] - y_test[i]) <= diff:
                     inRange += 1
-            return float(inRange/total)
+            return as_float(inRange/total)
         elif method == 'R2':
             yHats = self.predict(X_test)
             yBar = np.sum(y_test)/len(y_test) # Mean of y true
             ssres = np.sum((y_test - yHats)**2) # Residual sum of squares
             sstot = np.sum((y_test - yBar)**2) # Total sum of squares
-            return float(ssres/sstot)
+            return as_float(ssres/sstot)
 
 def loadData(path):
     inputData = pd.read_csv(path)
     # Conventional features
     conventionalFeatures = inputData[['Genre', 'Gross', 'Budget', 'Screens', 'Sequel', 'Ratings']]
     # Gross income is not available before release
-    newFeatures = conventionalFeatures.drop(['Gross'], 1)
+    newFeatures = conventionalFeatures.drop(columns=['Gross'])
     # Deal with missing value
     newFeatures = newFeatures.dropna()
 
     y = np.array(newFeatures['Ratings']) # y
-    X = np.array(newFeatures.drop(['Ratings'], 1)) # X
+    X = np.array(newFeatures.drop(columns=['Ratings'])) # X
 
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=87)
     return X_train, y_train, X_test, y_test
@@ -90,8 +95,8 @@ def regression(X_train, y_train):
     return regression_model
 
 def testAccuracy(X_test, y_test, regression_model):
-    print('R2:', float(regression_model.score(X_test, y_test, 'R2')))
-    print('Accuracy (Paper criteria Accuracy 2):', float(regression_model.score(X_test, y_test, 'diff', 1)))
+    print('R2:', as_float(regression_model.score(X_test, y_test, 'R2')))
+    print('Accuracy (Paper criteria Accuracy 2):', as_float(regression_model.score(X_test, y_test, 'diff', 1)))
 
 def evaluateModel(X_test, y_test, regression_model):
     # Mean Absolute Error (MAE)

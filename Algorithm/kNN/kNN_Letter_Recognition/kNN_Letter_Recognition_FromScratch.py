@@ -15,6 +15,11 @@ from collections import Counter # Find
 from sklearn.model_selection import train_test_split # Split training and testing data
 from sklearn import metrics # Evaluate model
 
+def as_float(x):
+    # NumPy >= 2.5 no longer allows float() on a 1x1 matrix / size-1 array
+    return float(np.asarray(x).item())
+
+
 class kNNClassifier:
     # Initialize with k
     def __init__(self, k):
@@ -54,11 +59,11 @@ class kNNClassifier:
         for i in range(total):
             if predict_label[i] == testing_label[i]:
                 correct += 1
-        return float(correct/total)
+        return as_float(correct/total)
 
 def loadData(path):
     letters = pd.read_csv(path)
-    data = np.array(letters.drop(['lettr'], 1))
+    data = np.array(letters.drop(columns=['lettr']))
     label = np.array(letters['lettr'])
     data_train, data_test, label_train, label_test = train_test_split(data, label, test_size=0.3, random_state=87)
     return data_train, label_train, data_test, label_test
@@ -84,7 +89,7 @@ def main():
     kNN_model = trainKNN(data_train, label_train, 3)
 
     # Test Accuracy
-    print('Accuracy:', float(testAccuracy(data_test, label_test, kNN_model)))
+    print('Accuracy:', as_float(testAccuracy(data_test, label_test, kNN_model)))
 
     # Evaluate Model
     evaluateModel(data_test, label_test, kNN_model)

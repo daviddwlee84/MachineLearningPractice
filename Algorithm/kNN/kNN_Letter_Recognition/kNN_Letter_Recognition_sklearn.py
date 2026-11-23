@@ -16,7 +16,7 @@ from sklearn import metrics # Evaluate model
 
 def loadData(path):
     letters = pd.read_csv(path)
-    data = np.array(letters.drop(['lettr'], 1))
+    data = np.array(letters.drop(columns=['lettr']))
     label = np.array(letters['lettr'])
     data_train, data_test, label_train, label_test = train_test_split(data, label, test_size=0.3, random_state=87)
     return data_train, label_train, data_test, label_test

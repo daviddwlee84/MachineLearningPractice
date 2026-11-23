@@ -35,10 +35,10 @@ def loadData(path):
     le = LabelEncoder()
 
     # Somehow use np.mat to deal with shape problem down below
-    dataTemp = np.mat(np.zeros((len(inputData), len(inputData.columns))))
+    dataTemp = np.asmatrix(np.zeros((len(inputData), len(inputData.columns))))
     for colIdx in range(len(inputData.columns)):
         le.fit(Labels[colIdx])
-        dataTemp[:, colIdx] = np.mat(le.transform(inputData.iloc[:, colIdx])).T
+        dataTemp[:, colIdx] = np.asmatrix(le.transform(inputData.iloc[:, colIdx])).T
 
     num_data = np.array(dataTemp[:, :-1])
     num_label = np.array(dataTemp[:, -1])

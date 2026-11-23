@@ -1,5 +1,6 @@
+import os
 import sys
-sys.path.append("../SVM_MNIST")
+sys.path.append(os.path.join(os.path.dirname(os.path.abspath(__file__)), "../SVM_MNIST"))
 from SVM_MNIST_Multiclass_FromScratch import OneVsRestSVM
 from SVM_MNIST_Binary_FromScratch import SVM
 

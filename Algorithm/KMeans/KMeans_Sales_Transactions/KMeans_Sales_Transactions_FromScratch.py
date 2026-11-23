@@ -108,7 +108,7 @@ class KMeans:
 
 def loadData(path):
     inputData = pd.read_csv(path)
-    inputData = inputData.drop(['Product_Code'], 1) # Drop prodoct ID column
+    inputData = inputData.drop(columns=['Product_Code']) # Drop prodoct ID column
     data = np.array(inputData)
     return data
 
@@ -132,7 +132,7 @@ def testPredict(data_train):
 def evaluateModel(data_train, kmeans):
     labels = kmeans.labels_
     silhouette_score = metrics.silhouette_score(data_train, labels, metric="euclidean")
-    calinski_harabaz_score =  metrics.calinski_harabaz_score(data_train, labels)
+    calinski_harabaz_score =  metrics.calinski_harabasz_score(data_train, labels)
     print("the mean Silhouette Coefficient of all samples:", silhouette_score)
     print("the Calinski and Harabaz score:", calinski_harabaz_score)
     return silhouette_score, calinski_harabaz_score

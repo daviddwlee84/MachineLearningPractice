@@ -7,7 +7,7 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
-from sklearn.cross_validation import train_test_split # For splitting trian and test set
+from sklearn.model_selection import train_test_split # For splitting trian and test set
 from sklearn.preprocessing import StandardScaler # For feature scaling
 
 import lightgbm as lgb
