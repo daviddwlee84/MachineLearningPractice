@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "skills": {
+    "colab-remote-runner": {
+      "source": "daviddwlee84/agent-skills",
+      "commit": "7e74c1b11d8734b5e5c0cb20e673558f4919bc91",
+      "sourceType": "github",
+      "skillPath": "skills/local/colab-remote-runner/SKILL.md",
+      "computedHash": "fedd10ea08117f5e4b3dcb92665ce13ace9c94184caee97b5a6f6d6046a3e751"
+    }
+  }
+}
